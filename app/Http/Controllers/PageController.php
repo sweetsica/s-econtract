@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class PageController extends Controller
+{
+    // Sign up Partner
+    public function signup_partner()
+    {
+        $page_title = 'Đăng ký đại lý';
+        $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.form.signup-partner', compact('page_title', 'page_description','action','logo','logoText'));
+    }
+    // Dashboard
+    public function dashboard()
+    {
+        $page_title = 'Dashboard';
+        $page_description = 'Some description for the page';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
+    }
+    // Page Login
+    public function page_login()
+    {
+        $page_title = 'Page Login';
+        $page_description = 'Some description for the page';
+
+        $action = __FUNCTION__;
+
+        return view('back-end.page.login', compact('page_title', 'page_description','action'));
+    }
+    // Page Signup
+//    public function page_signup()
+//    {
+//        $page_title = 'Đăng ký đối tác';
+//        $page_description = 'Some description for the page';
+//
+//        $action = __FUNCTION__;
+//
+//        return view('back-end.page.login', compact('page_title', 'page_description','action'));
+//    }
+}
