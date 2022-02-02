@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\CommonEnum;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
@@ -36,11 +38,15 @@ class AuthController extends Controller
 
     public function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
+        
+        $user->assignRole(Role::findByName(CommonEnum::PARTNER_LEVEL_ONE));
+    
+        return $user;
     }
 
     public function loginIndex()
@@ -65,6 +71,7 @@ class AuthController extends Controller
             return redirect()->intended('dashboard')
                 ->withSuccess('Signed in');
         }
-        return ;
+        
+        return redirect("login")->withSuccess('Login details are not valid');
     }
 }
