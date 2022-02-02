@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class PageController extends Controller
 {
@@ -16,6 +17,7 @@ class PageController extends Controller
         $action = __FUNCTION__;
         return view('back-end.form.signup-partner', compact('page_title', 'page_description','action','logo','logoText'));
     }
+    
     // Dashboard
     public function dashboard()
     {
@@ -26,6 +28,7 @@ class PageController extends Controller
         $action = __FUNCTION__;
         return view('back-end.dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
     }
+    
     // Page Login
     public function page_login()
     {

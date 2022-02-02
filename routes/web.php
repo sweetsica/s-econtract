@@ -25,6 +25,12 @@ Route::get('/', 'App\Http\Controllers\PageController@signup_partner')->name('sig
 Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('index');
 Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('login');
 
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerIndex'])->name('signup');
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerProcess']);
+
+Route::get('/login', [\App\Http\Controllers\AuthController::class, 'loginIndex'])->name('login');
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'loginProcess']);
+
 //Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/index', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/analytics', 'App\Http\Controllers\OmahadminController@analytics');
