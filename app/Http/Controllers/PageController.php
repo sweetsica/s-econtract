@@ -6,6 +6,15 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    public function index()
+    {
+        $page_title = 'S-Contract Hợp đồng điện tử';
+        $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
+    }
     // Sign up Partner
     public function signup_partner()
     {

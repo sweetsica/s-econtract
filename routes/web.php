@@ -21,8 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dynamic_pdf',[\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
 Route::get('/dynamic_pdf_true',[\App\Http\Controllers\PDFController::class, 'export_pdf'])->name('export.pdf');
 
-Route::get('/', 'App\Http\Controllers\PageController@signup_partner')->name('signup.partner');
-Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('index');
+Route::get('/', 'App\Http\Controllers\PageController@index')->name('index');
+Route::get('/signup-partner', 'App\Http\Controllers\PageController@signup_partner')->name('signup.partner');
+Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
 Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('login');
 
 //Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');

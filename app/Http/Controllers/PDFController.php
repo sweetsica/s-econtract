@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
+use Illuminate\Support\Facades\File;
 
 class PDFController extends Controller
 {
@@ -17,8 +19,16 @@ class PDFController extends Controller
         $data = [
             'foo' => 'bar'
         ];
+//        $pdf = PDF::loadView('demo_pdf', $data)->save($pdfFilePath);
         $pdf = PDF::loadView('demo_pdf', $data);
-        return $pdf->stream('document.pdf');
+        $path = public_path('pdf_storage/');
+        $day= date('d_m_Y');
+        $month= date('m_Y');
+        if (! File::exists($path.'/'.$month)) {
+            File::makeDirectory($path.'/'.$month);
+        }
+        $pdf->save($path.'/'.$month.'/'.$day.'_dynamic_save.pdf');
+        return $pdf->stream('dynamic.pdf');
     }
 
     public function export_pdf()
