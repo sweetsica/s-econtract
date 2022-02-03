@@ -35,6 +35,13 @@ return [
 		],
 		'pagelevel' => [
 			'css' => [
+                'index' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/jqvmap/css/jqvmap.min.css',
+                    'vendor/chartist/css/chartist.min.css',
+                    'https://cdn.lineicons.com/2.0/LineIcons.css',
+                    'vendor/owl-carousel/owl.carousel.css',
+                ],
 				'dashboard' => [
 							'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 							'vendor/jqvmap/css/jqvmap.min.css',
@@ -251,6 +258,11 @@ return [
 				],
 			],
 			'js' => [
+                'index' => [
+                    'js/dashboard/dashboard-1.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
 				'dashboard' => [
 							'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
 							'vendor/chart.js/Chart.bundle.min.js',
@@ -260,8 +272,8 @@ return [
 							'vendor/jqvmap/js/jquery.vmap.world.js',
 							'vendor/peity/jquery.peity.min.js',
 							'js/dashboard/dashboard-1.js',
-              'js/custom.min.js',
-              'js/deznav-init.js',
+                            'js/custom.min.js',
+                            'js/deznav-init.js',
 				],
 				 'analytics' => [
 							'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
