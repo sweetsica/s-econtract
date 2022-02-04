@@ -69,6 +69,13 @@ return [
 							'vendor/owl-carousel/owl.carousel.css',
 							'https://cdn.lineicons.com/2.0/LineIcons.css',
 				],
+                'show' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/jqvmap/css/jqvmap.min.css',
+                    'vendor/chartist/css/chartist.min.css',
+                    'vendor/owl-carousel/owl.carousel.css',
+                    'https://cdn.lineicons.com/2.0/LineIcons.css',
+                ],
 				'order_list' => [
 							'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 							'vendor/jqvmap/css/jqvmap.min.css',
@@ -172,8 +179,11 @@ return [
 							'vendor/jqvmap/css/jqvmap.min.css',
 				],
 				'table_bootstrap_basic' => [
-              'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 				],
+                'list'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                ],
 				'table_datatable_basic' => [
               'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 							'vendor/datatables/css/jquery.dataTables.min.css',
@@ -293,12 +303,19 @@ return [
               'js/deznav-init.js',
 				],
 				 'property_details' => [
-							'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-							'vendor/chart.js/Chart.bundle.min.js',
-							'vendor/owl-carousel/owl.carousel.js',
-              'js/custom.min.js',
-              'js/deznav-init.js',
+				     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                     'vendor/chart.js/Chart.bundle.min.js',
+                     'vendor/owl-carousel/owl.carousel.js',
+                     'js/custom.min.js',
+                     'js/deznav-init.js',
 				],
+                'show' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/owl-carousel/owl.carousel.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
 				'order_list' => [
 							'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
 							'vendor/chart.js/Chart.bundle.min.js',
@@ -549,10 +566,15 @@ return [
             'js/deznav-init.js',
 				],
 				'table_bootstrap_basic' => [
-            'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-            'js/custom.min.js',
-            'js/deznav-init.js',
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
 				],
+                'list' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
 				'table_datatable_basic' => [
             'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
             'vendor/datatables/js/jquery.dataTables.min.js',

@@ -20,7 +20,7 @@
                                 <input type="password" class="form-control" value="Password">
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Unlock</button>
+                                <a href="{{route('dashboard')}}"><button type="submit" class="btn btn-primary btn-block">Unlock</button></a>
                             </div>
                         </form>
                     </div>

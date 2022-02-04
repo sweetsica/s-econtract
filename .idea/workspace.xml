@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f6ceeb8-054a-4b18-9353-70cefa75b729" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/back-end/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/frontendcontract.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/frontendcontract.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/back-end/contract/dashboard.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/back-end/contract/list.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/back-end/contract/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PDFController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PDFController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Partner.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Partner.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/dz.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/dz.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2022_01_24_034310_create_partners_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_01_24_034310_create_partners_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/back-end/form/signup-partner.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back-end/form/signup-partner.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/back-end/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/back-end/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -177,7 +178,10 @@
       <updated>1642740098560</updated>
       <workItem from="1642740105263" duration="1000" />
       <workItem from="1643774597284" duration="6860000" />
-      <workItem from="1643862668003" duration="4959000" />
+      <workItem from="1643862668003" duration="5295000" />
+      <workItem from="1643877448654" duration="6286000" />
+      <workItem from="1643906405908" duration="4231000" />
+      <workItem from="1643965526748" duration="4564000" />
     </task>
     <servers />
   </component>
