@@ -10,6 +10,10 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+<<<<<<< HEAD
 .idea
 .vs
 Sổ làm việc1.xlsx
+=======
+.idea
+>>>>>>> d476395e08907ee4473e99629ebc4cc9c2fb105f

@@ -34,6 +34,12 @@ Route::get('/contract/{id}/','App\Http\Controllers\PartnerController@show')->nam
 
 
 
+Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerIndex'])->name('signup');
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerProcess']);
+
+Route::get('/login', [\App\Http\Controllers\AuthController::class, 'loginIndex'])->name('login');
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'loginProcess']);
+
 //Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/index', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/analytics', 'App\Http\Controllers\OmahadminController@analytics');
