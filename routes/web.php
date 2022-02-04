@@ -17,14 +17,22 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });
  */
+Route::get('/', 'App\Http\Controllers\PageController@index')->name('index');//Trang index nền
+
+Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('login');//Trang login
+Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');//Trang quản trị sau khi đăng nhập
 
 Route::get('/dynamic_pdf',[\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
 Route::get('/dynamic_pdf_true',[\App\Http\Controllers\PDFController::class, 'export_pdf'])->name('export.pdf');
 
-Route::get('/', 'App\Http\Controllers\PageController@index')->name('index');
-Route::get('/signup-partner', 'App\Http\Controllers\PageController@signup_partner')->name('signup.partner');
-Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
-Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('login');
+Route::get('/signup-partner', 'App\Http\Controllers\PageController@signup_partner')->name('signup.partner');//Form điền thông tin
+Route::post('/store-partner','App\Http\Controllers\PartnerController@store')->name('store.partner');//Lưu thông tin đối tác
+
+Route::get('/contract/dashboard','App\Http\Controllers\PartnerController@dashboard')->name('contract.dashboard');//Trang dashboard hợp đồng
+Route::get('/contract/list','App\Http\Controllers\PartnerController@list')->name('contract.list');//Trang sửa level hợp đồng
+Route::get('/contract/{id}/','App\Http\Controllers\PartnerController@show')->name('contract.show');//Chi tiết hợp đồng
+
+
 
 //Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/index', 'App\Http\Controllers\OmahadminController@dashboard_1');
