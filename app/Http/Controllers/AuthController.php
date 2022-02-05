@@ -24,13 +24,12 @@ class AuthController extends Controller
     public function registerProcess(Request $request)
     {
         $request->validate([
-            'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'password' => 'required|confirmed|min:6',
         ]);
 
         $data = $request->all();
-        $check = $this->create($data);
+        $this->create($data);
 
         return redirect("login")->withSuccess('You have signed-in');
     }
@@ -39,7 +38,7 @@ class AuthController extends Controller
     public function create(array $data)
     {
         $user = User::create([
-            'name' => $data['name'],
+            'name' => $data['email'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);
@@ -51,13 +50,12 @@ class AuthController extends Controller
 
     public function loginIndex()
     {
-        $page_title = 'Đăng ký đại lý';
-        $page_description = 'Đăng ký     đại lý Doppelherz Việt Nam';
-        $logo = "images/logo.png";
-        $logoText = "images/logo-text.png";
+        $page_title = 'Page Login';
+        $page_description = 'Some description for the page';
+
         $action = __FUNCTION__;
 
-        return view('auth.login-partner', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+        return view('auth.login-partner', compact('page_title', 'page_description', 'action'));
     }
 
     public function loginProcess(Request $request)

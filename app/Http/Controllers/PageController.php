@@ -41,7 +41,7 @@ class PageController extends Controller
         // get current user
         $user = Auth::user();
         // all user role
-        $roles = $user->getRoleNames();
+//        $roles = $user->getRoleNames();
         
         return view('back-end.dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
     }

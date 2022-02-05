@@ -8,30 +8,27 @@
                 <div class="col-xl-12">
                     <div class="auth-form">
                         <div class="text-center mb-3">
-                            <a href="{!! url('/index'); !!}"><img  src="{{ asset('images/logo-full.png') }}" alt=""></a>
+                            <a href="{!! url('/index'); !!}"><img src="{{ asset('images/logo-full.png') }}" alt=""></a>
                         </div>
-                        <h4 class="text-center mb-4">Đăng ký đại lý</h4>
+                        <h4 class="text-center mb-4">Sign in your account</h4>
                         <form action="{{route('signup')}}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <label class="mb-1"><strong>Họ và tên</strong></label>
-                                <input name="name" type="text" class="form-control" value="Nguyễn Văn A">
-                            </div>
-                            <div class="form-group">
                                 <label class="mb-1"><strong>Email</strong></label>
-                                <input name="email" type="text" class="form-control" value="hello@example.com">
+                                <input name="email" type="email" class="form-control" placeholder="email@example.com">
                             </div>
                             <div class="form-group">
                                 <label class="mb-1"><strong>Password</strong></label>
-                                <input name="password" type="password" class="form-control">
+                                <input name="password" type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-1"><strong>Confirm Password</strong></label>
+                                <input name="password_confirmation" type="password" class="form-control" placeholder="Confirm Password">
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Sign Me In</button>
+                                <button type="submit" class="btn btn-primary btn-block">Register</button>
                             </div>
                         </form>
-{{--                        <div class="new-account mt-3">--}}
-{{--                            <p>Don't have an account? <a class="text-primary" href="{!! url('/page-register'); !!}">Sign up</a></p>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
             </div>

@@ -14,6 +14,11 @@ yarn-error.log
 .idea
 .vs
 Sổ làm việc1.xlsx
+<<<<<<< HEAD
 =======
 .idea
 >>>>>>> d476395e08907ee4473e99629ebc4cc9c2fb105f
+=======
+/public/images/psd
+frontendcontract.rar
+>>>>>>> c3875dd8e452184e75fa498523bf2a33cc02eaa7

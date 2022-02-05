@@ -551,9 +551,14 @@ return [
             'js/deznav-init.js',
 				],
 				'page_login' => [
-            'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-            'js/custom.min.js',
-            'js/deznav-init.js',
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+				],
+				'loginIndex' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
 				],
                 'signup_partner' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
