@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enum\CommonEnum;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -18,8 +19,6 @@ class RoleAndPermissionSeeder extends Seeder
     {
         // Reset cached roles and permissions
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
-
-        $this->createRoles();
 
         // create permissions
         $permissions = [
@@ -37,9 +36,6 @@ class RoleAndPermissionSeeder extends Seeder
     public function createRoles()
     {
         $arrayRoles = [];
-        Role::create(['name' => CommonEnum::PARTNER_LEVEL_ONE]);
-        Role::create(['name' => CommonEnum::PARTNER_LEVEL_TWO]);
-        Role::create(['name' => CommonEnum::PARTNER_LEVEL_THREE]);
         foreach ($this->roleList() as $role) {
             $role = Role::create(['name' => $role]);
             array_push($arrayRoles, $role);

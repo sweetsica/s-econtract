@@ -1,5 +1,5 @@
 {{-- Extends layout --}}
-@extends('layout.default')
+@extends('back-end.layout.default')
 
 
 

@@ -37,6 +37,17 @@ Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register
 Route::middleware(['auth'])->group(function () {
     //Trang quản trị sau khi đăng nhập
     Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
+
+    // Group super-admin
+    Route::prefix('admin')->group(function () {
+        //Trang danh sách các users
+        Route::get('/users', [\App\Http\Controllers\AuthController::class, 'listUsers'])->name('admin.users');
+
+        //Chi tiết role permission của 1 user
+        Route::get('/users/{id}', [\App\Http\Controllers\AuthController::class, 'editRoleUser']);
+        //Update role permission của 1 user
+        Route::post('/users/{id}', [\App\Http\Controllers\AuthController::class, 'updateRoleUser']);
+    });
 });
 
 

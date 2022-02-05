@@ -2,10 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Partner;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
 {
+    public function store(Request $request)
+    {
+        $request->validate([
+            ''
+        ]);
+    
+        $partner = Partner::create($request->all());
+        
+
+        return redirect(route('dashboard'));
+    }
+
     /**
      * Chi tiết hợp đồng
      */
