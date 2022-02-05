@@ -34,8 +34,11 @@ Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerI
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerProcess']);
 
 
-//Trang quản trị sau khi đăng nhập
-Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
+Route::middleware(['auth'])->group(function () {
+    //Trang quản trị sau khi đăng nhập
+    Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
+});
+
 
 //Form điền thông tin
 Route::get('/signup-partner', 'App\Http\Controllers\PageController@signup_partner')->name('signup.partner');
