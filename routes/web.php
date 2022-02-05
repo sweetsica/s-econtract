@@ -33,7 +33,7 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class, 'loginProces
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerIndex'])->name('signup');
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerProcess']);
 
-
+// router nào cần đăng nhập mới vô được thì ghi trong đây
 Route::middleware(['auth'])->group(function () {
     //Trang quản trị sau khi đăng nhập
     Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
