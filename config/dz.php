@@ -266,7 +266,16 @@ return [
               'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 							'vendor/chartist/css/chartist.min.css',
 				],
-			],
+                'editRoleUser' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/bootstrap-daterangepicker/daterangepicker.css',
+                    'vendor/clockpicker/css/bootstrap-clockpicker.min.css',
+                    'vendor/jquery-asColorPicker/css/asColorPicker.min.css',
+                    'vendor/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css',
+                    'vendor/pickadate/themes/default.css',
+                    'vendor/pickadate/themes/default.date.css',
+                ],
+            ],
 			'js' => [
                 'index' => [
                     'js/dashboard/dashboard-1.js',
@@ -551,11 +560,26 @@ return [
             'js/deznav-init.js',
 				],
 				'page_login' => [
-            'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-            'js/custom.min.js',
-            'js/deznav-init.js',
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+				],
+				'loginIndex' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
 				],
                 'signup_partner' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'listUsers' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'editRoleUser' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',

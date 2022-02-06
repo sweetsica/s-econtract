@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\CommonEnum;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use MongoDB\Driver\Session;
 
 class PageController extends Controller
 {
@@ -25,6 +28,7 @@ class PageController extends Controller
         $action = __FUNCTION__;
         return view('back-end.form.signup-partner', compact('page_title', 'page_description','action','logo','logoText'));
     }
+    
     // Dashboard
     public function dashboard()
     {
@@ -33,8 +37,15 @@ class PageController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
+        
+        // get current user
+        $user = Auth::user();
+        // all user role
+//        $roles = $user->getRoleNames();
+        
         return view('back-end.dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
     }
+    
     // Page Login
     public function page_login()
     {
