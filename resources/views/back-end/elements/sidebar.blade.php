@@ -9,6 +9,7 @@
 							<li><a href="{{route('contract.dashboard')}}">Danh sách hợp đồng</a></li>
 							<li><a href="{{route('contract.list')}}">Phân loại hợp đồng</a></li>
 							<li><a href="{{route('contract.show','1')}}">Chi tiết hợp đồng</a></li>
+                            <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>
 						</ul>
                     </li>
                     <div>

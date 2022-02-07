@@ -18,9 +18,12 @@ use Illuminate\Support\Facades\Route;
 });
  */
 
+//Các mục về PDF
 Route::get('/dynamic_pdf',[\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
 Route::get('/dynamic_pdf_true',[\App\Http\Controllers\PDFController::class, 'export_pdf'])->name('export.pdf');
- 
+Route::get('/upload_pdf',[\App\Http\Controllers\PDFController::class, 'upload_pdf'])->name('upload_pdf');
+Route::post('/save_upload_pdf',[\App\Http\Controllers\PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
+
 //Trang index nền
 Route::get('/', 'App\Http\Controllers\PageController@index')->name('index');
 

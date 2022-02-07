@@ -156,8 +156,14 @@ return [
 							'vendor/summernote/summernote.css',
 				],
 				'form_element' => [
-              'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 				],
+                'upload_pdf' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                ],
+                'save_upload_pdf' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                ],
 				'form_pickers' => [
               'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 							'vendor/bootstrap-daterangepicker/daterangepicker.css',
@@ -475,10 +481,20 @@ return [
               'js/deznav-init.js',
 				],
 				'form_element' => [
-              'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-              'js/custom.min.js',
-              'js/deznav-init.js',
+                  'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                  'js/custom.min.js',
+                  'js/deznav-init.js',
 				],
+                'upload_pdf' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'save_upload_pdf' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
 				'form_pickers' => [
               'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
 							'vendor/moment/moment.min.js',

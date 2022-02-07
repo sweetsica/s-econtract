@@ -14,6 +14,11 @@ class PDFController extends Controller
     {
         return view('form');
     }
+
+    /**
+     * Lưu file pdf theo ngày / tháng
+     * @return mixed
+     */
     public function index()
     {
         $data = [
@@ -38,6 +43,51 @@ class PDFController extends Controller
         $pdf = PDF::loadView('pdf', $data);
 
         return $pdf->stream('hop-dong.pdf');
+    }
+
+    /**
+     * Tải mẫu pdf
+     */
+    public function upload_pdf()
+    {
+        $page_title = 'Upload Contract';
+        $page_description = 'Thêm mẫu hợp đồng';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.pdf.upload_pdf', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+    }
+
+    public function save_upload_pdf(Request $request)
+    {
+        //Kiểm tra file
+        if ($request->hasFile('fileupload')) {
+//            $file = $request->filesTest;
+//            //Lấy Tên files
+//            echo 'Tên Files: ' . $file->getClientOriginalName();
+//            echo '<br/>';
+//            //Lấy Đuôi File
+//            echo 'Đuôi file: ' . $file->getClientOriginalExtension();
+//            echo '<br/>';
+//            //Lấy đường dẫn tạm thời của file
+//            echo 'Đường dẫn tạm: ' . $file->getRealPath();
+//            echo '<br/>';
+//            //Lấy kích cỡ của file đơn vị tính theo bytes
+//            echo 'Kích cỡ file: ' . $file->getSize();
+//            echo '<br/>';
+//            //Lấy kiểu file
+//            echo 'Kiểu files: ' . $file->getMimeType();
+            $file = $request->fileupload;
+//            $path = resource_path().'\views\back-end';
+            $destinationPath = 'uploads/pdf_form';
+            $file->move($destinationPath, $file->getClientOriginalName());
+        }
+        $page_title = 'Upload Contract';
+        $page_description = 'Thêm mẫu hợp đồng';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.pdf.upload_pdf', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
     }
 
     /**
