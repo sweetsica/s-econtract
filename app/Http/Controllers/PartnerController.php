@@ -4,17 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Partner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PartnerController extends Controller
 {
     public function store(Request $request)
     {
-        $request->validate([
-            ''
+//        $request->validate([
+//            ''
+//        ]);
+//
+//        $partner = Partner::create($request->all());
+//        return redirect(route('dashboard'));
+
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string|max:255'
         ]);
-    
-        $partner = Partner::create($request->all());
-        
+
+        if($validator->fails()){
+            return response()->json($validator->errors());
+        }
+
+        $partner = Partner::create([
+            'name' => $request->name
+        ]);
 
         return redirect(route('dashboard'));
     }
