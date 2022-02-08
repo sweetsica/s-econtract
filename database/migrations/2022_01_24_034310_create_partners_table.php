@@ -20,6 +20,7 @@ class CreatePartnersTable extends Migration
             $table->string('district')->nullable();//Quận/Huyện (distric)
             $table->string('city')->nullable();//Tỉnh/TP (city)
             $table->string('delivery_address')->nullable();//Địa chỉ giao hàng (delivery_street)
+            $table->string('delivery_district')->nullable();//Quận/Huyện nhận hàng (delivery_district)
             $table->string('delivery_city')->nullable();//Tỉnh/TP (delivery_city)
             $table->string('account_name')->nullable();//Tên người đại diện (name)
             $table->string('account_birth')->nullable();//Ngày sinh (birthdate)

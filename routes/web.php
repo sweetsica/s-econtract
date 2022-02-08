@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });
  */
+Route::post('/lockpage', 'App\Http\Controllers\PageController@lockpage')->name('lockpage');
 
 //Các mục về PDF
 Route::get('/dynamic_pdf',[\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
@@ -36,10 +37,12 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class, 'loginProces
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerIndex'])->name('signup');
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerProcess']);
 
+Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
+
 // router nào cần đăng nhập mới vô được thì ghi trong đây
 Route::middleware(['auth'])->group(function () {
     //Trang quản trị sau khi đăng nhập
-    Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
+//    Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
 
     // Group super-admin
     Route::prefix('admin')->group(function () {

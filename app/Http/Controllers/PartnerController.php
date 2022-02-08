@@ -16,19 +16,16 @@ class PartnerController extends Controller
 //
 //        $partner = Partner::create($request->all());
 //        return redirect(route('dashboard'));
-
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255'
         ]);
-
         if($validator->fails()){
             return response()->json($validator->errors());
         }
-
         $partner = Partner::create([
-            'name' => $request->name
+//            'name' => $request->name
+            $request->all()
         ]);
-
         return redirect(route('dashboard'));
     }
 
@@ -42,7 +39,6 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-
         return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
     }
 
@@ -56,7 +52,8 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+        $info_data = Partner::all();
+        return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
     }
 
     /**

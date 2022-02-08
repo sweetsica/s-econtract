@@ -14,7 +14,8 @@
                             <a href="{!! url('/index'); !!}"><img  src="{{ asset('images/logo-full.png') }}" alt=""></a>
                         </div>
                         <h4 class="text-center mb-4">Đăng ký hồ sơ điện tử Doppelherz Việt Nam</h4>
-                        <form action="{!! url('/index'); !!}">
+                        <form action="{{route('lockpage')}}" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label><strong>Mã truy cập</strong></label>
                                 <input type="password" class="form-control" name="password">
