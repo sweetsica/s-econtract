@@ -17,7 +17,7 @@
                         <form action="{!! url('/index'); !!}">
                             <div class="form-group">
                                 <label><strong>Mã truy cập</strong></label>
-                                <input type="password" class="form-control" value="Password">
+                                <input type="password" class="form-control" name="password">
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-block">Unlock</button>

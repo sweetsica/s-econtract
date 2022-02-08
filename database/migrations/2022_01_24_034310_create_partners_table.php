@@ -36,6 +36,8 @@ class CreatePartnersTable extends Migration
             $table->string('account_enddate')->nullable();//Ngày kết thúc (end_date)
             $table->string('account_bugdet1')->nullable();//ĐKDT N1 (plans_N1)
             $table->string('account_bugdet2')->nullable();//ĐKDT N2 (plans_N2)
+            $table->string('appointment')->nullable();//Lịch hẹn
+            $table->boolean('type_contract')->nullable()->default('1');//Loại hợp đồng: nhanh (0) - chậm(1)
             $table->string('access_type')->nullable()->default('10');//Mức độ truy cập
             $table->boolean('status')->nullable()->default('1');//Trạng thái
             $table->timestamps();
