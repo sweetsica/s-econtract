@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Partner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -40,6 +41,16 @@ class PDFController extends Controller
     {
         $info = Session::get('info');
         $data['info'] = $info;
+        $pdf = PDF::loadView('pdf', $data);
+
+        return $pdf->stream('hop-dong.pdf');
+    }
+
+    public function export_pdf_true()
+    {
+//        $info = Session::get('info');
+//        $data['info'] = $info;
+        $data['info'] = Partner::get(1);
         $pdf = PDF::loadView('pdf', $data);
 
         return $pdf->stream('hop-dong.pdf');
