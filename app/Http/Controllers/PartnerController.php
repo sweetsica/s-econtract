@@ -11,6 +11,11 @@ use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class PartnerController extends Controller
 {
+    /**
+     * Lưu data từ form
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(Request $request)
     {
 //        $request->validate([
@@ -42,7 +47,8 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+        $info_data = Partner::get()->where('id','=',1);
+        return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
     }
 
     /**
@@ -116,10 +122,33 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+        $info_data = Partner::get();
+        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
+    }
+    public function list_type10()
+    {
+        $page_title = 'Danh sách hợp đồng';
+        $page_description = 'Phân cấp hợp đồng';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        $info_data = Partner::get()->where('access_type','=',10);
+        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
+    }
+    public function list_typeall()
+    {
+        $page_title = 'Danh sách hợp đồng';
+        $page_description = 'Phân cấp hợp đồng';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;$info_data = Partner::get()->where('access_type','<',10);
+        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
     }
 
-
+    /**
+     * Tìm kiếm hợp đồng form
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function search_export()
     {
         $page_title = 'S-Contract Hợp đồng điện tử';
@@ -129,7 +158,11 @@ class PartnerController extends Controller
         $action = __FUNCTION__;
         return view('back-end.contract.search_export', compact('page_title', 'page_description','action','logo','logoText'));
     }
-
+    /**
+     *  Trả kết quả tìm kiếm theo sdt
+     * @param Request $request
+     * @return mixed
+     */
     public function return_export(Request $request)
     {
         $phone = $request['account_phone'];

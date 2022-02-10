@@ -5,7 +5,7 @@
     <div style="width: 30%; float: left">
         <p style="text-align: center;"><strong><img src="https://doppelherz.vn/wp-content/uploads/2022/01/LOGO-DOPPELHERZ-Logo-tren-an-pham-792x800.png" alt="" width="100" height="101" /></strong></p>
         <p style="text-align: center;"><strong>MASTERTRAN</strong></p>
-        <p style="text-align: center;"><em>Số:….……..…..../2022/HĐĐL</em></p>
+        <p style="text-align: center;"><em>Số:<b style="color: red">{{$info['id']}}-{{$info['created_at']->format('dmY')}}/2022/HĐĐL</b></em></p>
     </div>
     <div style="width: 10%; float: left"> </div>
     <div style="width: 60%; float: left">

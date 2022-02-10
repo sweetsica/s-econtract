@@ -218,6 +218,12 @@ return [
                 'list'=>[
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
+                'list_type10'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                ],
+                'list_typeall'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                ],
 				'table_datatable_basic' => [
               'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 							'vendor/datatables/css/jquery.dataTables.min.css',
@@ -680,6 +686,16 @@ return [
                     'js/deznav-init.js',
 				],
                 'list' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'list_type10' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'list_typeall' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',

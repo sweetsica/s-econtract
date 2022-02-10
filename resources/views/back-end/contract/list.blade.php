@@ -19,7 +19,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Exam Toppers</h4>
+                        <h4 class="card-title">Danh sách hợp đồng</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -32,71 +32,43 @@
                                             <label class="custom-control-label" for="checkAll"></label>
                                         </div>
                                     </th>
-                                    <th><strong>ROLL NO.</strong></th>
-                                    <th><strong>NAME</strong></th>
-                                    <th><strong>Email</strong></th>
-                                    <th><strong>Date</strong></th>
-                                    <th><strong>Status</strong></th>
+                                    <th><strong>ID.</strong></th>
+                                    <th><strong>TÊN ĐỐI TÁC</strong></th>
+                                    <th><strong>ĐỊA CHỈ</strong></th>
+                                    <th><strong>NGÀY</strong></th>
+                                    <th><strong>TRẠNG THÁI</strong></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                            <input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-                                            <label class="custom-control-label" for="customCheckBox2"></label>
-                                        </div>
-                                    </td>
-                                    <td><strong>542</strong></td>
-                                    <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">Dr. Jackson</span></div></td>
-                                    <td>example@example.com	</td>
-                                    <td>01 August 2020</td>
-                                    <td><div class="d-flex align-items-center"><i class="fa fa-circle text-success mr-1"></i> Successful</div></td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                            <input type="checkbox" class="custom-control-input" id="customCheckBox3" required="">
-                                            <label class="custom-control-label" for="customCheckBox3"></label>
-                                        </div>
-                                    </td>
-                                    <td><strong>542</strong></td>
-                                    <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/2.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">Dr. Jackson</span></div></td>
-                                    <td>example@example.com	</td>
-                                    <td>01 August 2020</td>
-                                    <td><div class="d-flex align-items-center"><i class="fa fa-circle text-danger mr-1"></i> Canceled</div></td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                            <input type="checkbox" class="custom-control-input" id="customCheckBox4" required="">
-                                            <label class="custom-control-label" for="customCheckBox4"></label>
-                                        </div>
-                                    </td>
-                                    <td><strong>542</strong></td>
-                                    <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/3.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">Dr. Jackson</span></div></td>
-                                    <td>example@example.com	</td>
-                                    <td>01 August 2020</td>
-                                    <td><div class="d-flex align-items-center"><i class="fa fa-circle text-warning mr-1"></i> Pending</div></td>
-                                    <td>
-                                        <div class="d-flex">
-                                            <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach($info_data as $data)
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                                <input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
+                                                <label class="custom-control-label" for="customCheckBox2"></label>
+                                            </div>
+                                        </td>
+                                        <td><strong>{{$data['id']}}-{{$data['created_at']}}/HĐĐL</strong></td>
+                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>
+                                        <td>{{$data['address']}}</td>
+                                        <td>{{$data['created_at']}}</td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                @if($data['access_type']==10)
+                                                    <i class="fa fa-circle text-warning mr-1"></i> Đang chờ
+                                                @else
+                                                    <i class="fa fa-circle text-success mr-1"></i> Đã duyệt
+                                                @endif
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

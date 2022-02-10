@@ -17,11 +17,12 @@
                             <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Phân loại</a>
                                 <ul aria-expanded="false">
                                     <li><a href="{{route('contract.list')}}">Tổng hợp phân loại</a>
-                                    <li><a href="#4">Hợp đồng đã được duyệt</a></li>
-                                    <li><a href="#4">Hợp đồng đã chưa được duyệt</a></li>
+                                    <li><a href="{{route('contract.list.done')}}">Hợp đồng đã được duyệt</a></li>
+                                    <li><a href="{{route('contract.list.pending')}}">Hợp đồng đã chưa được duyệt</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{route('contract.seach')}}">Chi tiết hợp đồng</a></li>
+                            <li><a href="{{route('contract.seach')}}">Tìm xuất hợp đồng</a></li>
+                            <li><a href="{{route('contract.show',1)}}">Chi tiết hợp đồng</a></li>
                             <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>
                         </ul>
                     </li>
@@ -147,7 +148,7 @@
 
 				<div class="copyright">
 					<p><strong>Hợp đồng điện tử Doppelherz</strong><br> ©All Rights Reserved</p>
-					<p>by Sweetsica</p>
+					<p>Powered by Ngọc Bảo - Sweetsica</p>
 				</div>
 			</div>
         </div>

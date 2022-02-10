@@ -142,16 +142,16 @@
                                     <label class="custom-control-label" for="checkAll"></label>
                                 </div>
                             </th>
-                            <th>Mã hồ sơ</th>
-                            <th>Ngày tạo</th>
-                            <th>Tên đối tác</th>
-                            <th>Địa chỉ</th>
-                            <th>Quận, Huyện</th>
-                            <th>Lịch hẹn</th>
-                            <th>Loại hợp đồng</th>
-                            <th>Mức độ truy cập</th>
-                            <th>Status</th>
-                            <th></th>
+                            <th style="text-align: center;">Mã hồ sơ</th>
+                            <th style="text-align: center;">Tên đối tác</th>
+                            <th style="text-align: center;">TDV phụ trách</th>
+                            <th style="text-align: center;">Địa chỉ</th>
+                            <th style="text-align: center;">Quận, Huyện</th>
+                            <th style="text-align: center;">Lịch hẹn</th>
+                            <th style="text-align: center;">Loại hợp đồng</th>
+                            <th style="text-align: center;">Mức độ truy cập</th>
+                            <th style="text-align: center;">Status</th>
+                            <th style="text-align: center;"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -164,11 +164,11 @@
                                             <label class="custom-control-label" for="customCheckBox5"></label>
                                         </div>
                                     </td>
-                                    <td>{{$data->id}}</td>
-                                    <td>{{$data->updated_at}}</td>
-                                    <td>{{$data->name}}</td>
-                                    <td class="text-ov">{{$data->address}}</td>
-                                    <td class="text-ov">{{$data->district}}, {{$data->city}}</td>
+                                    <td style="text-align: center">{{$data->id}}-{{$data->created_at->format('dmY')}}/HĐĐL</td>
+                                    <td style="text-align: center">{{$data->name}}</td>
+                                    <td style="text-align: center">{{$data->id_tdv}}</td>
+                                    <td style="text-align: center" class="text-ov">{{$data->address}}</td>
+                                    <td style="text-align: center" class="text-ov">{{$data->district}}, {{$data->city}}</td>
                                     <td style="text-align: center">{{$data->appointment}}</td>
                                     <td style="text-align: center">{{$data->type_contract}}</td>
                                     <td style="text-align: center">{{$data->access_type}}</td>

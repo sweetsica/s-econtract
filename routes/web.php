@@ -49,8 +49,10 @@ Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboar
     Route::get('/contract/dashboard3',[\App\Http\Controllers\PartnerController::class, 'dashboard3'])->name('contract.dashboard3');
     //Trang sửa level hợp đồng
     Route::get('/contract/list',[\App\Http\Controllers\PartnerController::class, 'list'])->name('contract.list');
+    Route::get('/contract/list_done',[\App\Http\Controllers\PartnerController::class, 'list_type10'])->name('contract.list.done');
+    Route::get('/contract/list_pending',[\App\Http\Controllers\PartnerController::class, 'list_typeall'])->name('contract.list.pending');
     //Chi tiết hợp đồng
-//    Route::get('/contract/{id}/','App\Http\Controllers\PartnerController@show')->name('contract.show');
+    Route::get('/contract/show/{id}/','App\Http\Controllers\PartnerController@show')->name('contract.show');
     //Tìm hợp đồng
     Route::get('/contract/search/',[\App\Http\Controllers\PartnerController::class, 'search_export'])->name('contract.seach');
     //Xuất hợp đồng

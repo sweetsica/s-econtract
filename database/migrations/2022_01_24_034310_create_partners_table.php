@@ -15,11 +15,13 @@ class CreatePartnersTable extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
+            $table->string('code_contract')->nullable();//Mã hồ sơ
+            $table->string('id_tdv')->nullable();//Tên trình dược viên
             $table->string('name');//Tên Đại Lý (agency_name)
-            $table->string('address')->nullable();//Địa chỉ ĐKKD (street)
-            $table->string('district')->nullable();//Quận/Huyện (distric)
+            $table->string('address')->nullable();//Địa chỉ ĐKKD (address)
+            $table->string('district')->nullable();//Quận/Huyện (district)
             $table->string('city')->nullable();//Tỉnh/TP (city)
-            $table->string('delivery_address')->nullable();//Địa chỉ giao hàng (delivery_street)
+            $table->string('delivery_address')->nullable();//Địa chỉ giao hàng (delivery_address)
             $table->string('delivery_district')->nullable();//Quận/Huyện nhận hàng (delivery_district)
             $table->string('delivery_city')->nullable();//Tỉnh/TP (delivery_city)
             $table->string('account_name')->nullable();//Tên người đại diện (name)
