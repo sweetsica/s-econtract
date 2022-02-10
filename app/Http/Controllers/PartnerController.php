@@ -133,10 +133,10 @@ class PartnerController extends Controller
     public function return_export(Request $request)
     {
         $phone = $request['account_phone'];
-        $data['info'] = Partner::Where('account_phone','=',$phone)->first();
+        $data['info'] = Partner::Where('account_phone','=',$phone)->get()->last();
         $pdf = PDF::loadView('pdf_true_export', $data);
         $time = Carbon::now()->format('d-m-Y');
-        $name = 'hop-dong-dien-tu'.$time;
+        $name = 'hop-dong-dien-tu-'.$time;
         return $pdf->stream($name.'.pdf');
     }
 }
