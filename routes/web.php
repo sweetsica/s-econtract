@@ -22,11 +22,13 @@ Route::post('/lockpage', 'App\Http\Controllers\PageController@lockpage')->name('
 //Các mục về PDF
 Route::get('/dynamic_pdf',[\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
 Route::get('/dynamic_pdf_true',[\App\Http\Controllers\PDFController::class, 'export_pdf'])->name('export.pdf');
+Route::get('/filldata',[\App\Http\Controllers\PDFController::class, 'export_pdf_true'])->name('export.pdf');
 Route::get('/upload_pdf',[\App\Http\Controllers\PDFController::class, 'upload_pdf'])->name('upload_pdf');
 Route::post('/save_upload_pdf',[\App\Http\Controllers\PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
 
+
 //Trang index nền
-Route::get('/', 'App\Http\Controllers\PageController@index')->name('index');
+Route::get('/', [\App\Http\Controllers\PageController::class, 'index'])->name('index');
 
 //Trang login
 Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('login');
@@ -37,18 +39,31 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class, 'loginProces
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerIndex'])->name('signup');
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerProcess']);
 
-Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
+
+//Các mục về hợp đồng
+Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboard'])->name('dashboard');
+    //Trang dashboard hợp đồng
+    Route::get('/contract/dashboard',[\App\Http\Controllers\PartnerController::class, 'dashboard'])->name('contract.dashboard');
+    Route::get('/contract/dashboard1',[\App\Http\Controllers\PartnerController::class, 'dashboard1'])->name('contract.dashboard1');
+    Route::get('/contract/dashboard2',[\App\Http\Controllers\PartnerController::class, 'dashboard2'])->name('contract.dashboard2');
+    Route::get('/contract/dashboard3',[\App\Http\Controllers\PartnerController::class, 'dashboard3'])->name('contract.dashboard3');
+    //Trang sửa level hợp đồng
+    Route::get('/contract/list',[\App\Http\Controllers\PartnerController::class, 'list'])->name('contract.list');
+    //Chi tiết hợp đồng
+//    Route::get('/contract/{id}/','App\Http\Controllers\PartnerController@show')->name('contract.show');
+    //Tìm hợp đồng
+    Route::get('/contract/search/',[\App\Http\Controllers\PartnerController::class, 'search_export'])->name('contract.seach');
+    //Xuất hợp đồng
+    Route::post('/contract/return_export/',[\App\Http\Controllers\PartnerController::class, 'return_export'])->name('contract.return.export');
 
 // router nào cần đăng nhập mới vô được thì ghi trong đây
 Route::middleware(['auth'])->group(function () {
     //Trang quản trị sau khi đăng nhập
-//    Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
-
+    //Route::get('/dashboard', 'App\Http\Controllers\PageController@dashboard')->name('dashboard');
     // Group super-admin
     Route::prefix('admin')->group(function () {
         //Trang danh sách các users
         Route::get('/users', [\App\Http\Controllers\AuthController::class, 'listUsers'])->name('admin.users');
-
         //Chi tiết role permission của 1 user
         Route::get('/users/{id}', [\App\Http\Controllers\AuthController::class, 'editRoleUser']);
         //Update role permission của 1 user
@@ -62,15 +77,6 @@ Route::get('/signup-partner', 'App\Http\Controllers\PageController@signup_partne
 
 //Lưu thông tin đối tác
 Route::post('/store-partner','App\Http\Controllers\PartnerController@store')->name('store.partner');
-
-//Trang dashboard hợp đồng
-Route::get('/contract/dashboard','App\Http\Controllers\PartnerController@dashboard')->name('contract.dashboard');
-
-//Trang sửa level hợp đồng
-Route::get('/contract/list','App\Http\Controllers\PartnerController@list')->name('contract.list');
-
-//Chi tiết hợp đồng
-Route::get('/contract/{id}/','App\Http\Controllers\PartnerController@show')->name('contract.show');
 
 //Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/index', 'App\Http\Controllers\OmahadminController@dashboard_1');

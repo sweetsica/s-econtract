@@ -11,7 +11,7 @@ class PageController extends Controller
 {
     public function lockpage(Request $request)
     {
-        if($request->password == 'doppelherz'){
+        if($request->password == 'Doppelherz'){
             return redirect('dashboard');
         }else{
             $page_title = 'S-Contract Hợp đồng điện tử';

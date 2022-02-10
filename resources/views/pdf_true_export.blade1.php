@@ -47,8 +47,8 @@
         <h1><strong>DOPPELHERZ VIỆT NAM</strong></h1>
     </div>
     <div class="align-left">
-        <p class="lead">Họ và tên: <b style="color: red">{{$info['namepartner']}}</b></p>
-        <p class="lead">Số điện thoại: <b style="color: red">{{$info['phonepartner']}}</b></p>
+        <p class="lead">Họ và tên: <b style="color: red">{{$info['name']}}</b></p>
+        <p class="lead">Số điện thoại: <b style="color: red">{{$info['address']}}</b></p>
     </div>
     <div class="align-left">
         <p>Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut

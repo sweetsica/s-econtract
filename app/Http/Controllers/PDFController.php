@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Partner;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -46,15 +47,34 @@ class PDFController extends Controller
         return $pdf->stream('hop-dong.pdf');
     }
 
+    /**
+     * Test đổ data ra file PDF dữ liệu thật
+     * @return mixed
+     */
     public function export_pdf_true()
     {
 //        $info = Session::get('info');
 //        $data['info'] = $info;
-        $data['info'] = Partner::get(1);
-        $pdf = PDF::loadView('pdf', $data);
+        $data['info'] = Partner::Where('id','=',2)->first();
+        $pdf = PDF::loadView('pdf_true_export', $data);
 
-        return $pdf->stream('hop-dong.pdf');
+        return $pdf->stream('hop-dong-do-data.pdf');
     }
+
+//    public function search_export()
+//    {
+//        return view('back-end.contract.search_export');
+//    }
+//
+//    public function return_export(Request $request)
+//    {
+//        $data['info'] = Partner::Where('account_phone','=',$request)->first();
+//        $pdf = PDF::loadView('pdf_true_export', $data);
+//        $time = Carbon::now()->format('d-m-Y');
+//        $name = 'hop-dong-dien-tu'.$time;
+//        return $pdf->stream($name.'.pdf');
+//    }
+
 
     /**
      * Tải mẫu pdf
@@ -69,6 +89,9 @@ class PDFController extends Controller
         return view('back-end.pdf.upload_pdf', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
     }
 
+    /**
+     * Lưu file pdf
+     */
     public function save_upload_pdf(Request $request)
     {
         //Kiểm tra file

@@ -2,41 +2,46 @@
             <div class="deznav-scroll">
 				<ul class="metismenu" id="menu">
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
-							<i class="flaticon-381-networking"></i>
-							<span class="nav-text">Hợp đồng</span>
-						</a>
+                            <i class="flaticon-381-networking"></i>
+                            <span class="nav-text">Hợp đồng</span>
+                        </a>
                         <ul aria-expanded="false">
-							<li><a href="{{route('contract.dashboard')}}">Danh sách hợp đồng</a></li>
-							<li><a href="{{route('contract.list')}}">Phân loại hợp đồng</a></li>
-							<li><a href="{{route('contract.show','1')}}">Chi tiết hợp đồng</a></li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Tổng hợp</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{route('contract.dashboard')}}">Danh sách hợp đồng</a></li>
+                                    <li><a href="{{route('contract.dashboard1')}}">Hợp đồng cấp 1</a></li>
+                                    <li><a href="{{route('contract.dashboard2')}}">Hợp đồng cấp 2</a></li>
+                                    <li><a href="{{route('contract.dashboard3')}}">Hợp đồng cấp 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Phân loại</a>
+                                <ul aria-expanded="false">
+                                    <li><a href="{{route('contract.list')}}">Tổng hợp phân loại</a>
+                                    <li><a href="#4">Hợp đồng đã được duyệt</a></li>
+                                    <li><a href="#4">Hợp đồng đã chưa được duyệt</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{route('contract.seach')}}">Chi tiết hợp đồng</a></li>
                             <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>
-						</ul>
+                        </ul>
                     </li>
                     <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-381-television"></i>
 							<span class="nav-text">API</span>
 						</a>
                         <ul aria-expanded="false">
-                            <li><a href="{!! url('/app-profile'); !!}">Profile</a></li>
-                            <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{!! url('/email-compose'); !!}">Compose</a></li>
-                                    <li><a href="{!! url('/email-inbox'); !!}">Inbox</a></li>
-                                    <li><a href="{!! url('/email-read'); !!}">Read</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="{!! url('/app-calender'); !!}">Calendar</a></li>
-							<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
-                                <ul aria-expanded="false">
-                                    <li><a href="{!! url('/ecom-product-grid'); !!}">Product Grid</a></li>
-									<li><a href="{!! url('/ecom-product-list'); !!}">Product List</a></li>
-									<li><a href="{!! url('/ecom-product-detail'); !!}">Product Details</a></li>
-									<li><a href="{!! url('/ecom-product-order'); !!}">Order</a></li>
-									<li><a href="{!! url('/ecom-checkout'); !!}">Checkout</a></li>
-									<li><a href="{!! url('/ecom-invoice'); !!}">Invoice</a></li>
-									<li><a href="{!! url('/ecom-customers'); !!}">Customers</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="{!! url('/app-calender'); !!}">Document</a></li>
+                            <li><a href="{!! url('/app-calender'); !!}">Add</a></li>
+                            <li><a href="{!! url('/app-calender'); !!}">List</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-settings-2"></i>
+                            <span class="nav-text">Version</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{!! url('/app-calender'); !!}">List</a></li>
+                            <li><a href="{!! url('/app-calender'); !!}">Add</a></li>
                         </ul>
                     </li>
                     <div>

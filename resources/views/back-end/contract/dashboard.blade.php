@@ -9,8 +9,8 @@
             <div class="mr-auto  d-lg-block">
                 <h2 class="text-black font-w600">Danh sách hợp đồng</h2>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Customer</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Order List</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Hợp đồng</a></li>
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Danh sách đối tác</a></li>
                 </ol>
             </div>
             <a href="javascript:void(0);" class="btn btn-primary rounded light mr-3">Refresh</a>
@@ -23,8 +23,8 @@
                     <div class="card-body">
                         <div class="media align-items-center">
                             <div class="media-body">
-                                <h2 class="fs-36 text-black font-w600">245</h2>
-                                <span class="fs-18 text-black">Total Customers</span>
+                                <h2 class="fs-36 text-black font-w600">{{$contact_count}}</h2>
+                                <span class="fs-18 text-black">Tổng số hợp đồng</span>
                             </div>
                             <span class="bg-primary rounded p-3">
 										<svg width="38" height="38" viewBox="0 0 32 38" fill="none"
@@ -43,8 +43,8 @@
                     <div class="card-body">
                         <div class="media align-items-center">
                             <div class="media-body">
-                                <h2 class="fs-36 text-black font-w600">562</h2>
-                                <span class="fs-18 text-black">Total Transactions</span>
+                                <h2 class="fs-36 text-black font-w600">{{$user_count}}</h2>
+                                <span class="fs-18 text-black">Tổng số thành viên</span>
                             </div>
                             <span class="bg-primary rounded p-3">
                                 <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -204,6 +204,9 @@
                         </tbody>
                     </table>
                 </div>
+                @if (isset($info_data['links']))
+                    {{$info_data->links()}}
+                @endif
             </div>
         </div>
     </div>
