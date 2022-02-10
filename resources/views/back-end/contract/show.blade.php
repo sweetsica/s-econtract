@@ -27,7 +27,7 @@
                         <div class="card bg-primary text-center">
                             <div class="card-body">
                                 <h2 class="fs-30 text-white">Doanh số đăng ký</h2>
-                                <span class="text-white font-w300">{{$data['account_budget1']}}đ - {{$data['account_budget1']}}đ</span>
+                                <span class="text-white font-w300">{{$data['account_budget1']}}đ - {{$data['account_budget2']}}đ</span>
                             </div>
                         </div>
                     </div>
