@@ -70,7 +70,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('type_contract','=',1);
+        $info_data = Partner::get()->where('access_type','=',1);
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
@@ -85,7 +85,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('type_contract','=',2);
+        $info_data = Partner::get()->where('access_type','=',2);
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
@@ -100,7 +100,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('type_contract','=',3);
+        $info_data = Partner::get()->where('access_type','=',3);
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
