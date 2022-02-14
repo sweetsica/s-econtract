@@ -47,8 +47,16 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('id','=',1);
+        $info_data = Partner::get()->where('id','=',$id);
         return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
+    }
+    /**
+     * Chỉnh sửa thông tin hợp đồng
+     * @param Request $request
+     */
+    public function edit(Request $request)
+    {
+
     }
 
     /**

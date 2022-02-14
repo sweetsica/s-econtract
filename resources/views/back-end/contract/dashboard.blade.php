@@ -195,7 +195,7 @@
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <a class="dropdown-item text-black" href="javascript:void(0);">Accept order</a>
                                                 <a class="dropdown-item text-black" href="javascript:void(0);">Reject order</a>
-                                                <a class="dropdown-item text-black" href="javascript:void(0);">View Details</a>
+                                                <a class="dropdown-item text-black" href="{{route('contract.show',$data->id)}}">View Details</a>
                                             </div>
                                         </div>
                                     </td>
