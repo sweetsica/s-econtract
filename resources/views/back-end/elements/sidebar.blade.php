@@ -45,20 +45,22 @@
                             <li><a href="{!! url('/app-calender'); !!}">Add</a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">
+                            <i class="flaticon-381-controls-3"></i>
+                            <span class="nav-text">Another Functions</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('contract.signature')}}">Signature</a></li>
+                            <li><a href="{!! url('/chart-morris'); !!}">Morris</a></li>
+                            <li><a href="{!! url('/chart-chartjs'); !!}">Chartjs</a></li>
+                            <li><a href="{!! url('/chart-chartist'); !!}">Chartist</a></li>
+                            <li><a href="{!! url('/chart-sparkline'); !!}">Sparkline</a></li>
+                            <li><a href="{!! url('/chart-peity'); !!}">Peity</a></li>
+                        </ul>
+                    </li>
                     <div>
-{{--                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">--}}
-{{--							<i class="flaticon-381-controls-3"></i>--}}
-{{--							<span class="nav-text">Charts</span>--}}
-{{--						</a>--}}
-{{--                        <ul aria-expanded="false">--}}
-{{--                            <li><a href="{!! url('/chart-flot'); !!}">Flot</a></li>--}}
-{{--                            <li><a href="{!! url('/chart-morris'); !!}">Morris</a></li>--}}
-{{--                            <li><a href="{!! url('/chart-chartjs'); !!}">Chartjs</a></li>--}}
-{{--                            <li><a href="{!! url('/chart-chartist'); !!}">Chartist</a></li>--}}
-{{--                            <li><a href="{!! url('/chart-sparkline'); !!}">Sparkline</a></li>--}}
-{{--                            <li><a href="{!! url('/chart-peity'); !!}">Peity</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
+
 {{--                    <li><a class="has-arrow ai-icon" href="javascript:void()" aria-expanded="false">--}}
 {{--							<i class="flaticon-381-internet"></i>--}}
 {{--							<span class="nav-text">Bootstrap</span>--}}
