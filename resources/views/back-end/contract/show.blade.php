@@ -288,98 +288,152 @@
                                             {{$data['account_bank_number']}}
                                         </a>
                                     </div>
-                                    <h4 class="text-black fs-20 font-w600">Thông tin khác</h4>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h4 class="card-title">Horizontal Form</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="basic-form">
+                                                <form>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-3">
+                                                            <label>First Name</label>
+                                                            <input type="text" class="form-control" placeholder="1234 Main St">
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label>Email</label>
+                                                            <input type="email" class="form-control" placeholder="Email">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label>Password</label>
+                                                            <input type="password" class="form-control" placeholder="Password">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label>City</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-4">
+                                                            <label>State</label>
+                                                            <select id="inputState" class="form-control">
+                                                                <option selected>Choose...</option>
+                                                                <option>Option 1</option>
+                                                                <option>Option 2</option>
+                                                                <option>Option 3</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group col-md-2">
+                                                            <label>Zip</label>
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox">
+                                                            <label class="form-check-label">
+                                                                Check me out
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <p>
-                                        //ID: {{$data['id']}}
-                                    </p>
-                                    <p>
-                                        //Mã hồ sơ: {{$data['id']}}-{{$data['created_at']}}/HĐĐL
-                                    </p>
-                                    <p>
-                                        //Tên trình dược viên {{$data['id_tdv']}}
-                                    </p>
-                                    <p>
-                                        //Tên Đại Lý (agency_name): {{$data['name']}}
-                                    </p>
-                                    <p>
-                                        //Địa chỉ ĐKKD (address): {{$data['address']}}
-                                    </p>
-                                    <p>
-                                        //Quận/Huyện (district): {{$data['district']}}
-                                    <p>
-                                        //Tỉnh/TP (city) {{$data['city']}}
-                                    </p>
-                                    <p>
-                                        //Địa chỉ giao hàng (delivery_address) {{$data['delivery_address']}}
-                                    </p>
-                                    <p>
-                                        //Quận/Huyện nhận hàng (delivery_district): {{$data['delivery_district']}}
-                                    </p>
-                                    <p>
-                                        //Tỉnh/TP (delivery_city): {{$data['delivery_city']}}
-                                    </p>
-                                    <p>
-                                        //Tên người đại diện (name): {{$data['account_name']}}
-                                    </p>
-                                    <p>
-                                        //Chức danh người đại diện (account_title) {{$data['account_title']}}
-                                    </p>
-                                    <p>
-                                        //Ngày sinh (birthdate): {{$data['account_birth']}}
-                                    </p>
-                                    <p>
-                                        //Giới tính (gender): {{$data['account_gender']}}
-                                    </p>
-                                    <p>
-                                        //SĐT (phone): {{$data['account_phone']}}
-                                    </p>
-                                    <p>
-                                        //MST (tax_number): {{$data['account_tax']}}
-                                    </p>
-                                    <p>
-                                        //Email (email): {{$data['account_email']}}
-                                    </p>
-                                    <p>
-                                        //Website (website): {{$data['account_website']}}
-                                    </p>
-                                    <p>
-                                        //TKNH (bank_account): {{$data['account_bank_number']}}
-                                    </p>
-                                    <p>
-                                        //Tên chủ tài khoản: {{$data['account_bank_name']}}
-                                    </p>
-                                    <p>
-                                        //Tên ngân hàng: {{$data['account_bank_holder']}}
-                                    </p>
-                                    <p>
-                                        //Phạm vi BH (agency_type): {{$data['account_type']}}
-                                    </p>
-                                    <p>
-                                        //Ngày bắt đầu (start_date): {{$data['account_startdate']}}
-                                    </p>
-                                    <p>
-                                        //Ngày kết thúc (end_date): {{$data['account_enddate']}}
-                                    </p>
-                                    <p>
-                                        //ĐKDT N1 (plans_N1): {{$data['account_budget1']}}
-                                    </p>
-                                    <p>
-                                        //ĐKDT N2 (plans_N2): {{$data['account_budget2']}}
-                                    </p>
-                                    <p>
-                                        //Lịch hẹn: {{$data['appointment']}}
-                                    </p>
-                                    <p>
-                                        //Loại hợp đồng: chậm (0) - nhanh(1): {{$data['type_contract']}}
-                                    </p>
-                                    <p>
-                                        //Mức độ truy cập: {{$data['access_type']}}
-                                    </p>
-                                    <p>
-                                        //Trạng thái: {{$data['status']}}
-                                    </p>
-
+                                    <div>
+                                        <p>
+                                            //ID: {{$data['id']}}
+                                        </p>
+                                        <p>
+                                            //Mã hồ sơ: {{$data['id']}}-{{$data['created_at']}}/HĐĐL
+                                        </p>
+                                        <p>
+                                            //Tên trình dược viên {{$data['id_tdv']}}
+                                        </p>
+                                        <p>
+                                            //Tên Đại Lý (agency_name): {{$data['name']}}
+                                        </p>
+                                        <p>
+                                            //Địa chỉ ĐKKD (address): {{$data['address']}}
+                                        </p>
+                                        <p>
+                                            //Quận/Huyện (district):
+                                        {{$data['district']}}
+                                        <p>
+                                            //Tỉnh/TP (city) {{$data['city']}}
+                                        </p>
+                                        <p>
+                                            //Địa chỉ giao hàng (delivery_address) {{$data['delivery_address']}}
+                                        </p>
+                                        <p>
+                                            //Quận/Huyện nhận hàng (delivery_district): {{$data['delivery_district']}}
+                                        </p>
+                                        <p>
+                                            //Tỉnh/TP (delivery_city): {{$data['delivery_city']}}
+                                        </p>
+                                        <p>
+                                            //Tên người đại diện (name): {{$data['account_name']}}
+                                        </p>
+                                        <p>
+                                            //Chức danh người đại diện (account_title) {{$data['account_title']}}
+                                        </p>
+                                        <p>
+                                            //Ngày sinh (birthdate): {{$data['account_birth']}}
+                                        </p>
+                                        <p>
+                                            //Giới tính (gender): {{$data['account_gender']}}
+                                        </p>
+                                        <p>
+                                            //SĐT (phone): {{$data['account_phone']}}
+                                        </p>
+                                        <p>
+                                            //MST (tax_number): {{$data['account_tax']}}
+                                        </p>
+                                        <p>
+                                            //Email (email): {{$data['account_email']}}
+                                        </p>
+                                        <p>
+                                            //Website (website): {{$data['account_website']}}
+                                        </p>
+                                        <p>
+                                            //TKNH (bank_account): {{$data['account_bank_number']}}
+                                        </p>
+                                        <p>
+                                            //Tên chủ tài khoản: {{$data['account_bank_name']}}
+                                        </p>
+                                        <p>
+                                            //Tên ngân hàng: {{$data['account_bank_holder']}}
+                                        </p>
+                                        <p>
+                                            //Phạm vi BH (agency_type): {{$data['account_type']}}
+                                        </p>
+                                        <p>
+                                            //Ngày bắt đầu (start_date): {{$data['account_startdate']}}
+                                        </p>
+                                        <p>
+                                            //Ngày kết thúc (end_date): {{$data['account_enddate']}}
+                                        </p>
+                                        <p>
+                                            //ĐKDT N1 (plans_N1): {{$data['account_budget1']}}
+                                        </p>
+                                        <p>
+                                            //ĐKDT N2 (plans_N2): {{$data['account_budget2']}}
+                                        </p>
+                                        <p>
+                                            //Lịch hẹn: {{$data['appointment']}}
+                                        </p>
+                                        <p>
+                                            //Loại hợp đồng: chậm (0) - nhanh(1): {{$data['type_contract']}}
+                                        </p>
+                                        <p>
+                                            //Mức độ truy cập: {{$data['access_type']}}
+                                        </p>
+                                        <p>
+                                            //Trạng thái: {{$data['status']}}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

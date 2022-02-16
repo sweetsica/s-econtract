@@ -53,10 +53,15 @@ Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboar
     Route::get('/contract/list_pending',[\App\Http\Controllers\PartnerController::class, 'list_typeall'])->name('contract.list.pending');
     //Chi tiết hợp đồng
     Route::get('/contract/show/{id}/','App\Http\Controllers\PartnerController@show')->name('contract.show');
+    //Sửa chi tiết hợp đồng
+    Route::get('/contract/edit/{id}/','App\Http\Controllers\PartnerController@edit')->name('contract.edit');
     //Tìm hợp đồng
     Route::get('/contract/search/',[\App\Http\Controllers\PartnerController::class, 'search_export'])->name('contract.seach');
     //Xuất hợp đồng
     Route::post('/contract/return_export/',[\App\Http\Controllers\PartnerController::class, 'return_export'])->name('contract.return.export');
+
+//Các mục về chữ ký
+Route::get('/contract/signature',[\App\Http\Controllers\SignatureController::class, 'index'])->name('contract.signature');
 
 // router nào cần đăng nhập mới vô được thì ghi trong đây
 Route::middleware(['auth'])->group(function () {

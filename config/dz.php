@@ -186,6 +186,9 @@ return [
 				'form_element' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
 				],
+                'edit' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                ],
                 'upload_pdf' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
@@ -560,6 +563,11 @@ return [
                   'js/custom.min.js',
                   'js/deznav-init.js',
 				],
+                'edit' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
                 'upload_pdf' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'js/custom.min.js',

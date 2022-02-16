@@ -54,11 +54,17 @@ class PartnerController extends Controller
      * Chỉnh sửa thông tin hợp đồng
      * @param Request $request
      */
-    public function edit(Request $request)
+    public function edit($id)
     {
-
+        $page_title = 'Contract Dashboard';
+        $page_description = 'Chi tiết hợp đồng';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        $info_data = Partner::get()->where('id','=',$id);
+        return view('back-end.contract.edit',compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
     }
-
+    
     /**
      * Trang dashboard hợp đồng
      */
