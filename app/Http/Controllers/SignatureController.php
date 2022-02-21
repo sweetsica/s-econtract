@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Version;
 use Illuminate\Http\Request;
 
 class SignatureController extends Controller
@@ -34,7 +35,7 @@ class SignatureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //
     }
 
     /**

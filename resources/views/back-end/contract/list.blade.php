@@ -1,8 +1,6 @@
 {{-- Extends layout --}}
 @extends('back-end.layout.default')
 
-
-
 {{-- Content --}}
 @section('content')
 

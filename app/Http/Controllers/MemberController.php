@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Version;
 use Illuminate\Http\Request;
 
-class VersionController extends Controller
+class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class VersionController extends Controller
      */
     public function index()
     {
-        return view('back-end.version.index');
+        //
     }
 
     /**
@@ -35,8 +34,7 @@ class VersionController extends Controller
      */
     public function store(Request $request)
     {
-        Version::make($request->all());
-        return redirect(route('version'));
+        //
     }
 
     /**

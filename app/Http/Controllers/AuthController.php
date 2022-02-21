@@ -12,6 +12,39 @@ use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
+    public function register(Request $request)
+    {
+        $fields = $request->validate([
+            'name' => 'required|string|min:3',
+            'email' => 'required|unique:users,email',
+            'password' => 'confirmed'
+        ]);
+
+        $user = User::create([
+            'name' => $fields['name'],
+            'email' => $fields['email'],
+            'password' => bcrypt($fields['password'])
+        ]);
+
+        $token = $user->createToken('myapptoken')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response,201);
+    }
+
+    public function logout(Request $request)
+    {
+        auth()->user()->tokens()->delete();
+        return [
+            'message' => 'Đã thoát, token vô hiệu!'
+        ];
+    }
+
+
     public function registerIndex()
     {
         $page_title = 'Đăng ký đại lý';
@@ -34,7 +67,6 @@ class AuthController extends Controller
 
         return redirect("login")->withSuccess('You have signed-in');
     }
-
 
     public function create(array $data)
     {
@@ -92,16 +124,16 @@ class AuthController extends Controller
         $userPermissionsNames = $user->getPermissionNames()->toArray();
         return view('admin.user-detail', compact(['user', 'action', 'roles', 'permissions', 'userRoleName', 'userPermissionsNames']));
     }
-    
+
     public function updateRoleUser(Request $request, $id) {
         $user = User::find($id);
-        
+
         $role = Role::find($request->role);
         $permissions = Permission::whereIn('id',$request->permissions)->get();
-        
+
         $user->syncRoles([$role]);
         $user->syncPermissions($permissions);
-        
+
         return redirect(route('admin.users'));
     }
 }

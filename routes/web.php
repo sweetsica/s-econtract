@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +10,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 /* Route::get('/', function () {
     return view('welcome');
 });
@@ -26,7 +23,6 @@ Route::get('/filldata',[\App\Http\Controllers\PDFController::class, 'export_pdf_
 Route::get('/upload_pdf',[\App\Http\Controllers\PDFController::class, 'upload_pdf'])->name('upload_pdf');
 Route::post('/save_upload_pdf',[\App\Http\Controllers\PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
 
-
 //Trang index nền
 Route::get('/', [\App\Http\Controllers\PageController::class, 'index'])->name('index');
 
@@ -38,7 +34,6 @@ Route::post('/login', [\App\Http\Controllers\AuthController::class, 'loginProces
 //Trang register
 Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerIndex'])->name('signup');
 Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerProcess']);
-
 
 //Các mục về hợp đồng
 Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboard'])->name('dashboard');
@@ -78,12 +73,15 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-
 //Form điền thông tin
 Route::get('/signup-partner', 'App\Http\Controllers\PageController@signup_partner')->name('signup.partner');
 
 //Lưu thông tin đối tác
 Route::post('/store-partner','App\Http\Controllers\PartnerController@store')->name('store.partner');
+
+//Cập nhật phiên bản
+Route::get('/version','App\Http\Controllers\VersionController@index')->name('version');
+Route::post('/version/store','App\Http\Controllers\VersionController@index')->name('version.post');
 
 //Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/index', 'App\Http\Controllers\OmahadminController@dashboard_1');

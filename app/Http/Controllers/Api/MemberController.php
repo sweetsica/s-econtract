@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
-use App\Models\Version;
+use App\Http\Controllers\Controller;
+use App\Models\Member;
 use Illuminate\Http\Request;
 
-class VersionController extends Controller
+class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +15,7 @@ class VersionController extends Controller
      */
     public function index()
     {
-        return view('back-end.version.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Member::all();
     }
 
     /**
@@ -35,8 +26,11 @@ class VersionController extends Controller
      */
     public function store(Request $request)
     {
-        Version::make($request->all());
-        return redirect(route('version'));
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required|min:6'
+        ]);
+        return Member::create($request->all());
     }
 
     /**
@@ -47,18 +41,7 @@ class VersionController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return Member::find($id);
     }
 
     /**
@@ -70,17 +53,29 @@ class VersionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $member = Member::find($id);
+        $member->update($request->all());
+        return $member;
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return int
      */
     public function destroy($id)
     {
-        //
+        return Member::destroy($id);
+    }
+
+    /**
+     * Search function
+     * @param $id
+     * @return mixed
+     */
+    public function search($username)
+    {
+        return Member::where('username','like','%'.$username.'%')->get();
     }
 }
