@@ -12,6 +12,7 @@ use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
+    #1
     public function register(Request $request)
     {
         $fields = $request->validate([
@@ -26,16 +27,36 @@ class AuthController extends Controller
             'password' => bcrypt($fields['password'])
         ]);
 
-        $token = $user->createToken('myapptoken')->plainTextToken;
+        $token = $user->createToken('sweettoken')->plainTextToken;
 
         $response = [
             'user' => $user,
             'token' => $token
         ];
 
-        return response($response,201);
+        return response($response,200);
     }
+    #2
+    public function getuser()
+    {
+        return User::all();
+    }
+    #4
+    public function login(Request $request)
+    {
+        $data = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
+        if (auth()->attempt($data)) {
+            $token = auth()->user()->createToken('SweetUserAppToken')->accessToken;
+            return response()->json(['token' => $token], 200);
+        } else {
+            return response()->json(['error' => 'Lỗi xác thực!!!'], 401);
+        }
+    }
+    #3
     public function logout(Request $request)
     {
         auth()->user()->tokens()->delete();

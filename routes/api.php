@@ -22,17 +22,30 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/data_partner', [\App\Http\Controllers\Api\PartnerController::class, 'index']);
 Route::post('/signup_partner', [\App\Http\Controllers\Api\PartnerController::class, 'store']);
 
+Route::get('/getuser',[AuthController::class,'getuser']);
+
 Route::post('/register',[AuthController::class,'register']);
 Route::get('/members',[MemberController::class,'index']);
 Route::get('/members/{id}',[MemberController::class,'show']);
 Route::get('/members/search/{username}',[MemberController::class,'search']);
 //Route::resource('members',MemberController::class);
 
-
+//Route::get('/personal',[MemberController::class,'access']);
+Route::post('login', [AuthController::class, 'login']);
 //protected routes
-Route::group(['middleware' => ['auth:sanctum']], function(){
+Route::group(['middleware' => ['auth:api']], function(){
     Route::post('/members',[MemberController::class,'store']);
-    Route::put('/members/{id}',[MemberController::class,'store']);
-    Route::delete('/members{id}',[MemberController::class,'store']);
+    Route::put('/members/{id}',[MemberController::class,'update']);
+    Route::delete('/members{id}',[MemberController::class,'delete']);
     Route::post('/logout',[AuthController::class,'logout']);
 });
+
+
+//protected routes sanctum
+//Route::get('/getuser',[AuthController::class,'getuser']);
+//Route::group(['middleware' => ['auth:sanctum']], function(){
+//    Route::post('/members',[MemberController::class,'store']);
+//    Route::put('/members/{id}',[MemberController::class,'store']);
+//    Route::delete('/members{id}',[MemberController::class,'store']);
+//    Route::post('/logout',[AuthController::class,'logout']);
+//});
