@@ -4,10 +4,51 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Member;
+use App\Models\Partner;
+use App\Models\PersonalAccessToken;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class MemberController extends Controller
 {
+//    public function login(Request $request)
+//    {
+//        $validator = Validator::make($request->all(),[
+//            'email' => 'required|string|max:255',
+//            'password' => 'required|min:6'
+//        ]);
+//
+//        if($validator->fails()){
+//            dd($validator);
+//            return response()->json($validator->errors());
+//        }
+//        try{
+//
+//            $info_user = User::where('email', $request->email)->first();
+//
+//            if($info_user){
+//                if(Hash::check($request->password,$info_user->password)){
+//                    $id_user = $info_user->id;
+//                    $token = $id_user.'|'.User::find($id_user)->tokens()->get('token');
+//                    return response()->json($token);
+//                }else{
+//                    return response()->json('Sai mật khẩu!');
+//                }
+//            }else{
+//                return response()->json('Sai tài khoản');
+//            }
+//        }catch(\Exception $error)
+//        {
+//            Log::error($error);
+//            return response()->json($error);
+//        }
+//
+//        return response()->json('Add partner successfully');
+//    }
+
     /**
      * Display a listing of the resource.
      *
