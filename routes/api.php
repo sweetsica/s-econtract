@@ -24,14 +24,14 @@ Route::post('/signup_partner', [\App\Http\Controllers\Api\PartnerController::cla
 
 Route::get('/getuser',[AuthController::class,'getuser']);
 
-Route::post('/register',[AuthController::class,'register']);
+Route::post('/user-register',[AuthController::class,'register']);
 Route::get('/members',[MemberController::class,'index']);
 Route::get('/members/{id}',[MemberController::class,'show']);
 Route::get('/members/search/{username}',[MemberController::class,'search']);
 //Route::resource('members',MemberController::class);
 
 //Route::get('/personal',[MemberController::class,'access']);
-Route::post('login', [AuthController::class, 'login']);
+Route::post('/user-login', [AuthController::class, 'login']);
 //protected routes
 Route::group(['middleware' => ['auth:api']], function(){
     Route::post('/members',[MemberController::class,'store']);
