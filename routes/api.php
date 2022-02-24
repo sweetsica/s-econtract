@@ -24,7 +24,7 @@ Route::post('/signup_partner', [\App\Http\Controllers\Api\PartnerController::cla
 
 Route::get('/getuser',[AuthController::class,'getuser']);
 
-Route::post('/user-register',[AuthController::class,'register']);
+Route::post('/signup',[AuthController::class,'register']);
 Route::get('/members',[MemberController::class,'index']);
 Route::get('/members/{id}',[MemberController::class,'show']);
 Route::get('/members/search/{username}',[MemberController::class,'search']);
