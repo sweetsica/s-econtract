@@ -33,6 +33,12 @@ Route::get('/members/search/{username}',[MemberController::class,'search']);
 //Route::get('/personal',[MemberController::class,'access']);
 Route::post('/signup',[AuthController::class,'register']);
 Route::post('/user-login', [AuthController::class, 'login']);
+Route::get('/test-get',function (){
+    dd("New Code");
+});
+Route::post('/test-post',function (){
+    dd("New Code");
+});
 
 //protected routes
 Route::group(['middleware' => ['auth:api']], function(){
