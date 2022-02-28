@@ -33,12 +33,6 @@ Route::get('/members/search/{username}',[MemberController::class,'search']);
 //Route::get('/personal',[MemberController::class,'access']);
 Route::post('/signup',[AuthController::class,'register']);
 Route::post('/user-login', [AuthController::class, 'login']);
-Route::get('/test-get',function (){
-    dd("New Code");
-});
-Route::post('/test-post',function (){
-    dd("New Code");
-});
 
 //protected routes
 Route::group(['middleware' => ['auth:api']], function(){
@@ -47,6 +41,29 @@ Route::group(['middleware' => ['auth:api']], function(){
     Route::delete('/members{id}',[MemberController::class,'delete']);
     Route::post('/logout',[AuthController::class,'logout']);
 });
+
+Route::get('/{wrong}',function() {
+    return response()->json([
+        'error' => 'Url not found'
+    ])->setStatusCode(404);
+});
+Route::get('/{wrong}/{id}',function() {
+    return response()->json([
+        'error' => 'Url not found'
+    ])->setStatusCode(404);
+});
+
+Route::post('/{wrong}',function() {
+    return response()->json([
+        'error' => 'Url not found'
+    ])->setStatusCode(404);
+});
+Route::post('/{wrong}/{id}',function() {
+    return response()->json([
+        'error' => 'Url not found'
+    ])->setStatusCode(404);
+});
+
 
 
 //protected routes sanctum
