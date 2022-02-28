@@ -1,5 +1,5 @@
 {{-- Extends layout --}}
-@extends('layout.default')
+@extends('back-end.layout.default')
 
 
 
@@ -955,5 +955,5 @@
                     </div>
                 </div>
             </div>
-			
+
 @endsection

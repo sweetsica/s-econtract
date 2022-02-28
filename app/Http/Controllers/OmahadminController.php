@@ -459,7 +459,7 @@ class OmahadminController extends Controller
         $page_title = 'Table Basic';
         $page_description = 'Some description for the page';
         $action = __FUNCTION__;
-        return view('table.bootstrapbasic', compact('page_title', 'page_description','action'));
+        return view('ori.table.bootstrapbasic', compact('page_title', 'page_description','action'));
     }
 
 	    // Table Datatable Basic

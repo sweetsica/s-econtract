@@ -58,7 +58,8 @@ savePNGButton.addEventListener("click", function (event) {
     alert("Please provide a signature first.");
   } else {
     var dataURL = signaturePad.toDataURL();
-    download(dataURL, "signature.png");
+    console.log(dataURL)
+    // download(dataURL, "signature.png");
   }
 });
 

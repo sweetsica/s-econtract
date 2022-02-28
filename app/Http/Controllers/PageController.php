@@ -79,4 +79,19 @@ class PageController extends Controller
 //
 //        return view('back-end.page.login', compact('page_title', 'page_description','action'));
 //    }
+
+    /**
+     * Hướng dẫn sử dụng
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function index_document()
+    {
+        $page_title = 'Dashboard';
+        $page_description = 'Some description for the page';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view ('back-end.document.index_document', compact('page_title', 'page_description','action','logo','logoText'));
+    }
+
 }

@@ -1,5 +1,7 @@
 <?php
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 });
  */
 Route::post('/lockpage', 'App\Http\Controllers\PageController@lockpage')->name('lockpage');
+//Route::get('/table-bootstrap-basic', 'App\Http\Controllers\OmahadminController@table_bootstrap_basic');
+//Document
+Route::get('/index_document',[PageController::class,'index_document'])->name('index_document');
 
 //Các mục về PDF
 Route::get('/dynamic_pdf',[\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
@@ -82,6 +87,22 @@ Route::post('/store-partner','App\Http\Controllers\PartnerController@store')->na
 //Cập nhật phiên bản
 Route::get('/version','App\Http\Controllers\VersionController@index')->name('version');
 Route::post('/version/store','App\Http\Controllers\VersionController@index')->name('version.post');
+
+//Các mục về chữ ký
+Route::get('signaturepad',[\App\Http\Controllers\SignatureController::class, 'index'])->name('contract.signature');
+//Route::post('signaturepad', function(Request $request)
+//{
+//    $folderPath = public_path('uploads/signature/');
+//    $image_parts = explode(";base64,", $request->signed);
+//    $image_type_aux = explode("image/", $image_parts[0]);
+//    $image_type = $image_type_aux[1];
+//    $image_base64 = base64_decode($image_parts[1]);
+//    $file = $folderPath . uniqid() . '.'.$image_type;
+//    file_put_contents($file, $image_base64);
+//    return back()->with('success', 'success Full upload signature');
+//})->name('signaturepad.upload');
+Route::post('signaturepad',[\App\Http\Controllers\SignatureController::class, 'store'])->name('signaturepad.upload');
+
 
 //Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/index', 'App\Http\Controllers\OmahadminController@dashboard_1');
