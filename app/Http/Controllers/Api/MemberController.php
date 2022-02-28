@@ -67,11 +67,17 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'username' => 'required|min:6'
-        ]);
-        return Member::create($request->all());
+        try {
+            $request->validate([
+                'name' => 'required',
+                'username' => 'required|min:6'
+            ]);
+            $member = Member::create($request->all());
+
+            return response()->json($member);
+        }catch (\Exception $exception) {
+            return response()->json($exception);
+        }
     }
 
     /**
