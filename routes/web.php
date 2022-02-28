@@ -32,7 +32,7 @@ Route::post('/save_upload_pdf',[\App\Http\Controllers\PDFController::class, 'sav
 Route::get('/', [\App\Http\Controllers\PageController::class, 'index'])->name('index');
 
 //Trang login
-Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('login');
+Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('page.login');
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'loginIndex'])->name('login');
 Route::post('/login', [\App\Http\Controllers\AuthController::class, 'loginProcess']);
 

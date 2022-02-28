@@ -44,11 +44,15 @@ class AuthController extends Controller
     #4
     public function login(Request $request)
     {
+
         $data = [
             'email' => $request->email,
             'password' => $request->password
         ];
 
+//        dump($data);
+//        dd(auth()->attempt($data));
+//        dd(auth()->attempt($data));
         if (auth()->attempt($data)) {
             $token = auth()->user()->createToken('SweetUserAppToken')->accessToken;
             return response()->json(['token' => $token], 200);
