@@ -62,7 +62,7 @@ class MemberController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -75,7 +75,7 @@ class MemberController extends Controller
             $member = Member::create($request->all());
 
             return response()->json($member);
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             return response()->json($exception);
         }
     }
@@ -83,7 +83,7 @@ class MemberController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -94,8 +94,8 @@ class MemberController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -108,28 +108,35 @@ class MemberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        $member = Member::where('id',$id)->delete();
+        $member = Member::where('id', $id)->delete();
         // dd($data);
-        if($member > 0 ){
+        if ($member > 0) {
             return response()->json(['mess' => 'Xoá thành công'], 200);
-        }
-        else{
+        } else {
             return response()->json(['error' => 'Xoá thất bại!'], 401);
         }
     }
 
     /**
      * Search function
-     * @param $id
+     * @param $name
      * @return mixed
      */
-    public function search($username)
+    public function search(Request $request)
     {
-        return Member::where('name','like','%'.$username.'%')->get();
+        try {
+            $member = Member::where('name', $request->name)->get();
+            if ($member) {
+                return response()->json(['mess' => 'Xoá thành công'], 200);
+            }
+            return response()->json(['error' => 'Không tìm thấy member nào với tên như vậy'], 404);
+        } catch (\Exception $exception) {
+            return response()->json(['error' => $exception]);
+        }
     }
 }

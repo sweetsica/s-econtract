@@ -25,8 +25,8 @@ Route::post('/signup_partner', [\App\Http\Controllers\Api\PartnerController::cla
 Route::get('/getuser',[AuthController::class,'getuser']);
 
 Route::get('/members',[MemberController::class,'index']);
-Route::get('/members/{id}',[MemberController::class,'show']);
-Route::get('/members/search/{username}',[MemberController::class,'search']);
+Route::get('/members/search',[MemberController::class,'search']);
+//Route::get('/members/{id}',[MemberController::class,'show']);
 //Route::resource('members',MemberController::class);
 
 
@@ -42,27 +42,27 @@ Route::group(['middleware' => ['auth:api']], function(){
     Route::post('/logout',[AuthController::class,'logout']);
 });
 
-Route::get('/{wrong}',function() {
-    return response()->json([
-        'error' => 'Url not found'
-    ])->setStatusCode(404);
-});
-Route::get('/{wrong}/{id}',function() {
-    return response()->json([
-        'error' => 'Url not found'
-    ])->setStatusCode(404);
-});
-
-Route::post('/{wrong}',function() {
-    return response()->json([
-        'error' => 'Url not found'
-    ])->setStatusCode(404);
-});
-Route::post('/{wrong}/{id}',function() {
-    return response()->json([
-        'error' => 'Url not found'
-    ])->setStatusCode(404);
-});
+//Route::get('/{wrong}',function() {
+//    return response()->json([
+//        'error' => 'Url not found'
+//    ])->setStatusCode(404);
+//});
+//Route::get('/{wrong}/{id}',function() {
+//    return response()->json([
+//        'error' => 'Url not found'
+//    ])->setStatusCode(404);
+//});
+//
+//Route::post('/{wrong}',function() {
+//    return response()->json([
+//        'error' => 'Url not found'
+//    ])->setStatusCode(404);
+//});
+//Route::post('/{wrong}/{id}',function() {
+//    return response()->json([
+//        'error' => 'Url not found'
+//    ])->setStatusCode(404);
+//});
 
 
 
