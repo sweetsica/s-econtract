@@ -130,9 +130,9 @@ class MemberController extends Controller
     public function search(Request $request)
     {
         try {
-            $member = Member::where('name', $request->name)->get();
+            $member = Member::where('name','like', '%'.$request->name.'%')->get();
             if ($member) {
-                return response()->json(['mess' => 'Xoá thành công'], 200);
+                return response()->json(['mess' => 'Tìm thành công','data'=>$member], 200);
             }
             return response()->json(['error' => 'Không tìm thấy member nào với tên như vậy'], 404);
         } catch (\Exception $exception) {

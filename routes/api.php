@@ -18,51 +18,26 @@ use App\Http\Controllers\AuthController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//Đăng ký đối tác
 Route::get('/data_partner', [\App\Http\Controllers\Api\PartnerController::class, 'index']);
 Route::post('/signup_partner', [\App\Http\Controllers\Api\PartnerController::class, 'store']);
 
-Route::get('/getuser',[AuthController::class,'getuser']);
-
-Route::get('/members',[MemberController::class,'index']);
-Route::get('/members/search',[MemberController::class,'search']);
-//Route::get('/members/{id}',[MemberController::class,'show']);
-//Route::resource('members',MemberController::class);
-
-
-//Route::get('/personal',[MemberController::class,'access']);
+//Đăng ký admin
 Route::post('/signup',[AuthController::class,'register']);
+//Lấy list admin
+Route::get('/getuser',[AuthController::class,'getuser']);
+//Đăng nhập admin
 Route::post('/user-login', [AuthController::class, 'login']);
-
-//protected routes
+//Lấy list user
+Route::get('/members',[MemberController::class,'index']);
+//Sau khi đăng nhập admin
 Route::group(['middleware' => ['auth:api']], function(){
     Route::post('/members',[MemberController::class,'store']);
     Route::put('/members/{id}',[MemberController::class,'update']);
     Route::delete('/members/{id}',[MemberController::class,'destroy']);
     Route::post('/logout',[AuthController::class,'logout']);
 });
-
-//Route::get('/{wrong}',function() {
-//    return response()->json([
-//        'error' => 'Url not found'
-//    ])->setStatusCode(404);
-//});
-//Route::get('/{wrong}/{id}',function() {
-//    return response()->json([
-//        'error' => 'Url not found'
-//    ])->setStatusCode(404);
-//});
-//
-//Route::post('/{wrong}',function() {
-//    return response()->json([
-//        'error' => 'Url not found'
-//    ])->setStatusCode(404);
-//});
-//Route::post('/{wrong}/{id}',function() {
-//    return response()->json([
-//        'error' => 'Url not found'
-//    ])->setStatusCode(404);
-//});
+Route::get('/members/search/{name}',[MemberController::class,'search']);
 
 
 
@@ -74,3 +49,8 @@ Route::group(['middleware' => ['auth:api']], function(){
 //    Route::delete('/members{id}',[MemberController::class,'store']);
 //    Route::post('/logout',[AuthController::class,'logout']);
 //});
+
+
+//Route::resource('members',MemberController::class);
+
+//Route::get('/personal',[MemberController::class,'access']);
