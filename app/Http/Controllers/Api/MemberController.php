@@ -109,11 +109,18 @@ class MemberController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return int
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {
-        return Member::destroy($id);
+        $member = Member::where('id',$id)->delete();
+        // dd($data);
+        if($member > 0 ){
+            return response()->json(['mess' => 'Xoá thành công'], 200);
+        }
+        else{
+            return response()->json(['error' => 'Xoá thất bại!'], 401);
+        }
     }
 
     /**
@@ -123,6 +130,6 @@ class MemberController extends Controller
      */
     public function search($username)
     {
-        return Member::where('username','like','%'.$username.'%')->get();
+        return Member::where('name','like','%'.$username.'%')->get();
     }
 }

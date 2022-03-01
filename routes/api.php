@@ -38,7 +38,7 @@ Route::post('/user-login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:api']], function(){
     Route::post('/members',[MemberController::class,'store']);
     Route::put('/members/{id}',[MemberController::class,'update']);
-    Route::delete('/members{id}',[MemberController::class,'delete']);
+    Route::delete('/members/{id}',[MemberController::class,'destroy']);
     Route::post('/logout',[AuthController::class,'logout']);
 });
 
