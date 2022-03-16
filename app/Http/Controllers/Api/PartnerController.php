@@ -31,14 +31,14 @@ class PartnerController extends Controller
         $validator = Validator::make($request->all(),[
             'name' => 'required|string|max:255'
         ]);
-
         if($validator->fails()){
             return response()->json($validator->errors());
         }
-
         $partner = Partner::create($request->all());
-
-        return response()->json('Add partner successfully');
+        return response()->json([
+            'notice' => 'Add partner successfully',
+            'data' => $partner
+        ],200);
     }
 
     /**

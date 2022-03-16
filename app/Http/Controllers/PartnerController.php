@@ -6,7 +6,6 @@ use App\Models\Partner;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class PartnerController extends Controller
@@ -64,7 +63,7 @@ class PartnerController extends Controller
         $info_data = Partner::get()->where('id','=',$id);
         return view('back-end.contract.edit',compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
     }
-    
+
     /**
      * Trang dashboard hợp đồng
      */
@@ -179,11 +178,17 @@ class PartnerController extends Controller
      */
     public function return_export(Request $request)
     {
-        $phone = $request['account_phone'];
-        $data['info'] = Partner::Where('account_phone','=',$phone)->get()->last();
-        $pdf = PDF::loadView('pdf_true_export', $data);
-        $time = Carbon::now()->format('d-m-Y');
-        $name = 'hop-dong-dien-tu-'.$time;
-        return $pdf->stream($name.'.pdf');
+        try {
+            $phone = $request['account_phone'];
+            $data['info'] = Partner::Where('account_phone','=',$phone)->get()->last();
+
+            $pdf = PDF::loadView('pdf_true_export', $data);
+            $time = Carbon::now()->format('d-m-Y');
+            $name = 'hop-dong-dien-tu-'.$time;
+
+            return $pdf->stream($name.'.pdf');
+        }catch (\Exception $exception) {
+            dd($exception);
+        }
     }
 }
