@@ -12,13 +12,20 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="{{asset('js/jquery.signature.js')}}"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://keith-wood.name/css/jquery.signature.css">
-
     <style>
         .kbw-signature { width: 100%; height: 200px;}
         #sig canvas{
             width: 100% !important;
             height: auto;
+        }
+
+        .kbw-signature {
+            display: inline-block;
+            border: 1px solid #a0a0a0;
+            -ms-touch-action: none;
+        }
+        .kbw-signature-disabled {
+            opacity: 0.35;
         }
     </style>
 
