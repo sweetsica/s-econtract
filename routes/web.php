@@ -19,10 +19,11 @@ use App\Http\Controllers\PageController;
 Route::post('/lockpage', 'App\Http\Controllers\PageController@lockpage')->name('lockpage');
 //Route::get('/table-bootstrap-basic', 'App\Http\Controllers\OmahadminController@table_bootstrap_basic');
 //Document
-Route::get('/index_document',[PageController::class,'index_document'])->name('index_document');
+//Route::get('/index_document',[PageController::class,'index_document'])->name('index_document');
 
 //Các mục về PDF
 Route::get('/dynamic_pdf',[\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
+Route::get('/pre_dynamic_pdf',[\App\Http\Controllers\PDFController::class, 'pre_pdf'])->name('pre.pdf');
 Route::get('/dynamic_pdf_true',[\App\Http\Controllers\PDFController::class, 'export_pdf'])->name('export.pdf');
 Route::get('/filldata',[\App\Http\Controllers\PDFController::class, 'export_pdf_true'])->name('export.pdf');
 Route::get('/upload_pdf',[\App\Http\Controllers\PDFController::class, 'upload_pdf'])->name('upload_pdf');
