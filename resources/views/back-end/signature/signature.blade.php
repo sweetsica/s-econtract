@@ -17,6 +17,7 @@
         .alert-success {
             position: absolute;
             top: 5%;
+            z-index:999;
         }
     </style>
 
@@ -47,14 +48,13 @@
         <canvas width="692" style="touch-action: none; user-select: none;" height="662"></canvas>
     </div>
     <div class="signature-pad--footer">
-        <div class="description">Sign above</div>
+        <div class="description">Chữ ký đối tác</div>
 
         <div class="signature-pad--actions">
             <div>
                 <button type="button" class="button clear" data-action="clear">Clear</button>
-                <button type="button" class="button" data-action="change-color">Change color</button>
-                <button type="button" class="button" data-action="undo">Undo</button>
-
+{{--                <button type="button" class="button" data-action="change-color">Change color</button>--}}
+{{--                <button type="button" class="button" data-action="undo">Undo</button>--}}
             </div>
             <div>
                 <button type="button" class="button save" data-action="save-png">Save as PNG</button>

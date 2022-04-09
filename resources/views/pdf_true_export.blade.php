@@ -104,16 +104,18 @@
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
+            <img src="{{asset('assets/signature/sign_doppelherzVN.png')}}">
         </td>
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
+            <img src="{{$info['image']}}">
         </td>
     </tr>
     </tbody>
 </table>
 <p>
-    <br><br><br><br><br><br><br>
+    <br><br><br><br><br>
 
 </p>
 <p><strong> </strong></p>

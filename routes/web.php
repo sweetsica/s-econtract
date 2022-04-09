@@ -56,10 +56,13 @@ Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboar
     Route::get('/contract/show/{id}/','App\Http\Controllers\PartnerController@show')->name('contract.show');
     //Sửa chi tiết hợp đồng
     Route::get('/contract/edit/{id}/','App\Http\Controllers\PartnerController@edit')->name('contract.edit');
-    //Tìm hợp đồng
+    //Giao diện tìm hợp đồng
     Route::get('/contract/search/',[\App\Http\Controllers\PartnerController::class, 'search_export'])->name('contract.seach');
     //Xuất hợp đồng
-    Route::post('/contract/return_export/',[\App\Http\Controllers\PartnerController::class, 'return_export'])->name('contract.return.export');
+    //Route::post('/contract/return_export/',[\App\Http\Controllers\PartnerController::class, 'return_export'])->name('contract.return.export');
+    Route::post('/contract/return_export/',[\App\Http\Controllers\PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
+    //Tìm và check hợp đồng
+    Route::get('/contract/return_export_after_sign/',[\App\Http\Controllers\PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
 
 //Các mục về chữ ký
 Route::get('/contract/signature',[\App\Http\Controllers\SignatureController::class, 'index'])->name('contract.signature');

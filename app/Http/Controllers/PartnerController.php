@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\SignTrait;
 use App\Models\Partner;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class PartnerController extends Controller
 {
+    use SignTrait;
     /**
      * Lưu data từ form
      * @param Request $request
@@ -89,7 +92,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('access_type','=',1);
+        $info_data = Partner::take('35')->where('type_contract','=',1)->get();
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
@@ -104,7 +107,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('access_type','=',2);
+        $info_data = Partner::get()->where('type_contract','=',2);
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
@@ -119,7 +122,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('access_type','=',3);
+        $info_data = Partner::get()->where('type_contract','=',3);
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
@@ -171,21 +174,43 @@ class PartnerController extends Controller
         $action = __FUNCTION__;
         return view('back-end.contract.search_export', compact('page_title', 'page_description','action','logo','logoText'));
     }
+
     /**
-     *  Trả kết quả tìm kiếm theo sdt
-     * @param Request $request
-     * @return mixed
+     * Tìm kiếm hợp đồng form
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function return_export(Request $request)
+    public function search_export_with_data(Request $request)
     {
         try {
             $phone = $request['account_phone'];
             $data['info'] = Partner::Where('account_phone','=',$phone)->get()->last();
+            if($data['info']['signed']==0){
+                Session::put('id_partner',$data['info']['id']);
+                return view('back-end.signature.signature');
+            }else{
+                $pdf = PDF::loadView('pdf_true_export', $data);
+                $time = Carbon::now()->format('d-m-Y');
+                $name = 'hop-dong-dien-tu-'.$time;
+                return $pdf->stream($name.'.pdf');
+            }
 
+        }catch (\Exception $exception) {
+            dd($exception);
+        }
+    }
+    /**
+     *  Trả kết quả tìm kiếm sau khi thêm chữ ký
+     * @param Request $request
+     * @return mixed
+     */
+    public function return_export_after_sign()
+    {
+        try {
+            $id_partner = Session::get('id_partner');
+            $data['info'] = Partner::Where('id','=',$id_partner)->get()->last();
             $pdf = PDF::loadView('pdf_true_export', $data);
             $time = Carbon::now()->format('d-m-Y');
             $name = 'hop-dong-dien-tu-'.$time;
-
             return $pdf->stream($name.'.pdf');
         }catch (\Exception $exception) {
             dd($exception);
