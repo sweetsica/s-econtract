@@ -19,8 +19,8 @@ class Partner extends Model
                 $this->attributes['position_doppelherz'] = InfoDoppelherzEnum::DoppelherzNamePosition0;
                 break;
             case "1":
-                $this->attributes['name_doppelherz'] = "test";
-                $this->attributes['position_doppelherz'] = "case 1";
+                $this->attributes['name_doppelherz'] = InfoDoppelherzEnum::DoppelherzNameZone1;
+                $this->attributes['position_doppelherz'] = InfoDoppelherzEnum::DoppelherzNamePosition1;
                 break;
             case "2":
                 $this->attributes['name_doppelherz'] = InfoDoppelherzEnum::DoppelherzNameZone2;
