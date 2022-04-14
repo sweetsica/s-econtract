@@ -2,7 +2,7 @@
 <!-- saved from url=(0038)http://szimek.github.io/signature_pad/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Signature Pad demo</title>
+    <title>Biểu mẫu chữ ký giám đốc bán hàng khu vực</title>
     <meta name="description" content="Signature Pad - HTML5 canvas based smooth signature drawing using variable width spline interpolation.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
@@ -45,13 +45,13 @@
 <form action="{{route('doppelhersignzpad.upload')}}" method="POST" id="signature-pad" class="signature-pad">
     @csrf
     <p>Họ và tên</p>
-    <input name="name" style="width: 200px">
+    <input name="name" required style="width: 200px">
     <br>
     <div class="signature-pad--body">
         <canvas width="692" style="touch-action: none; user-select: none;" height="662"></canvas>
     </div>
     <div class="signature-pad--footer">
-        <div class="description">Chữ ký đối tác</div>
+        <div class="description">Chữ ký giám đốc</div>
 
         <div class="signature-pad--actions">
             <div>
