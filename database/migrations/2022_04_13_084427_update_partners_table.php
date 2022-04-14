@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('partners', function (Blueprint $table) {
             $table->text('doppelherz_image')->nullable()->after('image');
             $table->string('name_doppelherz')->nullable()->after('doppelherz_image');
-            $table->string('posistion_doppelherz')->nullable()->after('name_doppelherz');
+            $table->string('position_doppelherz')->nullable()->after('name_doppelherz');
             $table->string('account_doppelherz')->nullable()->after('posistion_doppelherz');
             $table->string('number_doppelherz')->nullable()->after('account_doppelherz');
         });
