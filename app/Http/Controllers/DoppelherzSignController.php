@@ -2,17 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Enum\InfoDoppelherzEnum;
-use App\Http\Traits\SignTrait;
 use App\Models\DoppelherzSign;
-use App\Models\Partner;
-use App\Models\Version;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-class SignatureController extends Controller
+class DoppelherzSignController extends Controller
 {
-    use SignTrait;
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +14,7 @@ class SignatureController extends Controller
      */
     public function index()
     {
-        return view('back-end.signature.signature');
+        return view('back-end.signature.doppelherzsign');
     }
 
     /**
@@ -41,20 +35,19 @@ class SignatureController extends Controller
      */
     public function store(Request $request)
     {
-        $url_image = $this->save_sign($request);
-        $id_partner = Session::get('id_partner');
-        $partner = Partner::where('id','=',$id_partner)->first();
-        $partner['image']= $url_image;
-        $partner['name_doppelherz'] = $request['name_doppelherz'];
-        $partner['bank_doppelherz'] = $request['bank_doppelherz'];
-        $doppelherz_image = DoppelherzSign::where('name','=',$partner['name_doppelherz'])->get('image')->first();
-        $partner['doppelherz_image'] = $doppelherz_image['image'];
-        $partner['signed'] = true;
-        $partner->save();
-        return redirect()->route('contract.return.export-sign');
+        $folderPath = public_path('uploads/signature/doppelherz/');
+        $image_parts = explode(";base64,", $request->signed);
+        $image_type_aux = explode("image/", $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $file = $folderPath . uniqid() . '.'.$image_type;
+        file_put_contents($file, $image_base64);
+        $doppelherzsign = new DoppelherzSign();
+        $doppelherzsign['name'] = $request['name'];
+        $doppelherzsign['image'] = $file;
+        $doppelherzsign->save();
+        return back()->with('success', 'Đã lưu chữ ký');
     }
-
-
 
     /**
      * Display the specified resource.

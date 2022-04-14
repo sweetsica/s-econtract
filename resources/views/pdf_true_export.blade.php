@@ -27,10 +27,10 @@
 <p><strong><u>BÊN A</u></strong><em>                  </em><strong>: CÔNG TY CỔ PHẦN MASTERTRAN </strong></p>
 <p>Địa chỉ<em>                  </em>: NV4.13 Khu chức năng đô thị Tây Mỗ, P. Tây Mỗ, Q. Nam Từ Liêm, Hà Nội</p>
 <p>Điện thoại             : 024.37878408                       Mã số thuế:       0105381169</p>
-<p>Tài khoản              :………………………………………….……………..…………………………………………</p>
-<p>Ngân hàng            :……...……………………………………….….………………………………………………..</p>
-<p>Đại diện<em>                </em>: Ông……………………………………  Chức danh: Giám đốc bán hàng vùng……..</p>
-<p>Theo giấy ủy quyền số: ……………………………………………………………………………………………….</p>
+<p>Tài khoản              : {{$info['number_doppelherz']}}</p>
+<p>Ngân hàng            : {{$info['account_doppelherz']}}.</p>
+<p>Đại diện<em>                </em>: Ông {{$info['name_doppelherz']}}   Chức danh: {{$info['position_doppelherz']}}.</p>
+<p>(Theo giấy ủy quyền số: MTT030/0521/GUQ ngày 01 tháng 05 năm 2021).</p>
 <p><strong><u> </u></strong></p>
 <p><strong><u>BÊN B</u></strong><em>                 </em></strong>: <b style="color:red">{{$info['name']}}</b></p>
 <p>Địa chỉ                  : <b style="color:red">{{$info['address']}}</b></p>
@@ -104,7 +104,7 @@
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
-            <img src="{{asset('assets/signature/sign_doppelherzVN.png')}}">
+            <img src="{{$info['doppelherz_image']}}">
         </td>
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>

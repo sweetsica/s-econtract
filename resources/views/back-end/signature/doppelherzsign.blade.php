@@ -42,28 +42,11 @@
     </div>
 @endif
 
-<form action="{{route('signaturepad.upload')}}" method="POST" id="signature-pad" class="signature-pad">
+<form action="{{route('doppelhersignzpad.upload')}}" method="POST" id="signature-pad" class="signature-pad">
     @csrf
-    <div class="row" style="padding-left: 16px">
-        <div style="width: 50%; text-align:center">
-            <p style="margin-bottom: 0px">Chọn vùng</p>
-            <select name="name_doppelherz">
-                <option value="0">Vùng 1: Hà Nội và Tây Bắc</option>
-                <option value="1">Vùng 2: Duyên Hải và Đông Bắc</option>
-                <option value="2">Vùng 3: miền Trung</option>
-                <option value="3">Vùng 4: Tây Nguyên</option>
-                <option value="4">Vùng 5: Hồ Chí Minh và miền Đông</option>
-                <option value="5">Vùng 6: miền Tây</option>
-            </select>
-        </div>
-        <div style="width: 50%; text-align:center">
-            <p style="margin-bottom: 0px">Chọn ngân hàng</p>
-            <select name="bank_doppelherz">
-                <option value="0">Vietcombank</option>
-                <option value="1">VP Bank</option>
-            </select>
-        </div>
-    </div><br>
+    <p>Họ và tên</p>
+    <input name="name" style="width: 200px">
+    <br>
     <div class="signature-pad--body">
         <canvas width="692" style="touch-action: none; user-select: none;" height="662"></canvas>
     </div>

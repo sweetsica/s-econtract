@@ -66,6 +66,9 @@ Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboar
 
 //Các mục về chữ ký
 Route::get('/contract/signature',[\App\Http\Controllers\SignatureController::class, 'index'])->name('contract.signature');
+Route::post('signaturepad',[\App\Http\Controllers\SignatureController::class, 'store'])->name('signaturepad.upload');
+Route::get('/contract/doppelherzsignature',[\App\Http\Controllers\DoppelherzSignController::class, 'index'])->name('contract.doppelherzsign');
+Route::post('/contract/dopellherzsignature',[\App\Http\Controllers\DoppelherzSignController::class, 'store'])->name('doppelhersignzpad.upload');
 
 // router nào cần đăng nhập mới vô được thì ghi trong đây
 Route::middleware(['auth'])->group(function () {
@@ -91,22 +94,6 @@ Route::post('/store-partner','App\Http\Controllers\PartnerController@store')->na
 //Cập nhật phiên bản
 Route::get('/version','App\Http\Controllers\VersionController@index')->name('version');
 Route::post('/version/store','App\Http\Controllers\VersionController@index')->name('version.post');
-
-//Các mục về chữ ký
-Route::get('signaturepad',[\App\Http\Controllers\SignatureController::class, 'index'])->name('contract.signature');
-//Route::post('signaturepad', function(Request $request)
-//{
-//    $folderPath = public_path('uploads/signature/');
-//    $image_parts = explode(";base64,", $request->signed);
-//    $image_type_aux = explode("image/", $image_parts[0]);
-//    $image_type = $image_type_aux[1];
-//    $image_base64 = base64_decode($image_parts[1]);
-//    $file = $folderPath . uniqid() . '.'.$image_type;
-//    file_put_contents($file, $image_base64);
-//    return back()->with('success', 'success Full upload signature');
-//})->name('signaturepad.upload');
-Route::post('signaturepad',[\App\Http\Controllers\SignatureController::class, 'store'])->name('signaturepad.upload');
-
 
 //Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/index', 'App\Http\Controllers\OmahadminController@dashboard_1');
