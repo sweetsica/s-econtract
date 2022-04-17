@@ -57,10 +57,10 @@
                     <div class="col-xl-12 col-lg-6 col-md-12">
                         <div class="card">
                             <div class="card-header mb-0 border-0">
-                                <h3 class="fs-20 mb-0 text-black">Property Location</h3>
+                                <h3 class="fs-20 mb-0 text-black">Chữ ký</h3>
                             </div>
                             <div class="card-body pt-0 text-center">
-                                <img  src="{{ asset('images/map.jpg') }}" alt="" class="w-100">
+                                <img src="{{$data['doppelherz_image']}}" alt="" class="w-100">
                             </div>
                             <div class="card-footer border-0 p-0">
                                 <a href="javascript:void(0);" class="btn btn-primary d-block rounded">View in Full Screen</a>

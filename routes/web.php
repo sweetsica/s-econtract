@@ -70,6 +70,9 @@ Route::post('signaturepad',[\App\Http\Controllers\SignatureController::class, 's
 Route::get('/contract/doppelherzsignature',[\App\Http\Controllers\DoppelherzSignController::class, 'index'])->name('contract.doppelherzsign');
 Route::post('/contract/dopellherzsignature',[\App\Http\Controllers\DoppelherzSignController::class, 'store'])->name('doppelhersignzpad.upload');
 
+Route::get('/contract/signature/test',[\App\Http\Controllers\DoppelherzSignController::class, 'index_test']);
+Route::post('signature/test',[\App\Http\Controllers\DoppelherzSignController::class, 'store_test'])->name('doppelhersignzpad.test');
+
 // router nào cần đăng nhập mới vô được thì ghi trong đây
 Route::middleware(['auth'])->group(function () {
     //Trang quản trị sau khi đăng nhập

@@ -11,7 +11,7 @@
                 <div class="col-xl-12">
                     <div class="auth-form">
                         <div class="text-center mb-3">
-                            <a href="{!! url('/index'); !!}"><img  src="{{ asset('images/logo-full.png') }}" alt=""></a>
+                            <a href="{{route('index')}}"><img  src="{{ asset('images/logo-full.png') }}" alt=""></a>
                         </div>
                         <h4 class="text-center mb-4">Đăng ký hồ sơ điện tử Doppelherz Việt Nam</h4>
                         <form action="{{route('lockpage')}}" method="POST">
