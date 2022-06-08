@@ -18,7 +18,7 @@
                             @csrf
                             <div class="form-group">
                                 <label><strong>Mã truy cập</strong></label>
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password"/>
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-block">Unlock</button>
