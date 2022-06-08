@@ -50,12 +50,10 @@ class PageController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-
         // get current user
         $user = Auth::user();
         // all user role
-//        $roles = $user->getRoleNames();
-
+//        $roles = $user->getRoleNames()
         return view('back-end.dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
     }
 

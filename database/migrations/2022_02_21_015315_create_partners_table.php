@@ -41,6 +41,13 @@ return new class extends Migration
             $table->string('account_budget1')->nullable();//ĐKDT N1 (plans_N1)
             $table->string('account_budget2')->nullable();//ĐKDT N2 (plans_N2)
             $table->string('appointment')->nullable();//Lịch hẹn
+            $table->text('image')->nullable();
+            $table->boolean('signed')->default('0');
+            $table->text('doppelherz_image')->nullable();
+            $table->string('name_doppelherz')->nullable();
+            $table->string('position_doppelherz')->nullable();
+            $table->string('account_doppelherz')->nullable();
+            $table->string('number_doppelherz')->nullable();
             $table->boolean('type_contract')->nullable()->default('1');//Loại hợp đồng: nhanh (0) - chậm(1)
             $table->string('access_type')->nullable()->default('10');//Mức độ truy cập
             $table->boolean('status')->nullable()->default('1');//Trạng thái
