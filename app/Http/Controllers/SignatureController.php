@@ -40,20 +40,27 @@ class SignatureController extends Controller
      */
     public function store(Request $request)
     {
-        $id_partner = Session::get('id_partner');
-        $partner = Partner::where('id', '=', $id_partner)->first();
-        $partner['code_contract'] = $partner['id'] . '-' . $partner['created_at']->format('dmY') . "/2022/HĐĐL";
-        $url_image = $this->save_sign($request, sprintf("%s-%s", $partner['id'], $partner["account_phone"]));
-        //$urlImage
-        $partner['image'] = $url_image;
-        $partner['image'] = Session::get('url_true');
-        $partner['name_doppelherz'] = $request['name_doppelherz'];
-        $partner['bank_doppelherz'] = $request['bank_doppelherz'];
-        $doppelherz_image = DoppelherzSign::where('name', '=', $partner['name_doppelherz'])->get('image')->first();
-        $partner['doppelherz_image'] = $doppelherz_image['image'];
-        $partner['signed'] = true;
-        $partner->save();
-        return redirect()->route('contract.return.export-sign');
+        try{
+
+            $id_partner = Session::get('id_partner');
+            $partner = Partner::where('id', '=', $id_partner)->first();
+            $partner['code_contract'] = $partner['id'] . '-' . $partner['created_at']->format('dmY') . "/2022/HĐĐL";
+            $url_image = $this->save_sign($request, sprintf("%s-%s", $partner['id'], $partner["account_phone"]));
+            //$urlImage
+            $partner['image'] = $url_image;
+            $partner['image'] = Session::get('url_true');
+            $partner['name_doppelherz'] = $request['name_doppelherz'];
+            $partner['bank_doppelherz'] = $request['bank_doppelherz'];
+            $doppelherz_image = DoppelherzSign::where('name', '=', $partner['name_doppelherz'])->get('image')->first();
+//            dd($doppelherz_image);
+            $partner['doppelherz_image'] = $doppelherz_image['image'];
+            $partner['signed'] = true;
+            $partner->save();
+            return redirect()->route('contract.return.export-sign');
+        }catch (\Exception $e){
+            dd($e);
+        }
+
     }
 
 
