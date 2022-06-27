@@ -26,22 +26,21 @@ class AuthController extends Controller
             'email' => $fields['email'],
             'password' => bcrypt($fields['password'])
         ]);
-
         $token = $user->createToken('sweettoken')->accessToken;
-
         $response = [
-            'user' => $user,
+            'user' => [
+                "id"=>$user->id,
+                "name"=>$user->name,
+                "email"=>$user->email
+            ],
             'token' => $token
         ];
 
-        return response($response,200);
+        return response($response,200)->json([
+            "message"=>"register success"
+        ]);
     }
     #2
-    public function getuser()
-    {
-        return User::all();
-    }
-    #4
     public function login(Request $request)
     {
 
@@ -55,7 +54,16 @@ class AuthController extends Controller
 //        dd(auth()->attempt($data));
         if (auth()->attempt($data)) {
             $token = auth()->user()->createToken('SweetUserAppToken')->accessToken;
-            return response()->json(['token' => $token], 200);
+            $userInfo = User::where("email",$request->email)->firstOrFail();
+            return response()->json(
+                [
+                    'user'=>[
+                        "id"=>$userInfo->id,
+                        "name"=>$userInfo->name,
+                        "email"=>$userInfo->email
+                    ],
+                    'token' => $token
+                ], 200);
         } else {
             return response()->json(['error' => 'Lỗi xác thực!!!'], 401);
         }
@@ -67,6 +75,22 @@ class AuthController extends Controller
         return [
             'message' => 'Đã thoát, token vô hiệu!'
         ];
+    }
+
+    public function getUserInfo(Request $request){
+        $user = $request->user();
+        return response()->json([
+           'user'=>[
+               'id'=>$user->id,
+               'name'=>$user->name,
+               'email'=>$user->email
+           ]
+        ]);
+    }
+    #4
+    public function getuser()
+    {
+        return User::all();
     }
 
 

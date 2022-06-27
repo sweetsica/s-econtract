@@ -139,4 +139,45 @@ class MemberController extends Controller
             return response()->json(['error' => $exception]);
         }
     }
+
+    public function checkMemberExist(Request $request){
+        $validator = Validator::make($request->all(), [
+            "member_name" => "required",
+            "member_code" => "required"
+        ],[
+            "member_name.required"=>"Vui lòng nhập tên nhân viên.",
+            "member_code.required"=>"Vui lòng nhập mã nhân viên."
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                "status_code" => 400,
+                "error" => $validator->errors()
+            ], 400);
+        }
+
+        try{
+//            return response()->json([
+//                "req"=>
+//            ]);
+            $member = Member::where('member_code',$request->get('member_code'))->where('member_name',$request->get('member_name'))->first();
+            if($member !== null){
+                return response()->json([
+                   "exist"=>true,
+                   "member_name"=>$member->member_name,
+                   "member_code"=>$member->member_code
+                ]);
+            }else{
+                return response()->json([
+                    "exist"=>false,
+                ]);
+            }
+        }catch (\Exception $e){
+            return response()->json([
+                "status_code" => 500,
+                "error" => $e,
+                "message"=>"server error"
+            ], 500);
+        }
+    }
 }

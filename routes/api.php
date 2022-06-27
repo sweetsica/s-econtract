@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MemberController;
@@ -32,6 +33,7 @@ Route::post('/user-login', [AuthController::class, 'login']);
 Route::get('/members',[MemberController::class,'index']);
 //Sau khi đăng nhập admin
 Route::group(['middleware' => ['auth:api']], function(){
+    Route::get('/user-info',[AuthController::class,'getUserInfo']);
     Route::post('/members',[MemberController::class,'store']);
     Route::put('/members/{id}',[MemberController::class,'update']);
     Route::delete('/members/{id}',[MemberController::class,'destroy']);
@@ -39,6 +41,9 @@ Route::group(['middleware' => ['auth:api']], function(){
 });
 Route::get('/members/search/{name}',[MemberController::class,'search']);
 
+
+Route::get('/local',[LocalController::class,'getLocal']);
+Route::get('/members/check',[MemberController::class,'checkMemberExist']);
 
 
 //protected routes sanctum

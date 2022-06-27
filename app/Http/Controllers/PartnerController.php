@@ -183,12 +183,13 @@ class PartnerController extends Controller
     {
         try {
             $phone = $request['account_phone'];
-            $data['info'] = Partner::Where('account_phone','=',$phone)->get()->last();
-            if($data['info']['signed']==0){
-                Session::put('id_partner',$data['info']['id']);
+            $data = Partner::Where('account_phone',$phone)->get()->last();
+//            dd($data['info']['signed']);
+            if($data['signed'] == 0){
+                Session::put('id_partner',$data['id']);
                 return view('back-end.signature.signature');
             }else{
-                $pdf = PDF::loadView('pdf_true_export', $data);
+                $pdf = PDF::loadView('/pdf_true_export', ["info"=>$data]);
                 $time = Carbon::now()->format('d-m-Y');
                 $name = 'hop-dong-dien-tu-'.$time;
                 return $pdf->stream($name.'.pdf');
