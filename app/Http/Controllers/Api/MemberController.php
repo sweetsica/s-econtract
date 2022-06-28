@@ -68,15 +68,37 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         try {
-            $request->validate([
-                'name' => 'required',
-                'username' => 'required|min:6'
-            ]);
-            $member = Member::create($request->all());
+            $validator = Validator::make($request->all(), [
+                "member_name" => "required",
+                "member_code" => "required",
+                "username"=>"required|min:6",
+                "password"=>"required|min:6",
+                "email"=>"required",
 
-            return response()->json($member);
+            ],[
+                "member_name.required"=>"Vui lòng nhập tên nhân viên.",
+                "member_code.required"=>"Vui lòng nhập mã nhân viên.",
+                "username.required"=>"Vui lòng nhập tên người dùng.",
+                "password.required"=>"Vui lòng nhập mật khẩu.",
+                "email.required"=>"Vui lòng nhập email.",
+            ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    "status_code" => 400,
+                    "error" => $validator->errors()
+                ], 400);
+            }
+            $member = Member::create([
+                "member_name"=>$request->get("member_name"),
+                "member_code"=>$request->get("member_code"),
+                "username"=>$request->get("username"),
+                "password"=>$request->get("password"),
+                "email"=>$request->get("email"
+                )
+            ]);
+            return response()->json($member,200);
         } catch (\Exception $exception) {
-            return response()->json($exception);
+            return response()->json($exception,400);
         }
     }
 
