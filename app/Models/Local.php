@@ -29,6 +29,6 @@ class Local extends Model
         if($parent_id != null){
             return $query->where("parent_id",$parent_id);
         }
-        return $query->where("parent_id",0);
+        return $query->where("parent_id","0");
     }
 }

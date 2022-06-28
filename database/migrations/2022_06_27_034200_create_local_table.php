@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("prefix")->nullable();
             $table->string('type');
             $table->string('code')->nullable();
-            $table->bigInteger('parent_id')->default(0);
+            $table->string('parent_id')->default(0);
             $table->timestamps();
         });
     }
