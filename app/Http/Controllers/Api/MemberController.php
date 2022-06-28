@@ -69,11 +69,10 @@ class MemberController extends Controller
     {
         try {
             $request->validate([
-                'name' => 'required',
+                'member_name' => 'required',
                 'username' => 'required|min:6'
             ]);
             $member = Member::create($request->all());
-
             return response()->json($member);
         } catch (\Exception $exception) {
             return response()->json($exception);
