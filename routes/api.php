@@ -34,7 +34,7 @@ Route::get('/members',[MemberController::class,'index']);
 //Sau khi đăng nhập admin
 Route::group(['middleware' => ['auth:api']], function(){
     Route::get('/user-info',[AuthController::class,'getUserInfo']);
-    Route::post('/members',[MemberController::class,'store']);
+    Route::post('/save-members',[MemberController::class,'store']);
     Route::put('/members/{id}',[MemberController::class,'update']);
     Route::delete('/members/{id}',[MemberController::class,'destroy']);
     Route::post('/logout',[AuthController::class,'logout']);
