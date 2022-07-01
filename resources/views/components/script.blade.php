@@ -10,7 +10,7 @@
         `;
         $.ajax({
             type:'GET',
-            url:"{{asset("/api/local")}}?parent_id="+province_code,
+            url:"{{url("/api/local")}}?parent_id="+province_code,
             success:function(data){
                 var districtData = data.local
                 console.log(districtData)
@@ -33,7 +33,7 @@
         `;
         $.ajax({
             type:'GET',
-            url:"{{asset("/api/local")}}?parent_id="+province_code,
+            url:"{{url("/api/local")}}?parent_id="+province_code,
             success:function(data){
                 var districtData = data.local
                 console.log(districtData)
@@ -54,7 +54,7 @@
         $(".manager_select_mbf").attr("disabled",true)
         $.ajax({
             type:'GET',
-            url:"{{asset("/member/get-manager")}}",
+            url:"{{url("/member/get-manager")}}",
             data:{
                 department_id:department_selected
             },
