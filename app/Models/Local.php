@@ -24,6 +24,7 @@ class Local extends Model
     {
         return $this->belongsTo(Local::class,'parent_id','code');
     }
+
     public function scopeSearch($query,$request){
         $parent_id = $request->get('parent_id');
         if($parent_id != null){

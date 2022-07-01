@@ -5,7 +5,7 @@
     <div style="width: 30%; float: left">
         <p style="text-align: center;"><strong><img src="https://doppelherz.vn/wp-content/uploads/2022/01/LOGO-DOPPELHERZ-Logo-tren-an-pham-792x800.png" alt="" width="100" height="101" /></strong></p>
         <p style="text-align: center;"><strong>MASTERTRAN</strong></p>
-        <p style="text-align: center;"><em>Số:<b style="color: red">{{$info['id']}}-{{$info['created_at']->format('dmY')}}/2022/HĐĐL</b></em></p>
+{{--        <p style="text-align: center;"><em>Số:<b style="color: red">{{$info['id']}}-{{$info['created_at']->format('dmY')}}/2022/HĐĐL</b></em></p>--}}
     </div>
     <div style="width: 10%; float: left"> </div>
     <div style="width: 60%; float: left">
@@ -104,12 +104,12 @@
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
-            <img src="{{$info['doppelherz_image']}}">
+            <img src="{{public_path('/upload/signature/doppelherz/dovanthoai.png')}}">
         </td>
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
-            <img src="{{$info['image']}}">
+{{--            <img src="{{$info['image']}}">--}}
         </td>
     </tr>
     </tbody>
@@ -607,4 +607,3 @@
     <li>Toàn bộ các khoản chiết khấu và quyền lợi thương mại (3), (4), (5) đều được công ty xuất hóa đơn GTGT hạch toán thuế đầy đủ theo quy định của nhà nước.</li>
     <li>Đơn hàng nào phát sinh thì Hóa đơn, chứng từ sẽ đi kèm với Đơn hàng đó.</li>
 </ul>
-</body>

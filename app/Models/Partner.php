@@ -58,4 +58,12 @@ class Partner extends Model
                 return $value;
         }
     }
+    public function delivery_location()
+    {
+        return $this->belongsTo(Local::class,'delivery_location_id','id');
+    }
+    public function location()
+    {
+        return $this->belongsTo(Local::class,'location_id','id');
+    }
 }

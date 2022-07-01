@@ -88,6 +88,7 @@ class MemberController extends Controller
                     "error" => $validator->errors()
                 ], 400);
             }
+
             $member = Member::create([
                 "member_name"=>$request->get("member_name"),
                 "member_code"=>$request->get("member_code"),
@@ -182,7 +183,9 @@ class MemberController extends Controller
 //            return response()->json([
 //                "req"=>
 //            ]);
-            $member = Member::where('member_code',$request->get('member_code'))->where('member_name',$request->get('member_name'))->first();
+            $member = Member::where('member_code',$request->get('member_code'))
+                ->where('member_name',$request->get('member_name'))
+                ->first();
             if($member !== null){
                 return response()->json([
                    "exist"=>true,

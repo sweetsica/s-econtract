@@ -35,6 +35,51 @@ return [
         ],
         'pagelevel' => [
             'css' => [
+                //page custom
+
+                //department
+                'department_list'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'department_create'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
+                    'vendor/select2/css/select2.min.css',
+                ],
+                'department_edit'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
+                    'vendor/select2/css/select2.min.css',
+                ],
+                'department_system'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                    '/assets/tree.css'
+                ],
+                //role
+                'role_index'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                //member
+                'member_list'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'member_create'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
+                    'vendor/select2/css/select2.min.css',
+                ],
+                'member_edit'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
+                    'vendor/select2/css/select2.min.css',
+                ],
+
+                //end page custom
+
                 'index' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                     'vendor/jqvmap/css/jqvmap.min.css',
@@ -323,6 +368,73 @@ return [
                 ],
             ],
             'js' => [
+                //page custom
+                //department
+                'department_list'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'department_system'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                    '/assets/tree.js'
+                ],
+                'department_create'=>[
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'department_edit'=>[
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                //role
+                'role_index'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                //member
+                'member_list'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'member_create'=>[
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'member_edit'=>[
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+
+                //end page custom
                 'index' => [
                     'js/dashboard/dashboard-1.js',
                     'js/custom.min.js',
