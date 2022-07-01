@@ -36,6 +36,7 @@
                                 <button type="submit" class="btn btn-primary">Tạo vai trò</button>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -61,11 +62,46 @@
                                         <td>{{$role->description}}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp mr-1"><i
-                                                        class="fa fa-pencil"></i></a>
+                                                <button type="button" data-toggle="modal" data-target="#editRole{{$role->id}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i
+                                                        class="fa fa-pencil"></i></button>
                                                 <a onclick="return confirm('Chắc chắn xóa {{$role->name}} ?')" href="{{url('/role/delete',['id'=>$role->id])}}" class="btn btn-danger shadow btn-xs sharp"><i
                                                         class="fa fa-trash"></i></a>
+                                                <div class="modal fade" id="editRole{{$role->id}}">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <form class="modal-content" action="{{url('/role/update',['id'=>$role->id])}}" method="post">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Modal title {{$role->name}}</h5>
+                                                                <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="basic-form">
+                                                                    <div >
+                                                                        @csrf
+                                                                        <div class="form-row">
+                                                                            <div class="form-group col-md-12">
+                                                                                <label>Tên vai trò</label>
+                                                                                <input type="text" value="{{$role->name}}" class="form-control" name="name"
+                                                                                       placeholder="Nhập tên phòng ban...">
+                                                                            </div>
+                                                                            <div class="form-group col-md-12 ">
+                                                                                <label>Mô tả vai trò</label>
+                                                                                <textarea type="text" class="form-control" name="description"
+                                                                                          placeholder="Nhập mô tả phòng ban...">{{$role->description}}</textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger light" data-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
                                             </div>
+
                                         </td>
                                     </tr>
                                 @endforeach
