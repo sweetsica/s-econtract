@@ -46,6 +46,7 @@
                                     <th>Mã thành viên</th>
                                     <th>Tên thành viên</th>
                                     <th>email</th>
+                                    <th>Số điện thoại</th>
                                     <th>Tỉnh/Thành phố</th>
                                     <th>Huyện/Quận</th>
                                     <th>Xã/Phường</th>
