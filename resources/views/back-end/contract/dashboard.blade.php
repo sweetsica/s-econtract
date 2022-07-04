@@ -212,9 +212,9 @@
                     </div>
                 </div>
 
-                @if (isset($info_data['links']))
-                    {{$info_data->links()}}
-                @endif
+{{--                @if (isset($info_data['links']))--}}
+{{--                    {{$info_data->links()}}--}}
+{{--                @endif--}}
             </div>
         </div>
     </div>
