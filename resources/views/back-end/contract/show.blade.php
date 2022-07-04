@@ -27,7 +27,7 @@
                             <div class="card bg-primary text-center">
                                 <div class="card-body">
                                     <h2 class="fs-30 text-white">Doanh số đăng ký</h2>
-                                    <span class="text-white font-w300">{{$data['account_budget1']}}đ - {{$data['account_budget2']}}đ</span>
+                                    <span class="text-white font-w300">{{ number_format($data['account_budget1'],0)}}đ - {{  number_format($data['account_budget2'],0) }}đ</span>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                 <div class="card-body pt-0 text-center">
                                     <img src="{{$data['doppelherz_image']}}" alt="" class="w-100">
                                 </div>
-                                <div class="card-footer border-0 p-0">
+                                <div class="card-footer border-0 ">
                                     <a href="javascript:void(0);" class="btn btn-primary d-block rounded">View in Full
                                         Screen</a>
                                 </div>
@@ -280,8 +280,8 @@
                                             </div>
                                             <div class="ml-md-4 text-md-right">
                                                 <p class="fs-14 text-black mb-1 mr-1">Doanh số đăng ký</p>
-                                                <h4 class="fs-24 text-primary">{{$data['account_budget1']}}đ
-                                                    - {{$data['account_budget2']}}đ </h4>
+                                                <h4 class="fs-24 text-primary">{{ number_format($data['account_budget1'],0) }}đ
+                                                    - {{  number_format($data['account_budget2'],0)}}đ </h4>
                                             </div>
                                         </div>
                                         <div class="mb-sm-5 mb-2">
@@ -622,18 +622,17 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="id_tdv">Tên chủ tài khoản</label>
-                                                    <input value="{{$data->account_bank_name}}" type="text"
+                                                    <input value="{{$data->account_bank_holder}}" type="text"
                                                            name="account_gender" class="form-control" id="id_tdv"
                                                            placeholder="Tên chủ tài khoản">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="id_tdv">Tên ngân hàng</label>
-                                                    <input value="{{$data->account_bank_holder}}" type="text"
+                                                    <input value="{{$data->account_bank_name}}" type="text"
                                                            name="account_gender" class="form-control" id="id_tdv"
                                                            placeholder="Tên ngân hàng">
                                                 </div>
                                             </div>
-
                                             {{--                                        <button type="submit" class="btn btn-primary">Sign in</button>--}}
                                         </form>
                                     </div>
@@ -663,13 +662,13 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="delivery_district">Quận / Huyện</label>
-                                                    <input value="{{$data->district}}" type="text"
+                                                    <input value="{{$data->location->name}}" type="text"
                                                            name="delivery_district" class="form-control" id="agent-name"
                                                            placeholder="Quận / Huyện">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="delivery_city">Tỉnh / Thành Phố</label>
-                                                    <input value="{{$data->city}}" type="text" name="delivery_city"
+                                                    <input value="{{$data->location->parent->name}}" type="text" name="delivery_city"
                                                            class="form-control" id="delivery_city"
                                                            placeholder="Tỉnh / Thành Phố">
                                                 </div>
@@ -680,13 +679,13 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="delivery_district">Quận / Huyện nhận hàng</label>
-                                                    <input value="{{$data->delivery_district}}" type="text"
+                                                    <input value="{{$data->delivery_location->name}}" type="text"
                                                            name="delivery_district" class="form-control" id="agent-name"
                                                            placeholder="Quận / Huyện">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="delivery_city">Tỉnh / Thành phố nhận hàng </label>
-                                                    <input value="{{$data->delivery_city}}" type="text"
+                                                    <input value="{{$data->delivery_location->parent->name}}" type="text"
                                                            name="delivery_city" class="form-control" id="delivery_city"
                                                            placeholder="Tỉnh / Thành Phố">
                                                 </div>

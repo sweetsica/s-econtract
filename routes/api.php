@@ -54,10 +54,10 @@ Route::get('/members/check',[MemberController::class,'checkMemberExist']);
 //    Route::delete('/members{id}',[MemberController::class,'store']);
 //    Route::post('/logout',[AuthController::class,'logout']);
 //});
-Route::fallback(function(){
-    return response()->json([
-        'message' => 'Sai cú pháp, liên hệ info@mastertran.vn'], 404);
-});
+//Route::fallback(function(){
+//    return response()->json([
+//        'message' => 'Sai cú pháp, liên hệ info@mastertran.vn'], 404);
+//});
 
 //Route::resource('members',MemberController::class);
 

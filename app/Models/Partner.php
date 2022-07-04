@@ -11,6 +11,8 @@ class Partner extends Model
     use HasFactory;
     protected $guarded = [''];
 
+
+
     public function setNameDoppelherzAttribute($value)
     {
         switch ($value){
@@ -42,7 +44,6 @@ class Partner extends Model
                 return $value;
         }
     }
-
     public function setBankDoppelherzAttribute($value)
     {
         switch ($value){

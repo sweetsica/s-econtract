@@ -13,9 +13,9 @@
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Danh sách đối tác</a></li>
                 </ol>
             </div>
-            <a href="javascript:void(0);" class="btn btn-primary rounded light mr-3">Refresh</a>
-            <a href="javascript:void(0);" class="btn btn-primary rounded"><i
-                    class="flaticon-381-settings-2 mr-0"></i></a>
+{{--            <a href="javascript:void(0);" class="btn btn-primary rounded light mr-3">Refresh</a>--}}
+{{--            <a href="javascript:void(0);" class="btn btn-primary rounded"><i--}}
+{{--                    class="flaticon-381-settings-2 mr-0"></i></a>--}}
         </div>
         <div class="row">
             <div class="col-xl-3 col-xxl-6 col-md-6">
@@ -132,78 +132,86 @@
                 </div>
             </div>
             <div class="col-xl-12">
-                <div class="table-responsive table-hover fs-14">
-                    <table class="table table-hover display mb-4 dataTablesCard  card-table" id="example-5">
-                        <thead>
-                        <tr>
-                            <th>
-                                <div class="custom-control custom-checkbox ml-2">
-                                    <input type="checkbox" class="custom-control-input" id="checkAll" required="">
-                                    <label class="custom-control-label" for="checkAll"></label>
-                                </div>
-                            </th>
-                            <th style="text-align: center;">Mã hồ sơ</th>
-                            <th style="text-align: center;">Tên đối tác</th>
-                            <th style="text-align: center;">TDV phụ trách</th>
-                            <th style="text-align: center;">Địa chỉ</th>
-                            <th style="text-align: center;">Quận, Huyện</th>
-                            <th style="text-align: center;">Lịch hẹn</th>
-                            <th style="text-align: center;">Loại hợp đồng</th>
-                            <th style="text-align: center;">Mức độ truy cập</th>
-                            <th style="text-align: center;">Status</th>
-                            <th style="text-align: center;"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($info_data as $data)
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Danh sách hợp đồng</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table-hover fs-14">
+                            <table class="table table-hover display mb-4 dataTablesCard  card-table" id="example3">
+                                <thead>
                                 <tr>
-                                    <td>
+                                    <th>
                                         <div class="custom-control custom-checkbox ml-2">
-                                            <input type="checkbox" class="custom-control-input" id="customCheckBox5"
-                                                   required="">
-                                            <label class="custom-control-label" for="customCheckBox5"></label>
+                                            <input type="checkbox" class="custom-control-input" id="checkAll" required="">
+                                            <label class="custom-control-label" for="checkAll"></label>
                                         </div>
-                                    </td>
-                                    <td style="text-align: center">{{$data->id}}-{{$data->created_at->format('dmY')}}/HĐĐL</td>
-                                    <td style="text-align: center">{{$data->name}}</td>
-                                    <td style="text-align: center">{{$data->id_tdv}}</td>
-                                    <td style="text-align: center" class="text-ov">{{$data->address}}</td>
-                                    <td style="text-align: center" class="text-ov">{{$data->district}}, {{$data->city}}</td>
-                                    <td style="text-align: center">{{$data->appointment}}</td>
-                                    <td style="text-align: center">{{$data->type_contract}}</td>
-                                    <td style="text-align: center">{{$data->access_type}}</td>
-                                    <td style="text-align: center"><span class="text-warning">{{$data->status}}</span></td>
-                                    <td>
-                                        <div class="dropdown ml-auto">
-                                            <div class="btn-link" data-toggle="dropdown">
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M11.0005 12C11.0005 12.5523 11.4482 13 12.0005 13C12.5528 13 13.0005 12.5523 13.0005 12C13.0005 11.4477 12.5528 11 12.0005 11C11.4482 11 11.0005 11.4477 11.0005 12Z"
-                                                        stroke="#3E4954" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"></path>
-                                                    <path
-                                                        d="M18.0005 12C18.0005 12.5523 18.4482 13 19.0005 13C19.5528 13 20.0005 12.5523 20.0005 12C20.0005 11.4477 19.5528 11 19.0005 11C18.4482 11 18.0005 11.4477 18.0005 12Z"
-                                                        stroke="#3E4954" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"></path>
-                                                    <path
-                                                        d="M4.00049 12C4.00049 12.5523 4.4482 13 5.00049 13C5.55277 13 6.00049 12.5523 6.00049 12C6.00049 11.4477 5.55277 11 5.00049 11C4.4482 11 4.00049 11.4477 4.00049 12Z"
-                                                        stroke="#3E4954" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round"></path>
-                                                </svg>
-                                            </div>
-                                            <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item text-black" href="javascript:void(0);">Accept order</a>
-                                                <a class="dropdown-item text-black" href="javascript:void(0);">Reject order</a>
-                                                <a class="dropdown-item text-black" href="{{route('contract.show',$data->id)}}">View Details</a>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    </th>
+                                    <th style="text-align: center;">Mã hồ sơ</th>
+                                    <th style="text-align: center;">Tên đối tác</th>
+                                    <th style="text-align: center;">TDV phụ trách</th>
+                                    <th style="text-align: center;">Địa chỉ</th>
+                                    <th style="text-align: center;">Quận, Huyện</th>
+                                    <th style="text-align: center;">Lịch hẹn</th>
+                                    <th style="text-align: center;">Loại hợp đồng</th>
+                                    <th style="text-align: center;">Mức độ truy cập</th>
+                                    <th style="text-align: center;">Status</th>
+                                    <th style="text-align: center;"></th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                @foreach($info_data as $data)
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox ml-2">
+                                                <input type="checkbox" class="custom-control-input" id="customCheckBox5"
+                                                       required="">
+                                                <label class="custom-control-label" for="customCheckBox5"></label>
+                                            </div>
+                                        </td>
+                                        <td style="text-align: center">{{$data->id}}-{{$data->created_at->format('dmY')}}/HĐĐL</td>
+                                        <td style="text-align: center">{{$data->name}}</td>
+                                        <td style="text-align: center">{{$data->id_tdv}}</td>
+                                        <td style="text-align: center" class="text-ov">{{$data->address}}</td>
+                                        <td style="text-align: center" class="text-ov">{{$data->district}}, {{$data->city}}</td>
+                                        <td style="text-align: center">{{$data->appointment}}</td>
+                                        <td style="text-align: center">{{$data->type_contract}}</td>
+                                        <td style="text-align: center">{{$data->access_type}}</td>
+                                        <td style="text-align: center"><span class="text-warning">{{$data->status}}</span></td>
+                                        <td>
+                                            <div class="dropdown ml-auto">
+                                                <div class="btn-link" data-toggle="dropdown">
+                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M11.0005 12C11.0005 12.5523 11.4482 13 12.0005 13C12.5528 13 13.0005 12.5523 13.0005 12C13.0005 11.4477 12.5528 11 12.0005 11C11.4482 11 11.0005 11.4477 11.0005 12Z"
+                                                            stroke="#3E4954" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+                                                        <path
+                                                            d="M18.0005 12C18.0005 12.5523 18.4482 13 19.0005 13C19.5528 13 20.0005 12.5523 20.0005 12C20.0005 11.4477 19.5528 11 19.0005 11C18.4482 11 18.0005 11.4477 18.0005 12Z"
+                                                            stroke="#3E4954" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+                                                        <path
+                                                            d="M4.00049 12C4.00049 12.5523 4.4482 13 5.00049 13C5.55277 13 6.00049 12.5523 6.00049 12C6.00049 11.4477 5.55277 11 5.00049 11C4.4482 11 4.00049 11.4477 4.00049 12Z"
+                                                            stroke="#3E4954" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item text-black" href="javascript:void(0);">Accept order</a>
+                                                    <a class="dropdown-item text-black" href="javascript:void(0);">Reject order</a>
+                                                    <a class="dropdown-item text-black" href="{{route('contract.show',$data->id)}}">View Details</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
+
                 @if (isset($info_data['links']))
                     {{$info_data->links()}}
                 @endif

@@ -5,11 +5,11 @@
         <div class="form-head d-md-flex mb-sm-4 mb-3 align-items-start">
             <div class="mr-auto  d-lg-block">
                 <h2 class="text-black font-w600">Phòng ban</h2>
-                <p class="mb-0">Welcome to Omah Property Admin</p>
+{{--                <p class="mb-0">Welcome to Omah Property Admin</p>--}}
             </div>
-            <a href="javascript:void(0);" class="btn btn-primary rounded light mr-3">Refresh</a>
-            <a href="javascript:void(0);" class="btn btn-primary rounded"><i
-                    class="flaticon-381-settings-2 mr-0"></i></a>
+{{--            <a href="javascript:void(0);" class="btn btn-primary rounded light mr-3">Refresh</a>--}}
+{{--            <a href="javascript:void(0);" class="btn btn-primary rounded"><i--}}
+{{--                    class="flaticon-381-settings-2 mr-0"></i></a>--}}
         </div>
         <div class="row">
             <div class="col-md-7">

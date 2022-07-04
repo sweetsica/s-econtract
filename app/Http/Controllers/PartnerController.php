@@ -49,7 +49,8 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('id','=',$id);
+        $info_data = Partner::with('delivery_location','location')->get()->where('id','=',$id);
+//        dd($info_data);
         return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
     }
     /**
