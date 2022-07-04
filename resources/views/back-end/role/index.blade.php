@@ -24,7 +24,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label>Tên vai trò</label>
-                                        <input type="text" class="form-control" name="name"
+                                        <input required type="text" class="form-control" name="name"
                                                placeholder="Nhập tên phòng ban...">
                                     </div>
                                     <div class="form-group col-md-12 ">

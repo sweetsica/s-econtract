@@ -582,7 +582,7 @@
                                                     <label for="id_tdv">Chức danh người đại diện</label>
                                                     <input value="{{$data->account_title}}" type="text"
                                                            name="account_title" class="form-control" id="id_tdv"
-                                                           placeholder="Tên trình dược viên">
+                                                           placeholder="Chức danh">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="agent-name">Số điện thoại </label>
@@ -648,27 +648,33 @@
                                     <div class="basic-form">
                                         <form>
                                             <div class="form-row">
-                                                <div class="form-group col-md-8">
+                                                <div class="form-group col-md-6">
                                                     <label for="agent-name">Tên đại lý</label>
                                                     <input value="{{$data->name}}" type="text" name="name"
                                                            class="form-control" id="agent-name"
                                                            placeholder="Tên đại lý">
                                                 </div>
-                                                <div class="form-group col-md-4">
+                                                <div class="form-group col-md-6">
                                                     <label for="id_tdv">Tên trình dược viên</label>
                                                     <input value="{{$data->id_tdv}}" type="text" name="id_tdv"
                                                            class="form-control" id="id_tdv"
                                                            placeholder="Tên trình dược viên">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="delivery_district">Quận / Huyện</label>
+                                                <div class="form-group col-md-4">
+                                                    <label for="delivery_district">Xã / Phường</label>
                                                     <input value="{{$data->location->name}}" type="text"
                                                            name="delivery_district" class="form-control" id="agent-name"
                                                            placeholder="Quận / Huyện">
                                                 </div>
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-4">
+                                                    <label for="delivery_district">Huyện / Quận </label>
+                                                    <input value="{{$data->location->parent->name}}" type="text"
+                                                           name="delivery_district" class="form-control" id="agent-name"
+                                                           placeholder="Quận / Huyện">
+                                                </div>
+                                                <div class="form-group col-md-4">
                                                     <label for="delivery_city">Tỉnh / Thành Phố</label>
-                                                    <input value="{{$data->location->parent->name}}" type="text" name="delivery_city"
+                                                    <input value="{{$data->location->parent->parent->name}}" type="text" name="delivery_city"
                                                            class="form-control" id="delivery_city"
                                                            placeholder="Tỉnh / Thành Phố">
                                                 </div>
@@ -677,15 +683,21 @@
                                                     <textarea type="text" name="name" class="form-control" id="address"
                                                               placeholder="Địa chỉ ĐKKD">{{$data->address}}</textarea>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="delivery_district">Quận / Huyện nhận hàng</label>
+                                                <div class="form-group col-md-4">
+                                                    <label for="delivery_district">Xã / Phường nhận hàng</label>
                                                     <input value="{{$data->delivery_location->name}}" type="text"
                                                            name="delivery_district" class="form-control" id="agent-name"
                                                            placeholder="Quận / Huyện">
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="delivery_city">Tỉnh / Thành phố nhận hàng </label>
+                                                <div class="form-group col-md-4">
+                                                    <label for="delivery_district">Huyện / Quận nhận hàng</label>
                                                     <input value="{{$data->delivery_location->parent->name}}" type="text"
+                                                           name="delivery_district" class="form-control" id="agent-name"
+                                                           placeholder="Quận / Huyện">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="delivery_city">Tỉnh / Thành phố nhận hàng </label>
+                                                    <input value="{{$data->delivery_location->parent->parent->name}}" type="text"
                                                            name="delivery_city" class="form-control" id="delivery_city"
                                                            placeholder="Tỉnh / Thành Phố">
                                                 </div>

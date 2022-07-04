@@ -24,7 +24,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label>Tên phòng ban</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Nhập tên phòng ban...">
+                                        <input type="text" required class="form-control" name="name" placeholder="Nhập tên phòng ban...">
                                     </div>
                                     <div class="form-group col-md-12 ">
                                         <label>Mô tả phòng ban</label>

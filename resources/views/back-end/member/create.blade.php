@@ -24,31 +24,31 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label>Mã thành viên</label>
-                                        <input type="text" name="member_code"  class="form-control"
+                                        <input type="text" name="member_code" required class="form-control"
                                                placeholder="Mã thành viên">
                                     </div>
                                     <div class="form-group col-md-8">
                                         <label>Tên thành viên</label>
-                                        <input type="text" name="member_name" class="form-control"
+                                        <input type="text" name="member_name" required class="form-control"
                                                placeholder="Tên thành viên">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Số điện thoại</label>
-                                        <input type="tel" name="phone" class="form-control" placeholder="Nhập số điện thoại...">
+                                        <input type="tel" name="phone" required class="form-control" placeholder="Nhập số điện thoại...">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Địa chỉ email</label>
-                                        <input type="email" name="email" class="form-control" placeholder="Email">
+                                        <input type="email" name="email" required class="form-control" placeholder="Email">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label>Mật khẩu</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
+                                        <input type="password" name="password" required class="form-control" placeholder="Mật khẩu">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label>Tỉnh / Thành phố</label>
-                                        <select onchange="getDistrict(event)" id="provinces_select"
+                                        <select onchange="getDistrict(event)" required id="provinces_select"
                                                 class="form-control">
                                             <option selected disabled>Chọn tỉnh/thành phố...</option>
                                             @foreach($local as $local_item)
@@ -58,27 +58,27 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Huyện / Quận</label>
-                                        <select onchange="getWard(event)" id="districts_select" disabled
+                                        <select onchange="getWard(event)" required id="districts_select" disabled
                                                 class="form-control">
                                             <option selected>Chọn huyện/quận...</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Xã / Phường</label>
-                                        <select id="wards_select" name="location_id" disabled class="form-control">
+                                        <select id="wards_select" required name="location_id" disabled class="form-control">
                                             <option selected>Chọn xã/phường...</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Địa chỉ chi tiết</label>
-                                    <textarea name="address" class="form-control"
+                                    <textarea name="address"  class="form-control"
                                               placeholder="Địa chỉ chi tiết"></textarea>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <label>Phòng ban</label>
-                                        <select onchange="handleGetManager(event,null,null)" id="multiple_select" name="departments[]" multiple class="form-control department_select">
+                                        <select required onchange="handleGetManager(event,null,null)" id="multiple_select" name="departments[]" multiple class="form-control department_select">
                                             @foreach($departments as $department)
                                                 <option value="{{$department->id}}">{{$department->name}}</option>
                                             @endforeach
@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Nguời quản lý</label>
-                                        <select id="department_select" disabled name="parent_id" class="form-control manager_select_mbf">
+                                        <select required id="department_select" disabled name="parent_id" class="form-control manager_select_mbf">
                                             <option value="0" disabled selected>Chọn người quản lý...</option>
                                         </select>
                                     </div>
@@ -95,7 +95,7 @@
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
                                         <label>Vai trò</label>
-                                        <select id="multiple_select_role" name="roles[]" multiple class="form-control">
+                                        <select required id="multiple_select_role" name="roles[]" multiple class="form-control">
                                             @foreach($roles as $role)
                                                 <option value="{{$role->id}}">{{$role->name}}</option>
                                             @endforeach
