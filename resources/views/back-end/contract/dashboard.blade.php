@@ -151,7 +151,7 @@
                                     <th style="text-align: center;">Tên đối tác</th>
                                     <th style="text-align: center;">TDV phụ trách</th>
                                     <th style="text-align: center;">Địa chỉ</th>
-                                    <th style="text-align: center;">Quận, Huyện</th>
+{{--                                    <th style="text-align: center;">Quận, Huyện</th>--}}
                                     <th style="text-align: center;">Lịch hẹn</th>
                                     <th style="text-align: center;">Loại hợp đồng</th>
                                     <th style="text-align: center;">Mức độ truy cập</th>
@@ -173,7 +173,7 @@
                                         <td style="text-align: center">{{$data->name}}</td>
                                         <td style="text-align: center">{{$data->id_tdv}}</td>
                                         <td style="text-align: center" class="text-ov">{{$data->address}}</td>
-                                        <td style="text-align: center" class="text-ov">{{$data->district}}, {{$data->city}}</td>
+{{--                                        <td style="text-align: center" class="text-ov">{{$data->district}}, {{$data->city}}</td>--}}
                                         <td style="text-align: center">{{$data->appointment}}</td>
                                         <td style="text-align: center">{{$data->type_contract}}</td>
                                         <td style="text-align: center">{{$data->access_type}}</td>

@@ -78,7 +78,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get();
+        $info_data = Partner::latest()->get();
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
@@ -93,7 +93,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::where('type_contract','=',1)->get();
+        $info_data = Partner::latest()->where('type_contract','=',1)->get();
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
@@ -108,7 +108,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('type_contract','=',2);
+        $info_data = Partner::latest()->where('type_contract','=',2)->get();
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));
@@ -123,7 +123,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('type_contract','=',3);
+        $info_data = Partner::latest()->where('type_contract','=',3)->get();
         $contact_count = Partner::count();
         $user_count = User::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data','contact_count','user_count'));

@@ -556,7 +556,6 @@
                                                            placeholder="Tên đại lý">
                                                 </div>
                                             </div>
-
                                             {{--                                        <button type="submit" class="btn btn-primary">Sign in</button>--}}
                                         </form>
                                     </div>
@@ -685,26 +684,26 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="delivery_district">Xã / Phường nhận hàng</label>
-                                                    <input value="{{$data->delivery_location->name}}" type="text"
+                                                    <input value="{{$data->delivery_location? $data->delivery_location?->name : "Chưa điền thôn tin"}}" type="text"
                                                            name="delivery_district" class="form-control" id="agent-name"
                                                            placeholder="Quận / Huyện">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="delivery_district">Huyện / Quận nhận hàng</label>
-                                                    <input value="{{$data->delivery_location->parent->name}}" type="text"
+                                                    <input value="{{$data->delivery_location? $data->delivery_location->parent->name : "Chưa điền thông tin"}}" type="text"
                                                            name="delivery_district" class="form-control" id="agent-name"
                                                            placeholder="Quận / Huyện">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="delivery_city">Tỉnh / Thành phố nhận hàng </label>
-                                                    <input value="{{$data->delivery_location->parent->parent->name}}" type="text"
+                                                    <input value="{{$data->delivery_location? $data->delivery_location->parent->parent->name :"Chưa điền thông tin"}}" type="text"
                                                            name="delivery_city" class="form-control" id="delivery_city"
                                                            placeholder="Tỉnh / Thành Phố">
                                                 </div>
                                                 <div class="form-group col-md-12">
                                                     <label for="address">Chi tiết địa chỉ nhận hàng</label>
                                                     <textarea type="text" name="name" class="form-control" id="address"
-                                                              placeholder="Địa chỉ ĐKKD">{{$data->delivery_address}}</textarea>
+                                                              placeholder="Địa chỉ ĐKKD">{{$data->delivery_address?$data->delivery_address:"Chưa điền thông tin"}}</textarea>
                                                 </div>
                                             </div>
 

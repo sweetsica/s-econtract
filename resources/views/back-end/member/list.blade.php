@@ -66,9 +66,9 @@
                                                 <p>Chưa có vai trò nào</p>
                                             @endif
                                         </td>
-                                        <td>{{ $member->location->parent->parent->name }}</td>
-                                        <td>{{ $member->location->parent->name }}</td>
-                                        <td>{{ $member->location->name }}</td>
+                                        <td>{{ $member->location?->parent?->parent?->name }}</td>
+                                        <td>{{ $member->location?->parent?->name }}</td>
+                                        <td>{{ $member->location?->name }}</td>
                                         <td>{{ $member->address}}</td>
                                         <td>
                                             <div class="d-flex">

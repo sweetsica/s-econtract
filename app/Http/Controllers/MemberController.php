@@ -19,7 +19,7 @@ class MemberController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $members = Member::with('location')->get();
+        $members = Member::latest()->with('location')->get();
         return view('back-end.member.list', compact('page_title',
             'page_description', 'action', 'logo', 'logoText', 'members'));
     }

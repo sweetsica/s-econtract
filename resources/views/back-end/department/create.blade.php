@@ -34,7 +34,7 @@
                                 <div class="form-row mb-3">
                                     <div class="form-group col-md-4">
                                         <label>Tỉnh / Thành phố</label>
-                                        <select onchange="getDistrict(event)" id="provinces_select" class="form-control">
+                                        <select onchange="getDistrict(event)" required id="provinces_select" class="form-control">
                                             <option selected>Chọn tỉnh/thành phố...</option>
                                             @foreach($local as $local_item)
                                                 <option value="{{$local_item->code}}">{{$local_item->name}}</option>
@@ -43,13 +43,13 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Huyện / Quận</label>
-                                        <select onchange="getWard(event)" id="districts_select" disabled class="form-control">
+                                        <select onchange="getWard(event)" required id="districts_select" disabled class="form-control">
                                             <option selected>Chọn huyện/quận...</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Xã / Phường</label>
-                                        <select id="wards_select" name="location_id" disabled class="form-control">
+                                        <select id="wards_select" required name="location_id" disabled class="form-control">
                                             <option selected>Chọn xã/phường...</option>
                                         </select>
                                     </div>

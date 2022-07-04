@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Nguời quản lý</label>
-                                        <select required id="department_select" disabled name="parent_id" class="form-control manager_select_mbf">
+                                        <select id="department_select" disabled name="parent_id" class="form-control manager_select_mbf">
                                             <option value="0" disabled selected>Chọn người quản lý...</option>
                                         </select>
                                     </div>

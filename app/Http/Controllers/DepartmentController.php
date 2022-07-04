@@ -15,8 +15,8 @@ class DepartmentController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $departments = Department::with('members')->get();
-        $members = Member::with('location')->get();
+        $departments = Department::latest()->with('members')->get();
+        $members = Member::latest()->with('location')->get();
         return view('back-end.department_system.index', compact('page_title',
             'page_description', 'action', 'logo', 'logoText','departments', 'members'));
     }
