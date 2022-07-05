@@ -28,17 +28,40 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),[
-            'name' => 'required|string|max:255'
-        ]);
-        if($validator->fails()){
-            return response()->json($validator->errors());
+        try{
+            $validator = Validator::make($request->all(),[
+                'account_name' =>'required|string|max:255',
+                'account_email'=>'required|string|email|max:255',
+                'account_phone'=>'required|string|max:255',
+            ],[
+                'account_name.required'=>'Tên không được để trống',
+                'account_email.required'=>'Email không được để trống',
+                'account_phone.required'=>'Số điện thoại không được để trống'
+            ]);
+            if($validator->fails()){
+                return response()->json([
+                    'error'=>$validator->errors()
+                ],400);
+            }
+            $partner = Partner::create(
+                $request->all()
+            );
+            $partner->update([
+                'account_password'=>bcrypt($request->get('account_password'))
+            ]);
+            return response()->json([
+                'notice' => 'Add partner successfully',
+                'data' => [
+                    'id'=>$partner->id,
+                    'fullName' => $partner->account_name,
+                    'email' => $partner->account_email,
+                    'phone' => $partner->account_phone,
+                ]
+            ],200);
+        }catch (\Exception $e){
+            return response()->json(['message'=>$e->getMessage()],500);
         }
-        $partner = Partner::create($request->all());
-        return response()->json([
-            'notice' => 'Add partner successfully',
-            'data' => $partner
-        ],200);
+
     }
 
     /**

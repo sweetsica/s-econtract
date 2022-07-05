@@ -32,16 +32,10 @@ class SignatureController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         try{
-
             $id_partner = Session::get('id_partner');
             $partner = Partner::where('id', '=', $id_partner)->first();
             $partner['code_contract'] = $partner['id'] . '-' . $partner['created_at']->format('dmY') . "/2022/HĐĐL";
@@ -52,13 +46,12 @@ class SignatureController extends Controller
             $partner['name_doppelherz'] = $request['name_doppelherz'];
             $partner['bank_doppelherz'] = $request['bank_doppelherz'];
             $doppelherz_image = DoppelherzSign::where('name', '=', $partner['name_doppelherz'])->get('image')->first();
-//            dd($doppelherz_image);
             $partner['doppelherz_image'] = $doppelherz_image['image'];
             $partner['signed'] = true;
             $partner->save();
             return redirect()->route('contract.return.export-sign');
         }catch (\Exception $e){
-            dd($e);
+            return redirect()->to('/404');
         }
 
     }

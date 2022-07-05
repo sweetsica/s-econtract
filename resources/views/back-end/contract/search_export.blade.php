@@ -12,14 +12,23 @@
                             <a href="{!! url('/index'); !!}"><img  src="{{ asset('images/logo-full.png') }}" alt=""></a>
                         </div>
                         <h4 class="text-center mb-4">Hồ sơ điện tử Doppelherz Việt Nam</h4>
+                        @if (Session::has('error'))
+                            <div class="alert alert-danger" role="alert">
+                                Xuất hợp đồng thất bại, vui lòng kiểm tra lại số điện thoại và mật khẩu
+                            </div>
+                        @endif
                         <form action="{{route('contract.return.export')}}" method="POST">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label><strong>Số điện thoại đăng ký</strong></label>
                                 <input type="text" class="form-control" name="account_phone">
                             </div>
+                            <div class="form-group">
+                                <label><strong>Mật khẩu</strong></label>
+                                <input type="password" class="form-control" name="account_password">
+                            </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-block">Unlock</button>
+                                <button type="submit" class="btn btn-primary btn-block">Xuất hợp đồng</button>
                             </div>
                         </form>
                     </div>
