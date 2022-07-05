@@ -51,6 +51,7 @@ class PartnerController extends Controller
             ]);
             return response()->json([
                 'notice' => 'Add partner successfully',
+                'redirect_url'=>url('/contract/search'),
                 'data' => [
                     'id'=>$partner->id,
                     'fullName' => $partner->account_name,
