@@ -27,7 +27,7 @@
                             <div class="card bg-primary text-center">
                                 <div class="card-body">
                                     <h2 class="fs-30 text-white">Doanh số đăng ký</h2>
-                                    <span class="text-white font-w300">{{ number_format($data['account_budget1'],0)}}đ - {{  number_format($data['account_budget2'],0) }}đ</span>
+                                    <span class="text-white font-w300">{{ number_format((int)$data['account_budget1'],0)}}đ - {{  number_format((int)$data['account_budget2'],0) }}đ</span>
                                 </div>
                             </div>
                         </div>
@@ -280,8 +280,8 @@
                                             </div>
                                             <div class="ml-md-4 text-md-right">
                                                 <p class="fs-14 text-black mb-1 mr-1">Doanh số đăng ký</p>
-                                                <h4 class="fs-24 text-primary">{{ number_format($data['account_budget1'],0) }}đ
-                                                    - {{  number_format($data['account_budget2'],0)}}đ </h4>
+                                                <h4 class="fs-24 text-primary">{{ number_format((int)$data['account_budget1'],0) }}đ
+                                                    - {{  number_format((int)$data['account_budget2'],0)}}đ </h4>
                                             </div>
                                         </div>
                                         <div class="mb-sm-5 mb-2">
@@ -661,19 +661,19 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="delivery_district">Xã / Phường</label>
-                                                    <input value="{{$data->location->name}}" type="text"
+                                                    <input value="{{$data->location?->name}}" type="text"
                                                            name="delivery_district" class="form-control" id="agent-name"
                                                            placeholder="Quận / Huyện">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="delivery_district">Huyện / Quận </label>
-                                                    <input value="{{$data->location->parent->name}}" type="text"
+                                                    <input value="{{$data->location?->parent?->name}}" type="text"
                                                            name="delivery_district" class="form-control" id="agent-name"
                                                            placeholder="Quận / Huyện">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="delivery_city">Tỉnh / Thành Phố</label>
-                                                    <input value="{{$data->location->parent->parent->name}}" type="text" name="delivery_city"
+                                                    <input value="{{$data->location?->parent?->parent?->name}}" type="text" name="delivery_city"
                                                            class="form-control" id="delivery_city"
                                                            placeholder="Tỉnh / Thành Phố">
                                                 </div>

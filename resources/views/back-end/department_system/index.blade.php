@@ -60,9 +60,9 @@
                                         <td>{{ $member->member_name }}</td>
                                         <td>{{ $member->email }}</td>
                                         <td>{{ $member->phone }}</td>
-                                        <td>{{ $member->location->parent->parent->name }}</td>
-                                        <td>{{ $member->location->parent->name }}</td>
-                                        <td>{{ $member->location->name }}</td>
+                                        <td>{{ $member->location?->parent?->parent?->name }}</td>
+                                        <td>{{ $member->location?->parent?->name }}</td>
+                                        <td>{{ $member->location?->name }}</td>
                                         <td>{{ $member->address}}</td>
                                     </tr>
                                 @endforeach

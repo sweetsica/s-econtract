@@ -31,12 +31,14 @@ class PartnerController extends Controller
         try{
             $validator = Validator::make($request->all(),[
                 'account_name' =>'required|string|max:255',
-                'account_email'=>'required|string|email|max:255',
-                'account_phone'=>'required|string|max:255',
+                'account_email'=>'required|string|email|max:255|unique:partners',
+                'account_phone'=>'required|string|max:255|unique:partners',
             ],[
                 'account_name.required'=>'Tên không được để trống',
                 'account_email.required'=>'Email không được để trống',
-                'account_phone.required'=>'Số điện thoại không được để trống'
+                'account_phone.required'=>'Số điện thoại không được để trống',
+                'account_email.unique'=>'Email đã tồn tại',
+                'account_phone.unique'=>'Số điện thoại đã tồn tại'
             ]);
             if($validator->fails()){
                 return response()->json([
