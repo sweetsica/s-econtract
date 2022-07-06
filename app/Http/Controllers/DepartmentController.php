@@ -44,12 +44,17 @@ class DepartmentController extends Controller
             'page_description', 'action', 'logo', 'logoText','local'));
     }
     public function department_store(Request $request){
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'location_id' => 'required',
+        ],[
+            'name.required' => 'Tên phòng ban không được để trống',
+            'description.required' => 'Mô tả không được để trống',
+            'location_id.required' => 'Vui lòng chọn địa điểm',
+        ]);
         try{
-            $request->validate([
-                'name' => 'required|max:255',
-                'description' => 'required|max:255',
-                'location_id' => 'required',
-            ]);
+
             Department::create($request->all());
             return redirect()->to('/department');
         }catch (\Exception $e){
@@ -70,12 +75,16 @@ class DepartmentController extends Controller
             'page_description', 'action', 'logo', 'logoText','department','local','districts','wards'));
     }
     public function department_update(Request $request, $id){
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required|max:255',
+            'location_id' => 'required',
+        ],[
+            'name.required' => 'Tên phòng ban không được để trống',
+            'description.required' => 'Mô tả không được để trống',
+            'location_id.required' => 'Vui lòng chọn địa chỉ',
+        ]);
         try{
-            $request->validate([
-                'name' => 'required|max:255',
-                'description' => 'required|max:255',
-                'location_id' => 'required',
-            ]);
             $department = Department::find($id);
             $department->update($request->all());
             return redirect()->to('/department');

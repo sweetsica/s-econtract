@@ -2,16 +2,20 @@
 <!-- saved from url=(0038)http://szimek.github.io/signature_pad/ -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>Signature Pad demo</title>
+    <title>Bảng ký</title>
     <meta name="description" content="Signature Pad - HTML5 canvas based smooth signature drawing using variable width spline interpolation.">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
     <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+    </style>
     <link rel="stylesheet" href="{{asset('css/sign/signature-pad.css')}}">
     <style>
         .alert-success {
@@ -44,10 +48,10 @@
 
 <form action="{{route('signaturepad.upload')}}" method="POST" id="signature-pad" class="signature-pad">
     @csrf
-    <div class="row" style="padding-left: 16px">
-        <div style="width: 50%; text-align:center">
-            <p style="margin-bottom: 0px">Chọn vùng</p>
-            <select name="name_doppelherz">
+    <div class="flex" style="padding-left: 16px">
+        <div  class="w-1/2 text-center px-3">
+            <label class="font-semibold" style="margin-bottom: 0px">Chọn vùng</label>
+            <select class="px-3 py-2 w-full rounded-lg border" name="name_doppelherz">
                 <option value="0">Vùng 1: Hà Nội và Tây Bắc</option>
                 <option value="1">Vùng 2: Duyên Hải và Đông Bắc</option>
                 <option value="2">Vùng 3: miền Trung</option>
@@ -56,9 +60,9 @@
                 <option value="5">Vùng 6: miền Tây</option>
             </select>
         </div>
-        <div style="width: 50%; text-align:center">
-            <p style="margin-bottom: 0px">Chọn ngân hàng</p>
-            <select name="bank_doppelherz">
+        <div class="w-1/2 text-center px-3">
+            <label class="font-semibold" style="margin-bottom: 0px">Chọn ngân hàng</label>
+            <select class="px-3 py-2 w-full rounded-lg border" name="bank_doppelherz">
                 <option value="0">Vietcombank</option>
                 <option value="1">VP Bank</option>
             </select>
@@ -68,16 +72,19 @@
         <canvas width="692" style="touch-action: none; user-select: none;" height="662"></canvas>
     </div>
     <div class="signature-pad--footer">
-        <div class="description">Chữ ký đối tác</div>
-
+        <div class="description text-gray-600 font-bold">Chữ ký đối tác</div>
         <div class="signature-pad--actions">
             <div>
-                <button type="button" class="button clear" data-action="clear">Clear</button>
+                <button type="button"
+                        class="button clear px-6 py-1 bg-red-600 text-white rounded-lg"
+                        data-action="clear">Xóa bỏ</button>
 {{--                <button type="button" class="button" data-action="change-color">Change color</button>--}}
 {{--                <button type="button" class="button" data-action="undo">Undo</button>--}}
             </div>
             <div>
-                <button type="button" class="button save" data-action="save-png">Save as PNG</button>
+                <button type="button"
+                        class="button save px-3 py-1 bg-indigo-600 text-white rounded-lg"
+                        data-action="save-png">Lưu dưới dạng PNG</button>
                 <input type="hidden" name="signed">
             </div>
         </div>

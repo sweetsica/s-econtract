@@ -41,9 +41,7 @@ class PartnerController extends Controller
                 'account_phone.unique'=>'Số điện thoại đã tồn tại'
             ]);
             if($validator->fails()){
-                return response()->json([
-                    'error'=>$validator->errors()
-                ],400);
+                return response()->json($validator->messages(),400);
             }
             $partner = Partner::create(
                 $request->all()

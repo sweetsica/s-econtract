@@ -44,31 +44,32 @@ class MemberController extends Controller
     public function member_store(Request $request)
     {
         DB::beginTransaction();
+        $request->validate([
+            'member_name' => 'required|max:255',
+            'member_code' => 'required|max:255|unique:members',
+            'email' => 'required|email|max:255|unique:members',
+            'phone' => 'required|max:255|unique:members',
+            'password' => 'required|min:6',
+            'location_id' => 'required',
+            'address' => 'required',
+        ], [
+            'member_name.required' => 'Tên nhân viên không được để trống',
+            'member_code.required' => 'Mã nhân viên không được để trống',
+            'member_code.unique' => 'Mã nhân viên đã tồn tại',
+            'email.required' => 'Email không được để trống',
+            'email.email' => 'Email không đúng định dạng',
+            'email.unique' => 'Email đã tồn tại',
+            'phone.required' => 'Số điện thoại không được để trống',
+            'phone.unique' => 'Số điện thoại đã tồn tại',
+            'password.required' => 'Mật khẩu không được để trống',
+            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',
+            'location_id.required' => 'Vui lòng chọn địa điểm',
+            'roles.required' => 'Vui lòng chọn quyền',
+            'departments.required' => 'Vui lòng chọn phòng ban',
+            'address.required' => 'Vui lòng nhập địa chỉ',
+        ]);
         try {
-            $request->validate([
-                'member_name' => 'required|max:255',
-                'member_code' => 'required|max:255|unique:members',
-                'email' => 'required|email|max:255|unique:members',
-                'phone' => 'required|max:255|unique:members',
-                'password' => 'required|min:6',
-                'location_id' => 'required',
-                'address' => 'required',
-            ], [
-                'member_name.required' => 'Tên nhân viên không được để trống',
-                'member_code.required' => 'Mã nhân viên không được để trống',
-                'member_code.unique' => 'Mã nhân viên đã tồn tại',
-                'email.required' => 'Email không được để trống',
-                'email.email' => 'Email không đúng định dạng',
-                'email.unique' => 'Email đã tồn tại',
-                'phone.required' => 'Số điện thoại không được để trống',
-                'phone.unique' => 'Số điện thoại đã tồn tại',
-                'password.required' => 'Mật khẩu không được để trống',
-                'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',
-                'location_id.required' => 'Vui lòng chọn địa điểm',
-                'roles.required' => 'Vui lòng chọn quyền',
-                'departments.required' => 'Vui lòng chọn phòng ban',
-                'address.required' => 'Vui lòng nhập địa chỉ',
-            ]);
+
 
             $member = Member::create([
                 'member_name' => $request->get('member_name'),
@@ -86,7 +87,6 @@ class MemberController extends Controller
             return redirect()->to('/member');
         } catch (\Exception $e) {
             DB::rollBack();
-            dd($e);
             return redirect()->back()->with('error', $e->getMessage());
         }
     }
@@ -120,28 +120,28 @@ class MemberController extends Controller
     public function member_update(Request $request, $id)
     {
         DB::beginTransaction();
+        $request->validate([
+            'member_name' => 'required|max:255',
+            'member_code' => ['required','max:255', Rule::unique('members')->ignore($id)],
+            'email' =>['required','max:255', Rule::unique('members')->ignore($id)],
+            'phone' =>['required','max:255', Rule::unique('members')->ignore($id)],
+            'location_id' => 'required',
+            'address' => 'required',
+        ], [
+            'member_name.required' => 'Tên nhân viên không được để trống',
+            'member_code.required' => 'Mã nhân viên không được để trống',
+            'member_code.unique' => 'Mã nhân viên đã tồn tại',
+            'email.required' => 'Email không được để trống',
+            'email.email' => 'Email không đúng định dạng',
+            'email.unique' => 'Email đã tồn tại',
+            'phone.required' => 'Số điện thoại không được để trống',
+            'phone.unique' => 'Số điện thoại đã tồn tại',
+            'location_id.required' => 'Vui lòng chọn địa điểm',
+            'roles.required' => 'Vui lòng chọn quyền',
+            'departments.required' => 'Vui lòng chọn phòng ban',
+            'address.required' => 'Vui lòng nhập địa chỉ',
+        ]);
         try {
-            $request->validate([
-                'member_name' => 'required|max:255',
-                'member_code' => ['required','max:255', Rule::unique('members')->ignore($id)],
-                'email' =>['required','max:255', Rule::unique('members')->ignore($id)],
-                'phone' =>['required','max:255', Rule::unique('members')->ignore($id)],
-                'location_id' => 'required',
-                'address' => 'required',
-            ], [
-                'member_name.required' => 'Tên nhân viên không được để trống',
-                'member_code.required' => 'Mã nhân viên không được để trống',
-                'member_code.unique' => 'Mã nhân viên đã tồn tại',
-                'email.required' => 'Email không được để trống',
-                'email.email' => 'Email không đúng định dạng',
-                'email.unique' => 'Email đã tồn tại',
-                'phone.required' => 'Số điện thoại không được để trống',
-                'phone.unique' => 'Số điện thoại đã tồn tại',
-                    'location_id.required' => 'Vui lòng chọn địa điểm',
-                'roles.required' => 'Vui lòng chọn quyền',
-                'departments.required' => 'Vui lòng chọn phòng ban',
-                'address.required' => 'Vui lòng nhập địa chỉ',
-            ]);
             $member = Member::find($id);
             $member->update([
                 'member_name' => $request->get('member_name'),

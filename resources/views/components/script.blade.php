@@ -5,6 +5,7 @@
         $("#districts_select").attr("disabled",true)
         $("#wards_select").attr("disabled",true)
         let province_code = $("#provinces_select").val();
+        alert(province_code);
         let districtWrapper = `
             <option selected>Chọn huyện/quận...</option>
         `;

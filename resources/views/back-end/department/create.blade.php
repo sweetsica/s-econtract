@@ -25,6 +25,9 @@
                                     <div class="form-group col-md-12">
                                         <label>Tên phòng ban</label>
                                         <input type="text" required class="form-control" name="name" placeholder="Nhập tên phòng ban...">
+                                        @error("name")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-12 ">
                                         <label>Mô tả phòng ban</label>
@@ -40,20 +43,32 @@
                                                 <option value="{{$local_item->code}}">{{$local_item->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Huyện / Quận</label>
                                         <select onchange="getWard(event)" required id="districts_select" disabled class="form-control">
                                             <option selected>Chọn huyện/quận...</option>
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Xã / Phường</label>
                                         <select id="wards_select" required name="location_id" disabled class="form-control">
                                             <option selected>Chọn xã/phường...</option>
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
+
+
+
                                 <button type="submit" class="btn btn-primary">Tạo phòng ban</button>
                             </form>
                         </div>

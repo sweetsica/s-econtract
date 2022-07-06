@@ -86,7 +86,7 @@
                     <span class="nav-text">Tính năng khác</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{route('contract.signature')}}">Signature</a></li>
+{{--                    <li><a href="{{route('contract.signature')}}">Signature</a></li>--}}
                     <li><a href="{{route('contract.doppelherzsign')}}">Chữ ký giám đốc vùng</a></li>
                 </ul>
             </li>

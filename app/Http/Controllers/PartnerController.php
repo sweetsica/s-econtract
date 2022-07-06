@@ -232,7 +232,7 @@ class PartnerController extends Controller
             $name = 'hop-dong-dien-tu-'.$time;
             return $pdf->stream($name.'.pdf');
         }catch (\Exception $exception) {
-            dd($exception);
+            return redirect()->to('/404');
         }
     }
 }

@@ -26,23 +26,38 @@
                                         <label>Mã thành viên</label>
                                         <input type="text" name="member_code" required class="form-control"
                                                placeholder="Mã thành viên">
+                                        @error("member_code")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-8">
                                         <label>Tên thành viên</label>
                                         <input type="text" name="member_name" required class="form-control"
                                                placeholder="Tên thành viên">
+                                        @error("member_name")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Số điện thoại</label>
                                         <input type="tel" name="phone" required class="form-control" placeholder="Nhập số điện thoại...">
+                                        @error("member_name")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label>Địa chỉ email</label>
                                         <input type="email" name="email" required class="form-control" placeholder="Email">
+                                        @error("email")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label>Mật khẩu</label>
                                         <input type="password" name="password" required class="form-control" placeholder="Mật khẩu">
+                                        @error("password")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -55,6 +70,9 @@
                                                 <option value="{{$local_item->code}}">{{$local_item->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Huyện / Quận</label>
@@ -62,18 +80,27 @@
                                                 class="form-control">
                                             <option selected>Chọn huyện/quận...</option>
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Xã / Phường</label>
                                         <select id="wards_select" required name="location_id" disabled class="form-control">
                                             <option selected>Chọn xã/phường...</option>
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Địa chỉ chi tiết</label>
                                     <textarea name="address"  class="form-control"
                                               placeholder="Địa chỉ chi tiết"></textarea>
+                                    @error("address")
+                                    <p class="text-danger">{{$message}}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6 form-group">
@@ -83,6 +110,9 @@
                                                 <option value="{{$department->id}}">{{$department->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error("departments")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
 
                                     </div>
                                     <div class="form-group col-md-6">
@@ -90,6 +120,7 @@
                                         <select id="department_select" disabled name="parent_id" class="form-control manager_select_mbf">
                                             <option value="0" disabled selected>Chọn người quản lý...</option>
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -100,6 +131,9 @@
                                                 <option value="{{$role->id}}">{{$role->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error("roles")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
 
                                 </div>

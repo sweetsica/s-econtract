@@ -25,6 +25,9 @@
                                     <div class="form-group col-md-12">
                                         <label>Tên phòng ban</label>
                                         <input type="text" class="form-control" name="name" placeholder="Nhập tên phòng ban..." value="{{$department->name}}">
+                                        @error("name")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-12 ">
                                         <label>Mô tả phòng ban</label>
@@ -34,7 +37,7 @@
                                 <div class="form-row mb-3">
                                     <div class="form-group col-md-4">
                                         <label>Tỉnh / Thành phố</label>
-                                        <select onchange="getDistrict(event)" id="department_provinces" class="form-control">
+                                        <select onchange="getDistrict(event)" id="provinces_select" class="form-control">
                                             <option selected>Chọn tỉnh/thành phố...</option>
                                             @foreach($local as $local_item)
                                                 <option
@@ -42,20 +45,26 @@
                                                     value="{{$local_item->code}}">{{$local_item->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Huyện / Quận</label>
-                                        <select onchange="getWard(event)" id="department_districts"  class="form-control">
+                                        <select onchange="getWard(event)" id="districts_select"  class="form-control">
                                             @foreach($districts as $district)
                                                     <option
                                                         {{$department->location->parent->id == $district->id ? 'selected' : ''}}
                                                         value="{{$district->code}}">{{$district->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label>Xã / Phường</label>
-                                        <select id="department_wards" name="location_id"  class="form-control">
+                                        <select id="wards_select" name="location_id"  class="form-control">
                                             <option selected>Chọn xã/phường...</option>
                                             @foreach($wards as $ward)
                                                 <option
@@ -63,6 +72,9 @@
                                                     value="{{$ward->id}}">{{$ward->name}}</option>
                                             @endforeach
                                         </select>
+                                        @error("location_id")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Chỉnh Sửa</button>

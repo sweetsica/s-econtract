@@ -103,16 +103,18 @@
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
-            <div style="max-width: 200px;max-height: 200px">
-                <img style="width: 100%;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
+            <div style="width: 200px;height: 200px">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
             </div>
+            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>
         </td>
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
-            <div style="max-width: 200px;max-height: 200px">
-                <img style="width: 100%;object-fit: contain" src="{{$info['image']}}">
+            <div style="width: 200px ;height: 200px;object-fit: contain">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">
             </div>
+            <span  style="font-weight: bold;font-size: 16px">{{$info['account_name']}}</span>
         </td>
     </tr>
     </tbody>
