@@ -35,7 +35,6 @@ class AuthController extends Controller
             ],
             'token' => $token
         ];
-
         return response($response,200)->json([
             "message"=>"register success"
         ]);

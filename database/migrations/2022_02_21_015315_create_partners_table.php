@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
             $table->string('code_contract')->nullable();//Mã hồ sơ
-            $table->string('id_tdv')->nullable();//Tên trình dược viên
+            $table->string('id_tdv')->nullable();//Mã TDV
             $table->string('name');//Tên Đại Lý (agency_name)
             $table->string('address')->nullable();//Địa chỉ ĐKKD (address)
             $table->string('district')->nullable();//Quận/Huyện (district)

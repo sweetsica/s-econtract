@@ -174,7 +174,6 @@ class MemberController extends Controller
         }
     }
 
-
     public  function get_manager(Request $request)
     {
         $manager = Member::with('roles','department')->whereHas('department',function ($query) use ($request) {

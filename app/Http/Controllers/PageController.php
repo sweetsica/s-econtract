@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Enum\CommonEnum;
+use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use MongoDB\Driver\Session;
 
 class PageController extends Controller
 {
-    public function lockpage(Request $request)
+
+    public function index()
     {
-        if($request->password == 'Doppelherz'){
-            return redirect('dashboard');
+        if(\Illuminate\Support\Facades\Session::get('member_id')){
+            return redirect()->to('/dashboard');
         }else{
             $page_title = 'S-Contract Hợp đồng điện tử';
             $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
@@ -22,14 +25,11 @@ class PageController extends Controller
             return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
         }
     }
-    public function index()
-    {
-        $page_title = 'S-Contract Hợp đồng điện tử';
-        $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
-        $logo = "images/logo.png";
-        $logoText = "images/logo-text.png";
-        $action = __FUNCTION__;
-        return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
+
+
+    public function logout(){
+        \Illuminate\Support\Facades\Session::flush('member_id');
+        return redirect()->to('/');
     }
     // Sign up Partner
     public function signup_partner()
@@ -50,10 +50,7 @@ class PageController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        // get current user
         $user = Auth::user();
-        // all user role
-//        $roles = $user->getRoleNames()
         return view('back-end.dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
     }
 
