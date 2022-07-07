@@ -25,10 +25,39 @@ class PageController extends Controller
             return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
         }
     }
+    public function lockpage(Request $request)
+    {
+            if(\Illuminate\Support\Facades\Session::get('member_id')){
+                return redirect()->to('/dashboard');
+            }else{
+                $page_title = 'S-Contract Hợp đồng điện tử';
+                $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+                $logo = "images/logo.png";
+                $logoText = "images/logo-text.png";
+                $action = __FUNCTION__;
+                try{
+                    $member = Member::where('member_code', $request->get('member_code'))->first();
+                    if ($member) {
+                        if(Hash::check($request->password, $member->password)) {
+                            $request->session()->put(['member_id' => $member->id]);
+                            \Illuminate\Support\Facades\Session::forget('error');
+                            return redirect()->to('/dashboard');
+                        }else{
+                            \Illuminate\Support\Facades\Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+                        }
+                    }else{
+                        \Illuminate\Support\Facades\Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+                    }
+                    return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
+                }catch (\Exception $e){
+                    return redirect()->to('/');
+                }
 
+            }
 
+    }
     public function logout(){
-        \Illuminate\Support\Facades\Session::flush('member_id');
+        \Illuminate\Support\Facades\Session::forget('member_id');
         return redirect()->to('/');
     }
     // Sign up Partner
