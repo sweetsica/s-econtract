@@ -24,7 +24,7 @@ class MemberSeeder extends Seeder
          'location_id' => '829',
          'address' => 'Trung Kính, Phường Yên Hòa, Quận Cầu Giấy, TP Hà Nội',
      ]);
-        $member->roles()->attach(3);
-        $member->departments()->attach(1);
+      $member->roles()->attach([3]);
+      $member->department()->attach([1]);
     }
 }

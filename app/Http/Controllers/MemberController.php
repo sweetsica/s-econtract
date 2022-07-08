@@ -143,12 +143,18 @@ class MemberController extends Controller
         ]);
         try {
             $member = Member::find($id);
+            $password = null;
+            if($request->get('password')){
+                $password = bcrypt($request->get('password'));
+            }else{
+                $password = $member->password;
+            }
             $member->update([
                 'member_name' => $request->get('member_name'),
                 'member_code' => $request->get('member_code'),
                 'email' => $request->get('email'),
                 'phone' => $request->get('phone'),
-                'password' => bcrypt($request->get('password')),
+                'password' => $password,
                 'location_id' => $request->get('location_id'),
                 'address' => $request->get('address'),
                 'parent_id' => $request->get('parent_id'),

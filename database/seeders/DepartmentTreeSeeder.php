@@ -18,7 +18,7 @@ class DepartmentTreeSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
-            Department::class,
+            DepartmentSeeder::class,
             MemberSeeder::class,
         ]);
     }

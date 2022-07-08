@@ -15,29 +15,35 @@ class AuthController extends Controller
     #1
     public function register(Request $request)
     {
-        $fields = $request->validate([
-            'name' => 'required|string|min:3',
-            'email' => 'required|unique:users,email',
-            'password' => 'confirmed'
-        ]);
+        try{
+            $fields = $request->validate([
+                'name' => 'required|string|min:3',
+                'email' => 'required|unique:users,email',
+                'password' => 'confirmed'
+            ]);
+            $user = User::create([
+                'name' => $fields['name'],
+                'email' => $fields['email'],
+                'password' => bcrypt($fields['password'])
+            ]);
+            $token = $user->createToken('sweettoken')->accessToken;
+            $response = [
+                'user' => [
+                    "id"=>$user->id,
+                    "name"=>$user->name,
+                    "email"=>$user->email
+                ],
+                'token' => $token
+            ];
+            return response($response,200)->json([
+                "message"=>"register success"
+            ]);
+        }catch (\Exception $e){
+            return response($response,200)->json([
+                "message"=>$e->getMessage()
+            ]);
+        }
 
-        $user = User::create([
-            'name' => $fields['name'],
-            'email' => $fields['email'],
-            'password' => bcrypt($fields['password'])
-        ]);
-        $token = $user->createToken('sweettoken')->accessToken;
-        $response = [
-            'user' => [
-                "id"=>$user->id,
-                "name"=>$user->name,
-                "email"=>$user->email
-            ],
-            'token' => $token
-        ];
-        return response($response,200)->json([
-            "message"=>"register success"
-        ]);
     }
     #2
     public function login(Request $request)

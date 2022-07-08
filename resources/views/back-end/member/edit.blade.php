@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label>Mật khẩu</label>
-                                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
+                                        <input type="password" name="password" class="form-control" placeholder="Mật khẩu" re>
                                     </div>
                                 </div>
                                 <div class="form-row">
