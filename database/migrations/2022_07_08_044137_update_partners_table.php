@@ -16,6 +16,8 @@ return new class extends Migration
         //
         Schema::table('partners', function (Blueprint $table) {
             $table->string('id_number');
+            $table->string('token_email');
+            $table->string('token_sms');
         });
     }
 
