@@ -85,6 +85,7 @@ Route::middleware('auth_dph')->group(function () {
     Route::post('/save_upload_pdf', [\App\Http\Controllers\PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
     //Các mục về hợp đồng
     Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboard'])->name('dashboard');
+
 //Trang dashboard hợp đồng
     Route::get('/contract/dashboard', [\App\Http\Controllers\PartnerController::class, 'dashboard'])->name('contract.dashboard');
     Route::get('/contract/dashboard1', [\App\Http\Controllers\PartnerController::class, 'dashboard1'])->name('contract.dashboard1');
@@ -96,6 +97,7 @@ Route::middleware('auth_dph')->group(function () {
     Route::get('/contract/list_pending', [\App\Http\Controllers\PartnerController::class, 'list_typeall'])->name('contract.list.pending');
 //Chi tiết hợp đồng
     Route::get('/contract/show/{id}/', 'App\Http\Controllers\PartnerController@show')->name('contract.show');
+    Route::get('/contract/show-with-pdf/{id}', [\App\Http\Controllers\PartnerController::class, 'show_partner_pdf']);
 //Sửa chi tiết hợp đồng
     Route::get('/contract/edit/{id}/', 'App\Http\Controllers\PartnerController@edit')->name('contract.edit');
 //Giao diện tìm hợp đồng

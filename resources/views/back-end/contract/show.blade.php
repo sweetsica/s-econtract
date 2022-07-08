@@ -40,7 +40,7 @@
                                         <a href="app-profile.html" class="profile-icon"><i class="las la-cog"></i></a>
                                     </div>
                                     <h4 class="text-black fs-20 font-w600">{{$data['name']}}</h4>
-                                    <h3 class="fs-12">ID Hợp đồng: {{$data['id']}}-{{$data['created_at']}}</h3>
+                                    <h3 class="fs-12">ID Hợp đồng: {{$data['id']}}-{{$data['created_at']->format('dmY-His')}}</h3>
                                     <span class="mb-3 text-black d-block">{{$data['account_title']}}</span>
                                     <p>{{$data['account_birthday']}} - {{$data['account_gender']}}</p>
                                     <ul class="property-social">
@@ -66,8 +66,7 @@
                                     <img src="{{$data['doppelherz_image']}}" alt="" class="w-100">
                                 </div>
                                 <div class="card-footer border-0 ">
-                                    <a href="javascript:void(0);" class="btn btn-primary d-block rounded">View in Full
-                                        Screen</a>
+                                    <a href="{{url('/contract/show-with-pdf',['id'=>$data->id])}}" class="btn btn-primary d-block rounded">Xem hợp đồng PDF</a>
                                 </div>
                             </div>
                         </div>
@@ -499,7 +498,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-5">
                                                     <label for="agent-name">Mã hợp đồng</label>
-                                                    <input value="{{$data->account_name}}" type="text"
+                                                    <input value="{{$data['id']}}-{{$data['created_at']->format('dmY-His')}}" type="text"
                                                            name="account_name" class="form-control" id="agent-name"
                                                            placeholder="Tên đại lý">
                                                 </div>

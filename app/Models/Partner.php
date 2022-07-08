@@ -67,4 +67,8 @@ class Partner extends Model
     {
         return $this->belongsTo(Local::class,'location_id','id');
     }
+    public function member()
+    {
+        return $this->belongsTo(Member::class,'id_tdv','member_code');
+    }
 }

@@ -34,6 +34,9 @@
                                 <button type="submit" class="btn btn-primary btn-block">Đăng Nhập</button>
                             </div>
                         </form>
+                        <div class="text-center pt-4">
+                            <a href="/login">Đăng nhập với admin</a>
+                        </div>
                     </div>
                 </div>
             </div>

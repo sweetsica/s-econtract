@@ -56,7 +56,7 @@
 
                                         </td>
                                         <td width="300px">
-                                            @if($member->role !== null)
+                                            @if($member->roles !== null)
                                                 <ul>
                                                     @foreach($member->roles as $role)
                                                         <li>{{ $role->name }}</li>

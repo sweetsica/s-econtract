@@ -23,8 +23,8 @@
                         </ul>
                     </li>
                     <li><a href="{{route('contract.seach')}}">Tìm xuất hợp đồng</a></li>
-                    <li><a href="{{route('contract.show',1)}}">Chi tiết hợp đồng</a></li>
-                    <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>
+{{--                    <li><a href="{{route('contract.show',1)}}">Chi tiết hợp đồng</a></li>--}}
+{{--                    <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>--}}
                 </ul>
             </li>
             <li>

@@ -35,7 +35,7 @@ class MemberController extends Controller
         $roles = Role::all();
         $departments = Department::all();
         $memberWithRoleManager = Member::with('roles')->whereHas('roles', function ($query) {
-            return $query->where('role_id', 1);
+            return $query->where('role_id', 3);
         })->get();
         return view('back-end.member.create', compact('page_title',
             'page_description', 'action', 'logo', 'logoText', 'local', 'roles', 'departments', 'memberWithRoleManager'));
@@ -108,7 +108,7 @@ class MemberController extends Controller
         $managers = Member::with('roles','department')->whereHas('department',function ($query) use ($member) {
             $query->whereIn('department_id',$member->department->pluck('id')->toArray());
         })->whereHas('roles', function ($query) {
-            return $query->where('role_id', 1);
+            return $query->where('role_id', 3);
         })->get();
         $districts = Local::where('parent_id',$member->location->parent->parent->code)->get();
         $wards = Local::where('parent_id',$member->location->parent->code)->get();
@@ -179,7 +179,7 @@ class MemberController extends Controller
         $manager = Member::with('roles','department')->whereHas('department',function ($query) use ($request) {
             $query->whereIn('department_id',$request->get('department_id'));
         })->whereHas('roles', function ($query) {
-            return $query->where('role_id', 1);
+            return $query->where('role_id', 3);
         })->get();
         return response()->json($manager);
     }
