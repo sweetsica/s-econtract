@@ -1,7 +1,7 @@
 @php
 $member = null;
 if(\Illuminate\Support\Facades\Session::get('member_id')){
-    $member = \App\Models\Member::find(\Illuminate\Support\Facades\Session::get('member_id'));
+    $member = \App\Models\Member::with('roles')->find(\Illuminate\Support\Facades\Session::get('member_id'));
 }
 @endphp
 <div class="chatbox">
@@ -685,9 +685,13 @@ if(\Illuminate\Support\Facades\Session::get('member_id')){
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
 									<div class="header-info">
 										<span class="text-black">{{$member->member_name}}</span>
-										<p class="fs-12 mb-0">Admin</p>
+										<p class="fs-12 mb-0">
+                                            @foreach($member->roles as $role)
+                                                {{$role->name}} {{count($member->roles) > 1 ? ', ' : ''}}
+                                            @endforeach
+                                        </p>
 									</div>
-                                    <img  src="{{ asset('images/profile/17.jpg') }}" width="20" alt=""/>
+                                    <img  src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" width="20" alt=""/>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
 {{--                                    <a href="{!! url('/app-profile'); !!}" class="dropdown-item ai-icon">--}}

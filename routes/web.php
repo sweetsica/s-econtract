@@ -76,7 +76,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware('auth_dph')->group(function () {
     Route::get('/logout',[\App\Http\Controllers\PageController::class, 'logout'])->name('logout');
-
     Route::get('/dynamic_pdf', [\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
     Route::get('/pre_dynamic_pdf', [\App\Http\Controllers\PDFController::class, 'pre_pdf'])->name('pre.pdf');
     Route::get('/dynamic_pdf_true', [\App\Http\Controllers\PDFController::class, 'export_pdf'])->name('export.pdf');
