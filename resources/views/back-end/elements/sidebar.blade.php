@@ -52,7 +52,7 @@
             <li>
                 <a class="has-arrow ai-icon" href="{{asset('/role')}}" aria-expanded="false">
                     <i class="flaticon-381-settings-4"></i>
-                    <span class="nav-text">Quyền && Vai Trò</span>
+                    <span class="nav-text">Quyền & Vai Trò</span>
                 </a>
 {{--                <ul aria-expanded="false">--}}
 {{--                    <li><a href="{!! url('/app-calender'); !!}">Document</a></li>--}}

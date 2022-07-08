@@ -480,4 +480,58 @@ class PartnerController extends Controller
         $name = 'hop-dong-dien-tu-' . $time;
         return $pdf->stream($name . '.pdf');
     }
+
+    //reset password
+    public function reset_password(){
+        $page_title = 'S-Contract Hợp đồng điện tử';
+        $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.contract.reset_password', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+    }
+
+    public function checkinfo(Request $request){
+        $request->validate([
+            'account_phone'=>'required',
+            'id_number'=>'required'
+        ],[
+            'account_phone.required'=>'Vui lòng nhập số điện thoại.',
+            'id_number.required'=>'Vui lòng nhập số CMT/CCCD'
+        ]);
+        try{
+            $account_phone = $request->get('account_phone');
+            $id_number = $request->get('id_number');
+            $partner = Partner::where('account_phone',$account_phone)->where('id_number',$id_number)->first();
+            if($partner){
+                $request->session()->put('partner_reset_password_id',$partner->id);
+                Session::flash('success', 'Đã tìm thấy thông tin của bạn, vui lòng nhập mật khẩu mới');
+                return redirect()->to('/partner/reset-password');
+            }
+        }catch (\Exception $e){
+            abort(404);
+        }
+    }
+    public function reset_password_save(Request $request){
+        $request->validate([
+            'password'=>'required',
+            'confirm_password'=>'same:password|required'
+        ],[
+            'password.required'=>'Vui lòng nhập mật khẩu.',
+            'confirm_password.required'=>'Vui lòng nhập lại mật khẩu.',
+            'confirm_password.same'=>'Mật khẩu không trùng khớp.'
+        ]);
+        try{
+            $id = Session::get('partner_reset_password_id');
+            $password = $request->get('password_confirm');
+            $partner = Partner::find($id);
+            $partner->account_password = Hash::make($password);
+            $partner->save();
+            Session::forget('partner_reset_password_id');
+            Session::flash('success-reset password', 'Đổi mật khẩu thành công');
+            return redirect()->to('/contract/search/');
+        }catch (\Exception $e){
+            abort(404);
+        }
+    }
 }

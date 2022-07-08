@@ -30,6 +30,9 @@ Route::get('/contract/search/', [\App\Http\Controllers\PartnerController::class,
 Route::post('/contract/return_export/', [\App\Http\Controllers\PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
 //Tìm và check hợp đồng
 Route::get('/contract/return_export_after_sign/', [\App\Http\Controllers\PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
+Route::get('/partner/reset-password', [\App\Http\Controllers\PartnerController::class, 'reset_password']);
+Route::post('/partner/reset-password/save', [\App\Http\Controllers\PartnerController::class, 'reset_password_save']);
+Route::post('/partner/checkinfo', [\App\Http\Controllers\PartnerController::class, 'checkinfo']);
 
 //Route::get('/table-bootstrap-basic', 'App\Http\Controllers\OmahadminController@table_bootstrap_basic');
 //Document

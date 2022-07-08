@@ -99,7 +99,7 @@
                                                 <label class="custom-control-label" for="customCheckBox5"></label>
                                             </div>
                                         </td>
-                                        <td style="text-align: center">{{$data->id}}-{{$data->created_at->format('dmY')}}/HĐĐL</td>
+                                        <td style="text-align: center">{{$data['id']}}-{{$data['created_at']->format('dmY-His')}}</td>
                                         <td style="text-align: center">{{$data->account_name}}</td>
                                         <td style="text-align: center">{{$data->id_tdv}}</td>
                                         <td style="text-align: center" class="text-ov">{{$data->address}}</td>
