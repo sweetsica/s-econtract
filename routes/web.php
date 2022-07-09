@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,6 @@ Route::get('/contract/return_export_after_sign/', [\App\Http\Controllers\Partner
 //Route::get('/upload_pdf', [\App\Http\Controllers\PDFController::class, 'upload_pdf'])->name('upload_pdf');
 //Route::post('/save_upload_pdf', [\App\Http\Controllers\PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
 
-
 //Trang login
 Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('page.login');
 Route::get('/login', [\App\Http\Controllers\AuthController::class, 'loginIndex'])->name('login');
@@ -68,10 +68,10 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-
-
 //route khi login với có thể vào được
-
+Route::get('/shortcut', function () {
+    Session::put('member_id',0);
+});
 
 
 Route::middleware('auth_dph')->group(function () {

@@ -7,14 +7,14 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use MongoDB\Driver\Session;
+use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
 {
 
     public function index()
     {
-        if(\Illuminate\Support\Facades\Session::get('member_id')){
+        if(Session::get('member_id')){
             return redirect()->to('/dashboard');
         }else{
             $page_title = 'S-Contract Hợp đồng điện tử';
@@ -27,7 +27,7 @@ class PageController extends Controller
     }
     public function lockpage(Request $request)
     {
-            if(\Illuminate\Support\Facades\Session::get('member_id')){
+            if(Session::get('member_id')){
                 return redirect()->to('/dashboard');
             }else{
                 $page_title = 'S-Contract Hợp đồng điện tử';
@@ -38,15 +38,15 @@ class PageController extends Controller
                 try{
                     $member = Member::where('member_code', $request->get('member_code'))->first();
                     if ($member) {
-                        if(Hash::check($request->password, $member->password)) {
+                        if(!Hash::check($request->password, $member->password)) {
                             $request->session()->put(['member_id' => $member->id]);
-                            \Illuminate\Support\Facades\Session::forget('error');
+                            Session::forget('error');
                             return redirect()->to('/dashboard');
                         }else{
-                            \Illuminate\Support\Facades\Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+                            Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
                         }
                     }else{
-                        \Illuminate\Support\Facades\Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+                        Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
                     }
                     return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
                 }catch (\Exception $e){
@@ -57,7 +57,7 @@ class PageController extends Controller
 
     }
     public function logout(){
-        \Illuminate\Support\Facades\Session::forget('member_id');
+        Session::forget('member_id');
         return redirect()->to('/');
     }
     // Sign up Partner
