@@ -35,10 +35,12 @@ class PartnerController extends Controller
             'account_name' => 'required|string|max:255',
             'account_email' => 'required|string|email|max:255',
             'account_phone' => 'required|string|max:255',
+            'id_number'=>'required',
         ], [
             'account_name.required' => 'Tên không được để trống',
             'account_email.required' => 'Email không được để trống',
-            'account_phone.required' => 'Số điện thoại không được để trống'
+            'account_phone.required' => 'Số điện thoại không được để trống',
+            'id_number.required' => 'Số chứng minh thư không được để trống',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors());
@@ -61,7 +63,7 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::with('delivery_location', 'location')->get()->where('id', '=', $id);
+        $info_data = Partner::with('delivery_location', 'location','tdv')->get()->where('id', '=', $id);
 //        dd($info_data);
         return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
@@ -472,9 +474,8 @@ class PartnerController extends Controller
     }
 
     // Dành cho người quản lý muốn xem chi tiết hợp đồng trên pdf
-    public function show_partner_pdf(Request $request){
-        $id = $request->get('id');
-        $partner = Partner::find($request->get($id));
+    public function show_partner_pdf($id){
+        $partner = Partner::find($id);
         $pdf = PDF::loadView('/pdf_true_export', ["info" => $partner]);
         $time = Carbon::now()->format('d-m-Y');
         $name = 'hop-dong-dien-tu-' . $time;

@@ -143,7 +143,6 @@ class MemberController extends Controller
         ]);
         try {
             $member = Member::find($id);
-            $password = null;
             if($request->get('password')){
                 $password = bcrypt($request->get('password'));
             }else{

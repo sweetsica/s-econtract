@@ -15,7 +15,7 @@ class PageController extends Controller
     public function index()
     {
         if(\Illuminate\Support\Facades\Session::get('member_id')){
-            return redirect()->to('/dashboard');
+            return redirect()->to('/contract/dashboard');
         }else{
             $page_title = 'S-Contract Hợp đồng điện tử';
             $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
@@ -28,7 +28,7 @@ class PageController extends Controller
     public function lockpage(Request $request)
     {
             if(\Illuminate\Support\Facades\Session::get('member_id')){
-                return redirect()->to('/dashboard');
+                return redirect()->to('/contract/dashboard');
             }else{
                 $page_title = 'S-Contract Hợp đồng điện tử';
                 $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
@@ -41,7 +41,7 @@ class PageController extends Controller
                         if(Hash::check($request->password, $member->password)) {
                             $request->session()->put(['member_id' => $member->id]);
                             \Illuminate\Support\Facades\Session::forget('error');
-                            return redirect()->to('/dashboard');
+                            return redirect()->to('/contract/dashboard');
                         }else{
                             \Illuminate\Support\Facades\Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
                         }

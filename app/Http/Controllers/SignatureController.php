@@ -40,7 +40,6 @@ class SignatureController extends Controller
             $partner = Partner::where('id', '=', $id_partner)->first();
             $partner['code_contract'] = $partner['id'] . '-' . $partner['created_at']->format('dmY') . "/2022/HĐĐL";
             $url_image = $this->save_sign($request, sprintf("%s-%s", $partner['id'], $partner["account_phone"]));
-            //$urlImage
             $partner['image'] = $url_image;
             $partner['image'] = Session::get('url_true');
             $partner['name_doppelherz'] = $request['name_doppelherz'];
@@ -51,7 +50,7 @@ class SignatureController extends Controller
             $partner->save();
             return redirect()->route('contract.return.export-sign');
         }catch (\Exception $e){
-            return redirect()->to('/404');
+           dd($e);
         }
 
     }

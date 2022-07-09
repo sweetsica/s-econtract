@@ -22,20 +22,20 @@
 <p><em>- Căn cứ Luật Thương mại số: 36/2005/QH11, ngày 14/06/2005 Quốc hội Nước CHXHCN Việt Nam;</em></p>
 <p><em>- Căn cứ vào nhu cầu và thỏa thuận của hai bên.</em></p>
 <p><em>  Hôm nay, ngày……../….…./2022, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</em></p>
-<p><strong><u> </u></strong></p>
+<p><strong> </strong></p>
 <p><strong><u>BÊN A</u></strong><em>                  </em><strong>: CÔNG TY CỔ PHẦN MASTERTRAN </strong></p>
 <p>Địa chỉ<em>                  </em>: NV4.13 Khu chức năng đô thị Tây Mỗ, P. Tây Mỗ, Q. Nam Từ Liêm, Hà Nội</p>
 <p>Điện thoại             : 024.37878408                       Mã số thuế:       0105381169</p>
 <p>Tài khoản              : {{$info['number_doppelherz']}}</p>
-<p>Ngân hàng            : {{$info['account_doppelherz']}}.</p>
-<p>Đại diện<em>                </em>: Ông {{$info['name_doppelherz']}}.   Chức danh: {{$info['position_doppelherz']}}.</p>
+<p>Ngân hàng            : {{$info['account_doppelherz']}}</p>
+<p>Đại diện<em>                </em>: Ông {{$info['name_doppelherz']}}        Chức danh: {{$info['position_doppelherz']}}</p>
 <p>(Theo giấy ủy quyền số: MTT030/0521/GUQ ngày 01 tháng 05 năm 2021).</p>
-<p><strong><u> </u></strong></p>
+<p><strong> </strong></p>
 <p><strong><u>BÊN B</u></strong><em>                 </em></strong>: <b style="color:red">{{$info['name']}}</b></p>
 <p>Địa chỉ                  : <b style="color:red">{{$info['address']}}</b></p>
-<p>Điện thoại             : <b style="color:red">{{$info['account_phone']}}</b>.                       Mã số thuế: <b style="color:red">{{$info['account_tax']}}</b></p>
+<p>Điện thoại             : <b style="color:red">{{$info['account_phone']}}</b>                       Mã số thuế: <b style="color:red">{{$info['account_tax']}}</b></p>
 <p>Địa chỉ email         : <b style="color:red">{{$info['account_email']}}</b></p>
-<p>Đại điện                : <b style="color:red">{{$info['name']}}</b>. Chức danh: <b style="color:red">{{$info['account_title']}}</b></p>
+<p>Đại điện                : <b style="color:red">{{$info['account_name']}}</b>      Chức danh: <b style="color:red">{{$info['account_title']}}</b></p>
 <p>Bên A và Bên B đồng ý ký Hợp đồng đại lý về việc mua bán sản phẩm với các điều khoản sau:</p><br><br>
 <p><strong>Điều 1: PHẠM VI, ĐỐI TƯỢNG CỦA HỢP ĐỒNG.</strong></p>
 <ul>
@@ -104,15 +104,25 @@
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path($info['doppelherz_image'])}}">
             </div>
             <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>
         </td>
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
-            <div style="width: 200px ;height: 200px;object-fit: contain">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">
+            <div style="object-fit: contain">
+                @if($info['image'])
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">
+                @else
+                               
+                               
+                               
+                    <h6>Khách hàng chưa ký</h6>
+                               
+                               
+                               
+                @endif
             </div>
             <span  style="font-weight: bold;font-size: 16px">{{$info['account_name']}}</span>
         </td>

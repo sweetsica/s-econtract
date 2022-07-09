@@ -13,9 +13,9 @@
                     <li class="breadcrumb-item"><a href="javascript:void(0)">Danh sách đối tác</a></li>
                 </ol>
             </div>
-{{--            <a href="javascript:void(0);" class="btn btn-primary rounded light mr-3">Refresh</a>--}}
-{{--            <a href="javascript:void(0);" class="btn btn-primary rounded"><i--}}
-{{--                    class="flaticon-381-settings-2 mr-0"></i></a>--}}
+            {{--            <a href="javascript:void(0);" class="btn btn-primary rounded light mr-3">Refresh</a>--}}
+            {{--            <a href="javascript:void(0);" class="btn btn-primary rounded"><i--}}
+            {{--                    class="flaticon-381-settings-2 mr-0"></i></a>--}}
         </div>
         <div class="row">
             <div class="col-xl-3 col-xxl-6 col-md-6">
@@ -47,12 +47,16 @@
                                 <span class="fs-18 text-black">Tổng số thành viên</span>
                             </div>
                             <span class="bg-primary rounded p-3">
-                                <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-											<path d="M15.1208 37.6042H1.97909C1.10825 37.6042 0.395752 36.8917 0.395752 36.0208V14.1708C0.395752 13.775 0.554085 13.3 0.870752 13.0625L14.0124 0.791659C14.4874 0.395825 15.1208 0.237492 15.6749 0.474992C16.3083 0.791659 16.6249 1.34583 16.6249 1.97916V36.1C16.6249 36.8917 15.9124 37.6042 15.1208 37.6042ZM3.48325 34.5167H13.5374V5.54166L3.48325 14.8833V34.5167Z"
+                                <svg width="38" height="38" viewBox="0 0 38 38" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+											<path
+                                                d="M15.1208 37.6042H1.97909C1.10825 37.6042 0.395752 36.8917 0.395752 36.0208V14.1708C0.395752 13.775 0.554085 13.3 0.870752 13.0625L14.0124 0.791659C14.4874 0.395825 15.1208 0.237492 15.6749 0.474992C16.3083 0.791659 16.6249 1.34583 16.6249 1.97916V36.1C16.6249 36.8917 15.9124 37.6042 15.1208 37.6042ZM3.48325 34.5167H13.5374V5.54166L3.48325 14.8833V34.5167Z"
                                                 fill="white"/>
-											<path d="M36.0208 37.6042H15.0416C14.1708 37.6042 13.4583 36.8917 13.4583 36.0208V17.4167C13.4583 16.5458 14.1708 15.8333 15.0416 15.8333H36.0208C36.8916 15.8333 37.6041 16.5458 37.6041 17.4167V36.1C37.6041 36.8917 36.8916 37.6042 36.0208 37.6042ZM16.6249 34.5167H34.5166V18.9208H16.6249V34.5167Z"
+											<path
+                                                d="M36.0208 37.6042H15.0416C14.1708 37.6042 13.4583 36.8917 13.4583 36.0208V17.4167C13.4583 16.5458 14.1708 15.8333 15.0416 15.8333H36.0208C36.8916 15.8333 37.6041 16.5458 37.6041 17.4167V36.1C37.6041 36.8917 36.8916 37.6042 36.0208 37.6042ZM16.6249 34.5167H34.5166V18.9208H16.6249V34.5167Z"
                                                 fill="white"/>
-											<path d="M28.5791 37.6042H22.4832C21.6124 37.6042 20.8999 36.8917 20.8999 36.0208V26.3625C20.8999 25.4917 21.6124 24.7792 22.4832 24.7792H28.5791C29.4499 24.7792 30.1624 25.4917 30.1624 26.3625V36.0208C30.1624 36.8917 29.4499 37.6042 28.5791 37.6042ZM24.0666 34.5167H27.0749V27.9458H24.0666V34.5167Z"
+											<path
+                                                d="M28.5791 37.6042H22.4832C21.6124 37.6042 20.8999 36.8917 20.8999 36.0208V26.3625C20.8999 25.4917 21.6124 24.7792 22.4832 24.7792H28.5791C29.4499 24.7792 30.1624 25.4917 30.1624 26.3625V36.0208C30.1624 36.8917 29.4499 37.6042 28.5791 37.6042ZM24.0666 34.5167H27.0749V27.9458H24.0666V34.5167Z"
                                                 fill="white"/>
                                 </svg>
                             </span>
@@ -73,7 +77,8 @@
                                 <tr>
                                     <th>
                                         <div class="custom-control custom-checkbox ml-2">
-                                            <input type="checkbox" class="custom-control-input" id="checkAll" required="">
+                                            <input type="checkbox" class="custom-control-input" id="checkAll"
+                                                   required="">
                                             <label class="custom-control-label" for="checkAll"></label>
                                         </div>
                                     </th>
@@ -81,11 +86,11 @@
                                     <th style="text-align: center;">Tên đối tác</th>
                                     <th style="text-align: center;">TDV phụ trách</th>
                                     <th style="text-align: center;">Địa chỉ</th>
-{{--                                    <th style="text-align: center;">Quận, Huyện</th>--}}
+                                    {{--                                    <th style="text-align: center;">Quận, Huyện</th>--}}
                                     <th style="text-align: center;">Lịch hẹn</th>
                                     <th style="text-align: center;">Loại hợp đồng</th>
                                     <th style="text-align: center;">Mức độ truy cập</th>
-                                    <th style="text-align: center;">Status</th>
+                                    <th style="text-align: center;">Trạng thái</th>
                                     <th style="text-align: center;"></th>
                                 </tr>
                                 </thead>
@@ -99,15 +104,17 @@
                                                 <label class="custom-control-label" for="customCheckBox5"></label>
                                             </div>
                                         </td>
-                                        <td style="text-align: center">{{$data['id']}}-{{$data['created_at']->format('dmY-His')}}</td>
+                                        <td style="text-align: center">{{$data['id']}}
+                                            -{{$data['created_at']->format('dmY-His')}}</td>
                                         <td style="text-align: center">{{$data->account_name}}</td>
                                         <td style="text-align: center">{{$data->id_tdv}}</td>
                                         <td style="text-align: center" class="text-ov">{{$data->address}}</td>
-{{--                                        <td style="text-align: center" class="text-ov">{{$data->district}}, {{$data->city}}</td>--}}
+                                        {{--                                        <td style="text-align: center" class="text-ov">{{$data->district}}, {{$data->city}}</td>--}}
                                         <td style="text-align: center">{{$data->appointment}}</td>
                                         <td style="text-align: center">{{$data->type_contract}}</td>
                                         <td style="text-align: center">{{$data->access_type}}</td>
-                                        <td style="text-align: center"><span class="text-warning">{{$data->status}}</span></td>
+                                        <td style="text-align: center"><span
+                                                class="text-warning">{{$data->status}}</span></td>
                                         <td>
                                             <div class="dropdown ml-auto">
                                                 <div class="btn-link" data-toggle="dropdown">
@@ -128,9 +135,12 @@
                                                     </svg>
                                                 </div>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item text-black" href="javascript:void(0);">Accept order</a>
-                                                    <a class="dropdown-item text-black" href="javascript:void(0);">Reject order</a>
-                                                    <a class="dropdown-item text-black" href="{{route('contract.show',$data->id)}}">View Details</a>
+                                                    {{--                                                    <a class="dropdown-item text-black" href="javascript:void(0);">Accept order</a>--}}
+                                                    <a class="dropdown-item text-black"
+                                                       href="{{url('/contract/show-with-pdf',['id'=>$data->id])}}">Xem
+                                                        hợp đồng PDF</a>
+                                                    <a class="dropdown-item text-black"
+                                                       href="{{route('contract.show',$data->id)}}">Xem chi tiết</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -142,9 +152,9 @@
                     </div>
                 </div>
 
-{{--                @if (isset($info_data['links']))--}}
-{{--                    {{$info_data->links()}}--}}
-{{--                @endif--}}
+                {{--                @if (isset($info_data['links']))--}}
+                {{--                    {{$info_data->links()}}--}}
+                {{--                @endif--}}
             </div>
         </div>
     </div>
