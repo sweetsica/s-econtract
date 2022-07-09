@@ -31,6 +31,9 @@ Route::get('/contract/search/', [\App\Http\Controllers\PartnerController::class,
 Route::post('/contract/return_export/', [\App\Http\Controllers\PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
 //Tìm và check hợp đồng
 Route::get('/contract/return_export_after_sign/', [\App\Http\Controllers\PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
+Route::get('/partner/reset-password', [\App\Http\Controllers\PartnerController::class, 'reset_password']);
+Route::post('/partner/reset-password/save', [\App\Http\Controllers\PartnerController::class, 'reset_password_save']);
+Route::post('/partner/checkinfo', [\App\Http\Controllers\PartnerController::class, 'checkinfo']);
 
 //Route::get('/table-bootstrap-basic', 'App\Http\Controllers\OmahadminController@table_bootstrap_basic');
 //Document
@@ -76,7 +79,6 @@ Route::get('/shortcut', function () {
 
 Route::middleware('auth_dph')->group(function () {
     Route::get('/logout',[\App\Http\Controllers\PageController::class, 'logout'])->name('logout');
-
     Route::get('/dynamic_pdf', [\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
     Route::get('/pre_dynamic_pdf', [\App\Http\Controllers\PDFController::class, 'pre_pdf'])->name('pre.pdf');
     Route::get('/dynamic_pdf_true', [\App\Http\Controllers\PDFController::class, 'export_pdf'])->name('export.pdf');
@@ -85,6 +87,7 @@ Route::middleware('auth_dph')->group(function () {
     Route::post('/save_upload_pdf', [\App\Http\Controllers\PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
     //Các mục về hợp đồng
     Route::get('/dashboard', [\App\Http\Controllers\PageController::class, 'dashboard'])->name('dashboard');
+
 //Trang dashboard hợp đồng
     Route::get('/contract/dashboard', [\App\Http\Controllers\PartnerController::class, 'dashboard'])->name('contract.dashboard');
     Route::get('/contract/dashboard1', [\App\Http\Controllers\PartnerController::class, 'dashboard1'])->name('contract.dashboard1');
@@ -96,6 +99,7 @@ Route::middleware('auth_dph')->group(function () {
     Route::get('/contract/list_pending', [\App\Http\Controllers\PartnerController::class, 'list_typeall'])->name('contract.list.pending');
 //Chi tiết hợp đồng
     Route::get('/contract/show/{id}/', 'App\Http\Controllers\PartnerController@show')->name('contract.show');
+    Route::get('/contract/show-with-pdf/{id}', [\App\Http\Controllers\PartnerController::class, 'show_partner_pdf']);
 //Sửa chi tiết hợp đồng
     Route::get('/contract/edit/{id}/', 'App\Http\Controllers\PartnerController@edit')->name('contract.edit');
 //Giao diện tìm hợp đồng

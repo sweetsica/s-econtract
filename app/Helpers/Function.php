@@ -1,4 +1,23 @@
 <?php
+
+use App\Models\Member;
+use Illuminate\Support\Facades\Session;
+
+if(!function_exists('checkRoleSupperAdmin')){
+    function checkRoleSupperAdmin(){
+        $member_id = null;
+        if (Session::has('member_id')) {
+            $member_id = Session::get('member_id');
+        }
+        $memberAdmin = Member::with('roles')->whereHas('roles', function ($query) {
+            return $query->where('role_id', 1);
+        })->find($member_id);
+        if(!empty($memberAdmin)){
+            return true;
+        }
+        return false;
+    }
+}
 if(!function_exists('memberRecursive')){
 function memberRecursive($members, $parent_id = 0, $sub = true)
     {

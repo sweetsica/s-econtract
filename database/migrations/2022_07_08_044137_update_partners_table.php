@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('members', function (Blueprint $table) {
-            $table->string('phone')->after('email');
-            $table->unsignedBigInteger('location_id')->after('phone');
-            $table->unsignedBigInteger('parent_id')->default(0)->after('location_id');
-            $table->text('address')->after('parent_id');
+        //
+        Schema::table('partners', function (Blueprint $table) {
+            $table->string('id_number');
+            $table->string('token_email');
+            $table->string('token_sms');
         });
     }
 

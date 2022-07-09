@@ -32,6 +32,9 @@
                                     <div class="form-group col-md-12 ">
                                         <label>Mô tả phòng ban</label>
                                         <textarea type="text" class="form-control" name="description" placeholder="Nhập mô tả phòng ban..."></textarea>
+                                        @error("description")
+                                        <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row mb-3">

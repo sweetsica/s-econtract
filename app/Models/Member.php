@@ -14,6 +14,11 @@ class Member extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     protected $table ="members";
     protected $guarded = [''];
+
+    public function partner()
+    {
+        return $this->hasMany(Partner::class,'id_tdv','member_code') ;
+    }
     public function location()
     {
         return $this->belongsTo(Local::class,'location_id','id');
@@ -26,7 +31,14 @@ class Member extends Authenticatable
     {
         return $this->belongsToMany(Department::class)->withTimestamps();
     }
-
+    public function parent()
+    {
+        return $this->belongsTo(Member::class,'parent_id','id');
+    }
+    public function children()
+    {
+        return $this->hasMany(Member::class,'parent_id','id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -46,7 +46,7 @@
                                                 <label class="custom-control-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td><strong>{{$data['id']}}-{{$data['created_at']}}/HĐĐL</strong></td>
+                                        <td><strong>{{$data['id']}}-{{$data['created_at']->format('dmY-His')}}</strong></td>
                                         <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>
                                         <td>{{$data['address']}}</td>
                                         <td>{{$data['created_at']}}</td>
