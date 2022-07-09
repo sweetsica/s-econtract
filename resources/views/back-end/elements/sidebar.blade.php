@@ -70,23 +70,12 @@
                     <li><a href="{!! url('/member'); !!}">Danh sách thành viên</a></li>
                 </ul>
             </li>
-
-{{--            <li><a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">--}}
-{{--                    <i class="flaticon-381-settings-2"></i>--}}
-{{--                    <span class="nav-text">Version</span>--}}
-{{--                </a>--}}
-{{--                <ul aria-expanded="false">--}}
-{{--                    <li><a href="{!! url('/app-calender'); !!}">List</a></li>--}}
-{{--                    <li><a href="{!! url('/app-calender'); !!}">Add</a></li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-controls-3"></i>
                     <span class="nav-text">Tính năng khác</span>
                 </a>
                 <ul aria-expanded="false">
-{{--                    <li><a href="{{route('contract.signature')}}">Signature</a></li>--}}
                     <li><a href="{{route('contract.doppelherzsign')}}">Chữ ký giám đốc vùng</a></li>
                 </ul>
             </li>
