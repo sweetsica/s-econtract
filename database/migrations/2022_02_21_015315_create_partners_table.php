@@ -14,13 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('partners', function (Blueprint $table) {
-            $table->id();
+            $table->id(); //1
             $table->string('code_contract')->nullable();//Mã hồ sơ
             $table->string('id_tdv')->nullable();//Mã TDV
             $table->string('name');//Tên Đại Lý (agency_name)
             $table->string('address')->nullable();//Địa chỉ ĐKKD (address)
             $table->string('district')->nullable();//Quận/Huyện (district)
             $table->string('city')->nullable();//Tỉnh/TP (city)
+            $table->unsignedBigInteger('location_id')->nullable(); //id của địa chỉ (Ward id)
+            $table->unsignedBigInteger('delivery_location_id')->nullable();
             $table->string('delivery_address')->nullable();//Địa chỉ giao hàng (delivery_address)
             $table->string('delivery_district')->nullable();//Quận/Huyện nhận hàng (delivery_district)
             $table->string('delivery_city')->nullable();//Tỉnh/TP (delivery_city)
@@ -40,6 +42,7 @@ return new class extends Migration
             $table->string('account_enddate')->nullable();//Ngày kết thúc (end_date)
             $table->string('account_budget1')->nullable();//ĐKDT N1 (plans_N1)
             $table->string('account_budget2')->nullable();//ĐKDT N2 (plans_N2)
+            $table->string('account_password')->nullable();
             $table->string('appointment')->nullable();//Lịch hẹn
             $table->text('image')->nullable();
             $table->boolean('signed')->default('0');
@@ -48,6 +51,9 @@ return new class extends Migration
             $table->string('position_doppelherz')->nullable();
             $table->string('account_doppelherz')->nullable();
             $table->string('number_doppelherz')->nullable();
+            $table->string('id_number')->nullable(); // Số chứng minh nhân dân, Căn cước công dân
+            $table->string('token_email')->nullable(); // Mã xác nhận email
+            $table->string('token_sms')->nullable(); // Mã xác nhận sms
             $table->boolean('type_contract')->nullable()->default('1');//Loại hợp đồng: nhanh (0) - chậm(1)
             $table->string('access_type')->nullable()->default('10');//Mức độ truy cập
             $table->boolean('status')->nullable()->default('1');//Trạng thái
