@@ -27,21 +27,18 @@ class AuthController extends Controller
                 'password' => bcrypt($fields['password'])
             ]);
             $token = $user->createToken('sweettoken')->accessToken;
-            $response = [
+            return response()->json([
                 'user' => [
                     "id"=>$user->id,
                     "name"=>$user->name,
                     "email"=>$user->email
                 ],
                 'token' => $token
-            ];
-            return response($response,200)->json([
-                "message"=>"register success"
-            ]);
+            ],200);
         }catch (\Exception $e){
-            return response($response,200)->json([
-                "message"=>$e->getMessage()
-            ]);
+            return response()->json([
+                'error' => $e->getMessage()
+            ],400);
         }
     }
 
@@ -53,7 +50,7 @@ class AuthController extends Controller
             'password' => $request->password
         ];
         if (auth()->attempt($data)) {
-            $token = auth()->user()->createToken('SweetUserAppToken')->accessToken;
+            $token = auth()->user()->createToken('sweettoken')->accessToken;
             $userInfo = User::where("email", $request->email)->firstOrFail();
             return response()->json(
                 [

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         //
         Schema::table('partners', function (Blueprint $table) {
-            $table->string('id_number');
-            $table->string('token_email');
-            $table->string('token_sms');
+            $table->string('id_number')->nullable(); // Số chứng minh nhân dân, Căn cước công dân
+            $table->string('token_email')->nullable(); // Mã xác nhận email
+            $table->string('token_sms')->nullable(); // Mã xác nhận sms
         });
     }
 

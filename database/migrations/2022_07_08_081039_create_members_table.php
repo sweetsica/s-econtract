@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('member_name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('location_id')->nullable();
             $table->unsignedBigInteger('parent_id')->default(0)->nullable();
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

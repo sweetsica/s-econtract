@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('partners', function (Blueprint $table) {
-            $table->unsignedBigInteger('location_id')->after('address');
+            $table->unsignedBigInteger('location_id')->nullable()->after('address'); //id của địa chỉ (Ward id)
             $table->unsignedBigInteger('delivery_location_id')->nullable()->after('delivery_address');
         });
     }
