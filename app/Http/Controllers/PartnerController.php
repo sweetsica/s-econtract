@@ -99,7 +99,6 @@ class PartnerController extends Controller
             $member_id = Session::get('member_id');
         }
         $info_data = [];
-        // member code role là Admin và Super Admin
         $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 1);
         })->find($member_id);
@@ -109,6 +108,7 @@ class PartnerController extends Controller
         $member = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 4);
         })->find($member_id);
+
         if ($memberAdmin) {
             $info_data = Partner::latest()->get();
         }
