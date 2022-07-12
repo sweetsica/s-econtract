@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('member_role', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('role_id');
-            $table->unsignedBigInteger('member_id');
+            $table->unsignedBigInteger('role_id')->nullable();
+            $table->unsignedBigInteger('member_id')->nullable();
             $table->timestamps();
             $table->foreign('role_id')->references('id')->on('roles')->onDelete("NO ACTION")->onUpdate("NO ACTION");
             $table->foreign('member_id')->references('id')->on('members')->onDelete("NO ACTION")->onUpdate("NO ACTION");

@@ -112,7 +112,7 @@ Route::middleware('auth_dph')->group(function () {
     Route::get('/contract/signature/test', [\App\Http\Controllers\DoppelherzSignController::class, 'index_test']);
     Route::post('signature/test', [\App\Http\Controllers\DoppelherzSignController::class, 'store_test'])->name('doppelhersignzpad.test');
     //Form điền thông tin
-    Route::get('/signup-partner', 'App\Http\Controllers\PageController@signup_partner')->name('signup.partner');
+    Route::get('/signup-partner', 'App\Httpdatabase\Controllers\PageController@signup_partner')->name('signup.partner');
 
 //Lưu thông tin đối tác
     Route::post('/store-partner', 'App\Http\Controllers\PartnerController@store')->name('store.partner');

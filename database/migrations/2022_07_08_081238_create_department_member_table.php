@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('department_member', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('member_id');
-            $table->unsignedBigInteger('department_id');
+            $table->unsignedBigInteger('member_id')->nullable();
+            $table->unsignedBigInteger('department_id')->nullable();
             $table->timestamps();
             $table->foreign('member_id')->references('id')->on('members')->onDelete("NO ACTION")->onUpdate("NO ACTION");
             $table->foreign('department_id')->references('id')->on('departments')->onDelete("NO ACTION")->onUpdate("NO ACTION");

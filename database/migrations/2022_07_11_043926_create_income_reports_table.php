@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('income_reports', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->text('description')->nullable();
-            $table->unsignedBigInteger('location_id')->nullable();
+            $table->unsignedBigInteger('partner_id')->nullable();
+            $table->string('income_history')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('income_reports');
     }
 };
