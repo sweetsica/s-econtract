@@ -59,6 +59,11 @@ class Partner extends Model
                 return $value;
         }
     }
+
+    public function setPasswordAttribute($pass)
+    {
+
+    }
     public function delivery_location()
     {
         return $this->belongsTo(Local::class,'delivery_location_id','id');

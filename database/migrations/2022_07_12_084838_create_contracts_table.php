@@ -37,6 +37,7 @@ return new class extends Migration
             $table->string('store_signed')->nullable();
             $table->string('store_signImg')->nullable();
             $table->string('store_signImgDoppelherz')->nullable();
+            $table->string('store_token')->nullable();
             $table->timestamps();
         });
     }
