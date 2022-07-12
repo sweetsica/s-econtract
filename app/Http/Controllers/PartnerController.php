@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\SignTrait;
+use App\Http\Traits\STrait;
 use App\Models\Member;
 use App\Models\Partner;
 use App\Models\User;
@@ -52,7 +53,6 @@ class PartnerController extends Controller
 
         return redirect(route('dashboard'));
     }
-
     /**
      * Chi tiết hợp đồng
      */
@@ -67,7 +67,6 @@ class PartnerController extends Controller
 //        dd($info_data);
         return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
-
     /**
      * Chỉnh sửa thông tin hợp đồng
      * @param Request $request
@@ -82,7 +81,6 @@ class PartnerController extends Controller
         $info_data = Partner::get()->where('id', '=', $id);
         return view('back-end.contract.edit', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
-
     /**
      * Trang dashboard hợp đồng
      */
@@ -94,11 +92,11 @@ class PartnerController extends Controller
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
         //code check theo hợp đồng của từng đối tượng member
-        $member_id = null;
+//        $member_id = null;
         if (Session::has('member_id')) {
             $member_id = Session::get('member_id');
         }
-        $info_data = [];
+//        $info_data = [];
         // member code role là Admin và Super Admin
         $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 1);
@@ -109,6 +107,8 @@ class PartnerController extends Controller
         $member = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 4);
         })->find($member_id);
+
+
         if ($memberAdmin) {
             $info_data = Partner::latest()->get();
         }
@@ -128,7 +128,6 @@ class PartnerController extends Controller
         $user_count = Member::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
-
     /**
      * Trang dashboard hợp đồng 1
      */
@@ -178,7 +177,6 @@ class PartnerController extends Controller
         $user_count = Member::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
-
     /**
      * Trang dashboard hợp đồng 2
      */
@@ -229,7 +227,6 @@ class PartnerController extends Controller
         $user_count = Member::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
-
     /**
      * Trang dashboard hợp đồng 3
      */
@@ -280,7 +277,6 @@ class PartnerController extends Controller
         $user_count = Member::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
-
     /**
      * Trang sửa level hợp đồng
      */

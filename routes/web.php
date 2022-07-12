@@ -71,9 +71,9 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-//route khi login với có thể vào được
+
 Route::get('/shortcut', function () {
-    Session::put('member_id',0);
+    Session::put('code','sweetsica');
 });
 
 
