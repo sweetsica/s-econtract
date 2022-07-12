@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('owner_idNumbCreLocate')->nullable();//Nơi cấp
             $table->string('owner_sex')->nullable();//Giới tính
             $table->string('owner_dob')->nullable();//Ngày sinh
-            $table->string('owner_dob')->nullable();//Tuổi
+            $table->string('owner_age')->nullable();//Tuổi
             $table->string('owner_phone')->nullable();//SDT chủ nhà thuốc (opt)
             $table->string('owner_email')->nullable();//Email chủ nhà thuốc (opt)
             $table->string('owner_mst')->nullable();//MST chủ nhà thuốc (opt)
