@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->string('partner_id')->nullable();
+            $table->string('partnerId')->nullable();
             $table->string('store_name')->nullable();
             $table->string('store_addDKKD')->nullable();
             $table->string('store_localDKKD')->nullable();
@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('store_phone')->nullable();
             $table->string('store_website')->nullable();
             $table->string('store_GPDKKD')->nullable();
-            $table->string('store_website')->nullable();
             $table->string('store_idNumbGPDKKD')->nullable();
             $table->string('store_bank')->nullable();
             $table->string('store_bankHolder')->nullable();
