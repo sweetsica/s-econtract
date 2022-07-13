@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\DoppelherzSign;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DoppelherzSignSeeder extends Seeder
 {
@@ -15,15 +15,15 @@ class DoppelherzSignSeeder extends Seeder
      */
     public function run()
     {
-        DoppelherzSign::create([
+        DB::table('doppelherz_signs')->insert([
             'name' => 'Đỗ Văn Thoại',
             'image' => '/uploads/signature/doppelherz/dovanthao.png',
         ]);
-        DoppelherzSign::create([
+        DB::table('doppelherz_signs')->insert([
             'name' => 'Nguyễn Văn Huyên',
             'image' => '/uploads/signature/doppelherz/nguyenvanhuyen.png',
         ]);
-        DoppelherzSign::create([
+        DB::table('doppelherz_signs')->insert([
             'name' => 'Đinh Công Đức',
             'image' => '/uploads/signature/doppelherz/dinhcongduc.png',
         ]);
