@@ -11,8 +11,6 @@ class Partner extends Model
     use HasFactory;
     protected $guarded = [''];
 
-
-
     public function setNameDoppelherzAttribute($value)
     {
         switch ($value){
@@ -60,10 +58,6 @@ class Partner extends Model
         }
     }
 
-    public function setPasswordAttribute($pass)
-    {
-
-    }
     public function delivery_location()
     {
         return $this->belongsTo(Local::class,'delivery_location_id','id');
