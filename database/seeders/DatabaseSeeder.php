@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LocationSeeder::class,
             DepartmentSeeder::class,
-            DoppelherzSign::class
+            DoppelherzSignSeeder::class
         ]);
     }
 }
