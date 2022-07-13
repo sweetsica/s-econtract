@@ -44,7 +44,7 @@ class PartnerController extends Controller
 //            if($validator->fails()){
 //                return response()->json($validator->messages(),400);
 //            }
-//            Toàn bộ fields trường partner bắt buộc, trừ owner_token
+//            Toàn bộ fields t  rường partner bắt buộc, trừ owner_token
             $partner = Partner::create($request->only(['owner_name','owner_idNumb','owner_idNumbCreAt','owner_idNumbCreLocate','owner_sex','owner_dob','owner_age','owner_token','owner_phone','owner_email','owner_mst']));
             $partner->save();
             Contract::create($request->only(['partnerID'=>$partner->id,'contract_code','store_name','store_addDKKD','store_localDKKD','store_addGH','store_localGH','store_phone','store_website','store_GPDKKD','store_idNumbGPDKKD','store_bank','store_bankHolder','store_bankNumb','store_contactName','store_contactPhone','store_contactPosition','store_effect','store_started','store_end','store_signed','store_signImg','store_signImgDoppelherz','store_token']));
