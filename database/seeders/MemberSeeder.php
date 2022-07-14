@@ -38,5 +38,6 @@ class MemberSeeder extends Seeder
         ]);
         $member->roles()->attach([3]);
         $member->department()->attach([1]);
+
     }
 }

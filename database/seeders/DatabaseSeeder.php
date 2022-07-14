@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             DepartmentSeeder::class,
             DoppelherzSignSeeder::class,
-            MemberSeeder::class
+            MemberSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
