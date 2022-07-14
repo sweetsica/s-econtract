@@ -44,28 +44,23 @@ class AuthController extends Controller
         }
     }
 
+    public function index()
+    {
+        $page_title = 'Page Login';
+        $page_description = 'Some description for the page';
+        $action = __FUNCTION__;
+        return view('back-end.auth.login_form', compact('page_title', 'page_description', 'action'));
+    }
     #2
     public function login(Request $request)
     {
-        $data = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
-        if (auth()->attempt($data)) {
-            $token = auth()->user()->createToken('sweettoken')->accessToken;
-            $userInfo = User::where("email", $request->email)->firstOrFail();
-            return response()->json(
-                [
-                    'user' => [
-                        "id" => $userInfo->id,
-                        "name" => $userInfo->name,
-                        "email" => $userInfo->email
-                    ],
-                    'token' => $token
-                ], 200);
-        } else {
-            return response()->json(['error' => 'Lỗi xác thực!!!'], 401);
+        $checkuser = User::where('email',$request->username)->first();
+        if(!$checkuser){
+            $checkmember = Member::where('member_code',$request->username)->first();
+            dump($checkmember);
         }
+            dump($checkuser);
+        dd();
     }
 
     #3
