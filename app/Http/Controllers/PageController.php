@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enum\CommonEnum;
 use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -36,17 +37,31 @@ class PageController extends Controller
                 $logoText = "images/logo-text.png";
                 $action = __FUNCTION__;
                 try{
-                    $member = Member::where('member_code', $request->get('member_code'))->first();
+                    $member = Member::where('member_code', $request->get('username'))->first();
+
                     if ($member) {
                         if(!Hash::check($request->password, $member->password)) {
-                            $request->session()->put(['member_id' => $member->id]);
+                            $request->session()->put([
+                                'role'=>'MEMBER',
+                                'member_id' => $member->id
+                            ]);
                             Session::forget('error');
                             return redirect()->to('/contract/dashboard');
                         }else{
                             Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
                         }
                     }else{
-                        Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+                        $admin = User::where('email',$request->get('username'))->first();
+                        if(!Hash::check($request->password, $admin->password)) {
+                            $request->session()->put([
+                                'role'=>'ADMIN',
+                                'member_id' => $admin->id
+                            ]);
+                            Session::forget('error');
+                            return redirect()->to('/contract/dashboard');
+                        }else{
+                            Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+                        }
                     }
                     return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
                 }catch (\Exception $e){
@@ -56,10 +71,7 @@ class PageController extends Controller
             }
 
     }
-    public function logout(){
-        Session::forget('member_id');
-        return redirect()->to('/');
-    }
+
     // Sign up Partner
     public function signup_partner()
     {

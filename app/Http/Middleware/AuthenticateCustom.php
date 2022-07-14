@@ -17,9 +17,12 @@ class AuthenticateCustom
      */
     public function handle(Request $request, Closure $next)
     {
-        $member = Member::find($request->session()->get('member_id'));
-        if (!$member) {
-            return redirect()->to('/');
+        if(Session::has('user_check')){
+            $memberCheck = Session::get('user_check');
+            $member = Member::find($memberCheck->user_id);
+            if (!$member) {
+                return redirect()->to('/');
+            }
         }
         return $next($request);
     }

@@ -17,8 +17,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             LocationSeeder::class,
+            RoleSeeder::class,
             DepartmentSeeder::class,
-            DoppelherzSignSeeder::class
+            DoppelherzSignSeeder::class,
+            MemberSeeder::class
         ]);
     }
 }

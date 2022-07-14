@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Enum\CommonEnum;
+use App\Models\Member;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -15,7 +17,7 @@ class AuthController extends Controller
     #1
     public function register(Request $request)
     {
-        try{
+        try {
             $fields = $request->validate([
                 'name' => 'required|string|min:3',
                 'email' => 'required|unique:users,email',
@@ -29,16 +31,16 @@ class AuthController extends Controller
             $token = $user->createToken('sweettoken')->accessToken;
             return response()->json([
                 'user' => [
-                    "id"=>$user->id,
-                    "name"=>$user->name,
-                    "email"=>$user->email
+                    "id" => $user->id,
+                    "name" => $user->name,
+                    "email" => $user->email
                 ],
                 'token' => $token
-            ],200);
-        }catch (\Exception $e){
+            ], 200);
+        } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage()
-            ],400);
+            ], 400);
         }
     }
 
@@ -174,5 +176,55 @@ class AuthController extends Controller
         $user->syncRoles([$role]);
         $user->syncPermissions($permissions);
         return redirect(route('admin.users'));
+    }
+
+
+    public function member_login_form()
+    {
+        $page_title = 'Contract Dashboard';
+        $page_description = 'Chi tiết hợp đồng';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.auth.login_form', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+    }
+
+    //login cho user và admin
+    public function member_login(Request $request)
+    {
+        $admin = User::where('email', $request->get('username'))->first();
+        if ($admin) {
+            if (Hash::check($request->password, $admin->password)) {
+                Session::put("user_check",[
+                    'role'=>"ADMIN",
+                    'user_id'=>$admin->id
+                ]);
+                dd("Hello ADMIN");
+                Session::forget('error');
+                return redirect()->to('/contract/dashboard');
+            } else {
+                Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+            }
+        } else {
+            $member = Member::where('member_code', $request->get('username'))->first();
+            if ($member) {
+                if (Hash::check($request->password, $member->password)) {
+                    Session::put("user_check",[
+                        'role'=>"MEMBER",
+                        'user_id'=>$admin->id
+                    ]);
+                    Session::forget('error');
+                    dd("Hello Member");
+                    return redirect()->to('/contract/dashboard');
+                } else {
+                    Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+                }
+            }
+        }
+        dd('Cut di mau len');
+    }
+    public function logoutMember(){
+        Session::forget('user_check');
+        return redirect()->to('/');
     }
 }

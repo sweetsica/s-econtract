@@ -2,7 +2,14 @@
 
 use App\Models\Member;
 use Illuminate\Support\Facades\Session;
-
+if(!function_exists('memberRole')){
+    function memberRole(){
+        if(Session::has('user_check')){
+          return  Session::get('user_check');
+        }
+        return null;
+    }
+}
 if(!function_exists('checkRoleSupperAdmin')){
     function checkRoleSupperAdmin(){
         $member_id = null;

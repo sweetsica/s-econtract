@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PartnerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
@@ -24,16 +26,23 @@ use Illuminate\Support\Facades\Session;
 Route::get('/', [\App\Http\Controllers\PageController::class, 'index'])->name('index');
 
 Route::post('/lockpage', 'App\Http\Controllers\PageController@lockpage')->name('lockpage');
-Route::get('/contract/search/', [\App\Http\Controllers\PartnerController::class, 'search_export'])->name('contract.seach');
+Route::get('/contract/search/', [PartnerController::class, 'search_export'])->name('contract.seach');
 
 //Xuất hợp đồng
 //Route::post('/contract/return_export/',[\App\Http\Controllers\PartnerController::class, 'return_export'])->name('contract.return.export');
-Route::post('/contract/return_export/', [\App\Http\Controllers\PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
+Route::post('/contract/return_export/', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
 //Tìm và check hợp đồng
-Route::get('/contract/return_export_after_sign/', [\App\Http\Controllers\PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
-Route::get('/partner/reset-password', [\App\Http\Controllers\PartnerController::class, 'reset_password']);
-Route::post('/partner/reset-password/save', [\App\Http\Controllers\PartnerController::class, 'reset_password_save']);
-Route::post('/partner/checkinfo', [\App\Http\Controllers\PartnerController::class, 'checkinfo']);
+Route::get('/contract/return_export_after_sign/', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
+Route::get('/partner/reset-password', [PartnerController::class, 'reset_password']);
+Route::post('/partner/reset-password/save', [PartnerController::class, 'reset_password_save']);
+Route::post('/partner/checkinfo', [PartnerController::class, 'checkinfo']);
+
+//Partner login
+Route::get('/partner/login', [PartnerController::class, 'partner_login']);
+
+//Member Login
+Route::get('member/login',[AuthController::class,'member_login_form']);
+Route::post('member/login/post',[AuthController::class,'member_login']);
 
 //Route::get('/table-bootstrap-basic', 'App\Http\Controllers\OmahadminController@table_bootstrap_basic');
 //Document
@@ -49,12 +58,12 @@ Route::post('/partner/checkinfo', [\App\Http\Controllers\PartnerController::clas
 
 //Trang login
 Route::get('/page-login', 'App\Http\Controllers\PageController@page_login')->name('page.login');
-Route::get('/login', [\App\Http\Controllers\AuthController::class, 'loginIndex'])->name('login');
-Route::post('/login', [\App\Http\Controllers\AuthController::class, 'loginProcess']);
+Route::get('/login', [AuthController::class, 'loginIndex'])->name('login');
+Route::post('/login', [AuthController::class, 'loginProcess']);
 
 //Trang register
-Route::get('/register', [\App\Http\Controllers\AuthController::class, 'registerIndex'])->name('signup');
-Route::post('/register', [\App\Http\Controllers\AuthController::class, 'registerProcess']);
+Route::get('/register', [AuthController::class, 'registerIndex'])->name('signup');
+Route::post('/register', [AuthController::class, 'registerProcess']);
 
 // router nào cần đăng nhập mới vô được thì ghi trong đây
 Route::middleware(['auth'])->group(function () {
@@ -63,11 +72,11 @@ Route::middleware(['auth'])->group(function () {
     // Group super-admin
     Route::prefix('admin')->group(function () {
         //Trang danh sách các users
-        Route::get('/users', [\App\Http\Controllers\AuthController::class, 'listUsers'])->name('admin.users');
+        Route::get('/users', [AuthController::class, 'listUsers'])->name('admin.users');
         //Chi tiết role permission của 1 user
-        Route::get('/users/{id}', [\App\Http\Controllers\AuthController::class, 'editRoleUser']);
+        Route::get('/users/{id}', [AuthController::class, 'editRoleUser']);
         //Update role permission của 1 user
-        Route::post('/users/{id}', [\App\Http\Controllers\AuthController::class, 'updateRoleUser']);
+        Route::post('/users/{id}', [AuthController::class, 'updateRoleUser']);
     });
 });
 
@@ -78,7 +87,7 @@ Route::get('/shortcut', function () {
 
 
 Route::middleware('auth_dph')->group(function () {
-    Route::get('/logout',[\App\Http\Controllers\PageController::class, 'logout'])->name('logout');
+    Route::get('/logout',[\App\Http\Controllers\AuthController::class, 'logoutMember']);
     Route::get('/dynamic_pdf', [\App\Http\Controllers\PDFController::class, 'index'])->name('demo.pdf');
     Route::get('/pre_dynamic_pdf', [\App\Http\Controllers\PDFController::class, 'pre_pdf'])->name('pre.pdf');
     Route::get('/dynamic_pdf_true', [\App\Http\Controllers\PDFController::class, 'export_pdf'])->name('export.pdf');

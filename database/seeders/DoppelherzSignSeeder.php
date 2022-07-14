@@ -16,7 +16,7 @@ class DoppelherzSignSeeder extends Seeder
     {
         DB::table('doppelherz_signs')->insert([
             'name' => 'Đỗ Văn Thoại',
-            'image' => '/uploads/signature/doppelherz/dovanthao.png',
+            'image' => '/uploads/signature/doppelherz/dovanthoai.png',
         ]);
         DB::table('doppelherz_signs')->insert([
             'name' => 'Nguyễn Văn Huyên',
