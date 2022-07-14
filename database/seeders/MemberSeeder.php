@@ -24,19 +24,5 @@ class MemberSeeder extends Seeder
              'location_id' => '829',
              'address' => 'Trung Kính, Phường Yên Hòa, Quận Cầu Giấy, TP Hà Nội',
          ]);
-          $member->roles()->attach([3]);
-          $member->department()->attach([1]);
-
-        $member = Member::create([
-            'member_name' => 'Bảo',
-            'member_code' => 'TBHT195',
-            'email' => 'baonn@sweetisca.com',
-            'phone' => '0915588000',
-            'password' => bcrypt('tieuhoa195'),
-            'location_id' => '829',
-            'address' => 'TP Hà Nội',
-        ]);
-        $member->roles()->attach([3]);
-//        $member->department()->attach([1]);
     }
 }
