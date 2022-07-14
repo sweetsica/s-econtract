@@ -37,6 +37,6 @@ class MemberSeeder extends Seeder
             'address' => 'TP Hà Nội',
         ]);
         $member->roles()->attach([3]);
-        $member->department()->attach([1]);
+//        $member->department()->attach([1]);
     }
 }

@@ -38,7 +38,7 @@ class PageController extends Controller
                 try{
                     $member = Member::where('member_code', $request->get('member_code'))->first();
                     if ($member) {
-                        if(!Hash::check($request->password, $member->password)) {
+                        if(Hash::check($request->password, $member->password)) {
                             $request->session()->put(['member_id' => $member->id]);
                             Session::forget('error');
                             return redirect()->to('/contract/dashboard');

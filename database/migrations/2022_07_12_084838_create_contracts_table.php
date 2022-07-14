@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
             $table->string('partnerId')->nullable();
-            $table->string('store_contract_type')->default('1');
+            $table->string('store_contract_type')->default('0');  // Loại hợp đồng nhanh (0) - chậm (1)
             $table->string('store_name')->nullable();
-            $table->string('store_add_DKKD')->nullable();
-            $table->string('store_local_DKKD')->nullable();
-            $table->string('store_add_GH')->nullable();
-            $table->string('store_local_GH')->nullable();
+            $table->string('store_add_DKKD')->nullable(); // Địa chỉ
+            $table->string('store_local_DKKD')->nullable(); // Id khu vực
+            $table->string('store_add_GH')->nullable(); // Địa chỉ
+            $table->string('store_local_GH')->nullable(); // Id khu vực
             $table->string('store_phone')->nullable();
             $table->string('store_website')->nullable();
             $table->string('store_GPDKKD')->nullable();
@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string('store_signed')->nullable();
             $table->string('store_sign_img')->nullable();
             $table->string('store_sign_img_doppelherz')->nullable();
+            $table->string('contract_level')->default('10'); // 10 là chưa phân loại, cấp ưu tiên 1 - 4 ~
             $table->string('store_token')->nullable();
             $table->timestamps();
         });
