@@ -15,7 +15,7 @@ class OmahadminController extends Controller
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
 
-        return view('dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
+        return view('ori.dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
     }
 
 	   // Page Analytics

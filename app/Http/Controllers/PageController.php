@@ -26,51 +26,51 @@ class PageController extends Controller
             return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
         }
     }
-    public function lockpage(Request $request)
-    {
-            if(Session::get('member_id')){
-                return redirect()->to('/contract/dashboard');
-            }else{
-                $page_title = 'S-Contract Hợp đồng điện tử';
-                $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
-                $logo = "images/logo.png";
-                $logoText = "images/logo-text.png";
-                $action = __FUNCTION__;
-                try{
-                    $member = Member::where('member_code', $request->get('username'))->first();
-
-                    if ($member) {
-                        if(!Hash::check($request->password, $member->password)) {
-                            $request->session()->put([
-                                'role'=>'MEMBER',
-                                'member_id' => $member->id
-                            ]);
-                            Session::forget('error');
-                            return redirect()->to('/contract/dashboard');
-                        }else{
-                            Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
-                        }
-                    }else{
-                        $admin = User::where('email',$request->get('username'))->first();
-                        if(!Hash::check($request->password, $admin->password)) {
-                            $request->session()->put([
-                                'role'=>'ADMIN',
-                                'member_id' => $admin->id
-                            ]);
-                            Session::forget('error');
-                            return redirect()->to('/contract/dashboard');
-                        }else{
-                            Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
-                        }
-                    }
-                    return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
-                }catch (\Exception $e){
-                    return redirect()->to('/');
-                }
-
-            }
-
-    }
+//    public function lockpage(Request $request)
+//    {
+//            if(Session::get('member_id')){
+//                return redirect()->to('/contract/dashboard');
+//            }else{
+//                $page_title = 'S-Contract Hợp đồng điện tử';
+//                $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+//                $logo = "images/logo.png";
+//                $logoText = "images/logo-text.png";
+//                $action = __FUNCTION__;
+//                try{
+//                    $member = Member::where('member_code', $request->get('username'))->first();
+//
+//                    if ($member) {
+//                        if(!Hash::check($request->password, $member->password)) {
+//                            $request->session()->put([
+//                                'role'=>'MEMBER',
+//                                'member_id' => $member->id
+//                            ]);
+//                            Session::forget('error');
+//                            return redirect()->to('/contract/dashboard');
+//                        }else{
+//                            Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+//                        }
+//                    }else{
+//                        $admin = User::where('email',$request->get('username'))->first();
+//                        if(!Hash::check($request->password, $admin->password)) {
+//                            $request->session()->put([
+//                                'role'=>'ADMIN',
+//                                'member_id' => $admin->id
+//                            ]);
+//                            Session::forget('error');
+//                            return redirect()->to('/contract/dashboard');
+//                        }else{
+//                            Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+//                        }
+//                    }
+//                    return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
+//                }catch (\Exception $e){
+//                    return redirect()->to('/');
+//                }
+//
+//            }
+//
+//    }
 
     // Sign up Partner
     public function signup_partner()

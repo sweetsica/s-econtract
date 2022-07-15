@@ -94,19 +94,23 @@ return [
                     'https://cdn.lineicons.com/2.0/LineIcons.css',
                     'vendor/owl-carousel/owl.carousel.css',
                 ],
-                'dashboard' => [
+                'login' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
-                'dashboard1' => [
+                'dashboard_1' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
-                'dashboard2' => [
+                'trang-chu-2' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
-                'dashboard3' => [
+                'trang-chu-3' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'trang-chu-4' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
@@ -254,7 +258,7 @@ return [
                 'index_document' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
-                'list' => [
+                'contract_list' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
                 'list_type10' => [
@@ -433,7 +437,7 @@ return [
                     'js/custom.min.js',
                     'js/deznav-init.js',
                 ],
-                'dashboard' => [
+                'login' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'vendor/datatables/js/jquery.dataTables.min.js',
                     'js/plugins-init/datatables.init.js',
@@ -441,7 +445,7 @@ return [
                     'js/deznav-init.js',
                     'js/jquery-3.2.1.min.js',
                 ],
-                'dashboard1' => [
+                'dashboard_1' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'vendor/datatables/js/jquery.dataTables.min.js',
                     'js/plugins-init/datatables.init.js',
@@ -449,7 +453,15 @@ return [
                     'js/deznav-init.js',
                     'js/jquery-3.2.1.min.js',
                 ],
-                'dashboard2' => [
+                'trang-chu-2' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'trang-chu-3' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'vendor/datatables/js/jquery.dataTables.min.js',
                     'js/plugins-init/datatables.init.js',
@@ -785,7 +797,7 @@ return [
                     'js/custom.min.js',
                     'js/deznav-init.js',
                 ],
-                'list' => [
+                'contract_list' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',

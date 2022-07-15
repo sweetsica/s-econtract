@@ -20,7 +20,7 @@
                                 Đăng nhập thất bại, vui lòng kiểm tra lại thông tin đăng nhập.
                             </div>
                         @endif
-                        <form action="{{route('lockpage')}}" method="POST">
+                        <form action="{{route('login.check')}}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
                                 <label><strong>Nhập mã nhân viên</strong></label>

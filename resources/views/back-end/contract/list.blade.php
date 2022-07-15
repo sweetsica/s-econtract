@@ -3,7 +3,6 @@
 
 {{-- Content --}}
 @section('content')
-
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
@@ -38,7 +37,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+{{--                                {{dd($info_data)}}--}}
                                 @foreach($info_data as $data)
+{{--                                    {{dd($data)}}--}}
                                     <tr>
                                         <td>
                                             <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
@@ -47,21 +48,21 @@
                                             </div>
                                         </td>
                                         <td><strong>{{$data['id']}}-{{$data['created_at']->format('dmY-His')}}</strong></td>
-                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>
-                                        <td>{{$data['address']}}</td>
-                                        <td>{{$data['created_at']}}</td>
+{{--                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>--}}
+                                        <td>{{$data['store_name']}}</td>
+                                        <td>{{$data['store_add_DKKD']}}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                @if($data['access_type']==10)
+                                                @if($data['contract_level']==10)
                                                     <i class="fa fa-circle text-warning mr-1"></i> Đang chờ
                                                 @else
-                                                    <i class="fa fa-circle text-success mr-1"></i> Đã duyệt
+                                                    <i class="fa fa-circle text-success mr-1"></i> {{$data['contract_level']}}
                                                 @endif
                                             </div>
                                         </td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="{{route('contract.edit',$data['id'])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+{{--                                                <a href="{{route('contract.edit',$data['id'])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>--}}
                                                 <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>

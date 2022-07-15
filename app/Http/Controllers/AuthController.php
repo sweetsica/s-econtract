@@ -55,12 +55,37 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $checkuser = User::where('email',$request->username)->first();
-        if(!$checkuser){
+        if($checkuser){
+            Session::put('session_role', 'admin');
+            Session::put('session_name', $checkuser->name);
+            Auth::loginUsingId($checkuser->id);
+
+            $page_title = 'Trang quản trị';
+            $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+            $logo = "images/logo.png";
+            $logoText = "images/logo-text.png";
+            $action = __FUNCTION__;
+//            return redirect()->route('dashboard')->with(compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+            return view('back-end.dashboard.index', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+        }else{
             $checkmember = Member::where('member_code',$request->username)->first();
-            dump($checkmember);
+            if($checkmember){
+                Session::put('session_role', 'member');
+                Session::put('session_name', $checkmember->member_name);
+                Auth::loginUsingId($checkmember->id);
+                dump('Người dùng');
+                dump($checkmember);
+
+                $page_title = 'Danh sách hợp đồng';
+                $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+                $logo = "images/logo.png";
+                $logoText = "images/logo-text.png";
+                $action = __FUNCTION__;
+                return view('back-end.dashboard.index', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+            }else{
+                return 'Vui lòng kiểm tra lại thông tin đăng nhập!';
+            }
         }
-            dump($checkuser);
-        dd();
     }
 
     #3

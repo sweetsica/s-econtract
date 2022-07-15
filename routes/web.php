@@ -8,10 +8,14 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\SignatureController;
+use App\Http\Controllers\DoppelherzSignController;
+use App\Http\Controllers\ContractController;
+
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -51,6 +55,8 @@ Route::prefix('thanh-vien')->group(function (){
 Route::prefix('hop-dong')->group(function (){
     Route::get('/tim-kiem', [PartnerController::class, 'search_export'])->name('contract.seach');
 
+    Route::get('/danh-sach',[ContractController::class, 'contract_list'])->name('contract.list');
+
     Route::post('/xuat-hop-dong', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
     Route::get('/xuat-hop-dong-da-ky', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
 });
@@ -63,6 +69,11 @@ Route::prefix('pdf')->group(function (){
     Route::get('/upload_pdf', [PDFController::class, 'upload_pdf'])->name('upload_pdf');
     Route::post('/save_upload_pdf', [PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
 });
+//Sign module
+Route::prefix('chuky')->group(function(){
+    Route::get('/giamdoc', [DoppelherzSignController::class, 'index'])->name('chuky.giamdoc');
+});
+
 
 //Route::post('/lockpage', 'App\Http\Controllers\PageController@lockpage')->name('lockpage');
 //Route::get('/contract/search/', [PartnerController::class, 'search_export'])->name('contract.seach');
@@ -203,7 +214,7 @@ Route::prefix('pdf')->group(function (){
 
 
 
-//Route::get('/', 'App\Http\Controllers\OmahadminController@dashboard_1');
+// Route::get('/dashboard_1', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/index', 'App\Http\Controllers\OmahadminController@dashboard_1');
 //Route::get('/analytics', 'App\Http\Controllers\OmahadminController@analytics');
 //Route::get('/customer-list', 'App\Http\Controllers\OmahadminController@customer_list');

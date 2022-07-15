@@ -684,11 +684,9 @@ if(\Illuminate\Support\Facades\Session::get('member_id')){
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
 									<div class="header-info">
-										<span class="text-black">{{$member->member_name}}</span>
+										<span class="text-black">{{Session::get('session_name')}}</span>
 										<p class="fs-12 mb-0">
-                                            @foreach($member->roles as $role)
-                                                {{$role->name}} {{count($member->roles) > 1 ? ', ' : ''}}
-                                            @endforeach
+                                            {{Session::get('session_role')}}
                                         </p>
 									</div>
                                     <img  src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" width="20" alt=""/>
