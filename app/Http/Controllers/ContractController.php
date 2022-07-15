@@ -19,16 +19,13 @@ class ContractController extends Controller
 
     public function contract_list()
     {
-
         $info_data = Contract::all();
-
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng';
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
-
     }
     /**
      * Show the form for creating a new resource.

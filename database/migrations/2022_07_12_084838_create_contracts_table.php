@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('partnerId')->nullable();
             $table->string('store_contract_type')->default('1');
+            $table->string('contract_code')->nullable();
             $table->string('store_name')->nullable();
             $table->string('store_add_DKKD')->nullable();
             $table->string('store_local_DKKD')->nullable();
@@ -35,6 +36,7 @@ return new class extends Migration
             $table->string('store_effect')->nullable();
             $table->string('store_started')->nullable();
             $table->string('store_end')->nullable();
+            $table->integer('contract_level')->nullable();
             $table->string('store_signed')->nullable();
             $table->string('store_sign_img')->nullable();
             $table->string('store_sign_img_doppelherz')->nullable();

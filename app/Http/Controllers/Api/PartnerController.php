@@ -45,9 +45,9 @@ class PartnerController extends Controller
 //                return response()->json($validator->messages(),400);
 //            }
 //            Toàn bộ fields t  rường partner bắt buộc, trừ owner_token
-            $partner = Partner::create($request->only(['owner_name','owner_idNumb','owner_idNumbCreAt','owner_idNumbCreLocate','owner_sex','owner_dob','owner_age','owner_token','owner_phone','owner_email','owner_mst']));
+            $partner = Partner::create($request->only(['owner_name','owner_id_numb','owner_id_numb_created_at','owner_id_numb_created_locate','owner_sex','owner_dob','owner_age','owner_token','owner_phone','owner_email','owner_mst']));
             $partner->save();
-            Contract::create($request->only(['partnerID'=>$partner->id,'contract_code','store_name','store_addDKKD','store_localDKKD','store_addGH','store_localGH','store_phone','store_website','store_GPDKKD','store_idNumbGPDKKD','store_bank','store_bankHolder','store_bankNumb','store_contactName','store_contactPhone','store_contactPosition','store_effect','store_started','store_end','store_signed','store_signImg','store_signImgDoppelherz','store_token']));
+            Contract::create($request->only(['partnerID'=>$partner->id,'store_contract_type','contract_code','store_name','store_add_DKKD','store_local_DKKD','store_add_GH','store_local_GH','store_phone','store_website','store_GPDKKD','store_id_Numb_GPDKKD','store_bank','store_bank_holder','store_bank_numb','store_contact_name','store_contact_phone','store_contact_position','store_effect','store_started','store_end','contract_level','store_signed','store_sign_img','store_sign_img_doppelherz','store_token']));
 
             return response()->json([
                 'notice' => 'Tạo thành công, chúng tôi sẽ liên hệ bạn sớm nhất!',
