@@ -19,7 +19,7 @@ class ContractController extends Controller
 
     public function contract_list()
     {
-        $info_data = Contract::all();
+        $info_data = Contract::orderBy('id', 'desc')->paginate('10');
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng';
         $logo = "images/logo.png";
