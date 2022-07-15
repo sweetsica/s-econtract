@@ -48,7 +48,7 @@
                                                 <label class="custom-control-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td><strong>{{$data['id']}}-{{$data['created_at']->format('dmY-His')}}</strong></td>
+                                        <td><strong>{{$data['id']}}</strong></td>
 {{--                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>--}}
                                         <td>{{$data['store_name']}}</td>
                                         <td>{{$data['store_add_DKKD']}}</td>
@@ -67,7 +67,7 @@
                                         </td>
                                         <td>
                                             <div class="d-flex">
-{{--                                                <a href="{{route('contract.edit',$data['id'])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>--}}
+                                                <a href="{{route('contract.edit',$data['id'])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
 {{--                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>--}}
                                             </div>
                                         </td>

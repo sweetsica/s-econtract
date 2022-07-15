@@ -56,6 +56,7 @@ Route::prefix('hop-dong')->group(function (){
     Route::get('/tim-kiem', [PartnerController::class, 'search_export'])->name('contract.seach');
 
     Route::get('/danh-sach',[ContractController::class, 'contract_list'])->name('contract.list');
+    Route::get('/chinh-sua/{id}/', [ContractController::class, 'edit'])->name('contract.edit');
 
     Route::post('/xuat-hop-dong', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
     Route::get('/xuat-hop-dong-da-ky', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');

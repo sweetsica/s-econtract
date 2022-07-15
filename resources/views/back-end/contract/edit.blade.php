@@ -13,7 +13,7 @@
                     <h2 class="text-black font-w600">Chi tiết hợp đồng</h2>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item active"><a href="javascript:void(0)">Hợp đồng</a></li>
-                        <li class="breadcrumb-item"><a href="javascript:void(0)"></a>{{$data['id']}}-{{$data['created_at']->format('dmY')}}/HĐĐL</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)"></a>{{$data['contract_code']}}</li>
                     </ol>
                 </div>
                 <a href="javascript:void(0);" class="btn btn-danger rounded mr-3">Update Info</a>
@@ -26,8 +26,8 @@
                         <div class="col-xl-12">
                             <div class="card bg-primary text-center">
                                 <div class="card-body">
-                                    <h2 class="fs-30 text-white">Doanh số đăng ký</h2>
-                                    <span class="text-white font-w300">{{$data['account_budget1']}}đ - {{$data['account_budget2']}}đ</span>
+                                    <h2 class="fs-30 text-white">{{$data['store_name']}}</h2>
+                                    <span class="text-white font-w300">{{$data['store_phone']}} - {{$data['store_add_DKKD']}}   </span>
                                 </div>
                             </div>
                         </div>
@@ -173,8 +173,8 @@
 													{{$data['address']}}</span>
                                             </div>
                                             <div class="ml-md-4 text-md-right">
-                                                <p class="fs-14 text-black mb-1 mr-1">Doanh số đăng ký</p>
-                                                <h4 class="fs-24 text-primary">{{$data['account_budget1']}}đ - {{$data['account_budget2']}}đ </h4>
+                                                <p class="fs-14 text-black mb-1 mr-1">Ngày đăng ký</p>
+                                                <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
                                             </div>
                                         </div>
                                         <div class="mb-sm-5 mb-2">
@@ -215,7 +215,7 @@
                                                         <div class="form-row">
                                                             <div class="form-group col-md-4">
                                                                 <label>Họ và tên: </label>
-                                                                <input type="text" class="form-control" name='name' placeholder="{{$data['name']}}">
+                                                                <input type="text" class="form-control" name='name' placeholder="{{$data['store_name']}}">
                                                             </div>
                                                             <div class="form-group col-md-4">
                                                                 <label>Ngày sinh: </label>
