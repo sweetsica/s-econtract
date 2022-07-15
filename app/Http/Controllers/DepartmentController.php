@@ -17,7 +17,7 @@ class DepartmentController extends Controller
         $action = __FUNCTION__;
         $departments = Department::latest()->with('members')->get();
         $members = Member::latest()->with('location')->get();
-        return view('back-end.department_system.index', compact('page_title',
+        return view('back-end.department.department_system', compact('page_title',
             'page_description', 'action', 'logo', 'logoText','departments', 'members'));
     }
     public function department_list()
@@ -56,7 +56,7 @@ class DepartmentController extends Controller
         try{
 
             Department::create($request->all());
-            return redirect()->to('/department');
+            return redirect()->route('phongban.danhsach');
         }catch (\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -87,7 +87,7 @@ class DepartmentController extends Controller
         try{
             $department = Department::find($id);
             $department->update($request->all());
-            return redirect()->to('/department');
+            return redirect()->route('phongban.danhsach');
         }catch (\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -96,7 +96,7 @@ class DepartmentController extends Controller
         try{
             $department = Department::find($id);
             $department->delete();
-            return redirect()->to('/department');
+            return redirect()->route('phongban.danhsach');
         }catch (\Exception $e){
             return redirect()->back()->with('error', $e->getMessage());
         }

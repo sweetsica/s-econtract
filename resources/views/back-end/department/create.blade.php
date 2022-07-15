@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{url('/department/create/submit')}}" method="post">
+                            <form action="{{route('phongban.guidulieu')}}" method="post">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
@@ -69,9 +69,6 @@
                                         @enderror
                                     </div>
                                 </div>
-
-
-
                                 <button type="submit" class="btn btn-primary">Tạo phòng ban</button>
                             </form>
                         </div>

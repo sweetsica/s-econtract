@@ -42,8 +42,8 @@
                                         <td>{{ $department->location->name }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{url('/department/edit',['id'=>$department->id])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                            <a onclick="return confirm('Chắc chắn xóa  {{$department->name}} ?')" href="{{url('/department/delete',['id'=>$department->id])}}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                            <a href="{{route('phongban.suaphongban',[$department->id]) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                            <a onclick="return confirm('Chắc chắn xóa  {{$department->name}} ?')" href="{{route('phongban.xoaphongban',[$department->id])}}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                         </div>
                                     </td>
                                 </tr>
