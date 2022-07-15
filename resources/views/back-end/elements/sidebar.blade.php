@@ -60,7 +60,7 @@
 {{--                    <li><a href="{!! url('/app-calender'); !!}">List</a></li>--}}
 {{--                </ul>--}}
 {{--            </li>--}}
-{{--            <li>--}}
+            <li>
                 <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-user-8"></i>
                     <span class="nav-text">Thành Viên</span>
