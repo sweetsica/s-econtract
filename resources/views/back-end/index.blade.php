@@ -1,8 +1,5 @@
 {{-- Extends layout --}}
 @extends('back-end.layout.fullwidth')
-
-
-
 {{-- Content --}}
 @section('content')
     <div class="col-md-6">
@@ -15,7 +12,7 @@
                         </div>
 
                         <h4 class="text-center mb-4 font-weight-bold fs-22">Đăng Nhập</h4>
-                        @if(\Illuminate\Support\Facades\Session::has('error'))
+                        @if(Session::has('error'))
                             <div class="alert alert-danger">
                                 Đăng nhập thất bại, vui lòng kiểm tra lại thông tin đăng nhập.
                             </div>

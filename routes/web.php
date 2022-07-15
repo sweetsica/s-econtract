@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Http\Controllers\DepartmentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
@@ -73,6 +74,28 @@ Route::prefix('pdf')->group(function (){
 Route::prefix('chuky')->group(function(){
     Route::get('/giamdoc', [DoppelherzSignController::class, 'index'])->name('chuky.giamdoc');
 });
+
+//phòng ban
+Route::prefix('phong-ban')->group(function (){
+    Route::get('/danh-sach',[DepartmentController::class,'department_list'])->name('phongban.danhsach');
+    Route::get('/them-phong-ban',[DepartmentController::class,'department_create'])->name('phongban.themphongban');
+    Route::post('/gui-du-lieu',[DepartmentController::class,'department_store'])->name('phongban.guidulieu');
+    Route::get('/sua-phong-ban/{id}',[DepartmentController::class,'department_edit'])->name('phongban.suaphongban');
+    Route::get('/capnhat/{id}',[DepartmentController::class,'department_update'])->name('phongban.capnhat');
+    Route::get('/xoa-phong-ban/{id}',[DepartmentController::class,'department_delete'])->name('phongban.xoaphongban');
+    Route::get('/he-thong-phong-ban',[DepartmentController::class,'department_system'])->name('phongban.hethong');
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Route::post('/lockpage', 'App\Http\Controllers\PageController@lockpage')->name('lockpage');
