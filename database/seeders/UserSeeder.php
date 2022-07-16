@@ -25,5 +25,10 @@ class UserSeeder extends Seeder
             'email' => 'admin@tbht.vn',
             'password' => bcrypt('123456'),
         ]);
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin',
+            'password' => bcrypt('123456'),
+        ]);
     }
 }

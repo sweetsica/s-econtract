@@ -6,6 +6,8 @@
 {{-- Content --}}
 @section('content')
     <!-- row -->
+    {{dump($info_data_parent)}}
+    {{dd($info_data)}}
     @foreach($info_data as $data)
         <div class="container-fluid">
             <div class="form-head page-titles d-flex  align-items-center">
@@ -346,10 +348,12 @@
                                                             <div class="form-group col-md-3">
                                                                 <label>Mức độ hợp đồng: </label>
                                                                 <select id="inputState" class="form-control">
-                                                                    <option selected>Choose...</option>
-                                                                    <option>Option 1</option>
-                                                                    <option>Option 2</option>
-                                                                    <option>Option 3</option>
+                                                                    <option selected>Chưa phân loại...</option>
+                                                                    <option value="1">Cấp 1 - Bệnh viện</option>
+                                                                    <option value="2">Cấp 2 - Chuỗi</option>
+                                                                    <option value="3">Cấp 3 - Phòng khám</option>
+                                                                    <option value="4">Cấp 4 - Nhà thuốc</option>
+                                                                    <option value="5">Cấp 5 - Đại lý cá nhân</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -357,7 +361,7 @@
                                                             <div class="form-check">
                                                                 <input class="form-check-input" type="checkbox">
                                                                 <label class="form-check-label">
-                                                                    Tôi xác nhận những thay đổi trên. Thao tác sẽ được lưu lại.
+                                                                    Thông tin đã chính xác, sẵn sàng lưu lại.
                                                                 </label>
                                                             </div>
                                                         </div>

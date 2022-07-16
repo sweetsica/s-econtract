@@ -25,12 +25,12 @@
                         <form action="{{route('contract.return.export')}}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label><strong>Số điện thoại đăng ký</strong></label>
-                                <input type="text" class="form-control" name="account_phone">
+                                <label><strong>Mã hợp đồng</strong></label>
+                                <input type="text" class="form-control" name="contract_code">
                             </div>
                             <div class="form-group">
                                 <label><strong>Mật khẩu</strong></label>
-                                <input type="password" class="form-control" name="account_password">
+                                <input type="password" class="form-control" name="store_token">
                                 <div class="flex text-right pt-2">
                                     <a href="{{asset('/partner/reset-password')}}" > Quên mật khẩu</a>
                                 </div>

@@ -57,10 +57,10 @@ Route::prefix('hop-dong')->group(function (){
     Route::get('/tim-kiem', [PartnerController::class, 'search_export'])->name('contract.seach');
 
     Route::get('/danh-sach',[ContractController::class, 'contract_list'])->name('contract.list');
-    Route::get('/chinh-sua/{id}/', [ContractController::class, 'edit'])->name('contract.edit');
+    Route::get('/chinh-sua/{contract_id}', [ContractController::class, 'edit'])->name('contract.edit');
 
-    Route::post('/xuat-hop-dong', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
     Route::get('/xuat-hop-dong-da-ky', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
+    Route::post('/xuat-hop-dong', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
 });
 //PDF module
 Route::prefix('pdf')->group(function (){
@@ -73,18 +73,18 @@ Route::prefix('pdf')->group(function (){
 });
 //Sign module
 Route::prefix('chuky')->group(function(){
-    Route::get('/giamdoc', [DoppelherzSignController::class, 'index'])->name('chuky.giamdoc');
+    Route::get('/giam-doc', [DoppelherzSignController::class, 'index'])->name('chuky.giamdoc');//name('signature.manager')
 });
 
 //phòng ban
 Route::prefix('phong-ban')->group(function (){
-    Route::get('/danh-sach',[DepartmentController::class,'department_list'])->name('phongban.danhsach');
-    Route::get('/them-phong-ban',[DepartmentController::class,'department_create'])->name('phongban.themphongban');
-    Route::post('/gui-du-lieu',[DepartmentController::class,'department_store'])->name('phongban.guidulieu');
-    Route::get('/sua-phong-ban/{id}',[DepartmentController::class,'department_edit'])->name('phongban.suaphongban');
-    Route::get('/capnhat/{id}',[DepartmentController::class,'department_update'])->name('phongban.capnhat');
-    Route::get('/xoa-phong-ban/{id}',[DepartmentController::class,'department_delete'])->name('phongban.xoaphongban');
-    Route::get('/he-thong-phong-ban',[DepartmentController::class,'department_system'])->name('phongban.hethong');
+    Route::get('/danh-sach',[DepartmentController::class,'department_list'])->name('phongban.danhsach');//name('department.list')
+    Route::get('/them-moi',[DepartmentController::class,'department_create'])->name('phongban.themphongban');//name('department.add')
+    Route::post('/gui-du-lieu',[DepartmentController::class,'department_store'])->name('phongban.guidulieu');//name('department.post')
+    Route::get('/chinh-sua/{id}',[DepartmentController::class,'department_edit'])->name('phongban.suaphongban');//name('department.edit')
+    Route::get('/cap-nhat/{id}',[DepartmentController::class,'department_update'])->name('phongban.capnhat');//name('department.update')
+    Route::get('/xoa/{id}',[DepartmentController::class,'department_delete'])->name('phongban.xoaphongban');//name('department.delete')
+    Route::get('/he-thong',[DepartmentController::class,'department_system'])->name('phongban.hethong');//name('department.system.list')
 });
 
 
