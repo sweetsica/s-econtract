@@ -43,6 +43,8 @@ return new class extends Migration
             $table->integer('contract_level')->nullable(); // Cấp độ hợp đồng - mặc định 10
             $table->string('store_signed')->nullable(); // Tình trạng chữ ký
             $table->string('store_sign_img')->nullable(); // Link ảnh chữ ký
+            $table->string('store_bank_name_doppelherz')->nullable(); // Tên ngân hàng Doppelherz
+            $table->string('store_bank_number_doppelherz')->nullable(); // Số ngân hàng Doppelherz
             $table->string('store_sign_img_doppelherz')->nullable(); // Link ảnh giám đốc vùng
             $table->string('store_token')->nullable(); // Mật khẩu hợp đồng
             $table->timestamps();
