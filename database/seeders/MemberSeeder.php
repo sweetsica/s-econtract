@@ -15,7 +15,7 @@ class MemberSeeder extends Seeder
      */
     public function run()
     {
-        $member = Member::create([
+        $member1 = Member::create([
              'member_name' => 'Phạm Minh Hải',
              'member_code' => 'MTT422',
              'email' => 'it_manager@tbht.vn',
@@ -24,10 +24,10 @@ class MemberSeeder extends Seeder
              'location_id' => '829',
              'address' => 'Trung Kính, Phường Yên Hòa, Quận Cầu Giấy, TP Hà Nội',
          ]);
-          $member->roles()->attach([3]);
-          $member->department()->attach([1]);
+          $member1->roles()->attach([3]);
+          $member1->department()->attach([1]);
 
-        $member = Member::create([
+        $member2 = Member::create([
             'member_name' => 'Bảo',
             'member_code' => 'TBHT195',
             'email' => 'baonn@sweetisca.com',
@@ -36,8 +36,22 @@ class MemberSeeder extends Seeder
             'location_id' => '829',
             'address' => 'TP Hà Nội',
         ]);
-        $member->roles()->attach([3]);
-        $member->department()->attach([1]);
+
+        $member2->roles()->attach([3]);
+        $member2->department()->attach([1]);
+
+        $member3 = Member::create([
+            'member_name' => 'Sale admin',
+            'member_code' => 'TBHT199',
+            'email' => 'saleadmin@doppelherz.vn',
+            'phone' => '02084848',
+            'password' => bcrypt('tieuhoa195'),
+            'location_id' => '829',
+            'address' => 'TP Hà Nội',
+        ]);
+
+        $member3->roles()->attach([1]);
+        $member3->department()->attach([2]);
 
     }
 }

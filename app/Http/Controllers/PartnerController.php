@@ -27,12 +27,6 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-//        $request->validate([
-//            ''
-//        ]);
-//
-//        $partner = Partner::create($request->all());
-//        return redirect(route('dashboard'));
         $validator = Validator::make($request->all(), [
             'account_name' => 'required|string|max:255',
             'account_email' => 'required|string|email|max:255',
@@ -79,8 +73,15 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::get()->where('id', '=', $id);
+        $info_data = Partner::with('contract')->where('id', '=', $id)->get();
         return view('back-end.contract.edit', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
+    }
+
+    public function update(Request $request,$id){
+        $partner = Partner::find($id);
+        $contract = $partner->contract->first();
+        $partner->update($request->only(['owner_name','owner_id_numb','owner_id_numb_created_at','owner_id_numb_created_locate','owner_sex','owner_dob','owner_age','owner_token','owner_phone','owner_email','owner_mst']));
+        return redirect(route('contract.edit',$contract->id));
     }
     /**
      * Trang dashboard hợp đồng
@@ -277,7 +278,7 @@ class PartnerController extends Controller
         $user_count = Member::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
-    /**
+    /**jvxvbrkvbmxcvbkrsdfdskfnvnxvuxv,vabva;;vzxxxxxcnvhfbdjeksdnd
      * Trang sửa level hợp đồng
      */
     public function list()

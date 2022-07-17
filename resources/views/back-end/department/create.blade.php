@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{route('phongban.guidulieu')}}" method="post">
+                            <form action="{{route('department.post')}}" method="post">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-12">

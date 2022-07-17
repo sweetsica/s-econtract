@@ -40,17 +40,17 @@ class SignatureController extends Controller
             $id_contract = Session::get('id_contract');
             $contract = Contract::where('id', '=', $id_contract)->first();
             $url_image = $this->save_sign($request, sprintf("%s-%s", $contract['id'], $contract["account_phone"]));
-            $contract['image'] = $url_image;
-            $contract['image'] = Session::get('url_true');
+            $contract['store_sign_img'] = $url_image;
+            $contract['store_sign_img'] = Session::get('url_true');
             $contract['name_doppelherz'] = $request['name_doppelherz'];
             $contract['bank_doppelherz'] = $request['bank_doppelherz'];
-            $doppelherz_image = DoppelherzSign::where('name', '=', $contract['name_doppelherz'])->get('image')->first();
-            $contract['doppelherz_image'] = $doppelherz_image['image'];
-            $contract['signed'] = true;
+            $doppelherz_image = DoppelherzSign::where('name', '=', $contract['store_sign_img_doppelherz'])->get()->first();
+            $contract['store_sign_img_doppelherz'] = $doppelherz_image['id'];
+            $contract['store_signed'] = true;
             $contract->save();
             return redirect()->route('contract.return.export.signed');
         }catch (\Exception $e){
-           dd($e);
+            return redirect()->route('contract.return.export.signed');
         }
 
     }

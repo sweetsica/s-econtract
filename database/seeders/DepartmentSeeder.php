@@ -20,5 +20,10 @@ class DepartmentSeeder extends Seeder
             'description' => 'Phòng IT',
             'location_id' => '829',
         ]);
+        Department::create([
+            'name' => 'Sales',
+            'description' => 'Phòng Sales',
+            'location_id' => '829',
+        ]);
     }
 }

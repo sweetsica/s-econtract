@@ -61,6 +61,10 @@ Route::prefix('hop-dong')->group(function (){
 
     Route::get('/danh-sach',[ContractController::class, 'contract_list'])->name('contract.list');
     Route::get('/chinh-sua/{contract_id}', [ContractController::class, 'edit'])->name('contract.edit');
+    Route::post('/chinh-sua/cap-nhat/{id}',[ContractController::class, 'update'])->name('contract.update');
+
+//    Route::get('/xuat-hop-dong-da-ky', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
+//    Route::post('/xuat-hop-dong', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
 });
 //PDF module
 Route::prefix('pdf')->group(function (){
@@ -81,13 +85,13 @@ Route::prefix('chuky')->group(function(){
 
 //phòng ban
 Route::prefix('phong-ban')->group(function (){
-    Route::get('/danh-sach',[DepartmentController::class,'department_list'])->name('phongban.danhsach');//name('department.list')
-    Route::get('/them-moi',[DepartmentController::class,'department_create'])->name('phongban.themphongban');//name('department.add')
-    Route::post('/gui-du-lieu',[DepartmentController::class,'department_store'])->name('phongban.guidulieu');//name('department.post')
-    Route::get('/chinh-sua/{id}',[DepartmentController::class,'department_edit'])->name('phongban.suaphongban');//name('department.edit')
-    Route::get('/cap-nhat/{id}',[DepartmentController::class,'department_update'])->name('phongban.capnhat');//name('department.update')
-    Route::get('/xoa/{id}',[DepartmentController::class,'department_delete'])->name('phongban.xoaphongban');//name('department.delete')
-    Route::get('/he-thong',[DepartmentController::class,'department_system'])->name('phongban.hethong');//name('department.system.list')
+    Route::get('/danh-sach',[DepartmentController::class,'department_list'])->name('department.list');//name('department.list')
+    Route::get('/them-moi',[DepartmentController::class,'department_create'])->name('department.add');//name('department.add')
+    Route::post('/gui-du-lieu',[DepartmentController::class,'department_store'])->name('department.post');//name('department.post')
+    Route::get('/chinh-sua/{id}',[DepartmentController::class,'department_edit'])->name('department.edit');//name('department.edit')
+    Route::get('/cap-nhat/{id}',[DepartmentController::class,'department_update'])->name('department.update');//name('department.update')
+    Route::get('/xoa/{id}',[DepartmentController::class,'department_delete'])->name('department.delete');//name('department.delete')
+    Route::get('/he-thong',[DepartmentController::class,'department_system'])->name('department.system.list');//name('department.system.list')
 });
 
 
@@ -268,11 +272,11 @@ Route::prefix('phong-ban')->group(function (){
 //Route::get('/email-inbox', 'App\Http\Controllers\OmahadminController@email_inbox');
 //Route::get('/email-read', 'App\Http\Controllers\OmahadminController@email_read');
 
-Route::get('/form-editor-summernote', 'App\Http\Controllers\OmahadminController@form_editor_summernote');
-Route::get('/form-element', 'App\Http\Controllers\OmahadminController@form_element');
-Route::get('/form-pickers', 'App\Http\Controllers\OmahadminController@form_pickers');
-Route::get('/form-validation-jquery', 'App\Http\Controllers\OmahadminController@form_validation_jquery');
-Route::get('/form-wizard', 'App\Http\Controllers\OmahadminController@form_wizard');
+//Route::get('/form-editor-summernote', 'App\Http\Controllers\OmahadminController@form_editor_summernote');
+//Route::get('/form-element', 'App\Http\Controllers\OmahadminController@form_element');
+//Route::get('/form-pickers', 'App\Http\Controllers\OmahadminController@form_pickers');
+//Route::get('/form-validation-jquery', 'App\Http\Controllers\OmahadminController@form_validation_jquery');
+//Route::get('/form-wizard', 'App\Http\Controllers\OmahadminController@form_wizard');
 
 //Route::get('/map-jqvmap', 'App\Http\Controllers\OmahadminController@map_jqvmap');
 //Route::get('/page-error-400', 'App\Http\Controllers\OmahadminController@page_error_400');

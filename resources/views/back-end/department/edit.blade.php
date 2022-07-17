@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{route('phongban.capnhat',['id'=>$department->id])}}" method="post">
+                            <form action="{{route('department.update',['id'=>$department->id])}}" method="post">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-12">

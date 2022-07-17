@@ -27,17 +27,17 @@
 {{--                    <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>--}}
                 </ul>
             </li>
-            <li>
-                <a class="has-arrow ai-icon" href="{{asset('/department-system')}}" aria-expanded="false">
-                    <i class="flaticon-381-settings"></i>
-                    <span class="nav-text">Hệ thống phòng ban</span>
-                </a>
-                {{--                <ul aria-expanded="false">--}}
-                {{--                    <li><a href="{!! url('/app-calender'); !!}">Document</a></li>--}}
-                {{--                    <li><a href="{!! url('/app-calender'); !!}">Add</a></li>--}}
-                {{--                    <li><a href="{!! url('/app-calender'); !!}">List</a></li>--}}
-                {{--                </ul>--}}
-            </li>
+{{--            <li>--}}
+{{--                <a class="has-arrow ai-icon" href="{{asset('/department-system')}}" aria-expanded="false">--}}
+{{--                    <i class="flaticon-381-settings"></i>--}}
+{{--                    <span class="nav-text">Hệ thống phòng ban</span>--}}
+{{--                </a>--}}
+{{--                --}}{{--                <ul aria-expanded="false">--}}
+{{--                --}}{{--                    <li><a href="{!! url('/app-calender'); !!}">Document</a></li>--}}
+{{--                --}}{{--                    <li><a href="{!! url('/app-calender'); !!}">Add</a></li>--}}
+{{--                --}}{{--                    <li><a href="{!! url('/app-calender'); !!}">List</a></li>--}}
+{{--                --}}{{--                </ul>--}}
+{{--            </li>--}}
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-briefcase
@@ -45,8 +45,9 @@
                     <span class="nav-text">Phòng ban</span>
                 </a>
                 <ul aria-expanded="false">
-{{--                    <li><a href="{!! url('/department/create'); !!}">Thêm phòng ban</a></li>--}}
-{{--                    <li><a href="{!! url('/department'); !!}">Danh sách phòng ban</a></li>--}}
+                    <li><a href="{{route('department.add')}}">Thêm phòng ban</a></li>
+                    <li><a href="{{route('department.list')}}">Danh sách phòng ban</a></li>
+                    <li><a href="{{route('department.system.list')}}">Hệ thống phòng ban</a></li>
                 </ul>
             </li>
 {{--            <li>--}}

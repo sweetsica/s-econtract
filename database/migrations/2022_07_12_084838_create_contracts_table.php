@@ -39,7 +39,7 @@ return new class extends Migration
             $table->string('store_effect')->nullable(); // Phạm vi bán hàng tại cửa hàng
             $table->string('store_started')->nullable(); // Ngày bắt đầu hợp đồng
             $table->string('store_end')->nullable(); // Ngày kết thúc
-            $table->string('member_id')->nullable(); // Cấp độ hợp đồng - mặc định 10
+            $table->string('member_id')->nullable(); // id TDV
             $table->integer('contract_level')->nullable(); // Cấp độ hợp đồng - mặc định 10
             $table->string('store_signed')->nullable(); // Tình trạng chữ ký
             $table->string('store_sign_img')->nullable(); // Link ảnh chữ ký

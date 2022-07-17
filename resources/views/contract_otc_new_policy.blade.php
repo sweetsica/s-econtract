@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Non-governmental Organizations</title>
+    <title>HĐ ĐẠI LÝ 2022 - OTC chính sách mới</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
@@ -12,13 +12,13 @@
 <table style="width: 100%">
     <tbody>
     <tr>
-        <td width="30%" style="text-align: center">
-            <img width="100" height="101" style="margin-bottom:5px"
+        <td width="10%" style="text-align: center;padding-right:270px">
+            <img width="150"  style="margin-bottom:5px"
                  src="https://doppelherz.vn/wp-content/uploads/2022/01/LOGO-DOPPELHERZ-Logo-tren-an-pham-792x800.png"/>
-            <h4 style="font-size: 15px"><b>MARTERTRAN</b></h4>
-            <h6 style="margin-top: 10px">Số: 12072022/HĐĐK</h6>
+            <h4 style="font-size: 20px"><b>MARTERTRAN</b></h4>
+            <h6 style="margin-top: 18px">Số: {{$info['contract_code']}}</h6>
         </td>
-        <td width="70%" style="text-align: center">
+        <td width="90%" style="text-align: center;font-size: 20px">
             <h4>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h4>
             <h5>Độc lập - Tự do - Hạnh phúc</h5>
             <h6>----------oOo----------</h6>
@@ -26,11 +26,11 @@
     </tr>
     <tr>
         <td colspan="2" style="text-align: center;padding: 80px 0 20px 0">
-            <h1 style="font-size:18px"><strong>HỢP ĐỒNG ĐẠI LÝ</strong></h1>
+            <h1 style="font-size:20px"><strong>HỢP ĐỒNG ĐẠI LÝ</strong></h1>
         </td>
     </tr>
-    <tr>
-        <td colspan="2" style="font-size: 15px">
+    <tr >
+        <td colspan="2" style="font-size: 18px">
             <p>- <span style="display: inline;">Căn cứ vào Bộ luật dân sự số: 91/2015/QH13, ngày 24/11/2015 Quốc hội Nước CHXHCN Việt Nam.</span>
             </p>
             <br/>
@@ -71,24 +71,24 @@
                     <td width="20%">
                         Tài khoản
                     </td>
-                    <td colspan="3" width="80%">: 0948394738</td>
+                    <td colspan="3" width="80%">: {{$info['store_bank_number_doppelherz']}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Ngân hàng
                     </td>
-                    <td colspan="3" width="80%">: VP BANK</td>
+                    <td colspan="3" width="80%">: {{$info['store_bank_name_doppelherz']}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông Đỗ Văn Thoại</td>
-                    <td width="50%">Chức danh: Giám đốc bán hàng vùng phía Bắc</td>
+                    <td width="30%">: Ông {{$info->doppelherz->name}}</td>
+                    <td width="50%">Chức danh: Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        Theo giấy ủy quyền số: 12/07/MTT
+                        Theo giấy ủy quyền số: ................................................
                     </td>
                 </tr>
                 </tbody>
@@ -103,41 +103,41 @@
                     <td width="20%">
                         <h4>BÊN B</h4>
                     </td>
-                    <td width="80%" colspan="3"><h4>: CÔNG TY CỔ PHẦN MASTERTRAN</h4></td>
+                    <td width="80%" colspan="3"><h4>: {{$info['store_name']}}</h4></td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Địa chỉ
                     </td>
-                    <td colspan="3" width="80%">: NV4.13 Khu chức năng đô thị Tây Mỗ, P. Tây Mỗ, Q. Nam Từ Liêm, Hà
-                        Nội
+                    <td colspan="3" width="80%">:
+                        {{$info->local_dkkd->name}}, {{$info->local_dkkd->parent->name}}, {{$info->local_dkkd->parent->parent->name}}
                     </td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Điện thoại
                     </td>
-                    <td width="20%">: 024.37878408</td>
-                    <td width="30%">Mã số thuế : 0105381169</td>
+                    <td width="20%">: {{$info->store_phone}}</td>
+                    <td width="30%">Mã số thuế : {{$info->store_id_Numb_GPDKKD}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Tài khoản
                     </td>
-                    <td colspan="3" width="80%">: 0948394738</td>
+                    <td colspan="3" width="80%">: {{$info->store_bank_numb}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Ngân hàng
                     </td>
-                    <td colspan="3" width="80%">: VP BANK</td>
+                    <td colspan="3" width="80%">: {{$info->store_bank}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông Đỗ Văn Thoại</td>
-                    <td width="50%">Chức danh: Giám đốc bán hàng vùng phía Bắc</td>
+                    <td width="30%">: Ông {{$info->partner->owner_name}}</td>
+                    <td width="50%">Chức danh: Chủ đại lý</td>
                 </tr>
                 </tbody>
             </table>
@@ -331,22 +331,24 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path($info['doppelherz_image'])}}">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path($info->doppelherz->image)}}">
             </div>
-            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>
-            <span style="font-weight: bold;font-size: 16px">Do Van Thoai</span>
+            {{--            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
+            <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz->name}}</span>
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
             <p><strong> </strong></p>
             <div style="object-fit: contain">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
+
                 {{--                @if($info['image'])--}}
                 {{--                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">--}}
                 {{--                @else--}}
                 {{--                    <h6>Khách hàng chưa ký</h6>--}}
                 {{--                @endif--}}
             </div>
-            <span  style="font-weight: bold;font-size: 16px">{{$info['account_name']}}</span>
+            <span  style="font-weight: bold;font-size: 16px">{{$info->partner->owner_name}}</span>
         </td>
     </tr>
     <tr>
@@ -366,27 +368,27 @@
                         <p style="text-align: center;"><strong>Tên sản phẩm</strong></p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 61px;">
-                        <p><strong> Giá trước VAT<br/> (VNĐ/hộp) </strong></p>
+                        <p><strong>Giá trước VAT<br/> (VNĐ/hộp) </strong></p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 61px;">
-                        <p><strong> Giá niêm yết <br/> (VNĐ/hộp) </strong></p>
+                        <p><strong>Giá niêm yết <br/> (VNĐ/hộp) </strong></p>
                     </td>
                 </tr>
                 <tr style="height: 35px;">
                     <td style="width: 36px; text-align: center; height: 35px;">
                         <p>1</p>
                     </td>
-                    <td style="width: 52px; text-align: center; height: 166px;" rowspan="4">
+                    <td style="width: 52px; text-align: center; height: 166px;" rowspan="5">
                         <p><strong>Sản phẩm truyền thông</strong></p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 35px;">
                         <p><strong>Vital Pregna</strong>: Bổ bà bầu (Hộp 3 vỉ * 10 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>      300.000</p>
+                        <p>300.000</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>      330.000</p>
+                        <p>324.000</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -398,10 +400,10 @@
                             100ml)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      281.818</p>
+                        <p>281.818</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      310.000</p>
+                        <p>304.364</p>
                     </td>
                 </tr>
                 <tr style="height: 35px;">
@@ -412,10 +414,10 @@
                         <p><strong>A-Z Fizz</strong>: Bổ sung 21 vi chất giúp tăng cường sức khỏe (tuýp 13 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>        70.909</p>
+                        <p>70.909</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>        78.000</p>
+                        <p>76.582</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -428,15 +430,31 @@
                             chống loãng xương (Hộp 2 vỉ * 10 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      245.455</p>
+                        <p>245.455</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      270.000</p>
+                        <p>265.092</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
                     <td style="width: 36px; text-align: center; height: 48px;">
                         <p>5</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 48px;">
+                        <p><strong>A-Z Depot: </strong>Bổ sung Vitamin &amp; khoáng chất giúp tăng cường sức khỏe, tăng
+                            cường sức đề
+                            kháng (Hộp 30 viên)</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 48px;">
+                        <p>313.636</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 48px;">
+                        <p>338.727</p>
+                    </td>
+                </tr>
+                <tr style="height: 48px;">
+                    <td style="width: 36px; text-align: center; height: 48px;">
+                        <p>6</p>
                     </td>
                     <td style="width: 52px; text-align: center; height: 943px;" rowspan="21">
                         <p><strong>Sản phẩm tư vấn</strong></p>
@@ -447,26 +465,10 @@
                             chai 30ml)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      209.091</p>
+                        <p>209.091</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      230.000</p>
-                    </td>
-                </tr>
-                <tr style="height: 48px;">
-                    <td style="width: 36px; text-align: center; height: 48px;">
-                        <p>6</p>
-                    </td>
-                    <td style="width: 422.312px; text-align: left; height: 48px;">
-                        <p><strong>Magnesium + Calcium + D3</strong>: Giúp bổ xung Calci, Magie và D3 cần thiết cho sự
-                            phát triển
-                            của cơ và xương cơ thể (Hộp 3 vỉ *10 viên)</p>
-                    </td>
-                    <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      300.000</p>
-                    </td>
-                    <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      330.000</p>
+                        <p>225.819</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -474,15 +476,15 @@
                         <p>7</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
-                        <p><strong>A-Z Depot: </strong>Bổ sung Vitamin &amp; khoáng chất giúp tăng cường sức khỏe, tăng
-                            cường sức đề
-                            kháng (Hộp 30 viên)</p>
+                        <p><strong>Magnesium + Calcium + D3</strong>: Giúp bổ xung Calci, Magie và D3 cần thiết cho sự
+                            phát triển
+                            của cơ và xương cơ thể (Hộp 3 vỉ *10 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      313.636</p>
+                        <p>300.000</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      345.000</p>
+                        <p>324.000</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -490,29 +492,30 @@
                         <p>8</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
+                        <p><strong>Zincodin</strong>: Giúp bổ sung kẽm và L-histidine giúp cơ thể tăng hấp thu kẽm. (Hộp 30
+                            viên)</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 48px;">
+                        <p>199.074</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 48px;">
+                        <p>215.000</p>
+                    </td>
+                </tr>
+                <tr style="height: 48px;">
+                    <td style="width: 36px; text-align: center; height: 48px;">
+                        <p>9</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 48px;">
                         <p><strong>Haemo Vital</strong>: Cung cấp sắt và các vitamin cho quá trình tạo máu giúp phòng
                             ngừa và hỗ trợ
                             thiếu máu do thiếu sắt (Hộp 2 vỉ * 15 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      322.727</p>
+                        <p>322.727</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      355.000</p>
-                    </td>
-                </tr>
-                <tr style="height: 35px;">
-                    <td style="width: 36px; text-align: center; height: 35px;">
-                        <p>9</p>
-                    </td>
-                    <td style="width: 422.312px; text-align: left; height: 35px;">
-                        <p><strong>Coenzym Q10</strong>: Hỗ trợ điều trị suy tim, các bệnh tim mạch (Hộp 30 viên)</p>
-                    </td>
-                    <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>      300.000</p>
-                    </td>
-                    <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>      330.000</p>
+                        <p>348.546</p>
                     </td>
                 </tr>
                 <tr style="height: 35px;">
@@ -520,18 +523,32 @@
                         <p>10</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 35px;">
+                        <p><strong>Coenzym Q10</strong>: Hỗ trợ điều trị suy tim, các bệnh tim mạch (Hộp 30 viên)</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 35px;">
+                        <p>300.000</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 35px;">
+                        <p>324.000</p>
+                    </td>
+                </tr>
+                <tr style="height: 35px;">
+                    <td style="width: 36px; text-align: center; height: 35px;">
+                        <p>11</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 35px;">
                         <p><strong>Eye Vital:</strong> Bổ mắt, tăng cường thị lực (Hộp 30 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>      313.636</p>
+                        <p>313.636</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>      345.000</p>
+                        <p>338.727</p>
                     </td>
                 </tr>
                 <tr style="height: 61px;">
                     <td style="width: 36px; text-align: center; height: 61px;">
-                        <p>11</p>
+                        <p>12</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 61px;">
                         <p><strong>Prostacalm:</strong> Giúp ngăn ngừa và hạn chế sự phát triển của u xơ; giảm các triệu
@@ -539,15 +556,15 @@
                             tiện do bệnh phì đại tiền liệt tuyến lành tính (Hộp 3 vỉ * 10 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 61px;">
-                        <p>      322.727</p>
+                        <p>322.727</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 61px;">
-                        <p>      355.000</p>
+                        <p>348.546</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
                     <td style="width: 36px; text-align: center; height: 48px;">
-                        <p>12</p>
+                        <p>13</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
                         <p><strong>Joints ULTRA:</strong> Giảm các triệu chứng thoái hóa khớp, bảo vệ sụn khớp, bôi trơn
@@ -555,24 +572,10 @@
                             viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      436.364</p>
+                        <p>436.364</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      480.000</p>
-                    </td>
-                </tr>
-                <tr style="height: 35px;">
-                    <td style="width: 36px; text-align: center; height: 35px;">
-                        <p>13</p>
-                    </td>
-                    <td style="width: 422.312px; text-align: left; height: 35px;">
-                        <p><strong>Omgea 3 + Acid Folic + B6 +B12</strong> (Hộp 30 viên)</p>
-                    </td>
-                    <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>      250.000</p>
-                    </td>
-                    <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>      275.000</p>
+                        <p>471.274</p>
                     </td>
                 </tr>
                 <tr style="height: 35px;">
@@ -580,33 +583,47 @@
                         <p>14</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 35px;">
-                        <p><strong>Belle Anti Aging:</strong> Chống lão hóa (Hộp 30 viên)</p>
+                        <p><strong>Omgea 3 + Acid Folic + B6 +B12</strong> (Hộp 30 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>      300.000</p>
+                        <p>250.000</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>      330.000</p>
+                        <p>270.000</p>
+                    </td>
+                </tr>
+                <tr style="height: 35px;">
+                    <td style="width: 36px; text-align: center; height: 35px;">
+                        <p>15</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 35px;">
+                        <p><strong>Belle Anti Aging</strong>: Chống lão hóa (Hộp 30 viên)</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 35px;">
+                        <p>300.000</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 35px;">
+                        <p>324.000</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
                     <td style="width: 36px; text-align: center; height: 48px;">
-                        <p>15</p>
+                        <p>16</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
                         <p><strong>Kinder Immune Syrup:</strong> Tăng cường miễn dịch, tăng sức đề kháng. (Hộp 1 chai
                             150ml)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      360.000</p>
+                        <p>360.000</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      396.000</p>
+                        <p>388.800</p>
                     </td>
                 </tr>
                 <tr style="height: 61px;">
                     <td style="width: 36px; text-align: center; height: 61px;">
-                        <p>16</p>
+                        <p>17</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 61px;">
                         <p><strong>Liver Complex:</strong> Hỗ trợ thanh nhiệt, tăng giải độc gan và duy trì chức năng
@@ -615,24 +632,10 @@
                         </p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 61px;">
-                        <p>      322.727</p>
+                        <p>322.727</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 61px;">
-                        <p>      355.000</p>
-                    </td>
-                </tr>
-                <tr style="height: 35px;">
-                    <td style="width: 36px; text-align: center; height: 35px;">
-                        <p>17</p>
-                    </td>
-                    <td style="width: 422.312px; text-align: left; height: 35px;">
-                        <p><strong>Active Men Plus: </strong>Sản phẩm hỗ trợ tăng sinh lý nam giới (Hộp 30 viên)</p>
-                    </td>
-                    <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>      454.545</p>
-                    </td>
-                    <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>      500.000</p>
+                        <p>348.546</p>
                     </td>
                 </tr>
                 <tr style="height: 35px;">
@@ -640,29 +643,27 @@
                         <p>18</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 35px;">
+                        <p><strong>Active Men Plus: </strong>Sản phẩm hỗ trợ tăng sinh lý nam giới (Hộp 30 viên)</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 35px;">
+                        <p>454.545</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 35px;">
+                        <p>490.909</p>
+                    </td>
+                </tr>
+                <tr style="height: 35px;">
+                    <td style="width: 36px; text-align: center; height: 35px;">
+                        <p>19</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 35px;">
                         <p><strong>Thymepect for kids:</strong> Long đờm, diệt khuẩn, giảm ho (Hộp 1 chai 100ml)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>      200.000</p>
+                        <p>200.000</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>      220.000</p>
-                    </td>
-                </tr>
-                <tr style="height: 48px;">
-                    <td style="width: 36px; text-align: center; height: 48px;">
-                        <p>19</p>
-                    </td>
-                    <td style="width: 422.312px; text-align: left; height: 48px;">
-                        <p><strong>Calciovin Liquid:</strong> Hỗ trợ hệ răng, xương hình thành và phát triển vững chắc,
-                            khỏe mạnh.
-                            (Hộp 1 chai 200ml)</p>
-                    </td>
-                    <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      416.364</p>
-                    </td>
-                    <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      458.000</p>
+                        <p>216.000</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -670,15 +671,15 @@
                         <p>20</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
-                        <p><strong>Kinder Omega-3 Syrup:</strong> Hỗ trợ sự phát triển não bộ và khả năng nhận thức, hỗ
-                            trợ trị tăng
-                            động và giảm chú ý (Hộp 1 chai 250ml)</p>
+                        <p><strong>Calciovin Liquid:</strong> Hỗ trợ hệ răng, xương hình thành và phát triển vững chắc,
+                            khỏe mạnh.
+                            (Hộp 1 chai 200ml)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      441.818</p>
+                        <p>416.364</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      486.000</p>
+                        <p>449.674</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -686,15 +687,15 @@
                         <p>21</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
-                        <p><strong>Iron drops: </strong>Bổ sung muối sắt giúp giảm nguy cơ thiếu máu do thiếu sắt ở trẻ
-                            em hoặc
-                            người lớn. (Hộp 1 chai 30ml)</p>
+                        <p><strong>Kinder Omega-3 Syrup:</strong> Hỗ trợ sự phát triển não bộ và khả năng nhận thức, hỗ
+                            trợ trị tăng
+                            động và giảm chú ý (Hộp 1 chai 250ml)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      270.909</p>
+                        <p>441.818</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      298.000</p>
+                        <p>477.164</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -702,15 +703,15 @@
                         <p>22</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
-                        <p><strong>Cinnamon Vitamins:</strong> Ổn định đường huyết, phòng bệnh tiểu đường, giảm biến
-                            chứng tiểu
-                            đường ( Hộp 2 vỉ * 15 viên)</p>
+                        <p><strong>Iron drops: </strong>Bổ sung muối sắt giúp giảm nguy cơ thiếu máu do thiếu sắt ở trẻ
+                            em hoặc
+                            người lớn. (Hộp 1 chai 30ml)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      313.636</p>
+                        <p>270.909</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      345.000</p>
+                        <p>292.582</p>
                     </td>
                 </tr>
                 <tr style="height: 35px;">
@@ -721,10 +722,10 @@
                         <p><strong>Belle Hairnakin:</strong> Làm đẹp da, tóc, móng (Hộp 30 viên )</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 35px;">
-                        <p>      360.000</p>
+                        <p>269.091</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 35px;">
-                        <p>      396.000</p>
+                        <p>290.618</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -737,10 +738,10 @@
                             (Hộp 3 vỉ * 10 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      495.455</p>
+                        <p>495.455</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      545.000</p>
+                        <p>535.092</p>
                     </td>
                 </tr>
                 <tr style="height: 48px;">
@@ -753,10 +754,25 @@
                             giúp dễ ngủ, ngủ ngon (Hộp 2 vỉ * 15 viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
-                        <p>      304.545</p>
+                        <p>304.545</p>
                     </td>
                     <td style="width: 77px; text-align: center; height: 48px;">
-                        <p>      335.000</p>
+                        <p>328.909</p>
+                    </td>
+                </tr>
+                <tr style="height: 48px;">
+                    <td style="width: 36px; text-align: center; height: 48px;">
+                        <p>26</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 48px;">
+                        <p><strong>Ginko+B-Vitamins+Choline:</strong>Tăng cường tuần hoàn não, tăng cường khả năng tập
+                            trung và cải thiện trí nhớ. (Hộp 30 viên)</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 48px;">
+                        <p>310.185</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 48px;">
+                        <p>335.000</p>
                     </td>
                 </tr>
                 </tbody>
@@ -764,185 +780,128 @@
         </td>
     </tr>
     <tr>
-        <td style="padding-top: 10px" colspan="2"><h4>CHÍNH SÁCH BÁN HÀNG NHÓM SẢN PHẨM TRUYỀN THÔNG.</h4></td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <strong>I. Doanh số cam kết tháng: </strong>……………………………....................đồng (không bao gồm thuế VAT)
+        <td colspan="2" style="text-align: center">
+            <h2>PHỤ LỤC II: CHÍNH SÁCH BÁN HÀNG</h2>
+            <p>(Đính kèm Hợp đồng số ……………….…/2022/HĐĐL ký ngày …………………… )</p>
         </td>
     </tr>
     <tr>
-        <td colspan="2">
-            <strong>II. Chính sách bán hàng: </strong>
-            <p>
-                <strong>2.1 Bên B được hưởng chiết khấu thương mại ngay trên đơn hàng: </strong>
-                Mua 5 hộp tặng 1 hộp đối với một loại sản phẩm.
-            </p>
-            <p>
-                <strong>2.2 Đồng thời bên B được hưởng chiết khấu thương mại bằng tiền ngay trên đơn: </strong>
-            <p>+ Q1: Các đơn hàng trong quý 1 sẽ được hỗ trợ thêm phí tư vấn 3% trừ ngay trên đơn hàng</p>
-            <p>+ Q2: Các sản phẩm lấy thêm (active sau), thưởng CK thêm 3% ngay trên đơn cho sp Active sau.</p>
-            <p>
-                <strong>2.1 Bên B được hưởng chiết khấu thương mại bổ sung theo Quý khi đạt </strong>
-            </p>
-        </td>
+        <td style="padding-top: 10px" colspan="2"><h4>2.1. Bên B được hưởng CKTM ngay trên đơn hàng: Khi mua 5h tặng 1h đối với một loại sản phẩm.</h4></td>
     </tr>
     <tr>
-        <td colspan="2" style="padding-top: 10px">
-            <table  border="1" width="100%" cellspacing="0" cellpadding="5">
-                <tbody>
-                <tr>
-                    <td width="249">
-                        <p style="text-align: center;">Doanh số (trước VAT) Quý đạt mức</p>
-                    </td>
-                    <td style="text-align: center;" width="109">
-                        <p>4.500.000</p>
-                    </td>
-                    <td style="text-align: center;" width="109">
-                        <p>9.000.000</p>
-                    </td>
-                    <td style="text-align: center;" width="109">
-                        <p> 15.000.000</p>
-                    </td>
-                    <td style="text-align: center;" width="109">
-                        <p>27.000.000</p>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="249">
-                        <p style="text-align: center;">% Chiết khấu được hưởng</p>
-                    </td>
-                    <td style="text-align: center;" width="109">
-                        <p>2%</p>
-                    </td>
-                    <td style="text-align: center;" width="109">
-                        <p>3%</p>
-                    </td>
-                    <td style="text-align: center;" width="109">
-                        <p>4%</p>
-                    </td>
-                    <td style="text-align: center;" width="109">
-                        <p>5%</p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td style="padding-top: 10px" colspan="2"><h4>CHÍNH SÁCH BÁN HÀNG NHÓM SẢN PHẨM TƯ VẤN.</h4></td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <strong>I. Doanh số cam kết tháng: </strong>……………………………....................đồng (không bao gồm thuế VAT)
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <strong>II. Chính sách bán hàng: </strong>
-            <p>
-                <strong>2.1 Bên B được hưởng chiết khấu thương mại ngay trên đơn hàng: </strong>
-                Mua 5 hộp tặng 1 hộp đối với một loại sản phẩm.
-            </p>
-            <p>
-                <strong>2.2 Đồng thời bên B được hưởng chiết khấu thương mại bằng tiền ngay trên đơn:</strong>
-                Chiết khấu thương mại thêm 3% ngay trên đơn hàng
-            </p>
-            <p>
-                <strong>2.3 Bên B được hưởng chiết khấu thương mại bổ sung theo Quý khi đạt </strong>
-            </p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
+        <td style="padding-top: 10px" colspan="2">
+            <h4>2.2 Đồng thời, bên B được hưởng CKTM bằng tiền đối với mỗi nhãn sản phẩm đạt điều kiện số lượng
+                bán ngay trên đơn như sau:</h4>
             <table border="1" width="100%" cellspacing="0" cellpadding="5">
                 <tbody>
-                <tr style="text-align: center;">
-                    <td width="217">
-                        <p>Doanh số (trước VAT) Quý đạt mức</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p>9.000.000</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p>15.000.000</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p>30.000.000</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p> 60.000.000</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p>90.000.000</p>
-                    </td>
+                <tr>
+                    <td> <strong>Số lượng bán mỗi nhãn/đơn</strong> </td>
+                    <td><strong>≥ 10 hộp</strong></td>
+                    <td><strong>≥ 20 hộp</strong></td>
+                    <td><strong>≥ 35 hộp</strong></td>
+                    <td><strong>≥ 50 hộp</strong></td>
                 </tr>
                 <tr>
-                    <td width="217">
-                        <p style="text-align: center;">% Chiết khấu được hưởng</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p>4%</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p>5%</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p>6%</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p> 7%</p>
-                    </td>
-                    <td style="text-align: center;" width="95">
-                        <p>8%</p>
-                    </td>
+                    <td><strong>Chiết khấu thương mại</strong></td>
+                    <td>3%</td>
+                    <td>5%</td>
+                    <td>6%</td>
+                    <td>7%</td>
                 </tr>
                 </tbody>
             </table>
         </td>
     </tr>
     <tr>
-        <td colspan="2">
-            <p>
-                <strong>2.4 Diễn giải nội dung chính sách: </strong>
-            </p>
-
+        <td style="padding-top: 10px" colspan="2">
+            <h4>2.3 Bên B được hưởng CKTM bổ sung Quý trên tổng doanh số Quý khi đạt số lượng nhãn sản phẩm
+                active theo Qúy đạt điều kiện như sau:</h4>
+            <table border="1" width="100%" cellspacing="0" cellpadding="5">
+                <tbody>
+                <tr>
+                    <td> <strong>Số lượng nhãn</strong> </td>
+                    <td><strong>≥ 3 nhãn</strong></td>
+                    <td><strong>≥ 5 nhãn</strong></td>
+                    <td><strong>≥ 7 nhãn</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Chiết khấu
+                            thương mại</strong></td>
+                    <td>3%</td>
+                    <td>5%</td>
+                    <td>7%</td>
+                </tr>
+                </tbody>
+            </table>
         </td>
     </tr>
     <tr>
-        <td colspan="2">
-            <span style='font-size:20px;'>&#8658;</span>
-            <span>Doanh số (DS) tính theo [giá chưa bao gồm GTGT (VAT) và đã trừ đi các khoản chiết khấu trên đơn] Công ty bán cho Đại lý (không bao gồm trị giá của phần hàng tặng), được ghi nhận theo đơn đặt hàng trước 12h00 ngày làm việc cuối cùng của tháng.</span>
+        <td style="padding-top: 10px" colspan="2">
+            <h4>2.4 Bên B được hưởng CKTM bổ sung khi đạt tổng doanh số cam kết tính đến 31/03/2023 như sau:</h4>
+            <table border="1" width="100%" cellspacing="0" cellpadding="5">
+                <tbody>
+                <tr>
+                    <td> <strong>Doanh số năm
+                            (VNĐ)</strong> </td>
+                    <td><strong>≥ 60.000.000</strong></td>
+                    <td><strong>≥ 120.000.000</strong></td>
+                    <td><strong>≥ 180.000.000</strong></td>
+                    <td><strong>≥ 240.000.000</strong></td>
+                    <td><strong>≥ 300.000.000</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Chiết khấu
+                            thương mại</strong></td>
+                    <td>3%</td>
+                    <td>4%</td>
+                    <td>5%</td>
+                    <td>5%</td>
+                    <td>7%</td>
+                </tr>
+                </tbody>
+            </table>
         </td>
     </tr>
     <tr>
-        <td colspan="2">
-            <span style='font-size:20px;'>&#8658;</span>
-            <span>hưởng doanh số Quý là khoản chiết khấu thương mại bổ sung dành cho các Đại lý có hợp tác từ 2 tháng mỗi Quý và đã hoàn thành doanh số Quý, được hạch toán và chi trả (cấn trừ) vào lần đặt hàng của đơn hàng đầu tiên của tháng kế tiếp. Với khách hàng sang Quý sau dừng hợp tác (hoặc xảy ra các dấu hiệu ngừng hợp tác (không active), thưởng doanh số quý sẽ được tổng hợp và chi trả sau 01 tuần.</span>
+        <td style="padding-top: 10px;font-size: 18px" colspan="2">
+            <h4>2.3 Diễn giải nội dung chính sách:</h4>
+            <p>&#x21d2; Doanh số (DS) tính theo giá chưa bao gồm GTGT (VAT) của sản phẩm mà Công ty bán cho Đại lý (không
+                bao gồm trị giá của phần hàng tặng), được ghi nhận theo đơn đặt hàng trước 12h00 ngày làm việc cuối
+                cùng của tháng.</p>
+            <p>&#x21d2; Nhãn sản phẩm active Qúy là của Đại lý là nhãn sản phẩm có số lượng hàng bán (theo đơn đặt hàng
+                hợp lệ, không bao gồm hàng tặng) từ 18 hộp SP mỗi loại/quý với sản phẩm tư vấn, và đạt từ 30 hộp mỗi
+                loại/quý với sản phẩm truyền thông</p>
+            <p>&#x21d2; Chiết khấu thương mại bổ sung dành cho bên B có hợp tác từ 2 tháng mỗi Quý và đã hoàn thành điều
+                kiện nhãn active Quý.</p>
+            <p>&#x21d2; Chiết khấu quý được chi trả (và cấn trừ) vào lần đặt hàng của đơn hàng sau ngày 10 của Quý tiếp theo.</p>
+            <p>&#x21d2; Chiết khấu áp dụng và chi trả khi bên B không vi phạm các điều khoản đã cam kết trong hợp đồng.</p>
+            <p>&#x21d2; Toàn bộ các khoản chiết khấu và quyền lợi thương mại đều được công ty xuất hóa đơn GTGT theo quy
+                định của nhà nước.</p>
+            <p>&#x21d2;  Đơn hàng nào phát sinh thì Hóa đơn, chứng từ sẽ đi kèm với Đơn hàng đó.</p>
         </td>
     </tr>
     <tr>
-        <td colspan="2">
-            <span style='font-size:20px;'>&#8658;</span>
-            <span>Các ĐL lấy hàng lần đầu tiên trong năm 2022 vào tháng thứ 3 của Quý nếu hoàn thành luôn DS cam Quý thì được nhận thưởng ngay trên đơn hàng tiếp theo của Quý sau.</span>
+        <td width="50%" style="text-align: center;padding-top: 10px">
+            <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
+            <p><strong> </strong></p>
+            <div style="width: 200px;height: 200px">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
+            </div>
+            {{--            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
+            <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz->name}}</span>
         </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <span style='font-size:20px;'>&#8658;</span>
-            <span> Các khoản "Hỗ trợ thương mại" được thực hiện theo Bản đăng ký (điện tử) mà Đại lý (hoặc TDV hỗ trợ) đăng ký và gửi về công ty</span>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <span style='font-size:20px;'>&#8658;</span>
-            <span> Toàn bộ các khoản chiết khấu và quyền lợi thương mại (3), (4), (5) đều được công ty xuất hóa đơn GTGT hạch toán thuế đầy đủ theo quy định của nhà nước.</span>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <span style='font-size:20px;'>&#8658;</span>
-            <span> Đơn hàng nào phát sinh thì Hóa đơn, chứng từ sẽ đi kèm với Đơn hàng đó.</span>
+        <td width="50%" style="text-align: center;padding-top: 10px">
+            <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
+            <p><strong> </strong></p>
+            <div style="object-fit: contain">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
+                {{--                @if($info['image'])--}}
+                {{--                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">--}}
+                {{--                @else--}}
+                {{--                    <h6>Khách hàng chưa ký</h6>--}}
+                {{--                @endif--}}
+            </div>
+            <span style="font-weight: bold;font-size: 16px">{{$info->partner->owner_name}}</span>
         </td>
     </tr>
     </tbody>

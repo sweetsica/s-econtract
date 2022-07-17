@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Non-governmental Organizations</title>
+    <title>HĐ ĐẠI LÝ 2022 - OTC du lịch Nhật Bản</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
@@ -331,22 +331,24 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path($info['doppelherz_image'])}}">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
             </div>
-            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>
+{{--            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
             <span style="font-weight: bold;font-size: 16px">Do Van Thoai</span>
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
             <p><strong> </strong></p>
             <div style="object-fit: contain">
-{{--                @if($info['image'])--}}
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
+
+                {{--                @if($info['image'])--}}
 {{--                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">--}}
 {{--                @else--}}
 {{--                    <h6>Khách hàng chưa ký</h6>--}}
 {{--                @endif--}}
             </div>
-            <span  style="font-weight: bold;font-size: 16px">{{$info['account_name']}}</span>
+            <span  style="font-weight: bold;font-size: 16px">Nguyen Van A</span>
         </td>
     </tr>
     <tr>
@@ -830,22 +832,23 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path($info['doppelherz_image'])}}">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
             </div>
-            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>
+{{--            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
             <span style="font-weight: bold;font-size: 16px">Do Van Thoai</span>
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
             <p><strong> </strong></p>
             <div style="object-fit: contain">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
                 {{--                @if($info['image'])--}}
                 {{--                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">--}}
                 {{--                @else--}}
                 {{--                    <h6>Khách hàng chưa ký</h6>--}}
                 {{--                @endif--}}
             </div>
-            <span  style="font-weight: bold;font-size: 16px">{{$info['account_name']}}</span>
+            <span  style="font-weight: bold;font-size: 16px">Nguyen Van A</span>
         </td>
     </tr>
     </tbody>
