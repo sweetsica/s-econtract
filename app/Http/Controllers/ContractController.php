@@ -63,30 +63,18 @@ class ContractController extends Controller
     /*
      *
      */
-    public function search_export_with_data(Request $request)
+    public function search_export_data(Request $request)
     {
         try {
-            $phone = $request['account_phone'];
-            $password = $request['account_password'];
-            $data = Partner::Where('account_phone', $phone)->get()->last();
-            if ($data) {
-                if (Hash::check($password, $data->account_password)) {
-                    if ($data['signed'] == 0) {
-                        Session::put('id_partner', $data['id']);
-                        return view('back-end.signature.signature');
-                    } else {
-                        $pdf = PDF::loadView('/pdf_true_export', ["info" => $data]);
-                        $time = Carbon::now()->format('d-m-Y');
-                        $name = 'hop-dong-dien-tu-' . $time;
-                        return $pdf->stream($name . '.pdf');
-                    }
-                } else {
-                    Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
-                    return redirect()->back();
-                }
-            } else {
-                Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
-                return redirect()->back();
+            $data = Contract::where('contract_code', $request['contract_title'])->orWhere('store_phone', $request['contract_title'])->get()->last();
+            if($data['store_signed']==0){
+                Session::put('id_contract', $data['id']);
+                return view('back-end.signature.signature');
+            }else{
+                $pdf = PDF::loadView('/pdf_true_export', ["info" => $data]);
+                $time = Carbon::now()->format('d-m-Y');
+                $name = 'hop-dong-dien-tu-' . $time;
+                return $pdf->stream($name . '.pdf');
             }
 
         } catch (\Exception $exception) {
@@ -102,8 +90,8 @@ class ContractController extends Controller
     public function return_export_after_sign()
     {
         try {
-            $id_partner = Session::get('id_partner');
-            $data['info'] = Partner::Where('id', '=', $id_partner)->get()->last();
+            $id_contract = Session::get('id_contract');
+            $data['info'] = Contract::Where('id', '=', $id_contract)->get()->last();
             $pdf = PDF::loadView('pdf_true_export', $data);
             $time = Carbon::now()->format('d-m-Y');
             $name = 'hop-dong-dien-tu-' . $time;
@@ -111,5 +99,14 @@ class ContractController extends Controller
         } catch (\Exception $exception) {
             return redirect()->to('/404');
         }
+    }
+
+    // Dành cho người quản lý muốn xem chi tiết hợp đồng trên pdf
+    public function show_partner_pdf($id){
+        $contract = Contract::find($id);
+        $pdf = PDF::loadView('/pdf_true_export', ["info" => $contract]);
+        $time = Carbon::now()->format('d-m-Y');
+        $name = 'hop-dong-dien-tu-' . $time;
+        return $pdf->stream($name . '.pdf');
     }
 }

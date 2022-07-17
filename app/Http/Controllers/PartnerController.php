@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Traits\SignTrait;
 use App\Http\Traits\STrait;
+use App\Models\Contract;
 use App\Models\Member;
 use App\Models\Partner;
 use App\Models\User;
@@ -401,71 +402,6 @@ class PartnerController extends Controller
             $info_data = $member->partner->where('access_type', '<', 10);
         }
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
-    }
-
-    /**
-     * Tìm kiếm hợp đồng form
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function search_export()
-    {
-        $page_title = 'S-Contract Hợp đồng điện tử';
-        $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
-        $logo = "images/logo.png";
-        $logoText = "images/logo-text.png";
-        $action = __FUNCTION__;
-        return view('back-end.contract.search_export', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
-    }
-
-
-    public function search_export_with_data(Request $request)
-    {
-        try {
-            $phone = $request['account_phone'];
-            $password = $request['account_password'];
-            $data = Partner::Where('account_phone', $phone)->get()->last();
-            if ($data) {
-                if (Hash::check($password, $data->account_password)) {
-                    if ($data['signed'] == 0) {
-                        Session::put('id_partner', $data['id']);
-                        return view('back-end.signature.signature');
-                    } else {
-                        $pdf = PDF::loadView('/pdf_true_export', ["info" => $data]);
-                        $time = Carbon::now()->format('d-m-Y');
-                        $name = 'hop-dong-dien-tu-' . $time;
-                        return $pdf->stream($name . '.pdf');
-                    }
-                } else {
-                    Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
-                    return redirect()->back();
-                }
-            } else {
-                Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
-                return redirect()->back();
-            }
-
-        } catch (\Exception $exception) {
-            return redirect()->to('/404');
-        }
-    }
-
-    /**
-     *  Trả kết quả tìm kiếm sau khi thêm chữ ký
-     * @param Request $request
-     * @return mixed
-     */
-    public function return_export_after_sign()
-    {
-        try {
-            $id_partner = Session::get('id_partner');
-            $data['info'] = Partner::Where('id', '=', $id_partner)->get()->last();
-            $pdf = PDF::loadView('pdf_true_export', $data);
-            $time = Carbon::now()->format('d-m-Y');
-            $name = 'hop-dong-dien-tu-' . $time;
-            return $pdf->stream($name . '.pdf');
-        } catch (\Exception $exception) {
-            return redirect()->to('/404');
-        }
     }
 
     // Dành cho người quản lý muốn xem chi tiết hợp đồng trên pdf

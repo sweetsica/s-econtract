@@ -26,7 +26,7 @@
                             @csrf
                             <div class="form-group mb-3">
                                 <label><strong>Mã hợp đồng</strong></label>
-                                <input type="text" class="form-control" name="contract_code">
+                                <input type="text" class="form-control" name="contract_title">
                             </div>
                             <div class="form-group">
                                 <label><strong>Mật khẩu</strong></label>

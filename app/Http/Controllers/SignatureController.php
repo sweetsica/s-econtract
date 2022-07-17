@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\SignTrait;
+use App\Models\Contract;
 use App\Models\DoppelherzSign;
 use App\Models\Partner;
 use Illuminate\Http\Request;
@@ -36,19 +37,18 @@ class SignatureController extends Controller
     public function store(Request $request)
     {
         try{
-            $id_partner = Session::get('id_partner');
-            $partner = Partner::where('id', '=', $id_partner)->first();
-            $partner['code_contract'] = $partner['id'] . '-' . $partner['created_at']->format('dmY') . "/2022/HĐĐL";
-            $url_image = $this->save_sign($request, sprintf("%s-%s", $partner['id'], $partner["account_phone"]));
-            $partner['image'] = $url_image;
-            $partner['image'] = Session::get('url_true');
-            $partner['name_doppelherz'] = $request['name_doppelherz'];
-            $partner['bank_doppelherz'] = $request['bank_doppelherz'];
-            $doppelherz_image = DoppelherzSign::where('name', '=', $partner['name_doppelherz'])->get('image')->first();
-            $partner['doppelherz_image'] = $doppelherz_image['image'];
-            $partner['signed'] = true;
-            $partner->save();
-            return redirect()->route('contract.return.export-sign');
+            $id_contract = Session::get('id_contract');
+            $contract = Contract::where('id', '=', $id_contract)->first();
+            $url_image = $this->save_sign($request, sprintf("%s-%s", $contract['id'], $contract["account_phone"]));
+            $contract['image'] = $url_image;
+            $contract['image'] = Session::get('url_true');
+            $contract['name_doppelherz'] = $request['name_doppelherz'];
+            $contract['bank_doppelherz'] = $request['bank_doppelherz'];
+            $doppelherz_image = DoppelherzSign::where('name', '=', $contract['name_doppelherz'])->get('image')->first();
+            $contract['doppelherz_image'] = $doppelherz_image['image'];
+            $contract['signed'] = true;
+            $contract->save();
+            return redirect()->route('contract.return.export.signed');
         }catch (\Exception $e){
            dd($e);
         }

@@ -54,25 +54,28 @@ Route::prefix('thanh-vien')->group(function (){
 });
 //Contract module
 Route::prefix('hop-dong')->group(function (){
-    Route::get('/tim-kiem', [PartnerController::class, 'search_export'])->name('contract.seach');
+    Route::get('/tim-kiem', [ContractController::class, 'search_export'])->name('contract.seach');
+
+    Route::post('/xuat-hop-dong', [ContractController::class, 'search_export_data'])->name('contract.return.export');
+    Route::get('/bo-sung/xuat-hop-dong', [ContractController::class, 'return_export_after_sign'])->name('contract.return.export.signed');
 
     Route::get('/danh-sach',[ContractController::class, 'contract_list'])->name('contract.list');
     Route::get('/chinh-sua/{contract_id}', [ContractController::class, 'edit'])->name('contract.edit');
-
-    Route::get('/xuat-hop-dong-da-ky', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
-    Route::post('/xuat-hop-dong', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
 });
 //PDF module
 Route::prefix('pdf')->group(function (){
     Route::get('/dynamic_pdf', [PDFController::class, 'index'])->name('demo.pdf');
     Route::get('/pre_dynamic_pdf', [PDFController::class, 'pre_pdf'])->name('pre.pdf');
+    Route::get('/hop-dong-pdf/{id}', [ContractController::class, 'show_partner_pdf']);
+
 //    Route::get('/dynamic_pdf_true', [PDFController::class, 'export_pdf'])->name('export.pdf');
-    Route::get('/filldata', [PDFController::class, 'export_pdf_true'])->name('export.pdf');
-    Route::get('/upload_pdf', [PDFController::class, 'upload_pdf'])->name('upload_pdf');
-    Route::post('/save_upload_pdf', [PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
+//    Route::get('/filldata', [PDFController::class, 'export_pdf_true'])->name('export.pdf');
+//    Route::get('/upload_pdf', [PDFController::class, 'upload_pdf'])->name('upload_pdf');
+//    Route::post('/save_upload_pdf', [PDFController::class, 'save_upload_pdf'])->name('save_upload_pdf');
 });
 //Sign module
 Route::prefix('chuky')->group(function(){
+    Route::post('/hop-dong', [SignatureController::class, 'store'])->name('signaturepad.upload');
     Route::get('/giam-doc', [DoppelherzSignController::class, 'index'])->name('chuky.giamdoc');//name('signature.manager')
 });
 
