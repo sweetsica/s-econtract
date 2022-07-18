@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Session;
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SignatureController;
 use App\Http\Controllers\DoppelherzSignController;
 use App\Http\Controllers\ContractController;
+use App\Http\Controllers\MemberController;
 
 
 /*
@@ -92,6 +94,16 @@ Route::prefix('phong-ban')->group(function (){
     Route::get('/cap-nhat/{id}',[DepartmentController::class,'department_update'])->name('department.update');//name('department.update')
     Route::get('/xoa/{id}',[DepartmentController::class,'department_delete'])->name('department.delete');//name('department.delete')
     Route::get('/he-thong',[DepartmentController::class,'department_system'])->name('department.system.list');//name('department.system.list')
+
+    Route::prefix('thanh-vien')->group(function(){
+        Route::get('danh-sach', [MemberController::class,'member_list'])->name('member.list');
+        Route::get('them-moi', [MemberController::class,'member_create'])->name('member.create');
+        Route::post('them-moi/post', [MemberController::class,'member_store'])->name('member.post');
+        Route::get('chinh-sua/{id}', [MemberController::class,'member_edit'])->name('member.edit');
+        Route::get('xoa/{id}', [MemberController::class,'member_delete'])->name('member.delete');
+        Route::post('cap-nhat/{id}', [MemberController::class,'member_update'])->name('member.update');
+        Route::get('get-manager', [MemberController::class,'get_manager'])->name('member.manage.get');
+    });
 });
 
 

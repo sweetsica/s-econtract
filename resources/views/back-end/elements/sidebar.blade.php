@@ -45,8 +45,8 @@
                     <span class="nav-text">Phòng ban</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="{{route('department.add')}}">Thêm phòng ban</a></li>
                     <li><a href="{{route('department.list')}}">Danh sách phòng ban</a></li>
+                    <li><a href="{{route('department.add')}}">Thêm phòng ban</a></li>
                     <li><a href="{{route('department.system.list')}}">Hệ thống phòng ban</a></li>
                 </ul>
             </li>
@@ -66,10 +66,10 @@
                     <i class="flaticon-381-user-8"></i>
                     <span class="nav-text">Thành Viên</span>
                 </a>
-{{--                <ul aria-expanded="false">--}}
-{{--                    <li><a href="{!! url('/member/create'); !!}">Thêm thành viên</a></li>--}}
-{{--                    <li><a href="{!! url('/member'); !!}">Danh sách thành viên</a></li>--}}
-{{--                </ul>--}}
+                <ul aria-expanded="false">
+                    <li><a href="{{route('member.list')}}">Danh sách thành viên</a></li>
+                    <li><a href="{{route('member.create')}}">Thêm thành viên</a></li>
+                </ul>
             </li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
