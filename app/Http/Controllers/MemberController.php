@@ -69,8 +69,6 @@ class MemberController extends Controller
             'address.required' => 'Vui lòng nhập địa chỉ',
         ]);
         try {
-
-
             $member = Member::create([
                 'member_name' => $request->get('member_name'),
                 'member_code' => $request->get('member_code'),

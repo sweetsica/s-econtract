@@ -50,6 +50,15 @@ class MemberController extends Controller
 //        return response()->json('Add partner successfully');
 //    }
 
+    public function member_check(Request $request)
+    {
+        $data = Member::where('member_code',$request['member_code']);
+        if ($data){
+            return response()->json('access_true');
+        }else{
+            return response()->json('access_false');
+        }
+    }
     /**
      * Display a listing of the resource.
      *

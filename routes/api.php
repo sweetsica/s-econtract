@@ -39,8 +39,9 @@ Route::group(['middleware' => ['auth:api']], function(){
     Route::delete('/members/{id}',[MemberController::class,'destroy']);
     Route::post('/logout',[AuthController::class,'logout']);
 });
-Route::get('/members/search/{name}',[MemberController::class,'search']);
 
+Route::get('/members/search/{name}',[MemberController::class,'search']);
+Route::get('/thanh-vien/tim-kiem',[MemberController::class,'member_check']);
 
 Route::get('/local',[LocalController::class,'getLocal']);
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
