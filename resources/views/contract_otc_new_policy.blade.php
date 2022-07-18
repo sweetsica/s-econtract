@@ -8,12 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
 </head>
-<body >
+<body>
 <table style="width: 100%">
     <tbody>
     <tr>
         <td width="10%" style="text-align: center;padding-right:270px">
-            <img width="150"  style="margin-bottom:5px"
+            <img width="150" style="margin-bottom:5px"
                  src="https://doppelherz.vn/wp-content/uploads/2022/01/LOGO-DOPPELHERZ-Logo-tren-an-pham-792x800.png"/>
             <h4 style="font-size: 20px"><b>MARTERTRAN</b></h4>
             <h6 style="margin-top: 18px">Số: {{$info['contract_code']}}</h6>
@@ -29,7 +29,7 @@
             <h1 style="font-size:20px"><strong>HỢP ĐỒNG ĐẠI LÝ</strong></h1>
         </td>
     </tr>
-    <tr >
+    <tr>
         <td colspan="2" style="font-size: 18px">
             <p>- <span style="display: inline;">Căn cứ vào Bộ luật dân sự số: 91/2015/QH13, ngày 24/11/2015 Quốc hội Nước CHXHCN Việt Nam.</span>
             </p>
@@ -83,7 +83,7 @@
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông {{$info->doppelherz->name}}</td>
+                    <td width="30%">: Ông {{$info?->doppelherz?->name}}</td>
                     <td width="50%">Chức danh: Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
                 </tr>
                 <tr>
@@ -110,33 +110,34 @@
                         Địa chỉ
                     </td>
                     <td colspan="3" width="80%">:
-                        {{$info->local_dkkd->name}}, {{$info->local_dkkd->parent->name}}, {{$info->local_dkkd->parent->parent->name}}
+                        {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}
+                        , {{$info->local_dkkd?->parent?->parent?->name}}
                     </td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Điện thoại
                     </td>
-                    <td width="20%">: {{$info->store_phone}}</td>
-                    <td width="30%">Mã số thuế : {{$info->store_id_Numb_GPDKKD}}</td>
+                    <td width="20%">: {{$info['store_phone']}}</td>
+                    <td width="30%">Mã số thuế : {{$info['store_id_Numb_GPDKKD']}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Tài khoản
                     </td>
-                    <td colspan="3" width="80%">: {{$info->store_bank_numb}}</td>
+                    <td colspan="3" width="80%">: {{$info['store_bank_numb']}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Ngân hàng
                     </td>
-                    <td colspan="3" width="80%">: {{$info->store_bank}}</td>
+                    <td colspan="3" width="80%">: {{$info['store_bank']}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông {{$info->partner->owner_name}}</td>
+                    <td width="30%">: Ông {{$info->partner?->owner_name}}</td>
                     <td width="50%">Chức danh: Chủ đại lý</td>
                 </tr>
                 </tbody>
@@ -274,7 +275,8 @@
     </tr>
     {{--    dieu khoan 5--}}
     <tr>
-        <td style="padding-top: 10px" colspan="2"><h4>Điều 5: XỬ LÝ TRƯỜNG HỢP VI PHẠM HỢP ĐỒNG VÀ CHẤM DỨT HỢP ĐỒNG.</h4></td>
+        <td style="padding-top: 10px" colspan="2"><h4>Điều 5: XỬ LÝ TRƯỜNG HỢP VI PHẠM HỢP ĐỒNG VÀ CHẤM DỨT HỢP
+                ĐỒNG.</h4></td>
     </tr>
     <tr>
         <td colspan="2">
@@ -331,30 +333,30 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path($info->doppelherz->image)}}">
+                <img style="width: 250px;height: 250px;object-fit: contain"
+                     src="{{public_path($info->doppelherz?->image)}}">
             </div>
-            {{--            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
-            <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz->name}}</span>
+            {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
+            <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz?->name}}</span>
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
             <p><strong> </strong></p>
             <div style="object-fit: contain">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
-
-                {{--                @if($info['image'])--}}
-                {{--                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">--}}
-                {{--                @else--}}
-                {{--                    <h6>Khách hàng chưa ký</h6>--}}
-                {{--                @endif--}}
+                @if($info->store_sign_img)
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
+                @else
+                    <h6>Khách hàng chưa ký</h6>
+                @endif
             </div>
-            <span  style="font-weight: bold;font-size: 16px">{{$info->partner->owner_name}}</span>
+            <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
         </td>
     </tr>
     <tr>
         <td colspan="2" style="text-align: center">
             <h2>PHỤ LỤC I: DANH MỤC SẢN PHẨM VÀ CHÍNH SÁCH BÁN HÀNG</h2>
-            <p>(Đính kèm hợp đồng số: .............................../2022/HĐĐL ký ngày:.............................)</p>
+            <p>(Đính kèm hợp đồng số: .............................../2022/HĐĐL ký
+                ngày:.............................)</p>
             <table border="1" width="100%" cellspacing="0" cellpadding="5">
                 <tbody>
                 <tr style="height: 61px;">
@@ -492,7 +494,8 @@
                         <p>8</p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
-                        <p><strong>Zincodin</strong>: Giúp bổ sung kẽm và L-histidine giúp cơ thể tăng hấp thu kẽm. (Hộp 30
+                        <p><strong>Zincodin</strong>: Giúp bổ sung kẽm và L-histidine giúp cơ thể tăng hấp thu kẽm. (Hộp
+                            30
                             viên)</p>
                     </td>
                     <td style="width: 76.6875px; text-align: center; height: 48px;">
@@ -786,7 +789,8 @@
         </td>
     </tr>
     <tr>
-        <td style="padding-top: 10px" colspan="2"><h4>2.1. Bên B được hưởng CKTM ngay trên đơn hàng: Khi mua 5h tặng 1h đối với một loại sản phẩm.</h4></td>
+        <td style="padding-top: 10px" colspan="2"><h4>2.1. Bên B được hưởng CKTM ngay trên đơn hàng: Khi mua 5h tặng 1h
+                đối với một loại sản phẩm.</h4></td>
     </tr>
     <tr>
         <td style="padding-top: 10px" colspan="2">
@@ -795,7 +799,7 @@
             <table border="1" width="100%" cellspacing="0" cellpadding="5">
                 <tbody>
                 <tr>
-                    <td> <strong>Số lượng bán mỗi nhãn/đơn</strong> </td>
+                    <td><strong>Số lượng bán mỗi nhãn/đơn</strong></td>
                     <td><strong>≥ 10 hộp</strong></td>
                     <td><strong>≥ 20 hộp</strong></td>
                     <td><strong>≥ 35 hộp</strong></td>
@@ -819,7 +823,7 @@
             <table border="1" width="100%" cellspacing="0" cellpadding="5">
                 <tbody>
                 <tr>
-                    <td> <strong>Số lượng nhãn</strong> </td>
+                    <td><strong>Số lượng nhãn</strong></td>
                     <td><strong>≥ 3 nhãn</strong></td>
                     <td><strong>≥ 5 nhãn</strong></td>
                     <td><strong>≥ 7 nhãn</strong></td>
@@ -841,8 +845,8 @@
             <table border="1" width="100%" cellspacing="0" cellpadding="5">
                 <tbody>
                 <tr>
-                    <td> <strong>Doanh số năm
-                            (VNĐ)</strong> </td>
+                    <td><strong>Doanh số năm
+                            (VNĐ)</strong></td>
                     <td><strong>≥ 60.000.000</strong></td>
                     <td><strong>≥ 120.000.000</strong></td>
                     <td><strong>≥ 180.000.000</strong></td>
@@ -865,7 +869,8 @@
     <tr>
         <td style="padding-top: 10px;font-size: 18px" colspan="2">
             <h4>2.3 Diễn giải nội dung chính sách:</h4>
-            <p>&#x21d2; Doanh số (DS) tính theo giá chưa bao gồm GTGT (VAT) của sản phẩm mà Công ty bán cho Đại lý (không
+            <p>&#x21d2; Doanh số (DS) tính theo giá chưa bao gồm GTGT (VAT) của sản phẩm mà Công ty bán cho Đại lý
+                (không
                 bao gồm trị giá của phần hàng tặng), được ghi nhận theo đơn đặt hàng trước 12h00 ngày làm việc cuối
                 cùng của tháng.</p>
             <p>&#x21d2; Nhãn sản phẩm active Qúy là của Đại lý là nhãn sản phẩm có số lượng hàng bán (theo đơn đặt hàng
@@ -873,11 +878,13 @@
                 loại/quý với sản phẩm truyền thông</p>
             <p>&#x21d2; Chiết khấu thương mại bổ sung dành cho bên B có hợp tác từ 2 tháng mỗi Quý và đã hoàn thành điều
                 kiện nhãn active Quý.</p>
-            <p>&#x21d2; Chiết khấu quý được chi trả (và cấn trừ) vào lần đặt hàng của đơn hàng sau ngày 10 của Quý tiếp theo.</p>
-            <p>&#x21d2; Chiết khấu áp dụng và chi trả khi bên B không vi phạm các điều khoản đã cam kết trong hợp đồng.</p>
+            <p>&#x21d2; Chiết khấu quý được chi trả (và cấn trừ) vào lần đặt hàng của đơn hàng sau ngày 10 của Quý tiếp
+                theo.</p>
+            <p>&#x21d2; Chiết khấu áp dụng và chi trả khi bên B không vi phạm các điều khoản đã cam kết trong hợp
+                đồng.</p>
             <p>&#x21d2; Toàn bộ các khoản chiết khấu và quyền lợi thương mại đều được công ty xuất hóa đơn GTGT theo quy
                 định của nhà nước.</p>
-            <p>&#x21d2;  Đơn hàng nào phát sinh thì Hóa đơn, chứng từ sẽ đi kèm với Đơn hàng đó.</p>
+            <p>&#x21d2; Đơn hàng nào phát sinh thì Hóa đơn, chứng từ sẽ đi kèm với Đơn hàng đó.</p>
         </td>
     </tr>
     <tr>
@@ -885,23 +892,23 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
+                <img style="width: 250px;height: 250px;object-fit: contain"
+                     src="{{public_path($info->doppelherz?->image)}}">
             </div>
-            {{--            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
-            <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz->name}}</span>
+            {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
+            <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz?->name}}</span>
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
             <p><strong> </strong></p>
             <div style="object-fit: contain">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
-                {{--                @if($info['image'])--}}
-                {{--                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">--}}
-                {{--                @else--}}
-                {{--                    <h6>Khách hàng chưa ký</h6>--}}
-                {{--                @endif--}}
+                @if($info->store_sign_img)
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
+                @else
+                    <h6>Khách hàng chưa ký</h6>
+                @endif
             </div>
-            <span style="font-weight: bold;font-size: 16px">{{$info->partner->owner_name}}</span>
+            <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
         </td>
     </tr>
     </tbody>
