@@ -15,9 +15,9 @@ class Member extends Authenticatable
     protected $table ="members";
     protected $guarded = [''];
 
-    public function partner()
+    public function contracts()
     {
-        return $this->hasMany(Partner::class,'id_tdv','member_code') ;
+        return $this->hasMany(Contract::class,'	member_id','member_code') ;
     }
     public function location()
     {

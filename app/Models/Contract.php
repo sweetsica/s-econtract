@@ -61,6 +61,11 @@ class Contract extends Model
     {
         return $this->belongsTo(Partner::class,'partnerId','id');
     }
+    public function member()
+    {
+        return $this->belongsTo(Member::class,'member_id','member_code');
+    }
+
     public function doppelherz()
     {
         return $this->belongsTo(DoppelherzSign::class,'store_sign_img_doppelherz','id');

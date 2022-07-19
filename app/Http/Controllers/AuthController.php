@@ -73,8 +73,8 @@ class AuthController extends Controller
                 Session::put('session_role', 'member');
                 Session::put('session_name', $checkmember->member_name);
                 Auth::loginUsingId($checkmember->id);
-                dump('Người dùng');
-                dump($checkmember);
+//                dump('Người dùng');
+//                dump($checkmember);
 
                 $page_title = 'Danh sách hợp đồng';
                 $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';

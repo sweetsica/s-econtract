@@ -55,7 +55,7 @@ class OmahadminController extends Controller
 
         $action = __FUNCTION__;
 
-        return view('dashboard.property_details', compact('page_title', 'page_description','action','logo','logoText'));
+        return view('ori.dashboard.property_details', compact('page_title', 'page_description','action','logo','logoText'));
     }
 	    // Order List
     public function order_list()
@@ -109,7 +109,7 @@ class OmahadminController extends Controller
 
         $action = __FUNCTION__;
 
-        return view('app.profile', compact('page_title', 'page_description','action'));
+        return view('ori.app.profile', compact('page_title', 'page_description','action'));
     }
 
 	    // Chart Chartist

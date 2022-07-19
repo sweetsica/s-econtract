@@ -101,7 +101,7 @@ class PartnerController extends Controller
 
         $info_data = [];
         $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id', 1);
+            return $query->where('role_id', 1 | 2);
         })->find($member_id);
         $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 3);
