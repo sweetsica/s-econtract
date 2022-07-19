@@ -332,11 +332,17 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain"
-                     src="{{public_path($info->doppelherz?->image)}}">
+                @if($info->store_sign_img_doppelherz)
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path($info->doppelherz?->image)}}">
+                @else
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path("/images/white.png")}}">
+                @endif
             </div>
             {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
-            <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz?->name}}</span>
+            @if($info->store_sign_img_doppelherz)
+                <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz?->name}}</span>
+            @endif
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
@@ -345,10 +351,13 @@
                 @if($info->store_sign_img)
                     <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
                 @else
-                    <h6>Khách hàng chưa ký</h6>
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path("/images/white.png")}}">
                 @endif
             </div>
-            <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
+            @if($info->store_sign_img)
+                <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
+            @endif
+
         </td>
     </tr>
     <tr>
@@ -891,11 +900,17 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
+                @if($info->store_sign_img_doppelherz)
                 <img style="width: 250px;height: 250px;object-fit: contain"
                      src="{{public_path($info->doppelherz?->image)}}">
+                @else
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path("/images/white.png")}}">
+                @endif
             </div>
             {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
-            <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz?->name}}</span>
+            @if($info->store_sign_img_doppelherz)
+                <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz?->name}}</span>
+            @endif
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
@@ -904,10 +919,13 @@
                 @if($info->store_sign_img)
                     <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
                 @else
-                    <h6>Khách hàng chưa ký</h6>
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path("/images/white.png")}}">
                 @endif
             </div>
-            <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
+            @if($info->store_sign_img)
+                <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
+            @endif
+
         </td>
     </tr>
     </tbody>
