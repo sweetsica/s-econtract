@@ -100,13 +100,13 @@
             <table width="100%">
                 <tbody>
                 <tr>
-                    <td width="20%">
+                    <td width="15%">
                         <h4>BÊN B</h4>
                     </td>
                     <td width="80%" colspan="3"><h4>: {{$info['store_name']}}</h4></td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td width="15%">
                         Địa chỉ
                     </td>
                     <td colspan="3" width="80%">:
@@ -115,38 +115,37 @@
                     </td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td style="max-width: 50px">
                         Điện thoại
                     </td>
                     <td width="20%">: {{$info['store_phone']}}</td>
                     <td width="30%">Mã số thuế : {{$info['store_id_Numb_GPDKKD']}}</td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td style="max-width: 50px">
                         Tài khoản
                     </td>
                     <td colspan="3" width="80%">: {{$info['store_bank_numb']}}</td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td style="max-width: 50px">
                         Ngân hàng
                     </td>
                     <td colspan="3" width="80%">: {{$info['store_bank']}}</td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td style="max-width: 50px">
                         Đại diện
                     </td>
                     <td width="30%">: Ông {{$info->partner?->owner_name}}</td>
                     <td width="50%">Chức danh: Chủ đại lý</td>
                 </tr>
+
                 </tbody>
             </table>
         </td>
     </tr>
-    <tr>
-        <td colspan="2">Bên A và Bên B đồng ý ký Hợp đồng đại lý về việc mua bán sản phẩm với các điều khoản sau:</td>
-    </tr>
+
     {{--    dieu khoan 1--}}
     <tr>
         <td style="padding-top: 10px" colspan="2"><h4>Điều 1: PHẠM VI, ĐỐI TƯỢNG CỦA HỢP ĐỒNG.</h4></td>
