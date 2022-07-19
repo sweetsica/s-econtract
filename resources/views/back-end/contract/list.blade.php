@@ -65,12 +65,14 @@
                                                 @endif
                                             </div>
                                         </td>
+
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{route('contract.edit',$data['id'])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
 {{--                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>--}}
                                             </div>
                                         </td>
+
                                     </tr>
                                 @endforeach
                                 </tbody>

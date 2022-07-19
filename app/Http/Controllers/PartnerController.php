@@ -20,6 +20,27 @@ class PartnerController extends Controller
 {
     use SignTrait;
 
+    /**
+     * Đăng nhập cho partner
+     */
+    public function partner_login(){
+        $page_title = 'Contract Dashboard';
+        $page_description = 'Danh sách hợp đồng';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.partner.partner_login', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
+
+    }
+    public function partner_login_submit(Request $request){
+        $partner_info = Partner::where('owner_phone',$request->partner_info)->orWhere('owner_email',$request->partner_info)->first();
+        if($partner_info){
+            Session::put('session_role', 'partner');
+            Session::put('session_partner_id', $partner_info->id);
+            return redirect(route('contract.list'));
+        }
+        return redirect(route('partner.login'));
+    }
    /**
      * Lưu data từ form
      * @param Request $request

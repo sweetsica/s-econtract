@@ -16,32 +16,21 @@ class ContractController extends Controller
 {
     public function contract_list()
     {
+        $info_data = [];
         $check_role = Session::get('session_role');
-        $member = Member::find(Auth::id());
-        if ($check_role == 'ADMIN') {
+        if ($check_role == 'admin') {
             $info_data = Contract::orderBy('id', 'desc')->paginate('10');
-        } else {
-//            $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-//                return $query->where('role_id', 1 | 2);
-//            })->find($member_id);
-//            $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-//                return $query->where('role_id', 3);
-//            })->find($member_id);
-//            $member = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-//                return $query->where('role_id', 4);
-//            })->find($member_id);
-            $info_data = Contract::with('member')->where('member_id', $member->member_code)->orderBy('id', 'desc')->paginate('10');
-            if($info_data->member->children->contracts){
-                dd($info_data->member->children->contracts);
-            }
+        }elseif ($check_role == 'partner'){
+            $partner_id = Session::get('session_partner_id');
+            $partner =  Partner::with('contract')->find($partner_id);
+            $info_data = $partner->contract;
         }
-        dd($member);
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng';
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
+        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data','check_role'));
     }
 
     public function edit($contract_id)

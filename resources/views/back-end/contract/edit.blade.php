@@ -254,6 +254,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="button" class="btn light rounded-lg btn-primary mr-2"  data-toggle="modal" data-target=".bd-example-modal-lg">Xuất hợp đồng</button>
+                                            <button type="button" class="btn light rounded-lg btn-primary"  data-toggle="modal" data-target=".bd-example-modal-lg">Chỉnh sửa hợp đồng</button>
+                                        </div>
                                         <div class="col-md-12 fs-20 mt-3">
                                             <span class="font-w600 text-black">Mẫu hợp đồng:</span> {{$info_data['store_contract_type']}}
                                         </div>
@@ -300,7 +304,6 @@
                                             <span class="font-w600 text-black">Ngày kết thúc:</span> {{$info_data['store_end']}}
                                         </div>
                                         <div class="col-md-12 mt-5">
-                                            <button type="button" class="btn light btn-sm btn-primary"  data-toggle="modal" data-target=".bd-example-modal-lg">Chỉnh sửa hợp đồng</button>
                                             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-xl modal-dialog modal-dialog-centered">
                                                     <form action="{{route('contract.update',[$info_data['id']])}}" method="post" class="modal-content">
@@ -494,6 +497,10 @@
                                             <div id="contract_{{$data['id']}}" class="collapse accordion__body {{$loop->index == 0 ? 'show' :''}}" data-parent="#accordion-nine">
                                                 <div class="py-4 px-3">
                                                     <div class="row">
+                                                        <div class="col-md-12">
+                                                            <button type="button" class="btn light rounded-lg btn-primary mr-2"  data-toggle="modal" data-target=".bd-example-modal-lg">Xuất hợp đồng</button>
+                                                            <button type="button" class="btn light rounded-lg btn-primary"  data-toggle="modal" data-target=".bd-example-modal-lg">Chỉnh sửa hợp đồng</button>
+                                                        </div>
                                                         <div class="col-md-12">
                                                             <h3 class="font-w600 text-black">Đại lý: {{$data['store_name']}}</h3>
                                                         </div>

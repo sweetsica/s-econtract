@@ -47,7 +47,8 @@ Route::middleware(['auth'])->group(function () {
 
 //Partner module
 Route::prefix('doi-tac')->group(function (){
-    Route::get('/dang-nhap', [PartnerController::class, 'partner_login']);
+    Route::get('/dang-nhap', [PartnerController::class, 'partner_login'])->name('partner.login');
+    Route::post('/dang-nhap/gui-du-lieu', [PartnerController::class, 'partner_login_submit'])->name('partner.login.submit');
 });
 //Member module
 Route::prefix('thanh-vien')->group(function (){
