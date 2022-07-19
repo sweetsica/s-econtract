@@ -111,11 +111,16 @@ class ContractController extends Controller
     }
 
     // Dành cho người quản lý muốn xem chi tiết hợp đồng trên pdf
-    public function show_partner_pdf($id){
+    public function show_contract_pdf($id){
         $contract = Contract::find($id);
-        $pdf = PDF::loadView('/contract_otc_new_policy', ["info" => $contract]);
-        $time = Carbon::now()->format('d-m-Y');
-        $name = 'hop-dong-dien-tu-' . $time;
-        return $pdf->stream($name . '.pdf');
+        if($contract['store_signed']==0){
+            Session::put('id_contract', $contract['id']);
+            return view('back-end.signature.signature');
+        }else{
+            $pdf = PDF::loadView('/contract_otc_new_policy', ["info" => $contract]);
+            $time = Carbon::now()->format('d-m-Y');
+            $name = 'hop-dong-dien-tu-' . $time;
+            return $pdf->stream($name . '.pdf');
+        }
     }
 }

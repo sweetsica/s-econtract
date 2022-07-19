@@ -66,6 +66,8 @@ Route::prefix('hop-dong')->group(function (){
     Route::get('/chinh-sua/{contract_id}', [ContractController::class, 'edit'])->name('contract.edit');
     Route::post('/chinh-sua/cap-nhat/{id}',[ContractController::class, 'update'])->name('contract.update');
 
+    Route::get('/pdf/{id}',[ContractController::class, 'show_contract_pdf'])->name('contract.show.pdf');
+
 //    Route::get('/xuat-hop-dong-da-ky', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
 //    Route::post('/xuat-hop-dong', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
 });
