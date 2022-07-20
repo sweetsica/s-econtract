@@ -53,7 +53,7 @@ class PartnerController extends Controller
 
             return response()->json([
                 'notice' => 'Tạo thành công, chúng tôi sẽ liên hệ bạn sớm nhất!',
-                'redirect_url'=>url('/contract/search'),
+                'redirect_url'=>url('/doi-tac/dang-nhap'),
                 'data' => [
                     'id'=>$partner->id,
                     'fullName' => $partner->account_name,

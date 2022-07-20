@@ -33,14 +33,27 @@ class PartnerController extends Controller
 
     }
     public function partner_login_submit(Request $request){
-        $partner_info = Partner::where('owner_phone',$request->partner_info)->orWhere('owner_email',$request->partner_info)->first();
-        if($partner_info){
+        $info_data_parent = Partner::with('contract','location_id_numb_create')->where('owner_phone',$request->partner_info)->orWhere('owner_email',$request->partner_info)->first();
+        if($info_data_parent){
             Session::put('session_role', 'partner');
-            Session::put('session_partner_id', $partner_info->id);
-            return redirect(route('contract.list'));
+            Session::put('session_partner_id', $info_data_parent->id);
+            $page_title = 'Contract Dashboard';
+            $page_description = 'Danh sách hợp đồng';
+            $logo = "images/logo.png";
+            $logoText = "images/logo-text.png";
+            $action = __FUNCTION__;
+            return redirect()->route('partner.dashboard');
         }
         return redirect(route('partner.login'));
     }
+
+
+    /**
+     * Thông tin dối tác và danh sách hợp đồng
+     */
+
+
+
    /**
      * Lưu data từ form
      * @param Request $request
@@ -104,51 +117,24 @@ class PartnerController extends Controller
         $partner->update($request->only(['owner_name','owner_id_numb','owner_id_numb_created_at','owner_id_numb_created_locate','owner_sex','owner_dob','owner_age','owner_token','owner_phone','owner_email','owner_mst']));
         return redirect(route('contract.edit',$contract->id));
     }
+
+
+
     /**
      * Trang dashboard hợp đồng
      */
     public function dashboard()
     {
+        $partner_id = Session::get('session_partner_id');
+        $info_data_parent = Partner::with('contract','location_id_numb_create')->find($partner_id);
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng';
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        //code check theo hợp đồng của từng đối tượng member
-//        $member_id = null;
-        if (Session::has('member_id')) {
-            $member_id = Session::get('member_id');
-        }
 
-        $info_data = [];
-        $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id', 1 | 2);
-        })->find($member_id);
-        $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id', 3);
-        })->find($member_id);
-        $member = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id', 4);
-        })->find($member_id);
+        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data_parent'));
 
-        if ($memberAdmin) {
-            $info_data = Partner::latest()->get();
-        }
-        if ($memberManager) {
-            foreach ($memberManager->partner as $partner) {
-                $info_data[] = $partner;
-            }
-            foreach ($memberManager->children as $child) {
-                foreach ($child->partner as $partner) {
-                    $info_data[] = $partner;
-                }
-            }
-        }else{
-            $info_data = $member->partner;
-        }
-        $contact_count = count($info_data);
-        $user_count = Member::count();
-        return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
     /**
      * Trang dashboard hợp đồng 1

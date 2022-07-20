@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="form-head page-titles d-flex  align-items-center">
             <div class="mr-auto  d-lg-block">
-                <h2 class="text-black font-w600">Chỉnh Sửa Hợp Đồng</h2>
+                <h2 class="text-black font-w600">Hợp đồng của đối tác</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item active"><a href="javascript:void(0)">Property</a></li>
                     <li class="breadcrumb-item"><a href="javascript:void(0)">98AB Alexander Court New York</a></li>
@@ -137,41 +137,43 @@
                                         </div>
                                         <div class="ml-md-4 text-md-right">
                                             <p class="fs-14 text-black mb-1 mr-1">Ngày tạo</p>
-                                            <h4 class="fs-24 text-primary">{{$info_data['created_at']->format('d-m-Y')}}</h4>
+                                            <h4 class="fs-24 text-primary">{{$info_data_parent['created_at']->format('d-m-Y')}}</h4>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 fs-20 ">
                                             <span
-                                                class="font-w600 text-black">MST:</span> {{$info_data->partner->owner_mst}}
+                                                class="font-w600 text-black">MST:</span> {{$info_data_parent->owner_mst}}
                                         </div>
                                         <div class="col-md-6 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">Email:</span> {{$info_data->partner->owner_email}}
+                                                class="font-w600 text-black">Email:</span> {{$info_data_parent->owner_email}}
                                         </div>
                                         <div class="col-md-6 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">Giới tính:</span> {{$info_data->partner->owner_sex}}
+                                                class="font-w600 text-black">Giới tính:</span> {{$info_data_parent->owner_sex}}
                                         </div>
                                         <div class="col-md-6 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data->partner->owner_dob}}
+                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data_parent->owner_dob}}
                                         </div>
                                         <div class="col-md-6 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">Tuổi:</span> {{$info_data->partner->owner_age}}
+                                                class="font-w600 text-black">Tuổi:</span> {{$info_data_parent->owner_age}}
                                         </div>
                                         <div class="col-md-6 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">CCCD/CMND:</span> {{$info_data->partner->owner_id_numb}}
+                                                class="font-w600 text-black">CCCD/CMND:</span> {{$info_data_parent->owner_id_numb}}
                                         </div>
                                         <div class="col-md-6 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data->partner->owner_id_numb_created_at}}
+                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data_parent->owner_id_numb_created_at}}
                                         </div>
                                         <div class="col-md-12 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data->partner->location_id_numb_create->name}}, {{$info_data->partner->location_id_numb_create->parent->name}}, {{$info_data->partner->location_id_numb_create->parent->parent->name}}
+                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_parent->location_id_numb_create->name}}
+                                            , {{$info_data_parent->location_id_numb_create->parent->name}}
+                                            , {{$info_data_parent->location_id_numb_create->parent->parent->name}}
                                         </div>
                                     </div>
                                     {{--                                    <div class="mb-sm-5 mb-2">--}}
@@ -227,385 +229,125 @@
                     {{--                            </div>--}}
                     {{--                        </div>--}}
                     {{--                    </div>--}}
-                    @if($contract_count > 0)
-                        <div class="col-xl-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div id="accordion-nine" class="accordion accordion-primary">
-                                        @foreach($info_data_parent->contract as $data)
 
-                                                <div class="accordion__item">
-                                                    <div class="accordion__header rounded-lg {{$loop->index !== 0 ? 'collapsed' :''}}" data-toggle="collapse"
-                                                         data-target="#contract_{{$data['id']}}">
-                                                        <span class="accordion__header--icon"></span>
-                                                        <span
-                                                            class="accordion__header--text">{{$data['store_name']}}</span>
-                                                        <span class="accordion__header--indicator"></span>
-                                                    </div>
-                                                    <div id="contract_{{$data['id']}}"
-                                                         class="collapse accordion__body {{$loop->index == 0 ? 'show' :''}}"
-                                                         data-parent="#accordion-nine">
-                                                        <div class="py-4 px-3">
-                                                            <div class="row">
-                                                                <div
-                                                                    class="col-md-12  mb-5 d-flex justify-content-between">
-                                                                    <div>
-                                                                        <a href="{{route('contract.show.pdf',$data['id']).'?type=only_show'}}"
-                                                                           class="btn light  btn-md rounded-lg btn-primary mr-2">
-                                                                            Xuất hợp đồng
-                                                                        </a>
-                                                                        <button type="button"
-                                                                                class="btn light  btn-md rounded-lg btn-primary"
-                                                                                data-toggle="modal"
-                                                                                data-target="#edit-contract-{{$data['id']}}">
-                                                                            Chỉnh sửa hợp đồng
-                                                                        </button>
-                                                                    </div>
-                                                                    <div>
-                                                                        <p class="fs-14 text-black mb-1 mr-1">Ngày
-                                                                            tạo</p>
-                                                                        <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-12">
-                                                                    <h3 class="font-w600 text-black">Đại
-                                                                        lý: {{$data['store_name']}}</h3>
-                                                                </div>
-                                                                <div class="col-md-12 fs-20 mt-3">
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div id="accordion-nine" class="accordion accordion-primary">
+                                    @foreach($info_data_parent->contract as $data)
+
+                                        <div class="accordion__item">
+                                            <div
+                                                class="accordion__header rounded-lg {{$loop->index !== 0 ? 'collapsed' :''}}"
+                                                data-toggle="collapse"
+                                                data-target="#contract_{{$data['id']}}">
+                                                <span class="accordion__header--icon"></span>
+                                                <span
+                                                    class="accordion__header--text">{{$data['store_name']}}</span>
+                                                <span class="accordion__header--indicator"></span>
+                                            </div>
+                                            <div id="contract_{{$data['id']}}"
+                                                 class="collapse accordion__body {{$loop->index == 0 ? 'show' :''}}"
+                                                 data-parent="#accordion-nine">
+                                                <div class="py-4 px-3">
+                                                    <div class="row">
+                                                        <div
+                                                            class="col-md-12  mb-5 d-flex justify-content-between">
+                                                            <div>
+                                                                <a href="{{route('contract.show.pdf',$data['id']).'?type=only_show'}}"
+                                                                   class="btn light  btn-md rounded-lg btn-primary mr-2">
+                                                                    Xuất hợp đồng
+                                                                </a>
+                                                                @if($data['store_signed'] == 0)
+                                                                    <a href="{{route('contract.show.pdf',$data['id']).'?type=sign'}}"
+                                                                       class="btn light  btn-md rounded-lg btn-primary mr-2">
+                                                                       Ký hợp đồng
+                                                                    </a>
+                                                                @endif
+                                                            </div>
+                                                            <div>
+                                                                <p class="fs-14 text-black mb-1 mr-1">Ngày
+                                                                    tạo</p>
+                                                                <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <h3 class="font-w600 text-black">Đại
+                                                                lý: {{$data['store_name']}}</h3>
+                                                        </div>
+                                                        <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
+                                                                        class="font-w600 text-black">Mã hợp đồng:</span> {{$data['contract_code']}}
+                                                        </div>
+                                                        <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Mẫu hợp đồng:</span> {{$data['store_contract_type']}}
-                                                                </div>
-                                                                <div class="col-md-12 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Địa chỉ:</span> {{$data['store_add_DKKD']}}
-                                                                </div>
-                                                                <div class="col-md-12 fs-20 mt-3">
-                                                                    <span class="font-w600 text-black">Địa chỉ giao hàng:</span> {{$data['store_add_GH']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-12 fs-20 mt-3">
+                                                                <span
+                                                                    class="font-w600 text-black">Địa chỉ giao hàng:</span> {{$data['store_add_GH']}}
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">SĐT Đại lý:</span> {{$data['store_phone']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Phạm vi bán hàng:</span> {{$data['store_effect']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
-                                                                    <span class="font-w600 text-black">Số giấy phép ĐKKDD:</span> {{$data['store_id_Numb_GPDKKD']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
+                                                                <span
+                                                                    class="font-w600 text-black">Số giấy phép ĐKKDD:</span> {{$data['store_id_Numb_GPDKKD']}}
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{$data['store_GPDKKD']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Người liên hệ:</span> {{$data['store_contact_name']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Chức danh :</span> {{$data['store_contact_position']}}
-                                                                </div>
-                                                                <div class="col-md-12 fs-20 mt-3">
-                                                                    <span class="font-w600 text-black">SĐT Người liên hệ:</span> {{$data['store_contact_phone']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-12 fs-20 mt-3">
+                                                                <span
+                                                                    class="font-w600 text-black">SĐT Người liên hệ:</span> {{$data['store_contact_phone']}}
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Chủ ngân hàng:</span> {{$data['store_bank_holder']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Tên ngân hàng :</span> {{$data['store_bank']}}
-                                                                </div>
-                                                                <div class="col-md-12 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Số tài khoản:</span> {{$data['store_bank_numb']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Ngày bắt đầu:</span> {{$data['store_started']}}
-                                                                </div>
-                                                                <div class="col-md-6 fs-20 mt-3">
+                                                        </div>
+                                                        <div class="col-md-6 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Ngày kết thúc:</span> {{$data['store_end']}}
-                                                                </div>
-                                                                <div class="col-md-12 mt-5">
-                                                                    <div class="modal fade bd-example-modal-lg"
-                                                                         id="edit-contract-{{$data['id']}}"
-                                                                         tabindex="-1" role="dialog"
-                                                                         aria-labelledby="myLargeModalLabel"
-                                                                         aria-hidden="true">
-                                                                        <div
-                                                                            class="modal-dialog modal-xl modal-dialog modal-dialog-centered">
-                                                                            <form
-                                                                                action="{{route('contract.update',[$data['id']])}}"
-                                                                                method="post" class="modal-content">
-                                                                                @csrf
-                                                                                <div class="modal-header">
-                                                                                    <h5 class="modal-title"
-                                                                                        id="exampleModalLongTitle">Chỉnh
-                                                                                        sửa hợp đồng</h5>
-                                                                                    <button type="button" class="close"
-                                                                                            data-dismiss="modal"
-                                                                                            aria-label="Close">
-                                                                                        <span
-                                                                                            aria-hidden="true">&times;</span>
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div class="modal-body">
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Tên
-                                                                                                    đại lý</label>
-                                                                                                <input name="store_name"
-                                                                                                       value="{{$data['store_name']}}"
-                                                                                                       type="text"
-                                                                                                       class="form-control"
-                                                                                                       id="exampleInputEmail1"
-                                                                                                       aria-describedby="emailHelp"
-                                                                                                       placeholder="Nhập tên đại lý...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Số
-                                                                                                    điện thoại</label>
-                                                                                                <input
-                                                                                                    name="store_phone"
-                                                                                                    value="{{$data['store_phone']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập tên sđt...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Website</label>
-                                                                                                <input
-                                                                                                    name="store_website"
-                                                                                                    value="{{$data['store_website']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập đường dẫn...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="form-group">
-                                                                                                <label for="address">Địa
-                                                                                                    chỉ GH</label>
-                                                                                                <textarea
-                                                                                                    name="store_add_DKKD"
-                                                                                                    class="form-control"
-                                                                                                    id="address"
-                                                                                                    placeholder="Địa chỉ chi tiết">{{$data['store_add_DKKD']}}</textarea>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Tên
-                                                                                                    chủ tài khoản ngân
-                                                                                                    hàng</label>
-                                                                                                <input
-                                                                                                    name="store_bank_holder"
-                                                                                                    value="{{$data['store_bank_holder']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập họ và tên...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Tên
-                                                                                                    ngân hàng</label>
-                                                                                                <input name="store_bank"
-                                                                                                       value="{{$data['store_bank']}}"
-                                                                                                       type="text"
-                                                                                                       class="form-control"
-                                                                                                       id="exampleInputEmail1"
-                                                                                                       aria-describedby="emailHelp"
-                                                                                                       placeholder="Nhập tên ngân hàng...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Số
-                                                                                                    tài khoản ngân
-                                                                                                    hàng</label>
-                                                                                                <input
-                                                                                                    name="store_bank_numb"
-                                                                                                    value="{{$data['store_bank_numb']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập stk...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Người
-                                                                                                    lên hệ</label>
-                                                                                                <input
-                                                                                                    name="store_contact_name"
-                                                                                                    value="{{$data['store_contact_name']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập tên...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Chức
-                                                                                                    danh</label>
-                                                                                                <input
-                                                                                                    name="store_contact_position"
-                                                                                                    value="{{$data['store_contact_position']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập chức danh...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">SĐT
-                                                                                                    Người lên hệ</label>
-                                                                                                <input
-                                                                                                    name="store_contact_phone"
-                                                                                                    value="{{$data['store_contact_phone']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập sđt...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Số
-                                                                                                    giấy phép
-                                                                                                    ĐKKD</label>
-                                                                                                <input
-                                                                                                    name="store_id_Numb_GPDKKD"
-                                                                                                    value="{{$data['store_id_Numb_GPDKKD']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập số GPĐKKD...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">
-                                                                                                    Ngày cấp
-                                                                                                    GPĐKKD</label>
-                                                                                                <input
-                                                                                                    name="store_GPDKKD"
-                                                                                                    value="{{$data['store_GPDKKD']}}"
-                                                                                                    type="text"
-                                                                                                    class="form-control"
-                                                                                                    id="exampleInputEmail1"
-                                                                                                    aria-describedby="emailHelp"
-                                                                                                    placeholder="Nhập ngày cấp GPĐKKD...">
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="form-group">
-                                                                                                <label for="address">Địa
-                                                                                                    chỉ ĐKKD</label>
-                                                                                                <textarea
-                                                                                                    name="store_add_GH"
-                                                                                                    class="form-control"
-                                                                                                    id="address"
-                                                                                                    placeholder="Địa chỉ chi tiết">{{$data['store_add_GH']}}</textarea>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-6">
-                                                                                            <div class="form-group">
-                                                                                                <label
-                                                                                                    for="exampleInputEmail1">Cấp
-                                                                                                    hợp đồng</label>
-                                                                                                <select
-                                                                                                    name="contract_level"
-                                                                                                    class="form-control">
-                                                                                                    <option
-                                                                                                        {{$data['contract_level']== 1 ? 'selected':''}} value="1">
-                                                                                                        Hợp đồng cấp 1
-                                                                                                    </option>
-                                                                                                    <option
-                                                                                                        {{$data['contract_level']== 2 ? 'selected':''}} value="2">
-                                                                                                        Hợp đồng cấp 2
-                                                                                                    </option>
-                                                                                                    <option
-                                                                                                        {{$data['contract_level']== 3 ? 'selected':''}} value="3">
-                                                                                                        Hợp đồng cấp 3
-                                                                                                    </option>
-                                                                                                    <option
-                                                                                                        {{$data['contract_level']== 4 ? 'selected':''}} value="4">
-                                                                                                        Hợp đồng cấp 4
-                                                                                                    </option>
-                                                                                                </select>
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <button type="button"
-                                                                                            class="btn btn-light"
-                                                                                            data-dismiss="modal">Hủy bỏ
-                                                                                    </button>
-                                                                                    <button type="submit"
-                                                                                            class="btn btn-primary">Lưu
-                                                                                        thay đổi
-                                                                                    </button>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                        @endforeach
-                                    </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    </div>
                     <div class="col-md-12">
                         <div class="front-view-slider mb-sm-5 mb-3 owl-carousel">
                             <div class="items">

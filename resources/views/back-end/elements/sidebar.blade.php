@@ -1,6 +1,7 @@
 <div class="deznav">
     <div class="deznav-scroll">
         <ul class="metismenu" id="menu">
+            @if(Session::get('session_role') !== 'partner')
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                     <i class="flaticon-381-diploma"></i>
@@ -27,6 +28,15 @@
                     {{--                    <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>--}}
                 </ul>
             </li>
+            @else
+                <li>
+
+                    <a class="has-arrow ai-icon" href="{{route('contract.seach')}}">
+                        <i class="flaticon-381-diploma"></i>
+                        <span class="nav-text">Tìm xuất hợp đồng</span>
+                    </a>
+                </li>
+            @endif
             {{--            <li>--}}
             {{--                <a class="has-arrow ai-icon" href="{{asset('/department-system')}}" aria-expanded="false">--}}
             {{--                    <i class="flaticon-381-settings"></i>--}}

@@ -230,6 +230,13 @@ return [
                     'vendor/owl-carousel/owl.carousel.css',
                     'https://cdn.lineicons.com/2.0/LineIcons.css',
                 ],
+                'dashboard' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/jqvmap/css/jqvmap.min.css',
+                    'vendor/chartist/css/chartist.min.css',
+                    'vendor/owl-carousel/owl.carousel.css',
+                    'https://cdn.lineicons.com/2.0/LineIcons.css',
+                ],
                 'upload_pdf' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
@@ -667,6 +674,13 @@ return [
                     'js/deznav-init.js',
                 ],
                 'edit' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/owl-carousel/owl.carousel.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'dashboard' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/owl-carousel/owl.carousel.js',
