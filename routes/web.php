@@ -47,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
 
 //Partner module
 Route::prefix('doi-tac')->group(function (){
+    Route::get('/doi-tac-moi', [PartnerController::class, 'new_partner'])->name('partner.new');
     Route::get('/dang-nhap', [PartnerController::class, 'partner_login'])->name('partner.login');
     Route::post('/dang-nhap/gui-du-lieu', [PartnerController::class, 'partner_login_submit'])->name('partner.login.submit');
     Route::get('/danh-sach-hop-dong',[PartnerController::class,'dashboard'])->name('partner.dashboard');

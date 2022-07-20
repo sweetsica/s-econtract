@@ -20,6 +20,19 @@ class PartnerController extends Controller
 {
     use SignTrait;
 
+
+    /**
+     * Danh sách partner mới
+     */
+    public function new_partner(){
+        $info_data = Partner::where('contract_mode',0)->get();
+        $page_title = 'Contract Dashboard';
+        $page_description = 'Danh sách hợp đồng';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.partner.new_partner', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
+    }
     /**
      * Đăng nhập cho partner
      */
