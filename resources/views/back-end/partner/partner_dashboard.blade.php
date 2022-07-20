@@ -8,10 +8,10 @@
         <div class="form-head page-titles d-flex  align-items-center">
             <div class="mr-auto  d-lg-block">
                 <h2 class="text-black font-w600">Hợp đồng của đối tác</h2>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Property</a></li>
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">98AB Alexander Court New York</a></li>
-                </ol>
+{{--                <ol class="breadcrumb">--}}
+{{--                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Property</a></li>--}}
+{{--                    <li class="breadcrumb-item"><a href="javascript:void(0)">98AB Alexander Court New York</a></li>--}}
+{{--                </ol>--}}
             </div>
             {{--            <a href="javascript:void(0);" class="btn btn-danger rounded mr-3">Update Info</a>--}}
             {{--            <a href="javascript:void(0);" class="btn btn-primary rounded light mr-3">Refresh</a>--}}
@@ -36,7 +36,7 @@
                                     {{--                                    <a href="app-profile.html" class="profile-icon"><i class="las la-cog"></i></a>--}}
                                 </div>
                                 <h4 class="text-black fs-20 font-w600">{{$info_data_parent['owner_name']}}</h4>
-                                <span class="mb-3 text-black d-block">Đối tác / Người đại diện</span>
+                                <span class="mb-3 text-black d-block">Người đại diện / Đối tác</span>
                                 {{--                                <p>Midnight Corner St. Suite 600 San Francisco, CADGE 94107</p>--}}
                                 <ul class="property-social">
                                     <li><a href="javascript:void(0);"><i class="lab la-instagram"></i></a></li>
@@ -275,69 +275,80 @@
                                                             <h3 class="font-w600 text-black">Đại
                                                                 lý: {{$data['store_name']}}</h3>
                                                         </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
+                                                        <div class="col-md-6">
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Mã hợp đồng:</span> {{$data['contract_code']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Mẫu hợp đồng:</span> {{$data['store_contract_type']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Địa chỉ:</span> {{$data['store_add_DKKD']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                <span
-                                                                    class="font-w600 text-black">Địa chỉ giao hàng:</span> {{$data['store_add_GH']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">SĐT Đại lý:</span> {{$data['store_phone']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Phạm vi bán hàng:</span> {{$data['store_effect']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
+                                                                        class="font-w600 text-black">Mẫu hợp đồng:</span> {{$data['store_contract_type']}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
+                                                                        class="font-w600 text-black">SĐT Đại lý:</span> {{$data['store_phone']}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
+                                                                        class="font-w600 text-black">Địa chỉ:</span> {{$data['store_add_DKKD']}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                <span
+                                                                    class="font-w600 text-black">Địa chỉ giao hàng:</span> {{$data['store_add_GH']}}
+                                                            </div>
+
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                 <span
                                                                     class="font-w600 text-black">Số giấy phép ĐKKDD:</span> {{$data['store_id_Numb_GPDKKD']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{$data['store_GPDKKD']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Người liên hệ:</span> {{$data['store_contact_name']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Chức danh :</span> {{$data['store_contact_position']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                 <span
                                                                     class="font-w600 text-black">SĐT Người liên hệ:</span> {{$data['store_contact_phone']}}
+                                                            </div>
+
                                                         </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                        <div class="col-md-6">
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Chủ ngân hàng:</span> {{$data['store_bank_holder']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Tên ngân hàng :</span> {{$data['store_bank']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Số tài khoản:</span> {{$data['store_bank_numb']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Ngày bắt đầu:</span> {{$data['store_started']}}
-                                                        </div>
-                                                        <div class="col-md-6 fs-20 mt-3">
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Ngày kết thúc:</span> {{$data['store_end']}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                @if($data['store_signed'] !== 0 && $data['store_sign_img'])
+                                                                   <img style="width: 100%;height: 200px; object-fit: contain" src="{{$data['store_sign_img']}}" alt="/">
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
