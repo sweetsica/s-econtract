@@ -171,9 +171,7 @@
                                         </div>
                                         <div class="col-md-12 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_parent->location_id_numb_create->name}}
-                                            , {{$info_data_parent->location_id_numb_create->parent->name}}
-                                            , {{$info_data_parent->location_id_numb_create->parent->parent->name}}
+                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_parent->	owner_id_numb_created_locate}}
                                         </div>
                                     </div>
                                     {{--                                    <div class="mb-sm-5 mb-2">--}}

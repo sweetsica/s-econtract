@@ -171,7 +171,7 @@
                                         </div>
                                         <div class="col-md-12 fs-20 mt-3">
                                             <span
-                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data->partner->location_id_numb_create->name}}, {{$info_data->partner->location_id_numb_create->parent->name}}, {{$info_data->partner->location_id_numb_create->parent->parent->name}}
+                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data->owner_id_numb_created_locate}}
                                         </div>
                                     </div>
                                     {{--                                    <div class="mb-sm-5 mb-2">--}}
@@ -595,7 +595,7 @@
                                                                                                         Hợp đồng cấp 4
                                                                                                     </option>
                                                                                                 </select>
-                                                                                                {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
+                                                                                                {{--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>

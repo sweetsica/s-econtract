@@ -62,10 +62,6 @@ class Partner extends Model
     {
         return $this->belongsTo(Local::class,'delivery_location_id','id');
     }
-    public function location_id_numb_create()
-    {
-        return $this->belongsTo(Local::class,'owner_id_numb_created_locate','id');
-    }
     public function tdv()
     {
         return $this->belongsTo(Member::class,'id_tdv','member_code');
