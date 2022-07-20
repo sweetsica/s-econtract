@@ -231,7 +231,7 @@
                         <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <div id="accordion-nine" class="accordion accordion-primary">
+                                    <div id="accordion-nine" class="accordion accordion-active-header">
                                         @foreach($info_data_parent->contract as $data)
 
                                                 <div class="accordion__item">

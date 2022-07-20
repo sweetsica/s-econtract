@@ -24042,8 +24042,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   [data-theme-version="dark"] .accordion-solid-bg .accordion__body {
     background-color: #181f39; }
 .accordion-active-header .accordion__header:not(.collapsed) {
-  background-color: #2B98D6;
-  border-color: #2B98D6;
+  background-color: var(--primary);
+  border-color: var(--primary);
   color: #fff; }
 .accordion-header-shadow .accordion__header {
   border: none;
