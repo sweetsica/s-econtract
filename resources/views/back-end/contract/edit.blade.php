@@ -630,7 +630,7 @@
                                 <div class="front-view">
                                     <img src="{{ asset('images/card/1.jpg') }}" alt="">
                                     <div class="info">
-                                        <h3 class="fs-30 mb-2 text-white font-w600">Front View</h3>
+                                        <h3 class="fs-30 mb-2 text-white font-w600">Ảnh cửa hàng 1</h3>
                                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                                             veniam, quis nostrud exercitation ullamco laboris nisi</p>
@@ -666,7 +666,7 @@
                                 <div class="front-view">
                                     <img src="{{ asset('images/card/2.jpg') }}" alt="">
                                     <div class="info">
-                                        <h3 class="fs-30 mb-2 text-white font-w600">Front View</h3>
+                                        <h3 class="fs-30 mb-2 text-white font-w600">Ảnh cửa hàng 2</h3>
                                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                                             veniam, quis nostrud exercitation ullamco laboris nisi</p>
@@ -702,7 +702,7 @@
                                 <div class="front-view">
                                     <img src="{{ asset('images/card/3.jpg') }}" alt="">
                                     <div class="info">
-                                        <h3 class="fs-30 mb-2 text-white font-w600">Front View</h3>
+                                        <h3 class="fs-30 mb-2 text-white font-w600">Ảnh cửa hàng 3</h3>
                                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                                             veniam, quis nostrud exercitation ullamco laboris nisi</p>
@@ -738,7 +738,7 @@
                                 <div class="front-view">
                                     <img src="{{ asset('images/card/4.jpg') }}" alt="">
                                     <div class="info">
-                                        <h3 class="fs-30 mb-2 text-white font-w600">Front View</h3>
+                                        <h3 class="fs-30 mb-2 text-white font-w600">Ảnh cửa hàng 4</h3>
                                         <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                                             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
                                             veniam, quis nostrud exercitation ullamco laboris nisi</p>
