@@ -126,7 +126,7 @@ class PartnerController extends Controller
     public function dashboard()
     {
         $partner_id = Session::get('session_partner_id');
-        $info_data_parent = Partner::with('contract','location_id_numb_create')->find($partner_id);
+        $info_data_parent = Partner::with('contract')->find($partner_id);
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng';
         $logo = "images/logo.png";

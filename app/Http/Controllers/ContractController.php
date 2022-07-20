@@ -37,7 +37,7 @@ class ContractController extends Controller
     {
         $info_data = Contract::where('id', '=', $contract_id)->first();
         $contract_count = Contract::where('id','!=',$contract_id)->count();
-        $info_data_parent = Partner::with('contract','location_id_numb_create')->get()->where('id','=',$info_data['partnerId'])->first();
+        $info_data_parent = Partner::with('contract')->get()->where('id','=',$info_data['partnerId'])->first();
         $page_title = 'Chi tiết hợp đồng';
         $page_description = 'Thông tin chi tiết hợp đồng';
         $logo = "images/logo.png";
