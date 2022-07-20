@@ -20,10 +20,8 @@ class ContractController extends Controller
         $check_role = Session::get('session_role');
         if ($check_role == 'admin') {
             $info_data = Contract::orderBy('id', 'desc')->paginate('10');
-        }elseif ($check_role == 'partner'){
-            $partner_id = Session::get('session_partner_id');
-            $partner =  Partner::with('contract')->find($partner_id);
-            $info_data = $partner->contract;
+        }else{
+            return redirect(route('member.contract.list'));
         }
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng';

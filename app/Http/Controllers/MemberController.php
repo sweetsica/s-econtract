@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contract;
 use App\Models\Department;
 use App\Models\Local;
 use App\Models\Member;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 
 class MemberController extends Controller
@@ -82,7 +85,7 @@ class MemberController extends Controller
             $member->roles()->attach($request->get('roles'));
             $member->department()->attach($request->get('departments'));
             DB::commit();
-            return redirect()->to('/member');
+            return redirect(route('member.list'));
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
@@ -185,5 +188,33 @@ class MemberController extends Controller
             return $query->where('role_id', 3);
         })->get();
         return response()->json($manager);
+    }
+
+    public function member_contract_list(){
+        $check_role = Session::get('session_role');
+        $member = Member::with('contract')->find(Auth::id());
+        $info_data = $member->contract;
+        $page_title = 'Contract Dashboard';
+        $page_description = 'Danh sách hợp đồng của bạn';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data','check_role'));
+    }
+
+    public function team_contract_list(){
+        $check_role = Session::get('session_role');
+        if ($check_role == 'captain') {
+            $member = Member::with('contract','children')->find(Auth::id());
+            $info_data = $member->children;
+        }else{
+            return redirect(route('contract.list'));
+        }
+        $page_title = 'Contract Dashboard';
+        $page_description = 'Hợp đồng của thành viên';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.contract.team_list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
 }

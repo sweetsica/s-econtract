@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{url('/member/create/submit')}}" method="post">
+                            <form action="{{route('member.create.post')}}" method="post">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-4">

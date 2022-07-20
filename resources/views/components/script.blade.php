@@ -55,7 +55,7 @@
         $(".manager_select_mbf").attr("disabled",true)
         $.ajax({
             type:'GET',
-            url:"{{url("/member/get-manager")}}",
+            url:"{{route('member.manage.get')}}",
             data:{
                 department_id:department_selected
             },

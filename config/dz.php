@@ -822,6 +822,16 @@ return [
                     'js/custom.min.js',
                     'js/deznav-init.js',
                 ],
+                'member_contract_list' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'team_contract_list' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
                 'list_type10' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'js/custom.min.js',

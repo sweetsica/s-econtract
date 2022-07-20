@@ -72,6 +72,12 @@ class AuthController extends Controller
             if($checkmember){
                 Session::put('session_role', 'member');
                 Session::put('session_name', $checkmember->member_name);
+               $checkCap = $checkmember->with('roles')->whereHas('roles', function ($query) {
+                    return $query->where('role_id',  1 || 2);
+                });
+               if($checkCap) {
+                   Session::put('session_role', 'captain');
+               }
                 Auth::loginUsingId($checkmember->id);
                 $page_title = 'Danh sách hợp đồng';
                 $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';

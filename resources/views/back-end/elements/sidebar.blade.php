@@ -10,8 +10,10 @@
                 <ul aria-expanded="false">
                     <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false">Tổng hợp</a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('contract.list')}}">Danh sách hợp đồng</a></li>
-                            {{--                            <li><a href="{{route('contract.dashboard1')}}">Hợp đồng cấp 1</a></li>--}}
+                            <li><a href="{{route('contract.list')}}">Hợp đồng của bạn </a></li>
+                            @if(Session::get('session_role') === 'captain')
+                            <li><a href="{{route('member.team.contract.list')}}">Hợp đồng các thành viên</a></li>
+                            @endif
                             {{--                            <li><a href="{{route('contract.dashboard2')}}">Hợp đồng cấp 2</a></li>--}}
                             {{--                            <li><a href="{{route('contract.dashboard3')}}">Hợp đồng cấp 3</a></li>--}}
                         </ul>

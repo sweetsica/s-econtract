@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{url('/member/update/'.$member->id)}}" method="post">
+                            <form action="{{route('member.update',[$member->id])}}" method="post">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
