@@ -1,5 +1,5 @@
 {{-- Extends layout --}}
-@extends('layout.default')
+@extends('ori.layout.default')
 {{-- Content --}}
 @section('content')
             <!-- row -->

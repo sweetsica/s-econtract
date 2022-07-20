@@ -42,7 +42,6 @@ class Partner extends Model
                 return $value;
         }
     }
-
     public function setBankDoppelherzAttribute($value)
     {
         switch ($value){
@@ -57,5 +56,23 @@ class Partner extends Model
             default:
                 return $value;
         }
+    }
+
+    public function delivery_location()
+    {
+        return $this->belongsTo(Local::class,'delivery_location_id','id');
+    }
+    public function tdv()
+    {
+        return $this->belongsTo(Member::class,'id_tdv','member_code');
+    }
+    public function member()
+    {
+        return $this->belongsTo(Member::class,'id_tdv','member_code');
+    }
+
+    public function contract()
+    {
+        return $this->hasMany(Contract::class,'partnerId','id');
     }
 }

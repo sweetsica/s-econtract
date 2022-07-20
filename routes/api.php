@@ -34,13 +34,14 @@ Route::get('/members',[MemberController::class,'index']);
 //Sau khi đăng nhập admin
 Route::group(['middleware' => ['auth:api']], function(){
     Route::get('/user-info',[AuthController::class,'getUserInfo']);
-    Route::post('/members',[MemberController::class,'store']);
+    Route::post('/save-members',[MemberController::class,'store']);
     Route::put('/members/{id}',[MemberController::class,'update']);
     Route::delete('/members/{id}',[MemberController::class,'destroy']);
     Route::post('/logout',[AuthController::class,'logout']);
 });
-Route::get('/members/search/{name}',[MemberController::class,'search']);
 
+Route::get('/members/search/{name}',[MemberController::class,'search']);
+Route::get('/thanh-vien/tim-kiem',[MemberController::class,'member_check']);
 
 Route::get('/local',[LocalController::class,'getLocal']);
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
@@ -54,7 +55,10 @@ Route::get('/members/check',[MemberController::class,'checkMemberExist']);
 //    Route::delete('/members{id}',[MemberController::class,'store']);
 //    Route::post('/logout',[AuthController::class,'logout']);
 //});
-
+//Route::fallback(function(){
+//    return response()->json([
+//        'message' => 'Sai cú pháp, liên hệ info@mastertran.vn'], 404);
+//});
 
 //Route::resource('members',MemberController::class);
 

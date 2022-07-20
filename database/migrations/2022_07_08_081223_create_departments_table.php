@@ -13,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('members', function (Blueprint $table) {
-            $table->renameColumn('dms_code', 'member_code');
-            $table->renameColumn('name', 'member_name');
+        Schema::create('departments', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->unsignedBigInteger('location_id')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -26,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('members', function (Blueprint $table) {
-            $table->dropColumn('member_code');
-        });
+        Schema::dropIfExists('departments');
     }
 };

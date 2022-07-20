@@ -1,5 +1,5 @@
 {{-- Extends layout --}}
-@extends('layout.default')
+@extends('ori.layout.default')
 
 
 
@@ -69,7 +69,7 @@
 													</div>
 												</div>
 												<div class="mt-4">
-													<a href="javascript:void()" class="btn btn-primary mb-1 mr-1">Follow</a> 
+													<a href="javascript:void()" class="btn btn-primary mb-1 mr-1">Follow</a>
 													<a href="javascript:void()" class="btn btn-primary mb-1">Send Message</a>
 												</div>
 											</div>
@@ -123,7 +123,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-lg-12">							
+							<div class="col-lg-12">
 								<div class="card">
 									<div class="card-header border-0 pb-0">
 										<h4 class="text-black">Our Latest News</h4>
@@ -174,7 +174,7 @@
                                             <div id="my-posts" class="tab-pane fade active show">
                                                 <div class="my-post-content pt-3">
                                                     <div class="post-input">
-                                                        <textarea name="textarea" id="textarea" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea> 
+                                                        <textarea name="textarea" id="textarea" cols="30" rows="5" class="form-control bg-transparent" placeholder="Please type what you want...."></textarea>
 														<a href="javascript:void()" class="btn btn-primary light px-3"><i class="fa fa-link"></i> </a>
                                                         <a href="javascript:void()" class="btn btn-primary light mr-1 px-3"><i class="fa fa-camera"></i> </a><a href="javascript:void()" class="btn btn-primary">Post</a>
                                                     </div>
@@ -238,7 +238,7 @@
                                                 </div>
                                                 <div class="profile-lang  mb-5">
                                                     <h4 class="text-primary mb-2">Language</h4>
-													<a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-us"></i> English</a> 
+													<a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-us"></i> English</a>
 													<a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-fr"></i> French</a>
                                                     <a href="javascript:void()" class="text-muted pr-3 f-s-16"><i class="flag-icon flag-icon-bd"></i> Bangla</a>
                                                 </div>
@@ -353,5 +353,5 @@
                     </div>
                 </div>
             </div>
-			
-@endsection			
+
+@endsection

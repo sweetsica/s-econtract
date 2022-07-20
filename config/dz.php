@@ -35,6 +35,51 @@ return [
         ],
         'pagelevel' => [
             'css' => [
+                //page custom
+
+                //department
+                'department_list'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'department_create'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
+                    'vendor/select2/css/select2.min.css',
+                ],
+                'department_edit'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
+                    'vendor/select2/css/select2.min.css',
+                ],
+                'department_system'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                    '/assets/tree.css'
+                ],
+                //role
+                'role_index'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                //member
+                'member_list'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'member_create'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
+                    'vendor/select2/css/select2.min.css',
+                ],
+                'member_edit'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
+                    'vendor/select2/css/select2.min.css',
+                ],
+
+                //end page custom
+
                 'index' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                     'vendor/jqvmap/css/jqvmap.min.css',
@@ -49,33 +94,25 @@ return [
                     'https://cdn.lineicons.com/2.0/LineIcons.css',
                     'vendor/owl-carousel/owl.carousel.css',
                 ],
-                'dashboard' => [
+                'login' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
-                    'vendor/jqvmap/css/jqvmap.min.css',
-                    'vendor/chartist/css/chartist.min.css',
-                    'https://cdn.lineicons.com/2.0/LineIcons.css',
-                    'vendor/owl-carousel/owl.carousel.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
-                'dashboard1' => [
+                'dashboard_1' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
-                    'vendor/jqvmap/css/jqvmap.min.css',
-                    'vendor/chartist/css/chartist.min.css',
-                    'https://cdn.lineicons.com/2.0/LineIcons.css',
-                    'vendor/owl-carousel/owl.carousel.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
-                'dashboard2' => [
+                'trang-chu-2' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
-                    'vendor/jqvmap/css/jqvmap.min.css',
-                    'vendor/chartist/css/chartist.min.css',
-                    'https://cdn.lineicons.com/2.0/LineIcons.css',
-                    'vendor/owl-carousel/owl.carousel.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
-                'dashboard3' => [
+                'trang-chu-3' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
-                    'vendor/jqvmap/css/jqvmap.min.css',
-                    'vendor/chartist/css/chartist.min.css',
-                    'https://cdn.lineicons.com/2.0/LineIcons.css',
-                    'vendor/owl-carousel/owl.carousel.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'trang-chu-4' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
                 'analytics' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
@@ -188,6 +225,17 @@ return [
                 ],
                 'edit' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/jqvmap/css/jqvmap.min.css',
+                    'vendor/chartist/css/chartist.min.css',
+                    'vendor/owl-carousel/owl.carousel.css',
+                    'https://cdn.lineicons.com/2.0/LineIcons.css',
+                ],
+                'dashboard' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/jqvmap/css/jqvmap.min.css',
+                    'vendor/chartist/css/chartist.min.css',
+                    'vendor/owl-carousel/owl.carousel.css',
+                    'https://cdn.lineicons.com/2.0/LineIcons.css',
                 ],
                 'upload_pdf' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
@@ -221,7 +269,7 @@ return [
                 'index_document' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
-                'list' => [
+                'contract_list' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
                 'list_type10' => [
@@ -323,6 +371,73 @@ return [
                 ],
             ],
             'js' => [
+                //page custom
+                //department
+                'department_list'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'department_system'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                    '/assets/tree.js'
+                ],
+                'department_create'=>[
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'department_edit'=>[
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                //role
+                'role_index'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                //member
+                'member_list'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'member_create'=>[
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'member_edit'=>[
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+
+                //end page custom
                 'index' => [
                     'js/dashboard/dashboard-1.js',
                     'js/custom.min.js',
@@ -333,53 +448,45 @@ return [
                     'js/custom.min.js',
                     'js/deznav-init.js',
                 ],
-                'dashboard' => [
+                'login' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-                    'vendor/chart.js/Chart.bundle.min.js',
-                    'vendor/apexchart/apexchart.js',
-                    'vendor/owl-carousel/owl.carousel.js',
-                    'vendor/jqvmap/js/jquery.vmap.min.js',
-                    'vendor/jqvmap/js/jquery.vmap.world.js',
-                    'vendor/peity/jquery.peity.min.js',
-                    'js/dashboard/dashboard-1.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
                 ],
-                'dashboard1' => [
+                'dashboard_1' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-                    'vendor/chart.js/Chart.bundle.min.js',
-                    'vendor/apexchart/apexchart.js',
-                    'vendor/owl-carousel/owl.carousel.js',
-                    'vendor/jqvmap/js/jquery.vmap.min.js',
-                    'vendor/jqvmap/js/jquery.vmap.world.js',
-                    'vendor/peity/jquery.peity.min.js',
-                    'js/dashboard/dashboard-1.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
                 ],
-                'dashboard2' => [
+                'trang-chu-2' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-                    'vendor/chart.js/Chart.bundle.min.js',
-                    'vendor/apexchart/apexchart.js',
-                    'vendor/owl-carousel/owl.carousel.js',
-                    'vendor/jqvmap/js/jquery.vmap.min.js',
-                    'vendor/jqvmap/js/jquery.vmap.world.js',
-                    'vendor/peity/jquery.peity.min.js',
-                    'js/dashboard/dashboard-1.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'trang-chu-3' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
                 ],
                 'dashboard3' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-                    'vendor/chart.js/Chart.bundle.min.js',
-                    'vendor/apexchart/apexchart.js',
-                    'vendor/owl-carousel/owl.carousel.js',
-                    'vendor/jqvmap/js/jquery.vmap.min.js',
-                    'vendor/jqvmap/js/jquery.vmap.world.js',
-                    'vendor/peity/jquery.peity.min.js',
-                    'js/dashboard/dashboard-1.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
                 ],
                 'analytics' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
@@ -568,6 +675,15 @@ return [
                 ],
                 'edit' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/owl-carousel/owl.carousel.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                ],
+                'dashboard' => [
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/chart.js/Chart.bundle.min.js',
+                    'vendor/owl-carousel/owl.carousel.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
                 ],
@@ -701,7 +817,7 @@ return [
                     'js/custom.min.js',
                     'js/deznav-init.js',
                 ],
-                'list' => [
+                'contract_list' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',

@@ -3,7 +3,6 @@
 
 {{-- Content --}}
 @section('content')
-
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
@@ -33,7 +32,10 @@
                                     <th><strong>ID.</strong></th>
                                     <th><strong>TÊN ĐỐI TÁC</strong></th>
                                     <th><strong>ĐỊA CHỈ</strong></th>
-                                    <th><strong>NGÀY</strong></th>
+                                    <th><strong>MÃ HỢP ĐỒNG</strong></th>
+                                    <th><strong>SỐ ĐIỆN THOẠI</strong></th>
+                                    <th><strong>LOẠI HỢP ĐỒNG</strong></th>
+                                    <th><strong>NGÀY ĐĂNG KÝ</strong></th>
                                     <th><strong>TRẠNG THÁI</strong></th>
                                 </tr>
                                 </thead>
@@ -46,25 +48,31 @@
                                                 <label class="custom-control-label" for="customCheckBox2"></label>
                                             </div>
                                         </td>
-                                        <td><strong>{{$data['id']}}-{{$data['created_at']}}/HĐĐL</strong></td>
-                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>
-                                        <td>{{$data['address']}}</td>
+                                        <td><strong>{{$data['id']}}</strong></td>
+{{--                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>--}}
+                                        <td>{{$data['store_name']}}</td>
+                                        <td>{{$data['store_add_DKKD']}}</td>
+                                        <td>{{$data['contract_code']}}</td>
+                                        <td>{{$data['store_phone']}}</td>
+                                        <td>{{$data['store_contract_type']}}</td>
                                         <td>{{$data['created_at']}}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                @if($data['access_type']==10)
-                                                    <i class="fa fa-circle text-warning mr-1"></i> Đang chờ
+                                                @if($data['contract_level']==10)
+                                                    Chờ duyệt <i style="padding-left: 1px;" class="fa fa-circle text-warning mr-1"></i>
                                                 @else
-                                                    <i class="fa fa-circle text-success mr-1"></i> Đã duyệt
+                                                    Cấp độ: {{$data['contract_level']}} <i style="padding-left: 5px;" class="fa fa-circle text-success mr-1"></i>
                                                 @endif
                                             </div>
                                         </td>
+
                                         <td>
                                             <div class="d-flex">
                                                 <a href="{{route('contract.edit',$data['id'])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+{{--                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>--}}
                                             </div>
                                         </td>
+
                                     </tr>
                                 @endforeach
                                 </tbody>

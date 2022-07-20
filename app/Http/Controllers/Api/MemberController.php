@@ -8,6 +8,7 @@ use App\Models\Partner;
 use App\Models\PersonalAccessToken;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -49,6 +50,15 @@ class MemberController extends Controller
 //        return response()->json('Add partner successfully');
 //    }
 
+    public function member_check(Request $request)
+    {
+        $data = Member::where('member_code',$request['member_code']);
+        if ($data){
+            return response()->json('access_true');
+        }else{
+            return response()->json('access_false');
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -67,38 +77,55 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        DB::beginTransaction();
+        $validator = Validator::make($request->all(), [
+            'member_name' => 'required|max:255',
+            'member_code' => 'required|max:255|unique:members',
+            'email' => 'required|email|max:255|unique:members',
+            'phone' => 'required|max:255|unique:members',
+            'password' => 'required|min:6',
+            'location_id' => 'required',
+            'address' => 'required',
+        ],[
+            'member_name.required' => 'Tên nhân viên không được để trống',
+            'member_code.required' => 'Mã nhân viên không được để trống',
+            'member_code.unique' => 'Mã nhân viên đã tồn tại',
+            'email.required' => 'Email không được để trống',
+            'email.email' => 'Email không đúng định dạng',
+            'email.unique' => 'Email đã tồn tại',
+            'phone.required' => 'Số điện thoại không được để trống',
+            'phone.unique' => 'Số điện thoại đã tồn tại',
+            'password.required' => 'Mật khẩu không được để trống',
+            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',
+            'location_id.required' => 'Vui lòng chọn địa điểm',
+            'roles.required' => 'Vui lòng chọn quyền',
+            'departments.required' => 'Vui lòng chọn phòng ban',
+            'address.required' => 'Vui lòng nhập địa chỉ',
+        ]);
+        if ($validator->fails()) {
+            return response()->json([
+                "status_code" => 400,
+                "error" => $validator->errors()
+            ], 400);
+        }
         try {
-            $validator = Validator::make($request->all(), [
-                "member_name" => "required",
-                "member_code" => "required",
-                "username"=>"required|min:6",
-                "password"=>"required|min:6",
-                "email"=>"required",
-
-            ],[
-                "member_name.required"=>"Vui lòng nhập tên nhân viên.",
-                "member_code.required"=>"Vui lòng nhập mã nhân viên.",
-                "username.required"=>"Vui lòng nhập tên người dùng.",
-                "password.required"=>"Vui lòng nhập mật khẩu.",
-                "email.required"=>"Vui lòng nhập email.",
-            ]);
-            if ($validator->fails()) {
-                return response()->json([
-                    "status_code" => 400,
-                    "error" => $validator->errors()
-                ], 400);
-            }
             $member = Member::create([
-                "member_name"=>$request->get("member_name"),
-                "member_code"=>$request->get("member_code"),
-                "username"=>$request->get("username"),
-                "password"=>$request->get("password"),
-                "email"=>$request->get("email"
-                )
+                'member_name' => $request->get('member_name'),
+                'member_code' => $request->get('member_code'),
+                'email' => $request->get('email'),
+                'phone' => $request->get('phone'),
+                'password' => bcrypt($request->get('password')),
+                'location_id' => $request->get('location_id'),
+                'address' => $request->get('address'),
+                'parent_id' => $request->get('parent_id'),
             ]);
+            $member->roles()->attach($request->get('roles'));
+            $member->department()->attach($request->get('departments'));
+            DB::commit();
             return response()->json($member,200);
-        } catch (\Exception $exception) {
-            return response()->json($exception,400);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json($e,400);
         }
     }
 
@@ -182,7 +209,9 @@ class MemberController extends Controller
 //            return response()->json([
 //                "req"=>
 //            ]);
-            $member = Member::where('member_code',$request->get('member_code'))->where('member_name',$request->get('member_name'))->first();
+            $member = Member::where('member_code',$request->get('member_code'))
+                ->where('member_name',$request->get('member_name'))
+                ->first();
             if($member !== null){
                 return response()->json([
                    "exist"=>true,

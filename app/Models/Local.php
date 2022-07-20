@@ -18,17 +18,18 @@ class Local extends Model
     ];
     public function children()
     {
-        return $this->hasMany(Local::class, 'parent_id', 'id');
+        return $this->hasMany(Local::class, 'parent_id', 'code');
     }
     public function parent()
     {
-        return $this->belongsTo(Local::class,'parent_id');
+        return $this->belongsTo(Local::class,'parent_id','code');
     }
+
     public function scopeSearch($query,$request){
         $parent_id = $request->get('parent_id');
         if($parent_id != null){
             return $query->where("parent_id",$parent_id);
         }
-        return $query->where("parent_id",0);
+        return $query->where("parent_id","0");
     }
 }

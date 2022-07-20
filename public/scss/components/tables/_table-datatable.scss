@@ -22,7 +22,7 @@ table.dataTable{
 		padding:5px 0;
 	}
 }
-table.dataTable thead th, 
+table.dataTable thead th,
 table.dataTable thead td {
     padding: 22px 15px;
     border-bottom: 1px solid $border;
@@ -110,7 +110,7 @@ table.dataTable.no-footer{
         padding-top: 1rem;
     }
 }
-.dataTables_wrapper .dataTables_length, 
+.dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter {
     @include media-breakpoint-down(md) {
         text-align: left;
@@ -120,7 +120,7 @@ table.dataTable.no-footer{
 	background-color: #fff;
 	box-shadow: 0px 12px 23px 0px rgba(62, 73, 84, 0.04);
 	border-radius: 0;
-	
+
 	tbody tr:hover{
 		background:$white!important;
 		td{
@@ -135,9 +135,9 @@ table.dataTable.no-footer{
 		padding:8px 0;
 	}
 }
-table.dataTable.row-border tbody th, 
-table.dataTable.row-border tbody td, 
-table.dataTable.display tbody th, 
+table.dataTable.row-border tbody th,
+table.dataTable.row-border tbody td,
+table.dataTable.display tbody th,
 table.dataTable.display tbody td {
     border-color: $border;
     @at-root [data-theme-version="dark"] & {
@@ -154,7 +154,7 @@ table.dataTable thead .sorting{
 		border-radius:0;
 		display: inline-block;
 		margin: 0 0;
-			
+
 		a{
 			color:$white;
 			background: transparent !important;
@@ -162,7 +162,6 @@ table.dataTable thead .sorting{
 	}
 	.paginate_button{
 		border: 0 !important;
-		padding: 15px 25px;
 		border:1px solid $primary !important;
 		background: #ECDCFF !important;
 		border-radius: 0;
@@ -180,7 +179,7 @@ table.dataTable thead .sorting{
 			color:$white !important;
 			background:$primary !important;
 		}
-		
+
 		&.previous,
 		&.next{
 			background:transparent!important;

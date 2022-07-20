@@ -7,8 +7,7 @@
         <p style="text-align: center;"><strong>MASTERTRAN</strong></p>
         <p style="text-align: center;"><em>Số:<b style="color: red">{{$info['id']}}-{{$info['created_at']->format('dmY')}}/2022/HĐĐL</b></em></p>
     </div>
-    <div style="width: 10%; float: left"> </div>
-    <div style="width: 60%; float: left">
+    <div style="width: 70%; float: left">
         <br>
         <br>
         <p style="text-align: center; padding-left: 120px;"><strong>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</strong></p>
@@ -23,20 +22,20 @@
 <p><em>- Căn cứ Luật Thương mại số: 36/2005/QH11, ngày 14/06/2005 Quốc hội Nước CHXHCN Việt Nam;</em></p>
 <p><em>- Căn cứ vào nhu cầu và thỏa thuận của hai bên.</em></p>
 <p><em>  Hôm nay, ngày……../….…./2022, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</em></p>
-<p><strong><u> </u></strong></p>
+<p><strong> </strong></p>
 <p><strong><u>BÊN A</u></strong><em>                  </em><strong>: CÔNG TY CỔ PHẦN MASTERTRAN </strong></p>
 <p>Địa chỉ<em>                  </em>: NV4.13 Khu chức năng đô thị Tây Mỗ, P. Tây Mỗ, Q. Nam Từ Liêm, Hà Nội</p>
 <p>Điện thoại             : 024.37878408                       Mã số thuế:       0105381169</p>
 <p>Tài khoản              : {{$info['number_doppelherz']}}</p>
-<p>Ngân hàng            : {{$info['account_doppelherz']}}.</p>
-<p>Đại diện<em>                </em>: Ông {{$info['name_doppelherz']}}   Chức danh: {{$info['position_doppelherz']}}.</p>
+<p>Ngân hàng            : {{$info['account_doppelherz']}}</p>
+<p>Đại diện<em>                </em>: Ông {{$info['name_doppelherz']}}        Chức danh: {{$info['position_doppelherz']}}</p>
 <p>(Theo giấy ủy quyền số: MTT030/0521/GUQ ngày 01 tháng 05 năm 2021).</p>
-<p><strong><u> </u></strong></p>
+<p><strong> </strong></p>
 <p><strong><u>BÊN B</u></strong><em>                 </em></strong>: <b style="color:red">{{$info['name']}}</b></p>
 <p>Địa chỉ                  : <b style="color:red">{{$info['address']}}</b></p>
-<p>Điện thoại             : <b style="color:red">{{$info['account_phone']}}</b>. Mã số thuế: <b style="color:red">{{$info['account_tax']}}</b></p>
+<p>Điện thoại             : <b style="color:red">{{$info['account_phone']}}</b>                       Mã số thuế: <b style="color:red">{{$info['account_tax']}}</b></p>
 <p>Địa chỉ email         : <b style="color:red">{{$info['account_email']}}</b></p>
-<p>Đại điện                : <b style="color:red">{{$info['name']}}</b>. Chức danh: <b style="color:red">{{$info['account_title']}}</b></p>
+<p>Đại điện                : <b style="color:red">{{$info['account_name']}}</b>      Chức danh: <b style="color:red">{{$info['account_title']}}</b></p>
 <p>Bên A và Bên B đồng ý ký Hợp đồng đại lý về việc mua bán sản phẩm với các điều khoản sau:</p><br><br>
 <p><strong>Điều 1: PHẠM VI, ĐỐI TƯỢNG CỦA HỢP ĐỒNG.</strong></p>
 <ul>
@@ -104,12 +103,28 @@
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
-            <img src="{{$info['doppelherz_image']}}">
+            <div style="width: 200px;height: 200px">
+                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path($info['doppelherz_image'])}}">
+            </div>
+            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>
         </td>
         <td style="width: 50%; text-align: center">
             <p><strong> </strong></p>
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
-            <img src="{{$info['image']}}">
+            <div style="object-fit: contain">
+                @if($info['image'])
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">
+                @else
+                               
+                               
+                               
+                    <h6>Khách hàng chưa ký</h6>
+                               
+                               
+                               
+                @endif
+            </div>
+            <span  style="font-weight: bold;font-size: 16px">{{$info['account_name']}}</span>
         </td>
     </tr>
     </tbody>
@@ -501,7 +516,7 @@
     </tbody>
 </table>
 <p><strong>CHÍNH SÁCH BÁN HÀNG</strong><strong> NHÓM SẢN PHẨM TRUYỀN THÔNG</strong><strong>.</strong></p>
-<p><strong>I. Doanh số cam kết tháng</strong>: <b style="color:red">{{$info['account_budget1']}}</b> đồng (không bao gồm thuế VAT)</p>
+<p><strong>I. Doanh số cam kết tháng</strong>: <b style="color:red">{{ number_format((int)$info['account_budget1'],0)}}</b> đồng (không bao gồm thuế VAT)</p>
 <p><strong>II. Chính sách bán hàng:</strong></p>
 <p><strong>2.1. Bên B được hưởng chiết khấu </strong><strong>thương mại </strong><strong>ngay trên đơn hàng:</strong> Mua 5 hộp tặng 1 hộp đối với một loại sản phẩm.</p>
 <p><strong>2.2. Đồng thời bên B được hưởng chiết khấu thương mại bằng tiền ngay trên đơn</strong>:</p>
@@ -548,7 +563,7 @@
 </table>
 <p><strong> </strong></p>
 <p><strong>CHÍNH SÁCH BÁN HÀNG</strong><strong> NHÓM SẢN PHẨM TƯ VẤN</strong><strong>.</strong></p>
-<p><strong>I. Doanh số cam kết tháng</strong>: <b style="color:red">{{$info['account_budget2'] }}</b> đồng (không bao gồm thuế VAT)</p>
+<p><strong>I. Doanh số cam kết tháng</strong>: <b style="color:red">{{ number_format((int)$info['account_budget2'],0)}}</b> đồng (không bao gồm thuế VAT)</p>
 <p><strong>II. Chính sách bán hàng:</strong></p>
 <p><strong>2.1. Bên B được hưởng chiết khấu </strong><strong>thương mại </strong><strong>ngay trên đơn hàng:</strong> Mua 5 hộp tặng 1 hộp đối với một loại sản phẩm.</p>
 <p><strong>2.2. Đồng thời bên B được hưởng chiết khấu thương mại bằng tiền ngay trên đơn</strong>: Chiết khấu thương mại thêm 3% ngay trên đơn hàng</p>
@@ -607,4 +622,3 @@
     <li>Toàn bộ các khoản chiết khấu và quyền lợi thương mại (3), (4), (5) đều được công ty xuất hóa đơn GTGT hạch toán thuế đầy đủ theo quy định của nhà nước.</li>
     <li>Đơn hàng nào phát sinh thì Hóa đơn, chứng từ sẽ đi kèm với Đơn hàng đó.</li>
 </ul>
-</body>

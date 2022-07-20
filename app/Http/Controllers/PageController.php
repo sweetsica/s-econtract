@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Enum\CommonEnum;
+use App\Models\Member;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use MongoDB\Driver\Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
 {
-    public function lockpage(Request $request)
+
+    public function index()
     {
-        if($request->password == 'Doppelherz'){
-            return redirect('dashboard');
+        if(Session::get('member_id')){
+            return redirect()->to('/contract/dashboard');
         }else{
             $page_title = 'S-Contract Hợp đồng điện tử';
             $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
@@ -22,15 +26,52 @@ class PageController extends Controller
             return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
         }
     }
-    public function index()
-    {
-        $page_title = 'S-Contract Hợp đồng điện tử';
-        $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
-        $logo = "images/logo.png";
-        $logoText = "images/logo-text.png";
-        $action = __FUNCTION__;
-        return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
-    }
+//    public function lockpage(Request $request)
+//    {
+//            if(Session::get('member_id')){
+//                return redirect()->to('/contract/dashboard');
+//            }else{
+//                $page_title = 'S-Contract Hợp đồng điện tử';
+//                $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+//                $logo = "images/logo.png";
+//                $logoText = "images/logo-text.png";
+//                $action = __FUNCTION__;
+//                try{
+//                    $member = Member::where('member_code', $request->get('username'))->first();
+//
+//                    if ($member) {
+//                        if(!Hash::check($request->password, $member->password)) {
+//                            $request->session()->put([
+//                                'role'=>'MEMBER',
+//                                'member_id' => $member->id
+//                            ]);
+//                            Session::forget('error');
+//                            return redirect()->to('/contract/dashboard');
+//                        }else{
+//                            Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+//                        }
+//                    }else{
+//                        $admin = User::where('email',$request->get('username'))->first();
+//                        if(!Hash::check($request->password, $admin->password)) {
+//                            $request->session()->put([
+//                                'role'=>'ADMIN',
+//                                'member_id' => $admin->id
+//                            ]);
+//                            Session::forget('error');
+//                            return redirect()->to('/contract/dashboard');
+//                        }else{
+//                            Session::flash('error', 'Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu');
+//                        }
+//                    }
+//                    return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
+//                }catch (\Exception $e){
+//                    return redirect()->to('/');
+//                }
+//
+//            }
+//
+//    }
+
     // Sign up Partner
     public function signup_partner()
     {
@@ -50,10 +91,7 @@ class PageController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        // get current user
         $user = Auth::user();
-        // all user role
-//        $roles = $user->getRoleNames()
         return view('back-end.dashboard.index', compact('page_title', 'page_description','action','logo','logoText'));
     }
 
