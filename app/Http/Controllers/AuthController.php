@@ -46,6 +46,7 @@ class AuthController extends Controller
 
     public function index()
     {
+        Session::flush();
         $page_title = 'Page Login';
         $page_description = 'Some description for the page';
         $action = __FUNCTION__;
@@ -54,11 +55,13 @@ class AuthController extends Controller
     #2
     public function login(Request $request)
     {
+        Session::flush();
         $checkuser = User::where('email',$request->username)->first();
         if($checkuser){
             Session::put('session_role', 'admin');
+            Session::put('session_id', $checkuser->id);
             Session::put('session_name', $checkuser->name);
-            Auth::loginUsingId($checkuser->id);
+
 
             $page_title = 'Trang quản trị';
             $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
@@ -71,10 +74,11 @@ class AuthController extends Controller
             $checkmember = Member::where('member_code',$request->username)->first();
             if($checkmember){
                 Session::put('session_role', 'member');
+                Session::put('session_id', $checkmember->id);
                 Session::put('session_name', $checkmember->member_name);
-               $checkCap = $checkmember->with('roles')->whereHas('roles', function ($query) {
-                    return $query->where('role_id',  1 || 2);
-                });
+               $checkCap = Member::with('roles')->where('member_code',$request->username)->whereHas('roles', function ($query) {
+                    return $query->where('role_id',1)->orWhere('role_id', 3);
+                })->first();
                if($checkCap) {
                    Session::put('session_role', 'captain');
                }

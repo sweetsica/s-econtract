@@ -28,11 +28,6 @@ class RoleSeeder extends Seeder
             'description' => 'Quản lý bán hàng',
         ]);
         DB::table('roles')->insert([
-            'id' => 2,
-            'name' => 'Admin',
-            'description' => 'Admin',
-        ]);
-        DB::table('roles')->insert([
             'id' => 3,
             'name' => 'Quản lý',
             'description' => 'Quản lý',

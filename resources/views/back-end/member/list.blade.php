@@ -72,8 +72,8 @@
                                         <td>{{ $member->address}}</td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="{{url('/member/edit',['id'=>$member->id])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
-                                                <a onclick="return confirm('Chắc chắn xóa {{$member->member_name}} ?')" href="{{url('/member/delete',['id'=>$member->id])}}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+                                                <a href="{{route('member.edit',['id'=>$member->id])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                <a onclick="return confirm('Chắc chắn xóa {{$member->member_name}} ?')" href="{{route('member.delete',['id'=>$member->id])}}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

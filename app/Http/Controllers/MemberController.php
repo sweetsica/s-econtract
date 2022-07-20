@@ -162,7 +162,7 @@ class MemberController extends Controller
             $member->roles()->sync($request->get('roles'));
             $member->department()->sync($request->get('departments'));
             DB::commit();
-            return redirect()->to('/member');
+            return redirect(route('member.list'));
         } catch (\Exception $e) {
             DB::rollBack();
             return redirect()->back()->with('error', $e->getMessage());
@@ -174,9 +174,9 @@ class MemberController extends Controller
         try {
             $member = Member::find($id);
             $member->delete();
-            return redirect()->to('/member');
+            return redirect(route('member.list'));
         } catch (\Exception $e) {
-            dd($e);
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 
@@ -192,7 +192,8 @@ class MemberController extends Controller
 
     public function member_contract_list(){
         $check_role = Session::get('session_role');
-        $member = Member::with('contract')->find(Auth::id());
+        $member_id = Session::get('session_id');
+        $member = Member::with('contract')->find($member_id);
         $info_data = $member->contract;
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng của bạn';

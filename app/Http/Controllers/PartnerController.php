@@ -23,7 +23,8 @@ class PartnerController extends Controller
     /**
      * Đăng nhập cho partner
      */
-    public function partner_login(){
+    public function partner_login()
+    {
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng';
         $logo = "images/logo.png";
@@ -32,16 +33,13 @@ class PartnerController extends Controller
         return view('back-end.partner.partner_login', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
 
     }
-    public function partner_login_submit(Request $request){
-        $info_data_parent = Partner::with('contract','location_id_numb_create')->where('owner_phone',$request->partner_info)->orWhere('owner_email',$request->partner_info)->first();
-        if($info_data_parent){
+
+    public function partner_login_submit(Request $request)
+    {
+        $info_data_parent = Partner::with('contract')->where('owner_phone', $request->partner_info)->orWhere('owner_email', $request->partner_info)->first();
+        if ($info_data_parent) {
             Session::put('session_role', 'partner');
             Session::put('session_partner_id', $info_data_parent->id);
-            $page_title = 'Contract Dashboard';
-            $page_description = 'Danh sách hợp đồng';
-            $logo = "images/logo.png";
-            $logoText = "images/logo-text.png";
-            $action = __FUNCTION__;
             return redirect()->route('partner.dashboard');
         }
         return redirect(route('partner.login'));
@@ -53,8 +51,7 @@ class PartnerController extends Controller
      */
 
 
-
-   /**
+    /**
      * Lưu data từ form
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -65,7 +62,7 @@ class PartnerController extends Controller
             'account_name' => 'required|string|max:255',
             'account_email' => 'required|string|email|max:255',
             'account_phone' => 'required|string|max:255',
-            'id_number'=>'required',
+            'id_number' => 'required',
         ], [
             'account_name.required' => 'Tên không được để trống',
             'account_email.required' => 'Email không được để trống',
@@ -75,13 +72,13 @@ class PartnerController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors());
         }
-
-        $partner = Partner::create([
+        Partner::create([
             $request->all()
         ]);
 
         return redirect(route('dashboard'));
     }
+
     /**
      * Chi tiết hợp đồng
      */
@@ -92,10 +89,11 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::with('delivery_location', 'location','tdv')->get()->where('id', '=', $id);
+        $info_data = Partner::with('delivery_location', 'location', 'tdv')->get()->where('id', '=', $id);
 //        dd($info_data);
         return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
+
     /**
      * Chỉnh sửa thông tin hợp đồng
      * @param Request $request
@@ -111,13 +109,13 @@ class PartnerController extends Controller
         return view('back-end.contract.edit', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request, $id)
+    {
         $partner = Partner::find($id);
         $contract = $partner->contract->first();
-        $partner->update($request->only(['owner_name','owner_id_numb','owner_id_numb_created_at','owner_id_numb_created_locate','owner_sex','owner_dob','owner_age','owner_token','owner_phone','owner_email','owner_mst']));
-        return redirect(route('contract.edit',$contract->id));
+        $partner->update($request->only(['owner_name', 'owner_id_numb', 'owner_id_numb_created_at', 'owner_id_numb_created_locate', 'owner_sex', 'owner_dob', 'owner_age', 'owner_token', 'owner_phone', 'owner_email', 'owner_mst']));
+        return redirect(route('contract.edit', $contract->id));
     }
-
 
 
     /**
@@ -133,9 +131,10 @@ class PartnerController extends Controller
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
 
-        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data_parent'));
+        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data_parent'));
 
     }
+
     /**
      * Trang dashboard hợp đồng 1
      */
@@ -167,24 +166,25 @@ class PartnerController extends Controller
         }
         if ($memberManager) {
             foreach ($memberManager->partner as $partner) {
-                if($partner->type_contract == 1){
+                if ($partner->type_contract == 1) {
                     $info_data[] = $partner;
                 }
             }
             foreach ($memberManager->children as $child) {
                 foreach ($child->partner as $partner) {
-                    if($partner->type_contract == 1){
+                    if ($partner->type_contract == 1) {
                         $info_data[] = $partner;
                     }
                 }
             }
-        }else{
+        } else {
             $info_data = $member->partner->where('type_contract', '=', 1);
         }
         $contact_count = count($info_data);
         $user_count = Member::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
+
     /**
      * Trang dashboard hợp đồng 2
      */
@@ -204,7 +204,7 @@ class PartnerController extends Controller
         $info_data = [];
         // member code role là Admin và Super Admin
         $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id',  1 || 2);
+            return $query->where('role_id', 1 || 2);
         })->find($member_id);
         $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 3);
@@ -217,24 +217,25 @@ class PartnerController extends Controller
         }
         if ($memberManager) {
             foreach ($memberManager->partner as $partner) {
-                if($partner->type_contract == 2){
+                if ($partner->type_contract == 2) {
                     $info_data[] = $partner;
                 }
             }
             foreach ($memberManager->children as $child) {
                 foreach ($child->partner as $partner) {
-                    if($partner->type_contract == 2){
+                    if ($partner->type_contract == 2) {
                         $info_data[] = $partner;
                     }
                 }
             }
-        }else{
+        } else {
             $info_data = $member->partner->where('type_contract', '=', 2);
         }
         $contact_count = count($info_data);
         $user_count = Member::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
+
     /**
      * Trang dashboard hợp đồng 3
      */
@@ -254,7 +255,7 @@ class PartnerController extends Controller
         $info_data = [];
         // member code role là Admin và Super Admin
         $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id',  1 || 2);
+            return $query->where('role_id', 1 || 2);
         })->find($member_id);
         $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 3);
@@ -267,24 +268,25 @@ class PartnerController extends Controller
         }
         if ($memberManager) {
             foreach ($memberManager->partner as $partner) {
-                if($partner->type_contract == 3){
+                if ($partner->type_contract == 3) {
                     $info_data[] = $partner;
                 }
             }
             foreach ($memberManager->children as $child) {
                 foreach ($child->partner as $partner) {
-                    if($partner->type_contract == 3){
+                    if ($partner->type_contract == 3) {
                         $info_data[] = $partner;
                     }
                 }
             }
-        }else{
+        } else {
             $info_data = $member->partner->where('type_contract', '=', 3);
         }
         $contact_count = count($info_data);
         $user_count = Member::count();
         return view('back-end.contract.dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data', 'contact_count', 'user_count'));
     }
+
     /**jvxvbrkvbmxcvbkrsdfdskfnvnxvuxv,vabva;;vzxxxxxcnvhfbdjeksdnd
      * Trang sửa level hợp đồng
      */
@@ -302,7 +304,7 @@ class PartnerController extends Controller
         $info_data = [];
         // member code role là Admin và Super Admin
         $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id',  1 || 2);
+            return $query->where('role_id', 1 || 2);
         })->find($member_id);
         $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 3);
@@ -316,17 +318,17 @@ class PartnerController extends Controller
         if ($memberManager) {
             foreach ($memberManager->partner as $partner) {
 
-                    $info_data[] = $partner;
+                $info_data[] = $partner;
 
             }
             foreach ($memberManager->children as $child) {
                 foreach ($child->partner as $partner) {
 
-                        $info_data[] = $partner;
+                    $info_data[] = $partner;
 
                 }
             }
-        }else{
+        } else {
             $info_data = $member->partner;
         }
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
@@ -346,7 +348,7 @@ class PartnerController extends Controller
         $info_data = [];
         // member code role là Admin và Super Admin
         $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id',  1 || 2);
+            return $query->where('role_id', 1 || 2);
         })->find($member_id);
         $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 3);
@@ -366,7 +368,7 @@ class PartnerController extends Controller
                     $info_data[] = $partner;
                 }
             }
-        }else{
+        } else {
             $info_data = $member->partner->where('access_type', '=', 10);
         }
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
@@ -386,7 +388,7 @@ class PartnerController extends Controller
         $info_data = [];
         // member code role là Admin và Super Admin
         $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id',  1 || 2);
+            return $query->where('role_id', 1 || 2);
         })->find($member_id);
         $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
             return $query->where('role_id', 3);
@@ -406,14 +408,15 @@ class PartnerController extends Controller
                     $info_data[] = $partner;
                 }
             }
-        }else{
+        } else {
             $info_data = $member->partner->where('access_type', '<', 10);
         }
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
 
     // Dành cho người quản lý muốn xem chi tiết hợp đồng trên pdf
-    public function show_partner_pdf($id){
+    public function show_partner_pdf($id)
+    {
         $partner = Partner::find($id);
         $pdf = PDF::loadView('/pdf_true_export', ["info" => $partner]);
         $time = Carbon::now()->format('d-m-Y');
@@ -422,7 +425,8 @@ class PartnerController extends Controller
     }
 
     //reset password
-    public function reset_password(){
+    public function reset_password()
+    {
         $page_title = 'S-Contract Hợp đồng điện tử';
         $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
         $logo = "images/logo.png";
@@ -431,37 +435,40 @@ class PartnerController extends Controller
         return view('back-end.contract.reset_password', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
     }
 
-    public function checkinfo(Request $request){
+    public function checkinfo(Request $request)
+    {
         $request->validate([
-            'account_phone'=>'required',
-            'id_number'=>'required'
-        ],[
-            'account_phone.required'=>'Vui lòng nhập số điện thoại.',
-            'id_number.required'=>'Vui lòng nhập số CMT/CCCD'
+            'account_phone' => 'required',
+            'id_number' => 'required'
+        ], [
+            'account_phone.required' => 'Vui lòng nhập số điện thoại.',
+            'id_number.required' => 'Vui lòng nhập số CMT/CCCD'
         ]);
-        try{
+        try {
             $account_phone = $request->get('account_phone');
             $id_number = $request->get('id_number');
-            $partner = Partner::where('account_phone',$account_phone)->where('id_number',$id_number)->first();
-            if($partner){
-                $request->session()->put('partner_reset_password_id',$partner->id);
+            $partner = Partner::where('account_phone', $account_phone)->where('id_number', $id_number)->first();
+            if ($partner) {
+                $request->session()->put('partner_reset_password_id', $partner->id);
                 Session::flash('success', 'Đã tìm thấy thông tin của bạn, vui lòng nhập mật khẩu mới');
                 return redirect()->to('/partner/reset-password');
             }
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             abort(404);
         }
     }
-    public function reset_password_save(Request $request){
+
+    public function reset_password_save(Request $request)
+    {
         $request->validate([
-            'password'=>'required',
-            'confirm_password'=>'same:password|required'
-        ],[
-            'password.required'=>'Vui lòng nhập mật khẩu.',
-            'confirm_password.required'=>'Vui lòng nhập lại mật khẩu.',
-            'confirm_password.same'=>'Mật khẩu không trùng khớp.'
+            'password' => 'required',
+            'confirm_password' => 'same:password|required'
+        ], [
+            'password.required' => 'Vui lòng nhập mật khẩu.',
+            'confirm_password.required' => 'Vui lòng nhập lại mật khẩu.',
+            'confirm_password.same' => 'Mật khẩu không trùng khớp.'
         ]);
-        try{
+        try {
             $id = Session::get('partner_reset_password_id');
             $password = $request->get('password_confirm');
             $partner = Partner::find($id);
@@ -470,7 +477,7 @@ class PartnerController extends Controller
             Session::forget('partner_reset_password_id');
             Session::flash('success-reset password', 'Đổi mật khẩu thành công');
             return redirect()->to('/contract/search/');
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             abort(404);
         }
     }
