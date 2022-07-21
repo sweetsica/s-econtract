@@ -57,9 +57,8 @@ class AuthController extends Controller
         $checkuser = User::where('email',$request->username)->first();
         if($checkuser){
             Session::put('session_role', 'admin');
+            Session::put('session_id', $checkuser->id);
             Session::put('session_name', $checkuser->name);
-            Auth::loginUsingId($checkuser->id);
-
             $page_title = 'Trang quản trị';
             $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
             $logo = "images/logo.png";
@@ -71,7 +70,14 @@ class AuthController extends Controller
             $checkmember = Member::where('member_code',$request->username)->first();
             if($checkmember){
                 Session::put('session_role', 'member');
+                Session::put('session_id', $checkmember->id);
                 Session::put('session_name', $checkmember->member_name);
+               $checkCap = Member::with('roles')->where('member_code',$request->username)->whereHas('roles', function ($query) {
+                    return $query->where('role_id',1)->orWhere('role_id', 3);
+                })->first();
+               if($checkCap) {
+                   Session::put('session_role', 'captain');
+               }
                 Auth::loginUsingId($checkmember->id);
                 $page_title = 'Danh sách hợp đồng';
                 $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
@@ -80,7 +86,8 @@ class AuthController extends Controller
                 $action = __FUNCTION__;
                 return view('back-end.dashboard.index', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
             }else{
-                return 'Vui lòng kiểm tra lại thông tin đăng nhập!';
+                Session::flash('error', 'Vui lòng kiểm tra lại thông tin đăng nhập');
+                return redirect()->back();
             }
         }
     }
@@ -88,10 +95,15 @@ class AuthController extends Controller
     #3
     public function logout(Request $request)
     {
-        auth()->user()->tokens()->delete();
-        return [
-            'message' => 'Đã thoát, token vô hiệu!'
-        ];
+        $checkRole = Session::get('session_role');
+        if($checkRole !== 'partner'){
+            return redirect('/');
+        }
+        return redirect()->route('partner.login');
+//        auth()->user()->tokens()->delete();
+//        return [
+//            'message' => 'Đã thoát, token vô hiệu!'
+//        ];
     }
 
     public function getUserInfo(Request $request)
@@ -238,7 +250,6 @@ class AuthController extends Controller
                 }
             }
         }
-        dd('Cut di mau len');
     }
     public function logoutMember(){
         Session::forget('user_check');

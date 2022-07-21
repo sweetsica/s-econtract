@@ -84,7 +84,7 @@
             <div>
                 <button type="button"
                         class="button save px-3 py-1 bg-indigo-600 text-white rounded-lg"
-                        data-action="save-png">Lưu dưới dạng PNG</button>
+                        data-action="save-png">Xuất hợp đồng</button>
                 <input type="hidden" name="signed">
             </div>
         </div>

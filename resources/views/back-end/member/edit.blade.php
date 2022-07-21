@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{url('/member/update/'.$member->id)}}" method="post">
+                            <form action="{{route('member.update',[$member->id])}}" method="post">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
@@ -128,7 +128,11 @@
                                     </div>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary">Hoàn tất</button>
+                                <a href="{{route('member.list')}}" type="button"
+                                        class="btn btn-light mr-2"
+                                        data-dismiss="modal">Hủy bỏ
+                                </a>
+                                <button type="submit" class="btn btn-primary">Cập nhật dữ liệu</button>
                             </form>
                         </div>
                     </div>

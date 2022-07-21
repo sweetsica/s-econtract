@@ -35,19 +35,19 @@
                                     <img src="{{ asset('images/avatar/1.jpg') }}" alt="" class="rounded" width="140">
                                     {{--                                    <a href="app-profile.html" class="profile-icon"><i class="las la-cog"></i></a>--}}
                                 </div>
-                                <h4 class="text-black fs-20 font-w600">{{$info_data_parent['owner_name']}}</h4>
+                                <h4 class="text-black fs-20 font-w600">{{$info_data_partner['owner_name']}}</h4>
                                 <span class="mb-3 text-black d-block">Người đại diện / Đối tác</span>
                                 {{--                                <p>Midnight Corner St. Suite 600 San Francisco, CADGE 94107</p>--}}
-                                <ul class="property-social">
-                                    <li><a href="javascript:void(0);"><i class="lab la-instagram"></i></a></li>
-                                    <li><a href="javascript:void(0);"><i class="lab la-facebook-f"></i></a></li>
-                                    <li><a href="javascript:void(0);"><i class="lab la-twitter"></i></a></li>
-                                </ul>
+{{--                                <ul class="property-social">--}}
+{{--                                    <li><a href="javascript:void(0);"><i class="lab la-instagram"></i></a></li>--}}
+{{--                                    <li><a href="javascript:void(0);"><i class="lab la-facebook-f"></i></a></li>--}}
+{{--                                    <li><a href="javascript:void(0);"><i class="lab la-twitter"></i></a></li>--}}
+{{--                                </ul>--}}
                             </div>
                             <div class="card-footer border-0 pt-0">
                                 <a href="javascript:void(0);" class="btn btn-outline-primary d-block rounded">
                                     <i class="las la-phone scale5 mr-2"></i>
-                                    {{$info_data_parent['owner_phone']}}</a>
+                                    {{$info_data_partner['owner_phone']}}</a>
                             </div>
                         </div>
                     </div>
@@ -121,57 +121,62 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="card">
+                            <div class="card-header w-full d-flex">
+                                    <div class="mr-auto mb-md-0 mb-2">
+                                        <h2 class="font-w600 fs-20 text-black">Thông tin đối tác</h2>
+
+                                        {{--                                            <span class="fs-18">--}}
+                                        {{--														<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+                                        {{--															<path fill-rule="evenodd" clip-rule="evenodd" d="M10.9475 4.78947C8.94136 4.78947 7.02346 5.55047 5.61418 6.89569C4.20599 8.23987 3.42116 10.056 3.42116 11.9426C3.42116 14.7033 5.29958 17.3631 7.32784 19.4068C8.3259 20.4124 9.32653 21.2351 10.0786 21.8068C10.434 22.077 10.7326 22.29 10.9475 22.4389C11.1623 22.29 11.4609 22.077 11.8163 21.8068C12.5684 21.2351 13.569 20.4124 14.5671 19.4068C16.5954 17.3631 18.4738 14.7033 18.4738 11.9426C18.4738 10.056 17.689 8.23987 16.2808 6.89569C14.8715 5.55047 12.9536 4.78947 10.9475 4.78947ZM10.9475 23.2632C10.5801 23.8404 10.58 23.8403 10.5797 23.8401L10.5792 23.8398L10.5774 23.8387L10.5718 23.835L10.5517 23.8221C10.5345 23.8109 10.5097 23.7948 10.4779 23.7737C10.4143 23.7317 10.3224 23.6701 10.2063 23.5901C9.97419 23.43 9.64481 23.1959 9.25054 22.8962C8.46315 22.2977 7.41114 21.4333 6.35658 20.3707C4.27957 18.278 2.05273 15.2776 2.05273 11.9426C2.05273 9.67199 2.99797 7.50121 4.66932 5.90583C6.33959 4.31148 8.59845 3.42105 10.9475 3.42105C13.2965 3.42105 15.5554 4.31148 17.2256 5.90583C18.897 7.50121 19.8422 9.67199 19.8422 11.9426C19.8422 15.2776 17.6154 18.278 15.5384 20.3707C14.4838 21.4333 13.4318 22.2977 12.6444 22.8962C12.2501 23.1959 11.9207 23.43 11.6886 23.5901C11.5725 23.6701 11.4806 23.7317 11.417 23.7737C11.3979 23.7864 11.3814 23.7972 11.3675 23.8063C11.3582 23.8124 11.3501 23.8176 11.3432 23.8221L11.3232 23.835L11.3175 23.8387L11.3158 23.8398L11.3152 23.8401C11.315 23.8403 11.3148 23.8404 10.9475 23.2632ZM10.9475 23.2632L11.3148 23.8404C11.0907 23.983 10.8043 23.983 10.5801 23.8404L10.9475 23.2632Z" fill="#666666"/>--}}
+                                        {{--															<path fill-rule="evenodd" clip-rule="evenodd" d="M10.9474 10.2632C9.81378 10.2632 8.89479 11.1822 8.89479 12.3158C8.89479 13.4494 9.81378 14.3684 10.9474 14.3684C12.0811 14.3684 13.0001 13.4494 13.0001 12.3158C13.0001 11.1822 12.0811 10.2632 10.9474 10.2632ZM7.52637 12.3158C7.52637 10.4264 9.05802 8.89474 10.9474 8.89474C12.8368 8.89474 14.3685 10.4264 14.3685 12.3158C14.3685 14.2052 12.8368 15.7368 10.9474 15.7368C9.05802 15.7368 7.52637 14.2052 7.52637 12.3158Z" fill="#666666"/>--}}
+                                        {{--														</svg>--}}
+                                        {{--													45 Connor St. London, 44523</span>--}}
+                                    </div>
+                                    <div class="ml-md-4 text-md-right">
+                                        <p class="fs-14 text-black mb-1 mr-1">Ngày tạo</p>
+                                        <h4 class="fs-24 text-primary">{{$info_data_partner['created_at']->format('d-m-Y')}}</h4>
+                                    </div>
+                            </div>
                             <div class="card-body">
 
                                 <div>
-                                    <div class="d-md-flex d-block mb-sm-5">
-                                        <div class="mr-auto mb-md-0 mb-2">
-                                            <h2 class="font-w600 text-black">Thông tin đối tác</h2>
 
-                                            {{--                                            <span class="fs-18">--}}
-                                            {{--														<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
-                                            {{--															<path fill-rule="evenodd" clip-rule="evenodd" d="M10.9475 4.78947C8.94136 4.78947 7.02346 5.55047 5.61418 6.89569C4.20599 8.23987 3.42116 10.056 3.42116 11.9426C3.42116 14.7033 5.29958 17.3631 7.32784 19.4068C8.3259 20.4124 9.32653 21.2351 10.0786 21.8068C10.434 22.077 10.7326 22.29 10.9475 22.4389C11.1623 22.29 11.4609 22.077 11.8163 21.8068C12.5684 21.2351 13.569 20.4124 14.5671 19.4068C16.5954 17.3631 18.4738 14.7033 18.4738 11.9426C18.4738 10.056 17.689 8.23987 16.2808 6.89569C14.8715 5.55047 12.9536 4.78947 10.9475 4.78947ZM10.9475 23.2632C10.5801 23.8404 10.58 23.8403 10.5797 23.8401L10.5792 23.8398L10.5774 23.8387L10.5718 23.835L10.5517 23.8221C10.5345 23.8109 10.5097 23.7948 10.4779 23.7737C10.4143 23.7317 10.3224 23.6701 10.2063 23.5901C9.97419 23.43 9.64481 23.1959 9.25054 22.8962C8.46315 22.2977 7.41114 21.4333 6.35658 20.3707C4.27957 18.278 2.05273 15.2776 2.05273 11.9426C2.05273 9.67199 2.99797 7.50121 4.66932 5.90583C6.33959 4.31148 8.59845 3.42105 10.9475 3.42105C13.2965 3.42105 15.5554 4.31148 17.2256 5.90583C18.897 7.50121 19.8422 9.67199 19.8422 11.9426C19.8422 15.2776 17.6154 18.278 15.5384 20.3707C14.4838 21.4333 13.4318 22.2977 12.6444 22.8962C12.2501 23.1959 11.9207 23.43 11.6886 23.5901C11.5725 23.6701 11.4806 23.7317 11.417 23.7737C11.3979 23.7864 11.3814 23.7972 11.3675 23.8063C11.3582 23.8124 11.3501 23.8176 11.3432 23.8221L11.3232 23.835L11.3175 23.8387L11.3158 23.8398L11.3152 23.8401C11.315 23.8403 11.3148 23.8404 10.9475 23.2632ZM10.9475 23.2632L11.3148 23.8404C11.0907 23.983 10.8043 23.983 10.5801 23.8404L10.9475 23.2632Z" fill="#666666"/>--}}
-                                            {{--															<path fill-rule="evenodd" clip-rule="evenodd" d="M10.9474 10.2632C9.81378 10.2632 8.89479 11.1822 8.89479 12.3158C8.89479 13.4494 9.81378 14.3684 10.9474 14.3684C12.0811 14.3684 13.0001 13.4494 13.0001 12.3158C13.0001 11.1822 12.0811 10.2632 10.9474 10.2632ZM7.52637 12.3158C7.52637 10.4264 9.05802 8.89474 10.9474 8.89474C12.8368 8.89474 14.3685 10.4264 14.3685 12.3158C14.3685 14.2052 12.8368 15.7368 10.9474 15.7368C9.05802 15.7368 7.52637 14.2052 7.52637 12.3158Z" fill="#666666"/>--}}
-                                            {{--														</svg>--}}
-                                            {{--													45 Connor St. London, 44523</span>--}}
-                                        </div>
-                                        <div class="ml-md-4 text-md-right">
-                                            <p class="fs-14 text-black mb-1 mr-1">Ngày tạo</p>
-                                            <h4 class="fs-24 text-primary">{{$info_data_parent['created_at']->format('d-m-Y')}}</h4>
-                                        </div>
-                                    </div>
                                     <div class="row">
-                                        <div class="col-md-12 fs-20 ">
+                                        <div class="col-md-6">
+                                            <div class="col-md-12 fs-20 mb-3">
+                                                <span
+                                                    class="font-w600 text-black">Email:</span> {{$info_data_partner->owner_email}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">MST:</span> {{$info_data_parent->owner_mst}}
+                                                class="font-w600 text-black">Giới tính:</span> {{$info_data_partner->owner_sex}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
+                                            <span
+                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data_partner->owner_dob}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
+                                            <span
+                                                class="font-w600 text-black">Tuổi:</span> {{$info_data_partner->owner_age}}
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 fs-20 mt-3">
+                                        <div class="col-md-6">
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Email:</span> {{$info_data_parent->owner_email}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
+                                                class="font-w600 text-black">MST Cá nhân:</span> {{$info_data_partner->owner_mst}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Giới tính:</span> {{$info_data_parent->owner_sex}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
+                                                class="font-w600 text-black">CCCD/CMND:</span> {{$info_data_partner->owner_id_numb}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data_parent->owner_dob}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
+                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data_partner->owner_id_numb_created_at}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Tuổi:</span> {{$info_data_parent->owner_age}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
-                                            <span
-                                                class="font-w600 text-black">CCCD/CMND:</span> {{$info_data_parent->owner_id_numb}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
-                                            <span
-                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data_parent->owner_id_numb_created_at}}
-                                        </div>
-                                        <div class="col-md-12 fs-20 mt-3">
-                                            <span
-                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_parent->	owner_id_numb_created_locate}}
+                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_partner->owner_id_numb_created_locate}}
+                                            </div>
                                         </div>
                                     </div>
                                     {{--                                    <div class="mb-sm-5 mb-2">--}}
@@ -232,8 +237,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div id="accordion-nine" class="accordion accordion-active-header">
-                                    @foreach($info_data_parent->contract as $data)
-
+                                    @foreach($info_data_partner->contract as $data)
                                         <div class="accordion__item">
                                             <div
                                                 class="accordion__header rounded-lg {{$loop->index !== 0 ? 'collapsed' :''}}"
@@ -247,7 +251,7 @@
                                             <div id="contract_{{$data['id']}}"
                                                  class="collapse accordion__body {{$loop->index == 0 ? 'show' :''}}"
                                                  data-parent="#accordion-nine">
-                                                <div class="py-4 px-3">
+                                                <div class="py-4">
                                                     <div class="row">
                                                         <div
                                                             class="col-md-12  mb-5 d-flex justify-content-between">
@@ -273,7 +277,7 @@
                                                             <h3 class="font-w600 text-black">Đại
                                                                 lý: {{$data['store_name']}}</h3>
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 p-0">
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Mã hợp đồng:</span> {{$data['contract_code']}}
@@ -284,7 +288,19 @@
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
+                                                                        class="font-w600 text-black">Cấp độ hợp đồng:</span> Hợp đồng cấp {{$data['contract_level']}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
                                                                         class="font-w600 text-black">Mẫu hợp đồng:</span> {{$data['store_contract_type']}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
+                                                                        class="font-w600 text-black">Mã trình dược viên:</span> {{$data->member?->member_code}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
+                                                                        class="font-w600 text-black">Tên trình dược viên:</span> {{$data->member?->member_name}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
@@ -319,9 +335,8 @@
                                                                 <span
                                                                     class="font-w600 text-black">SĐT Người liên hệ:</span> {{$data['store_contact_phone']}}
                                                             </div>
-
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 p-0">
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Chủ ngân hàng:</span> {{$data['store_bank_holder']}}
@@ -342,11 +357,14 @@
                                                                     <span
                                                                         class="font-w600 text-black">Ngày kết thúc:</span> {{$data['store_end']}}
                                                             </div>
-                                                            <div class="col-md-12 fs-20 mt-3">
-                                                                @if($data['store_signed'] !== 0 && $data['store_sign_img'])
-                                                                   <img style="width: 100%;height: 200px; object-fit: contain" src="{{$data['store_sign_img']}}" alt="/">
-                                                                @endif
-                                                            </div>
+                                                            {{--                                                            <div class="col-md-12 fs-20 mt-3">--}}
+                                                            {{--                                                                @if($data['store_signed'] !== 0 && $data['store_sign_img'])--}}
+                                                            {{--                                                                    <img--}}
+                                                            {{--                                                                        style="width: 100%;height: 200px; object-fit: contain"--}}
+                                                            {{--                                                                        src="{{public_path($data['store_sign_img'])}}"--}}
+                                                            {{--                                                                        alt="/">--}}
+                                                            {{--                                                                @endif--}}
+                                                            {{--                                                            </div>--}}
                                                         </div>
                                                     </div>
                                                 </div>

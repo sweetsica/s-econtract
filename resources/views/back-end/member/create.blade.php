@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{url('/member/create/submit')}}" method="post">
+                            <form action="{{route('member.create.post')}}" method="post">
                                 @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
@@ -137,6 +137,10 @@
                                     </div>
 
                                 </div>
+                                <a href="{{route('member.list')}}" type="button"
+                                   class="btn btn-light mr-2"
+                                   data-dismiss="modal">Hủy bỏ
+                                </a>
                                 <button type="submit" class="btn btn-primary">Hoàn tất</button>
                             </form>
                         </div>

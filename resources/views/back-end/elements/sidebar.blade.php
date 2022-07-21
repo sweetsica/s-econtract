@@ -1,33 +1,41 @@
 <div class="deznav">
-    <div class="deznav-scroll">
-        <ul class="metismenu" id="menu">
+    <div class="deznav-scroll p-0">
+        <ul class="metismenu" id="menu" style="padding-top: 0">
             @if(Session::get('session_role') !== 'partner')
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
-                    <i class="flaticon-381-diploma"></i>
-                    <span class="nav-text">Hợp đồng</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false">Tổng hợp</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{route('contract.list')}}">Danh sách hợp đồng</a></li>
-                            {{--                            <li><a href="{{route('contract.dashboard1')}}">Hợp đồng cấp 1</a></li>--}}
-                            {{--                            <li><a href="{{route('contract.dashboard2')}}">Hợp đồng cấp 2</a></li>--}}
-                            {{--                            <li><a href="{{route('contract.dashboard3')}}">Hợp đồng cấp 3</a></li>--}}
-                        </ul>
-                    </li>
-                    <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false">Phân loại</a>
-                        <ul aria-expanded="false">
-                            {{--                            <li><a href="{{route('contract.list')}}">Tổng hợp phân loại</a>--}}
-                            {{--                            <li><a href="{{route('contract.list.done')}}">Hợp đồng chưa được duyệt</a></li>--}}
-                            {{--                            <li><a href="{{route('contract.list.pending')}}">Hợp đồng đã được duyệt</a></li>--}}
-                        </ul>
-                    </li>
-                    <li><a href="{{route('contract.seach')}}">Tìm xuất hợp đồng</a></li>
-                    {{--                    <li><a href="{{route('contract.show',1)}}">Chi tiết hợp đồng</a></li>--}}
-                    {{--                    <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>--}}
-                </ul>
-            </li>
+                <li>
+                    <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+                        <i class="flaticon-381-diploma"></i>
+                        <span class="nav-text">Hợp đồng</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false">Tổng hợp</a>
+                            <ul aria-expanded="false">
+                                @if(Session::get('session_role') === 'admin')
+                                    <li><a href="{{route('contract.list')}}">Danh sách hợp đồng</a></li>
+                                @else
+                                    <li><a href="{{route('contract.list')}}">Hợp đồng của bạn </a></li>
+                                @endif
+
+                                @if(Session::get('session_role') === 'captain')
+                                    <li><a href="{{route('member.team.contract.list')}}">Hợp đồng các thành viên</a>
+                                    </li>
+                                @endif
+                                {{--                            <li><a href="{{route('contract.dashboard2')}}">Hợp đồng cấp 2</a></li>--}}
+                                {{--                            <li><a href="{{route('contract.dashboard3')}}">Hợp đồng cấp 3</a></li>--}}
+                            </ul>
+                        </li>
+{{--                        <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false">Phân loại</a>--}}
+{{--                            <ul aria-expanded="false">--}}
+{{--                                --}}{{--                            <li><a href="{{route('contract.list')}}">Tổng hợp phân loại</a>--}}
+{{--                                --}}{{--                            <li><a href="{{route('contract.list.done')}}">Hợp đồng chưa được duyệt</a></li>--}}
+{{--                                --}}{{--                            <li><a href="{{route('contract.list.pending')}}">Hợp đồng đã được duyệt</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+                        <li><a href="{{route('contract.seach')}}">Tìm xuất hợp đồng</a></li>
+                        {{--                    <li><a href="{{route('contract.show',1)}}">Chi tiết hợp đồng</a></li>--}}
+                        {{--                    <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>--}}
+                    </ul>
+                </li>
             @else
                 <li>
 
@@ -37,6 +45,7 @@
                     </a>
                 </li>
             @endif
+
             {{--            <li>--}}
             {{--                <a class="has-arrow ai-icon" href="{{asset('/department-system')}}" aria-expanded="false">--}}
             {{--                    <i class="flaticon-381-settings"></i>--}}
@@ -49,6 +58,13 @@
             {{--                --}}{{--                </ul>--}}
             {{--            </li>--}}
             @if(Session::get('session_role') !== 'partner')
+                <li>
+
+                    <a class="has-arrow ai-icon" href="{{route('partner.new')}}">
+                        <i class="flaticon-381-user-9"></i>
+                        <span class="nav-text">Đối tác mới</span>
+                    </a>
+                </li>
                 <li>
                     <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                         <i class="flaticon-381-briefcase

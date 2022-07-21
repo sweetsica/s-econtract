@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\LocalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,7 @@ Route::get('/thanh-vien/tim-kiem',[MemberController::class,'member_check']);
 
 Route::get('/local',[LocalController::class,'getLocal']);
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
+Route::get('/partner/check',[PartnerController::class,'partner_check']);
 
 
 //protected routes sanctum

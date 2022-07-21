@@ -30,6 +30,7 @@ use App\Http\Controllers\MemberController;
 //Trang index nền
 Route::get('/', [PageController::class, 'index'])->name('index');
 //Auth module
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('dangky')->group(function (){
     Route::get('/', [AuthController::class, 'registerIndex'])->name('signup');
     Route::post('/check', [AuthController::class, 'registerProcess']);
@@ -47,15 +48,13 @@ Route::middleware(['auth'])->group(function () {
 
 //Partner module
 Route::prefix('doi-tac')->group(function (){
+    Route::get('/doi-tac-moi', [PartnerController::class, 'new_partner'])->name('partner.new');
     Route::get('/dang-nhap', [PartnerController::class, 'partner_login'])->name('partner.login');
     Route::post('/dang-nhap/gui-du-lieu', [PartnerController::class, 'partner_login_submit'])->name('partner.login.submit');
     Route::get('/danh-sach-hop-dong',[PartnerController::class,'dashboard'])->name('partner.dashboard');
 });
-//Member module
-Route::prefix('thanh-vien')->group(function (){
-    Route::get('/dang-nhap',[AuthController::class,'member_login_form']);
-    Route::post('/dang-nhap/check',[AuthController::class,'member_login']);
-});
+
+
 //Contract module
 Route::prefix('hop-dong')->group(function (){
     Route::get('/tim-kiem', [ContractController::class, 'search_export'])->name('contract.seach');
@@ -64,7 +63,7 @@ Route::prefix('hop-dong')->group(function (){
     Route::get('/bo-sung/xuat-hop-dong', [ContractController::class, 'return_export_after_sign'])->name('contract.return.export.signed');
 
     Route::get('/danh-sach',[ContractController::class, 'contract_list'])->name('contract.list');
-    Route::get('/chinh-sua/{contract_id}', [ContractController::class, 'edit'])->name('contract.edit');
+    Route::get('/xem-chi-tiet/{contract_id}', [ContractController::class, 'edit'])->name('contract.show');
     Route::post('/chinh-sua/cap-nhat/{id}',[ContractController::class, 'update'])->name('contract.update');
 
     Route::get('/pdf/{id}',[ContractController::class, 'show_contract_pdf'])->name('contract.show.pdf');
@@ -98,20 +97,27 @@ Route::prefix('phong-ban')->group(function (){
     Route::get('/cap-nhat/{id}',[DepartmentController::class,'department_update'])->name('department.update');//name('department.update')
     Route::get('/xoa/{id}',[DepartmentController::class,'department_delete'])->name('department.delete');//name('department.delete')
     Route::get('/he-thong',[DepartmentController::class,'department_system'])->name('department.system.list');//name('department.system.list')
+});
 
-    Route::prefix('thanh-vien')->group(function(){
-        Route::get('danh-sach', [MemberController::class,'member_list'])->name('member.list');
-        Route::get('them-moi', [MemberController::class,'member_create'])->name('member.create');
-        Route::post('them-moi/post', [MemberController::class,'member_store'])->name('member.post');
-        Route::get('chinh-sua/{id}', [MemberController::class,'member_edit'])->name('member.edit');
-        Route::get('xoa/{id}', [MemberController::class,'member_delete'])->name('member.delete');
-        Route::post('cap-nhat/{id}', [MemberController::class,'member_update'])->name('member.update');
-        Route::get('get-manager', [MemberController::class,'get_manager'])->name('member.manage.get');
+//thành viên
+Route::prefix('thanh-vien')->group(function(){
+    Route::get('danh-sach', [MemberController::class,'member_list'])->name('member.list');
+    Route::get('them-moi', [MemberController::class,'member_create'])->name('member.create');
+    Route::post('them-moi/post', [MemberController::class,'member_store'])->name('member.create.post');
+    Route::get('chinh-sua/{id}', [MemberController::class,'member_edit'])->name('member.edit');
+    Route::get('xoa/{id}', [MemberController::class,'member_delete'])->name('member.delete');
+    Route::post('cap-nhat/{id}', [MemberController::class,'member_update'])->name('member.update');
+    Route::get('/vai-tro-quan-ly', [MemberController::class,'get_manager'])->name('member.manage.get');
+    Route::prefix('hop-dong')->group(function(){
+        Route::get('/danh-sach',[MemberController::class,'member_contract_list'])->name('member.contract.list');
+        Route::get('/thanh-vien',[MemberController::class,'team_contract_list'])->name('member.team.contract.list');
     });
+    Route::get('/dang-nhap',[AuthController::class,'member_login_form'])->name('member.login');
+    Route::post('/dang-nhap/check',[AuthController::class,'member_login'])->name('member.login.post');
 });
 
 
-
+Route::post('/contract/dopellherzsignature', [DoppelherzSignController::class, 'store'])->name('doppelhersignzpad.upload');
 
 
 
