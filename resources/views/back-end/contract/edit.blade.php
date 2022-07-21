@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="form-head page-titles d-flex  align-items-center">
             <div class="mr-auto  d-lg-block">
-                <h2 class="text-black font-w600">Chỉnh Sửa Hợp Đồng</h2>
+                <h2 class="text-black font-w600">Chi tiết hợp đồng</h2>
                 {{--                <ol class="breadcrumb">--}}
                 {{--                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Property</a></li>--}}
                 {{--                    <li class="breadcrumb-item"><a href="javascript:void(0)">98AB Alexander Court New York</a></li>--}}
