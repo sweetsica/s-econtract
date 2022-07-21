@@ -20,15 +20,9 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-responsive-md">
+                            <table class="table table-responsive-md" id="example3" >
                                 <thead>
                                 <tr>
-                                    <th class="width50">
-                                        <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                            <input type="checkbox" class="custom-control-input" id="checkAll" required="">
-                                            <label class="custom-control-label" for="checkAll"></label>
-                                        </div>
-                                    </th>
                                     <th><strong>ID.</strong></th>
                                     <th><strong>TÊN ĐỐI TÁC</strong></th>
                                     <th><strong>ĐỊA CHỈ</strong></th>
@@ -37,17 +31,12 @@
                                     <th><strong>LOẠI HỢP ĐỒNG</strong></th>
                                     <th><strong>NGÀY ĐĂNG KÝ</strong></th>
                                     <th><strong>TRẠNG THÁI</strong></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($info_data as $data)
                                     <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                                <input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-                                                <label class="custom-control-label" for="customCheckBox2"></label>
-                                            </div>
-                                        </td>
                                         <td><strong>{{$data['id']}}</strong></td>
 {{--                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>--}}
                                         <td>{{$data['store_name']}}</td>
@@ -68,11 +57,10 @@
 
                                         <td>
                                             <div class="d-flex">
-                                                <a href="{{route('contract.edit',$data['id'])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{route('contract.show',$data['id'])}}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-eye"></i></a>
 {{--                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>--}}
                                             </div>
                                         </td>
-
                                     </tr>
                                 @endforeach
                                 </tbody>

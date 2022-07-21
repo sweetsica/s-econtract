@@ -46,7 +46,6 @@ class AuthController extends Controller
 
     public function index()
     {
-        Session::flush();
         $page_title = 'Page Login';
         $page_description = 'Some description for the page';
         $action = __FUNCTION__;
@@ -55,14 +54,11 @@ class AuthController extends Controller
     #2
     public function login(Request $request)
     {
-        Session::flush();
         $checkuser = User::where('email',$request->username)->first();
         if($checkuser){
             Session::put('session_role', 'admin');
             Session::put('session_id', $checkuser->id);
             Session::put('session_name', $checkuser->name);
-
-
             $page_title = 'Trang quản trị';
             $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
             $logo = "images/logo.png";
@@ -90,7 +86,8 @@ class AuthController extends Controller
                 $action = __FUNCTION__;
                 return view('back-end.dashboard.index', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
             }else{
-                return 'Vui lòng kiểm tra lại thông tin đăng nhập!';
+                Session::flash('error', 'Vui lòng kiểm tra lại thông tin đăng nhập');
+                return redirect()->back();
             }
         }
     }
@@ -98,10 +95,15 @@ class AuthController extends Controller
     #3
     public function logout(Request $request)
     {
-        auth()->user()->tokens()->delete();
-        return [
-            'message' => 'Đã thoát, token vô hiệu!'
-        ];
+        $checkRole = Session::get('session_role');
+        if($checkRole !== 'partner'){
+            return redirect('/');
+        }
+        return redirect()->route('partner.login');
+//        auth()->user()->tokens()->delete();
+//        return [
+//            'message' => 'Đã thoát, token vô hiệu!'
+//        ];
     }
 
     public function getUserInfo(Request $request)
@@ -248,7 +250,6 @@ class AuthController extends Controller
                 }
             }
         }
-        dd('Cut di mau len');
     }
     public function logoutMember(){
         Session::forget('user_check');

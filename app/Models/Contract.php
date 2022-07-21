@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\CommonEnum;
 use App\Enum\InfoDoppelherzEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -54,6 +55,20 @@ class Contract extends Model
                 break;
             default:
                 return $value;
+        }
+    }
+
+    public function setStoreContractTypeAttribute($value){
+        switch ($value){
+            case "1":
+                $this->attributes['store_contract_type'] = CommonEnum::CONTRACT_OTC_NEW_POLICY;
+                break;
+            case "2":
+                $this->attributes['store_contract_type'] = CommonEnum::CONTRACT_OTC_JAPAN;
+                break;
+            case "3":
+                $this->attributes['store_contract_type'] = CommonEnum::CONTRACT_OTC_GERMANY;
+                break;
         }
     }
 

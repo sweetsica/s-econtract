@@ -49,12 +49,13 @@ class PartnerController extends Controller
 
     public function partner_login_submit(Request $request)
     {
-        $info_data_parent = Partner::with('contract')->where('owner_phone', $request->partner_info)->orWhere('owner_email', $request->partner_info)->first();
-        if ($info_data_parent) {
+        $info_data_partner = Partner::with('contract')->where('owner_phone', $request->partner_info)->orWhere('owner_email', $request->partner_info)->first();
+        if ($info_data_partner) {
             Session::put('session_role', 'partner');
-            Session::put('session_partner_id', $info_data_parent->id);
+            Session::put('session_partner_id', $info_data_partner->id);
             return redirect()->route('partner.dashboard');
         }
+        Session::flash('error', 'Vui lòng kiểm tra lại thông tin đăng nhập');
         return redirect(route('partner.login'));
     }
 
@@ -137,14 +138,17 @@ class PartnerController extends Controller
     public function dashboard()
     {
         $partner_id = Session::get('session_partner_id');
-        $info_data_parent = Partner::with('contract')->find($partner_id);
+        if(!$partner_id){
+            return redirect(route('partner.login'));
+        }
+        $info_data_partner = Partner::with('contract')->find($partner_id);
         $page_title = 'Contract Dashboard';
         $page_description = 'Danh sách hợp đồng';
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
 
-        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data_parent'));
+        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data_partner'));
 
     }
 

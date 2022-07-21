@@ -36,10 +36,15 @@ return [
         'pagelevel' => [
             'css' => [
                 //page custom
-
+                'member_contract_list'=>[
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
                 //department
                 'department_list'=>[
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'team_contract_list'=>[
                     'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
                 'department_create'=>[
@@ -269,8 +274,13 @@ return [
                 'index_document' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
+                'new_partner'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
                 'contract_list' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
                 'list_type10' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
@@ -371,6 +381,7 @@ return [
                 ],
             ],
             'js' => [
+
                 //page custom
                 //department
                 'department_list'=>[
@@ -400,6 +411,35 @@ return [
                 'department_edit'=>[
                     'vendor/select2/js/select2.full.min.js',
                     'js/plugins-init/select2-init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'member_contract_list'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'contract_list'=>[
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'team_contract_list'=>[
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'new_partner'=>[
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',
                     'js/jquery-3.2.1.min.js',
@@ -813,26 +853,6 @@ return [
                     'js/deznav-init.js',
                 ],
                 'index_document' => [
-                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-                    'js/custom.min.js',
-                    'js/deznav-init.js',
-                ],
-                'contract_list' => [
-                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-                    'js/custom.min.js',
-                    'js/deznav-init.js',
-                ],
-                'member_contract_list' => [
-                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-                    'js/custom.min.js',
-                    'js/deznav-init.js',
-                ],
-                'team_contract_list' => [
-                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
-                    'js/custom.min.js',
-                    'js/deznav-init.js',
-                ],
-                'new_partner' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'js/custom.min.js',
                     'js/deznav-init.js',

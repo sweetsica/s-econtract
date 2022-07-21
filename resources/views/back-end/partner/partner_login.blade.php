@@ -1,6 +1,5 @@
 {{-- Extends layout --}}
 @extends('back-end.layout.fullwidth')
-
 {{-- Content --}}
 @section('content')
     <div class="col-md-6">
@@ -11,11 +10,16 @@
                         <div class="text-center mb-3">
                             <a href="{!! url('/index'); !!}"><img  src="{{ asset('images/logo-full.png') }}" alt=""></a>
                         </div>
-                        <h4 class="text-center mb-4">Đăng nhập rành cho đối tác</h4>
+                        <h4 class="text-center mb-4">Đăng nhập dành cho đối tác</h4>
+                        @if(Session::has('error'))
+                            <div class="alert alert-danger">
+                                <strong>{{ Session::get('error') }}</strong>
+                            </div>
+                        @endif
                         <form action="{{route('partner.login.submit')}}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label for="account_phone"><strong>Số điện thoại đăng ký</strong></label>
+                                <label for="account_phone"><strong>Số điện thoại người đại diện</strong></label>
                                 <input type="text" class="form-control" id="account_phone" name="partner_info">
                             </div>
                             <div class="form-group">

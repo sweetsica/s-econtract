@@ -69,6 +69,10 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <a href="{{route('department.list')}}" type="button"
+                                   class="btn btn-light mr-2"
+                                   data-dismiss="modal">Hủy bỏ
+                                </a>
                                 <button type="submit" class="btn btn-primary">Tạo phòng ban</button>
                             </form>
                         </div>

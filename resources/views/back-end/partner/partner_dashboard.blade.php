@@ -35,19 +35,19 @@
                                     <img src="{{ asset('images/avatar/1.jpg') }}" alt="" class="rounded" width="140">
                                     {{--                                    <a href="app-profile.html" class="profile-icon"><i class="las la-cog"></i></a>--}}
                                 </div>
-                                <h4 class="text-black fs-20 font-w600">{{$info_data_parent['owner_name']}}</h4>
+                                <h4 class="text-black fs-20 font-w600">{{$info_data_partner['owner_name']}}</h4>
                                 <span class="mb-3 text-black d-block">Người đại diện / Đối tác</span>
                                 {{--                                <p>Midnight Corner St. Suite 600 San Francisco, CADGE 94107</p>--}}
-                                <ul class="property-social">
-                                    <li><a href="javascript:void(0);"><i class="lab la-instagram"></i></a></li>
-                                    <li><a href="javascript:void(0);"><i class="lab la-facebook-f"></i></a></li>
-                                    <li><a href="javascript:void(0);"><i class="lab la-twitter"></i></a></li>
-                                </ul>
+{{--                                <ul class="property-social">--}}
+{{--                                    <li><a href="javascript:void(0);"><i class="lab la-instagram"></i></a></li>--}}
+{{--                                    <li><a href="javascript:void(0);"><i class="lab la-facebook-f"></i></a></li>--}}
+{{--                                    <li><a href="javascript:void(0);"><i class="lab la-twitter"></i></a></li>--}}
+{{--                                </ul>--}}
                             </div>
                             <div class="card-footer border-0 pt-0">
                                 <a href="javascript:void(0);" class="btn btn-outline-primary d-block rounded">
                                     <i class="las la-phone scale5 mr-2"></i>
-                                    {{$info_data_parent['owner_phone']}}</a>
+                                    {{$info_data_partner['owner_phone']}}</a>
                             </div>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                                     </div>
                                     <div class="ml-md-4 text-md-right">
                                         <p class="fs-14 text-black mb-1 mr-1">Ngày tạo</p>
-                                        <h4 class="fs-24 text-primary">{{$info_data_parent['created_at']->format('d-m-Y')}}</h4>
+                                        <h4 class="fs-24 text-primary">{{$info_data_partner['created_at']->format('d-m-Y')}}</h4>
                                     </div>
                             </div>
                             <div class="card-body">
@@ -142,37 +142,41 @@
                                 <div>
 
                                     <div class="row">
-                                        <div class="col-md-12 fs-20 ">
+                                        <div class="col-md-6">
+                                            <div class="col-md-12 fs-20 mb-3">
+                                                <span
+                                                    class="font-w600 text-black">Email:</span> {{$info_data_partner->owner_email}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">MST:</span> {{$info_data_parent->owner_mst}}
+                                                class="font-w600 text-black">Giới tính:</span> {{$info_data_partner->owner_sex}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
+                                            <span
+                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data_partner->owner_dob}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
+                                            <span
+                                                class="font-w600 text-black">Tuổi:</span> {{$info_data_partner->owner_age}}
+                                            </div>
                                         </div>
-                                        <div class="col-md-6 fs-20 mt-3">
+                                        <div class="col-md-6">
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Email:</span> {{$info_data_parent->owner_email}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
+                                                class="font-w600 text-black">MST Cá nhân:</span> {{$info_data_partner->owner_mst}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Giới tính:</span> {{$info_data_parent->owner_sex}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
+                                                class="font-w600 text-black">CCCD/CMND:</span> {{$info_data_partner->owner_id_numb}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data_parent->owner_dob}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
+                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data_partner->owner_id_numb_created_at}}
+                                            </div>
+                                            <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Tuổi:</span> {{$info_data_parent->owner_age}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
-                                            <span
-                                                class="font-w600 text-black">CCCD/CMND:</span> {{$info_data_parent->owner_id_numb}}
-                                        </div>
-                                        <div class="col-md-6 fs-20 mt-3">
-                                            <span
-                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data_parent->owner_id_numb_created_at}}
-                                        </div>
-                                        <div class="col-md-12 fs-20 mt-3">
-                                            <span
-                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_parent->	owner_id_numb_created_locate}}
+                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_partner->owner_id_numb_created_locate}}
+                                            </div>
                                         </div>
                                     </div>
                                     {{--                                    <div class="mb-sm-5 mb-2">--}}
@@ -233,8 +237,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div id="accordion-nine" class="accordion accordion-active-header">
-                                    @foreach($info_data_parent->contract as $data)
-
+                                    @foreach($info_data_partner->contract as $data)
                                         <div class="accordion__item">
                                             <div
                                                 class="accordion__header rounded-lg {{$loop->index !== 0 ? 'collapsed' :''}}"
@@ -285,7 +288,19 @@
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
+                                                                        class="font-w600 text-black">Cấp độ hợp đồng:</span> Hợp đồng cấp {{$data['contract_level']}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
                                                                         class="font-w600 text-black">Mẫu hợp đồng:</span> {{$data['store_contract_type']}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
+                                                                        class="font-w600 text-black">Mã trình dược viên:</span> {{$data->member?->member_code}}
+                                                            </div>
+                                                            <div class="col-md-12 fs-20 mt-3">
+                                                                    <span
+                                                                        class="font-w600 text-black">Tên trình dược viên:</span> {{$data->member?->member_name}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
@@ -320,7 +335,6 @@
                                                                 <span
                                                                     class="font-w600 text-black">SĐT Người liên hệ:</span> {{$data['store_contact_phone']}}
                                                             </div>
-
                                                         </div>
                                                         <div class="col-md-6 p-0">
                                                             <div class="col-md-12 fs-20 mt-3">
@@ -343,11 +357,14 @@
                                                                     <span
                                                                         class="font-w600 text-black">Ngày kết thúc:</span> {{$data['store_end']}}
                                                             </div>
-                                                            <div class="col-md-12 fs-20 mt-3">
-                                                                @if($data['store_signed'] !== 0 && $data['store_sign_img'])
-                                                                    <img style="width: 100%;height: 200px; object-fit: contain" src="{{$data['store_sign_img']}}" alt="/">
-                                                                @endif
-                                                            </div>
+                                                            {{--                                                            <div class="col-md-12 fs-20 mt-3">--}}
+                                                            {{--                                                                @if($data['store_signed'] !== 0 && $data['store_sign_img'])--}}
+                                                            {{--                                                                    <img--}}
+                                                            {{--                                                                        style="width: 100%;height: 200px; object-fit: contain"--}}
+                                                            {{--                                                                        src="{{public_path($data['store_sign_img'])}}"--}}
+                                                            {{--                                                                        alt="/">--}}
+                                                            {{--                                                                @endif--}}
+                                                            {{--                                                            </div>--}}
                                                         </div>
                                                     </div>
                                                 </div>

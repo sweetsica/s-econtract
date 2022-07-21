@@ -30,6 +30,7 @@ use App\Http\Controllers\MemberController;
 //Trang index nền
 Route::get('/', [PageController::class, 'index'])->name('index');
 //Auth module
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('dangky')->group(function (){
     Route::get('/', [AuthController::class, 'registerIndex'])->name('signup');
     Route::post('/check', [AuthController::class, 'registerProcess']);
@@ -62,7 +63,7 @@ Route::prefix('hop-dong')->group(function (){
     Route::get('/bo-sung/xuat-hop-dong', [ContractController::class, 'return_export_after_sign'])->name('contract.return.export.signed');
 
     Route::get('/danh-sach',[ContractController::class, 'contract_list'])->name('contract.list');
-    Route::get('/chinh-sua/{contract_id}', [ContractController::class, 'edit'])->name('contract.edit');
+    Route::get('/xem-chi-tiet/{contract_id}', [ContractController::class, 'edit'])->name('contract.show');
     Route::post('/chinh-sua/cap-nhat/{id}',[ContractController::class, 'update'])->name('contract.update');
 
     Route::get('/pdf/{id}',[ContractController::class, 'show_contract_pdf'])->name('contract.show.pdf');
@@ -116,6 +117,7 @@ Route::prefix('thanh-vien')->group(function(){
 });
 
 
+Route::post('/contract/dopellherzsignature', [DoppelherzSignController::class, 'store'])->name('doppelhersignzpad.upload');
 
 
 

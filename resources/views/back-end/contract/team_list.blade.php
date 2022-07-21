@@ -30,7 +30,7 @@
                                 </div>
                                 <div id="member-{{$item->member_code}}-{{$item->id}}" class="collapse accordion__body" data-parent="#accordion-eleven">
                                     <div class="table-responsive">
-                                        <table class="table table-responsive-md">
+                                        <table class="table table-responsive-md" id="example3">
                                             <thead>
                                             <tr>
                                                 <th class="width50">

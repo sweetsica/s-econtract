@@ -128,7 +128,11 @@
                                     </div>
 
                                 </div>
-                                <button type="submit" class="btn btn-primary">Hoàn tất</button>
+                                <a href="{{route('member.list')}}" type="button"
+                                        class="btn btn-light mr-2"
+                                        data-dismiss="modal">Hủy bỏ
+                                </a>
+                                <button type="submit" class="btn btn-primary">Cập nhật dữ liệu</button>
                             </form>
                         </div>
                     </div>

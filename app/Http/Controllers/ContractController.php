@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contract;
+use App\Models\Local;
 use App\Models\Member;
 use App\Models\Partner;
 use Carbon\Carbon;
@@ -18,8 +19,12 @@ class ContractController extends Controller
     {
         $info_data = [];
         $check_role = Session::get('session_role');
+        if(!$check_role){
+            return redirect('/');
+        }
         if ($check_role == 'admin') {
-            $info_data = Contract::orderBy('id', 'desc')->paginate('10');
+            $info_data = Contract::orderBy('id', 'desc')->get();
+
         }else{
             return redirect(route('member.contract.list'));
         }
@@ -47,7 +52,6 @@ class ContractController extends Controller
     public function update(Request $request,$id)
     {
         $contract = Contract::find($id);
-
         $contract->update($request->only(['store_contract_type','contract_code','store_name','store_add_DKKD','store_local_DKKD','store_add_GH','store_local_GH','store_headman','store_mst','member_id','store_phone','store_website','store_GPDKKD','store_id_Numb_GPDKKD','store_bank','store_bank_holder','store_bank_numb','store_contact_name','store_contact_phone','store_contact_position','store_effect','store_started','store_end','contract_level','store_signed','store_sign_img','store_sign_img_doppelherz','store_token']));
         return redirect(route('contract.edit',$id));
     }

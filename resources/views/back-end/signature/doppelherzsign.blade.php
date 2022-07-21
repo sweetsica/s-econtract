@@ -11,7 +11,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.css">
     <link type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css" rel="stylesheet">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+    </style>
     <link rel="stylesheet" href="{{asset('css/sign/signature-pad.css')}}">
     <style>
         .alert-success {
@@ -44,23 +49,23 @@
 
 <form action="{{route('doppelhersignzpad.upload')}}" method="POST" id="signature-pad" class="signature-pad">
     @csrf
-    <p>Họ và tên</p>
-    <input name="name" required style="width: 200px">
+    <p class="text-sm">Họ và tên</p>
+    <input name="name" class="px-3 py-2 w-full rounded-lg border text-sm" placeholder="Vui lòng nhập Họ và Tên" required style="width: 200px">
     <br>
     <div class="signature-pad--body">
         <canvas width="692" style="touch-action: none; user-select: none;" height="662"></canvas>
     </div>
     <div class="signature-pad--footer">
-        <div class="description">Chữ ký giám đốc</div>
+        <div class="description text-gray-600 font-bold">Chữ ký giám đốc</div>
 
         <div class="signature-pad--actions">
             <div>
-                <button type="button" class="button clear" data-action="clear">Clear</button>
+                <button type="button" class="button clear px-6 py-1 bg-red-600 text-white rounded-lg" data-action="clear">Xóa bỏ</button>
 {{--                <button type="button" class="button" data-action="change-color">Change color</button>--}}
 {{--                <button type="button" class="button" data-action="undo">Undo</button>--}}
             </div>
             <div>
-                <button type="button" class="button save" data-action="save-png">Save as PNG</button>
+                <button type="button" class="button save px-3 py-1 bg-indigo-600 text-white rounded-lg" data-action="save-png">Lưu chữ ký</button>
                 <input type="hidden" name="signed">
             </div>
         </div>

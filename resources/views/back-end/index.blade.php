@@ -20,11 +20,11 @@
                         <form action="{{route('login.check')}}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label><strong>Nhập mã nhân viên</strong></label>
+                                <label><strong>Mã nhân viên / Email</strong></label>
                                 <input type="text" class="form-control" name="username"/>
                             </div>
                             <div class="form-group">
-                                <label><strong>Password</strong></label>
+                                <label><strong>Mật khẩu</strong></label>
                                 <input type="password" class="form-control" name="password"/>
                             </div>
                             <div class="text-center">

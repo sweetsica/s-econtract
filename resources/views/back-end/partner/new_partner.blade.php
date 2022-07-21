@@ -20,15 +20,9 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-responsive-md">
+                            <table class="table table-responsive-md" id="example3">
                                 <thead>
                                 <tr>
-                                    <th class="width50">
-                                        <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                            <input type="checkbox" class="custom-control-input" id="checkAll" required="">
-                                            <label class="custom-control-label" for="checkAll"></label>
-                                        </div>
-                                    </th>
                                     <th><strong>ID.</strong></th>
                                     <th><strong>TÊN ĐỐI TÁC</strong></th>
                                     <th><strong>GIỚI TÍNH</strong></th>
@@ -42,12 +36,6 @@
                                 <tbody>
                                 @foreach($info_data as $data)
                                     <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                                <input type="checkbox" class="custom-control-input" id="customCheckBox2" required="">
-                                                <label class="custom-control-label" for="customCheckBox2"></label>
-                                            </div>
-                                        </td>
                                         <td><strong>{{$data['id']}}</strong></td>
                                         {{--                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>--}}
                                         <td>{{$data['owner_name']}}</td>
