@@ -71,4 +71,26 @@ class PartnerController extends Controller
 
     }
 
+    public function partner_check(Request $request){
+        $partner = Partner::where('owner_phone',$request->owner_phone)->orWhere('owner_id_numb',$request->owner_id_numb)->first();
+        if($partner){
+            return response()->json(
+                [
+                    'exist'=>true,
+                    'redirect_url'=>route('partner.login'),
+                    'partner'=>[
+                        'id'=>$partner->id,
+                        'name'=>$partner->owner_name,
+                        'gender'=>$partner->owner_sex
+                    ],
+                ],200);
+
+        }else{
+            return response()->json(
+                [
+                    'exist'=>false
+                ],200);
+        }
+    }
+
 }

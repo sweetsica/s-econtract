@@ -336,7 +336,8 @@
                     <img style="width: 250px;height: 250px;object-fit: contain"
                          src="{{public_path($info->doppelherz?->image)}}">
                 @else
-                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path("/images/white.png")}}">
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path("/images/white.png")}}">
                 @endif
             </div>
             {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
@@ -351,7 +352,8 @@
                 @if($info->store_sign_img)
                     <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
                 @else
-                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path("/images/white.png")}}">
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path("/images/white.png")}}">
                 @endif
             </div>
             @if($info->store_sign_img)
@@ -788,10 +790,23 @@
                 </tr>
                 </tbody>
             </table>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </td>
     </tr>
+
     <tr>
-        <td colspan="2" style="text-align: center">
+        <td colspan="2" style="text-align: center;">
             <h2>PHỤ LỤC II: CHÍNH SÁCH BÁN HÀNG</h2>
             <p>(Đính kèm Hợp đồng số ……………….…/2022/HĐĐL ký ngày …………………… )</p>
         </td>
@@ -901,10 +916,11 @@
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
                 @if($info->store_sign_img_doppelherz)
-                <img style="width: 250px;height: 250px;object-fit: contain"
-                     src="{{public_path($info->doppelherz?->image)}}">
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path($info->doppelherz?->image)}}">
                 @else
-                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path("/images/white.png")}}">
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path("/images/white.png")}}">
                 @endif
             </div>
             {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
@@ -919,7 +935,8 @@
                 @if($info->store_sign_img)
                     <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
                 @else
-                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path("/images/white.png")}}">
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path("/images/white.png")}}">
                 @endif
             </div>
             @if($info->store_sign_img)

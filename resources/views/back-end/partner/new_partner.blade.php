@@ -6,8 +6,8 @@
     <div class="container-fluid">
         <div class="page-titles">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0)">Đối tác mới</a></li>
-{{--                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{$page_description}}</a></li>--}}
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Đối tác</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">{{$page_description}}</a></li>
             </ol>
         </div>
         <!-- row -->
@@ -16,7 +16,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">Danh sách hợp đồng</h4>
+                        <h4 class="card-title">Danh sách đối tác mới</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

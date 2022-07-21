@@ -71,24 +71,24 @@
                     <td width="20%">
                         Tài khoản
                     </td>
-                    <td colspan="3" width="80%">: 0948394738</td>
+                    <td colspan="3" width="80%">: {{$info['store_bank_number_doppelherz']}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Ngân hàng
                     </td>
-                    <td colspan="3" width="80%">: VP BANK</td>
+                    <td colspan="3" width="80%">: {{$info['store_bank_name_doppelherz']}}</td>
                 </tr>
                 <tr>
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông Đỗ Văn Thoại</td>
-                    <td width="50%">Chức danh: Giám đốc bán hàng vùng phía Bắc</td>
+                    <td width="30%">: Ông {{$info?->doppelherz?->name}}</td>
+                    <td width="50%">Chức danh: Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        Theo giấy ủy quyền số: 12/07/MTT
+                        Theo giấy ủy quyền số: ................................................
                     </td>
                 </tr>
                 </tbody>
@@ -100,45 +100,47 @@
             <table width="100%">
                 <tbody>
                 <tr>
-                    <td width="20%">
+                    <td width="15%">
                         <h4>BÊN B</h4>
                     </td>
-                    <td width="80%" colspan="3"><h4>: CÔNG TY CỔ PHẦN MASTERTRAN</h4></td>
+                    <td width="80%" colspan="3"><h4>: {{$info['store_name']}}</h4></td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td width="15%">
                         Địa chỉ
                     </td>
-                    <td colspan="3" width="80%">: NV4.13 Khu chức năng đô thị Tây Mỗ, P. Tây Mỗ, Q. Nam Từ Liêm, Hà
-                        Nội
+                    <td colspan="3" width="80%">:
+                        {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}
+                        , {{$info->local_dkkd?->parent?->parent?->name}}
                     </td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td style="max-width: 50px">
                         Điện thoại
                     </td>
-                    <td width="20%">: 024.37878408</td>
-                    <td width="30%">Mã số thuế : 0105381169</td>
+                    <td width="20%">: {{$info['store_phone']}}</td>
+                    <td width="30%">Mã số thuế : {{$info['store_id_Numb_GPDKKD']}}</td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td style="max-width: 50px">
                         Tài khoản
                     </td>
-                    <td colspan="3" width="80%">: 0948394738</td>
+                    <td colspan="3" width="80%">: {{$info['store_bank_numb']}}</td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td style="max-width: 50px">
                         Ngân hàng
                     </td>
-                    <td colspan="3" width="80%">: VP BANK</td>
+                    <td colspan="3" width="80%">: {{$info['store_bank']}}</td>
                 </tr>
                 <tr>
-                    <td width="20%">
+                    <td style="max-width: 50px">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông Đỗ Văn Thoại</td>
-                    <td width="50%">Chức danh: Giám đốc bán hàng vùng phía Bắc</td>
+                    <td width="30%">: Ông {{$info->partner?->owner_name}}</td>
+                    <td width="50%">Chức danh: Chủ đại lý</td>
                 </tr>
+
                 </tbody>
             </table>
         </td>
@@ -331,24 +333,34 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
+                @if($info->store_sign_img_doppelherz)
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path($info->doppelherz?->image)}}">
+                @else
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path("/images/white.png")}}">
+                @endif
             </div>
-{{--            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
-            <span style="font-weight: bold;font-size: 16px">Do Van Thoai</span>
+            {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
+            @if($info->store_sign_img_doppelherz)
+                <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz?->name}}</span>
+            @endif
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
             <p><strong> </strong></p>
             <div style="object-fit: contain">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
-
-                {{--                @if($info['image'])--}}
-{{--                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">--}}
-{{--                @else--}}
-{{--                    <h6>Khách hàng chưa ký</h6>--}}
-{{--                @endif--}}
+                @if($info->store_sign_img)
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
+                @else
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path("/images/white.png")}}">
+                @endif
             </div>
-            <span  style="font-weight: bold;font-size: 16px">Nguyen Van A</span>
+            @if($info->store_sign_img)
+                <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
+            @endif
+
         </td>
     </tr>
     <tr>
@@ -777,6 +789,18 @@
                 </tr>
                 </tbody>
             </table>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
         </td>
     </tr>
     <tr>
@@ -832,23 +856,34 @@
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN A</strong></p>
             <p><strong> </strong></p>
             <div style="width: 200px;height: 200px">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
+                @if($info->store_sign_img_doppelherz)
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path($info->doppelherz?->image)}}">
+                @else
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path("/images/white.png")}}">
+                @endif
             </div>
-{{--            <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
-            <span style="font-weight: bold;font-size: 16px">Do Van Thoai</span>
+            {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
+            @if($info->store_sign_img_doppelherz)
+                <span style="font-weight: bold;font-size: 16px">{{$info->doppelherz?->name}}</span>
+            @endif
         </td>
         <td width="50%" style="text-align: center;padding-top: 10px">
             <p style="text-align: center;"><strong>ĐẠI DIỆN BÊN B</strong></p>
             <p><strong> </strong></p>
             <div style="object-fit: contain">
-                <img style="width: 250px;height: 250px;object-fit: contain" src="{{public_path('/uploads/signature/doppelherz/dovanthoai.png')}}">
-                {{--                @if($info['image'])--}}
-                {{--                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info['image']}}">--}}
-                {{--                @else--}}
-                {{--                    <h6>Khách hàng chưa ký</h6>--}}
-                {{--                @endif--}}
+                @if($info->store_sign_img)
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
+                @else
+                    <img style="width: 250px;height: 250px;object-fit: contain"
+                         src="{{public_path("/images/white.png")}}">
+                @endif
             </div>
-            <span  style="font-weight: bold;font-size: 16px">Nguyen Van A</span>
+            @if($info->store_sign_img)
+                <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
+            @endif
+
         </td>
     </tr>
     </tbody>

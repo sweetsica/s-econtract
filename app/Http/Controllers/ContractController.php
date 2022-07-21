@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contract;
-use App\Models\Local;
-use App\Models\Member;
 use App\Models\Partner;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
-
+use App\Http\Traits\STrait;
 class ContractController extends Controller
 {
+    use STrait;
+
     public function contract_list()
     {
         $info_data = [];
@@ -81,7 +79,7 @@ class ContractController extends Controller
                 Session::put('id_contract', $data['id']);
                 return view('back-end.signature.signature');
             }else{
-                $pdf = PDF::loadView('/contract_otc_new_policy', ["info" => $data]);
+                $pdf = $this->show_contract($data);
                 $time = Carbon::now()->format('d-m-Y');
                 $name = 'hop-dong-dien-tu-' . $time;
                 return $pdf->stream($name . '.pdf');
@@ -101,8 +99,8 @@ class ContractController extends Controller
     {
         try {
             $id_contract = Session::get('id_contract');
-            $data['info'] = Contract::with('partner','doppelherz','local_dkkd','local_gh')->Where('id', '=', $id_contract)->get()->last();
-            $pdf = PDF::loadView('/contract_otc_new_policy', $data);
+            $data = Contract::with('partner','doppelherz','local_dkkd','local_gh')->Where('id', '=', $id_contract)->get()->last();
+            $pdf = $this->show_contract($data);
             $time = Carbon::now()->format('d-m-Y');
             $name = 'hop-dong-dien-tu-' . $time;
             return $pdf->stream($name . '.pdf');
@@ -116,7 +114,7 @@ class ContractController extends Controller
         $contract = Contract::find($id);
         $type = $request->get('type');
         if($type == 'only_show'){
-            $pdf = PDF::loadView('/contract_otc_new_policy', ["info" => $contract]);
+            $pdf = $this->show_contract($contract);
             $time = Carbon::now()->format('d-m-Y');
             $name = 'hop-dong-dien-tu-' . $time;
             return $pdf->stream($name . '.pdf');
@@ -125,7 +123,7 @@ class ContractController extends Controller
                 Session::put('id_contract', $contract['id']);
                 return view('back-end.signature.signature');
             }else{
-                $pdf = PDF::loadView('/contract_otc_new_policy', ["info" => $contract]);
+                $pdf = $this->show_contract($contract);
                 $time = Carbon::now()->format('d-m-Y');
                 $name = 'hop-dong-dien-tu-' . $time;
                 return $pdf->stream($name . '.pdf');
