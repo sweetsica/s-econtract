@@ -28,7 +28,7 @@
                                     <span class="accordion__header--text">{{$item->member_code}} - {{$item->member_name}}</span>
                                     <span class="accordion__header--indicator"></span>
                                 </div>
-                                <div id="member-{{$item->member_code}}-{{$item->id}}" class="collapse accordion__body" data-parent="#accordion-eleven">
+                                <div id="member-{{$item->member_code}}-{{$item->id}}" class="collapse accordion__body p-3" data-parent="#accordion-eleven">
                                     <div class="table-responsive">
                                         <table class="table table-responsive-md" id="example3" data-ordering="false">
                                             <thead>

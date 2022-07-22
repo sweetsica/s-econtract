@@ -97,7 +97,7 @@ let dataSet = [
         ],
         "language": {
             "lengthMenu": "Hiển thị:  _MENU_ Mục",
-            "zeroRecords": "Không Tìm Thấy Người Đóng Góp",
+            "zeroRecords": "Không có dữ liệu",
             "search": "Tìm kiếm:",
             "info": " _PAGE_ Trong tổng số _PAGES_ Trang",
             "infoEmpty": "Không có dữ liệu nào",

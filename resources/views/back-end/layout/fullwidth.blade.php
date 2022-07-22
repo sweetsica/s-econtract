@@ -8,6 +8,8 @@
     <title>@yield('title', $page_title ?? '') | Doppelherz</title>
     <meta name="description" content="@yield('page_description', $page_description ?? '')"/>
     <!-- Favicon icon -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/favicon.ico') }}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 

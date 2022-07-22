@@ -16,7 +16,7 @@
                         <div class="card text-center">
                             <div class="card-body">
                                 <div class="position-relative mb-3 d-inline-block">
-                                    <img src="{{ asset('images/avatar/1.jpg') }}" alt="" class="rounded" width="140">
+                                    <img src="https://doppelherz.vn/wp-content/uploads/2022/01/LOGO-DOPPELHERZ-Logo-tren-an-pham-792x800.png" alt="" class="rounded" width="140">
                                 </div>
                                 <h4 class="text-black fs-20 font-w600">{{$info_data['owner_name']}}</h4>
                                 <span class="mb-3 text-black d-block">Người đại diện / Đối tác</span>

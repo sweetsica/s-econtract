@@ -22,7 +22,7 @@
                             <table id="example3" class="display min-w850" data-ordering="false">
                                 <thead>
                                 <tr>
-                                    <th>Mã thành viên</th>
+                                    <th>MTV</th>
                                     <th>Tên thành viên</th>
                                     <th>email</th>
                                     <th>Số điện thoại</th>

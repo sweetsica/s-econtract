@@ -11,7 +11,11 @@
                             <a href="{{route('index')}}"><img  src="{{ asset('images/logo-full.png') }}" alt=""></a>
                         </div>
                         <a href="{{route('member.login')}}" style="width: 100%" class="btn btn-primary w-full mb-3">
-                            Đăng nhập dành cho Admin và Thành viên
+                            <i class="fa-solid fa-user-gear text-3xl"></i>
+                            Đăng nhập dành cho Admin
+                        </a>
+                        <a href="{{route('member.login')}}" style="width: 100%" class="btn btn-primary w-full mb-3">
+                            Đăng nhập dành cho Thành viên
                         </a>
                         <a href="{{route('partner.login')}}" style="width: 100%" class="btn btn-primary w-full mb-3">
                             Đăng nhập dành cho Đối tác

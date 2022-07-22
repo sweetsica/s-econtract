@@ -40,17 +40,15 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example3" class="display min-w850">
+                            <table id="example3" class="display min-w850" data-ordering="false">
                                 <thead>
                                 <tr>
                                     <th>Mã thành viên</th>
                                     <th>Tên thành viên</th>
+                                    <th>Phòng ban</th>
                                     <th>email</th>
                                     <th>Số điện thoại</th>
                                     <th>Tỉnh/Thành phố</th>
-                                    <th>Huyện/Quận</th>
-                                    <th>Xã/Phường</th>
-                                    <th>Địa chỉ chi tiết</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -58,12 +56,18 @@
                                     <tr>
                                         <td>{{ $member->member_code }}</td>
                                         <td>{{ $member->member_name }}</td>
+                                        <td>
+                                            @foreach($member->department as $department)
+                                                @if(count($member->department) > 1)
+                                                    {{$department->name}},
+                                                @else
+                                                    {{$department->name}}
+                                                @endif
+                                            @endforeach
+                                        </td>
                                         <td>{{ $member->email }}</td>
                                         <td>{{ $member->phone }}</td>
                                         <td>{{ $member->location?->parent?->parent?->name }}</td>
-                                        <td>{{ $member->location?->parent?->name }}</td>
-                                        <td>{{ $member->location?->name }}</td>
-                                        <td>{{ $member->address}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

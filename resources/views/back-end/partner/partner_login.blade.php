@@ -8,8 +8,9 @@
                 <div class="col-xl-12">
                     <div class="auth-form">
                         <div class="text-center mb-3">
-                            <a href="{!! url('/index'); !!}"><img  src="{{ asset('images/logo-full.png') }}" alt=""></a>
+                            <a href="{{route('index')}}"><img  style="width: 100px;height: 100px; object-fit: contain" src="https://doppelherz.vn/wp-content/uploads/2022/01/LOGO-DOPPELHERZ-Logo-tren-an-pham-792x800.png" alt=""></a>
                         </div>
+                        <hr/>
                         <h4 class="text-center mb-4">Đăng nhập dành cho đối tác</h4>
                         @if(Session::has('error'))
                             <div class="alert alert-danger">
