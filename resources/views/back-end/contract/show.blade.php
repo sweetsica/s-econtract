@@ -43,7 +43,7 @@
                                            class="btn light  btn-md rounded-lg btn-primary mr-2">
                                             Xuất hợp đồng
                                         </a>
-                                        @if(Session::get('session_role') == 'admin')
+                                        @if(Session::get('session_role') == 'admin' || Session::class == 'sale_admin')
                                             <button type="button"
                                                     class="btn light  btn-md rounded-lg btn-primary"
                                                     data-toggle="modal"

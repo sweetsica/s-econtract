@@ -58,16 +58,18 @@
             {{--                --}}{{--                </ul>--}}
             {{--            </li>--}}
             @if(Session::get('session_role') !== 'partner')
-                <li>
-                    <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
-                        <i class="flaticon-381-user-9"></i>
-                        <span class="nav-text">Đối tác</span>
-                    </a>
-                    <ul aria-expanded="false">
-                        <li><a href="{{route('partner.list')}}">Danh sách đối tác</a></li>
-                        <li><a href="{{route('partner.list.new')}}">Đối tác mới</a></li>
-                    </ul>
-                </li>
+                @if(Session::get('session_role') == 'admin' || Session::class == 'sale_admin')
+                    <li>
+                        <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
+                            <i class="flaticon-381-user-9"></i>
+                            <span class="nav-text">Đối tác</span>
+                        </a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{route('partner.list')}}">Danh sách đối tác</a></li>
+                            <li><a href="{{route('partner.list.new')}}">Đối tác mới</a></li>
+                        </ul>
+                    </li>
+                @endif
                 <li>
                     <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                         <i class="flaticon-381-briefcase

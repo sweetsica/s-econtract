@@ -81,10 +81,16 @@ class AuthController extends Controller
                 Session::put('session_id', $checkmember->id);
                 Session::put('session_name', $checkmember->member_name);
                 $checkCap = Member::with('roles')->where('member_code', $request->username)->whereHas('roles', function ($query) {
-                    return $query->where('role_id', 1)->orWhere('role_id', 3);
+                    return $query->where('role_id', 3);
                 })->first();
                 if ($checkCap) {
                     Session::put('session_role', 'captain');
+                }
+                $checkSaleAdmin = Member::with('roles')->where('member_code', $request->username)->whereHas('roles', function ($query) {
+                    return $query->where('role_id', 1)->orWhere('role_id', 1);
+                })->first();
+                if ($checkSaleAdmin) {
+                    Session::put('session_role', 'sale_admin');
                 }
                 Auth::loginUsingId($checkmember->id);
                 $page_title = 'Danh sách hợp đồng';
