@@ -23,7 +23,7 @@ class PageController extends Controller
             $logo = "images/logo.png";
             $logoText = "images/logo-text.png";
             $action = __FUNCTION__;
-            return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
+            return view('welcome', compact('page_title', 'page_description','action','logo','logoText'));
         }
     }
 //    public function lockpage(Request $request)

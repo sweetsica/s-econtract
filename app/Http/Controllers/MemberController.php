@@ -205,8 +205,9 @@ class MemberController extends Controller
 
     public function team_contract_list(){
         $check_role = Session::get('session_role');
+        $member_id = Session::get('session_id');
         if ($check_role == 'captain') {
-            $member = Member::with('contract','children')->find(Auth::id());
+            $member = Member::with('contract','children')->find($member_id);
             $info_data = $member->children;
         }else{
             return redirect(route('contract.list'));

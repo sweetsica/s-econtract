@@ -46,9 +46,9 @@ let dataSet = [
     var table = $('#example').DataTable({
         createdRow: function ( row, data, index ) {
            $(row).addClass('selected')
-        } 
+        }
     });
-      
+
     table.on('click', 'tbody tr', function() {
     var $row = table.row(this).nodes().to$();
     var hasClass = $row.hasClass('selected');
@@ -58,7 +58,7 @@ let dataSet = [
         $row.addClass('selected')
     }
     })
-    
+
     table.rows().every(function() {
     this.nodes().to$().removeClass('selected')
     });
@@ -85,15 +85,31 @@ let dataSet = [
             $row.addClass('selected')
         }
     })
-        
+
     table2.rows().every(function() {
         this.nodes().to$().removeClass('selected')
     });
-	
-	// 
-	var table = $('#example3, #example4, #example5').DataTable();
+
+	//
+	var table = $('#example3, #example4, #example5').DataTable({
+        "aoColumnDefs": [
+            { "bSortable": false,"aTargets":false},
+        ],
+        "language": {
+            "lengthMenu": "Hiển thị:  _MENU_ Mục",
+            "zeroRecords": "Không có dữ liệu",
+            "search": "Tìm kiếm:",
+            "info": " _PAGE_ Trong tổng số _PAGES_ Trang",
+            "infoEmpty": "Không có dữ liệu nào",
+            "infoFiltered": "Được Lọc Từ _MAX_ Mục",
+            "paginate": {
+                "next":       "Trang sau",
+                "previous":   "Trang trước"
+            },
+        }
+    });
 	$('#example tbody').on('click', 'tr', function () {
 		var data = table.row( this ).data();
 	});
-   
+
 })(jQuery);

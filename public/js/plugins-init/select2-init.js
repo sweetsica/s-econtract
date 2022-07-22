@@ -9,6 +9,12 @@
   $("#wards_select").select2();
   $("#department_select").select2();
 
+    // single select box
+    $("#provinces_select_gh").select2();
+    $("#districts_select_gh").select2();
+    $("#wards_select_gh").select2();
+    $("#department_select_gh").select2();
+
   $("#multiple_select").select2();
   $("#multiple_select_role").select2();
 
