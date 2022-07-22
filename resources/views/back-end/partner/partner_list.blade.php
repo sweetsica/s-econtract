@@ -101,7 +101,7 @@
                                                                     <div class="form-group col-md-6">
                                                                         <label>Ngày cấp</label>
                                                                         <input
-                                                                            value="{{\Carbon\Carbon::parse($data->owner_id_numb_created_at)->format('Y-m-d')}}"
+                                                                            value="{{$data->owner_id_numb_created_at}}"
                                                                             name="owner_id_numb_created_at"
                                                                             type="date" class="form-control"
                                                                             placeholder="Ngày cấp...">
@@ -131,7 +131,7 @@
                                                                     <div class="form-group col-md-4">
                                                                         <label>Ngày sinh</label>
                                                                         <input
-                                                                            value="{{\Carbon\Carbon::parse($data->owner_dob)->format('Y-m-d')}}"
+                                                                            value="{{$data->owner_dob}}"
                                                                             name="owner_dob"
                                                                             type="date" class="form-control"
                                                                             placeholder="Chọn ngày sinh...">
