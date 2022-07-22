@@ -31,9 +31,9 @@
                             <div class="form-group">
                                 <label><strong>Mật khẩu</strong></label>
                                 <input type="password" class="form-control" name="store_token">
-                                <div class="flex text-right pt-2">
-                                    <a href="{{asset('/partner/reset-password')}}" > Quên mật khẩu</a>
-                                </div>
+{{--                                <div class="flex text-right pt-2">--}}
+{{--                                    <a href="{{asset('/partner/reset-password')}}" > Quên mật khẩu</a>--}}
+{{--                                </div>--}}
                             </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-block">Xuất hợp đồng</button>

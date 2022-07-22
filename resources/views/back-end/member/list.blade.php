@@ -19,7 +19,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example3" class="display min-w850">
+                            <table id="example3" class="display min-w850" data-ordering="false">
                                 <thead>
                                 <tr>
                                     <th>Mã thành viên</th>

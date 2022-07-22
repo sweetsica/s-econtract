@@ -20,17 +20,17 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-responsive-md" id="example3" >
+                            <table class="table table-responsive-md" id="example3" data-ordering="false">
                                 <thead>
                                 <tr>
-                                    <th><strong>ID.</strong></th>
-                                    <th><strong>TÊN ĐỐI TÁC</strong></th>
-                                    <th><strong>ĐỊA CHỈ</strong></th>
-                                    <th><strong>MÃ HỢP ĐỒNG</strong></th>
-                                    <th><strong>SỐ ĐIỆN THOẠI</strong></th>
-                                    <th><strong>LOẠI HỢP ĐỒNG</strong></th>
-                                    <th><strong>NGÀY ĐĂNG KÝ</strong></th>
-                                    <th><strong>TRẠNG THÁI</strong></th>
+                                    <th><span>Id.</span></th>
+                                    <th><span>Tên đối tác</span></th>
+                                    <th><span>Địa chỉ</span></th>
+                                    <th><span>Mã hợp đồng</span></th>
+                                    <th><span>Số điện thoại</span></th>
+                                    <th><span>Loại hợp đồng</span></th>
+                                    <th><span>Ngày đăng ký</span></th>
+                                    <th><span>Trạng thái</span></th>
                                     <th></th>
                                 </tr>
                                 </thead>

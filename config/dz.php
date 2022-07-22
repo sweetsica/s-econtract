@@ -35,6 +35,9 @@ return [
         ],
         'pagelevel' => [
             'css' => [
+                'list'=>[
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
                 //page custom
                 'member_contract_list'=>[
                     'vendor/datatables/css/jquery.dataTables.min.css',
@@ -141,6 +144,7 @@ return [
                 ],
                 'show' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
                     'vendor/jqvmap/css/jqvmap.min.css',
                     'vendor/chartist/css/chartist.min.css',
                     'vendor/owl-carousel/owl.carousel.css',
@@ -237,6 +241,7 @@ return [
                 ],
                 'dashboard' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/select2/css/select2.min.css',
                     'vendor/jqvmap/css/jqvmap.min.css',
                     'vendor/chartist/css/chartist.min.css',
                     'vendor/owl-carousel/owl.carousel.css',
@@ -273,6 +278,10 @@ return [
                 ],
                 'index_document' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                ],
+                'new_partner'=>[
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
                 'new_partner'=>[
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
@@ -381,7 +390,14 @@ return [
                 ],
             ],
             'js' => [
-
+                'list'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
                 //page custom
                 //department
                 'department_list'=>[
@@ -553,6 +569,8 @@ return [
                     'js/deznav-init.js',
                 ],
                 'show' => [
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/owl-carousel/owl.carousel.js',
@@ -722,6 +740,8 @@ return [
                 ],
                 'dashboard' => [
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/select2/js/select2.full.min.js',
+                    'js/plugins-init/select2-init.js',
                     'vendor/chart.js/Chart.bundle.min.js',
                     'vendor/owl-carousel/owl.carousel.js',
                     'js/custom.min.js',

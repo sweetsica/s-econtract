@@ -49,6 +49,55 @@
         });
     }
 
+    function getDistrictGH(e){
+        e.preventDefault();
+        $("#districts_select_gh").attr("disabled",true)
+        $("#wards_select_gh").attr("disabled",true)
+        let province_code = $("#provinces_select_gh").val();
+        // alert(province_code);
+        let districtWrapper = `
+            <option selected>Chọn huyện/quận...</option>
+        `;
+        $.ajax({
+            type:'GET',
+            url:"{{url("/api/local")}}?parent_id="+province_code,
+            success:function(data){
+                var districtData = data.local
+                console.log(districtData)
+                for (let i =0 ; i < districtData.length ; i++){
+                    districtWrapper += `
+                       <option value="${districtData[i].code}">${districtData[i].name}</option>
+                    `
+                }
+                $("#districts_select_gh").html(districtWrapper);
+                $("#districts_select_gh").attr("disabled",false)
+            }
+        });
+    }
+    function getWardGH(e){
+        e.preventDefault();
+        $("#wards_select_gh").attr("disabled",true)
+        let province_code = $("#districts_select_gh").val();
+        let wardWrapper = `
+            <option selected>Chọn xã/phường...</option>
+        `;
+        $.ajax({
+            type:'GET',
+            url:"{{url("/api/local")}}?parent_id="+province_code,
+            success:function(data){
+                var districtData = data.local
+                console.log(districtData)
+                for (let i =0 ; i < districtData.length ; i++){
+                    wardWrapper += `
+                       <option value="${districtData[i].id}">${districtData[i].name}</option>
+                    `
+                }
+                $("#wards_select_gh").html(wardWrapper);
+                $("#wards_select_gh").attr("disabled",false)
+            }
+        });
+    }
+
     function  handleGetManager(e,id,parent_id){
         e.preventDefault();
         let department_selected = $(".department_select").val();

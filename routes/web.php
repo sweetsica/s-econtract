@@ -48,10 +48,13 @@ Route::middleware(['auth'])->group(function () {
 
 //Partner module
 Route::prefix('doi-tac')->group(function (){
-    Route::get('/doi-tac-moi', [PartnerController::class, 'new_partner'])->name('partner.new');
+    Route::get('/danh-sach', [PartnerController::class, 'list'])->name('partner.list');
+    Route::get('/doi-tac-moi', [PartnerController::class, 'new_partner'])->name('partner.list.new');
+    Route::get('/chi-tiet/{id}', [PartnerController::class, 'show'])->name('partner.show');
     Route::get('/dang-nhap', [PartnerController::class, 'partner_login'])->name('partner.login');
     Route::post('/dang-nhap/gui-du-lieu', [PartnerController::class, 'partner_login_submit'])->name('partner.login.submit');
     Route::get('/danh-sach-hop-dong',[PartnerController::class,'dashboard'])->name('partner.dashboard');
+    Route::post('/chinh-sua/{id}',[PartnerController::class,'update'])->name('partner.update');
 });
 
 
@@ -69,7 +72,7 @@ Route::prefix('hop-dong')->group(function (){
     Route::get('/pdf/{id}',[ContractController::class, 'show_contract_pdf'])->name('contract.show.pdf');
 
 //    Route::get('/xuat-hop-dong-da-ky', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
-//    Route::post('/xuat-hop-dong', [PartnerController::class, 'search_export_with_data'])->name('contract.return.export');
+    Route::post('/tao-hop-dong/{id}', [ContractController::class, 'store'])->name('contract.create');
 });
 //PDF module
 Route::prefix('pdf')->group(function (){
@@ -101,6 +104,7 @@ Route::prefix('phong-ban')->group(function (){
 
 //thành viên
 Route::prefix('thanh-vien')->group(function(){
+    Route::get('dang-nhap', [AuthController::class,'login_form'])->name('member.login');
     Route::get('danh-sach', [MemberController::class,'member_list'])->name('member.list');
     Route::get('them-moi', [MemberController::class,'member_create'])->name('member.create');
     Route::post('them-moi/post', [MemberController::class,'member_store'])->name('member.create.post');

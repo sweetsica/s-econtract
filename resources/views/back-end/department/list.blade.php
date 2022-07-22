@@ -19,10 +19,10 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example3" class="display min-w850">
+                            <table id="example3" class="display min-w850" data-ordering="false">
                                 <thead>
                                 <tr>
-                                    <th></th>
+                                    <th>Id.</th>
                                     <th>Tên phòng </th>
                                     <th>Mô tả</th>
                                     <th>Tỉnh/Thành phố</th>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Traits\SignTrait;
 use App\Http\Traits\STrait;
 use App\Models\Contract;
+use App\Models\Local;
 use App\Models\Member;
 use App\Models\Partner;
 use App\Models\User;
@@ -20,18 +21,31 @@ class PartnerController extends Controller
 {
     use SignTrait;
 
-
     /**
+     * Danh sách đối tác
+     */
+    public function list()
+    {
+        $info_data = Partner::all();
+        $page_title = 'Danh sách đối tác';
+        $page_description = 'Danh sách đối tác';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        return view('back-end.partner.partner_list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
+    }
+
+  /**
      * Danh sách partner mới
      */
     public function new_partner(){
         $info_data = Partner::where('contract_mode',0)->get();
-        $page_title = 'Contract Dashboard';
+        $page_title = 'Danh sách đối tác mới';
         $page_description = 'Đối tác mới';
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        return view('back-end.partner.new_partner', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
+        return view('back-end.partner.partner_list', compact('page_title', 'page_description', 'action', 'logo', 'logoText','info_data'));
     }
     /**
      * Đăng nhập cho partner
@@ -94,18 +108,19 @@ class PartnerController extends Controller
     }
 
     /**
-     * Chi tiết hợp đồng
+     * Chi tiết đối tác
      */
     public function show($id)
     {
+        $info_data = Partner::with('contract')->find($id);
+        $local = Local::where('parent_id',0)->get();
         $page_title = 'Contract Dashboard';
         $page_description = 'Chi tiết hợp đồng';
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Partner::with('delivery_location', 'location', 'tdv')->get()->where('id', '=', $id);
 //        dd($info_data);
-        return view('back-end.contract.show', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
+        return view('back-end.partner.partner_details', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data','local'));
     }
 
     /**
@@ -126,9 +141,8 @@ class PartnerController extends Controller
     public function update(Request $request, $id)
     {
         $partner = Partner::find($id);
-        $contract = $partner->contract->first();
         $partner->update($request->only(['owner_name', 'owner_id_numb', 'owner_id_numb_created_at', 'owner_id_numb_created_locate', 'owner_sex', 'owner_dob', 'owner_age', 'owner_token', 'owner_phone', 'owner_email', 'owner_mst']));
-        return redirect(route('contract.edit', $contract->id));
+        return redirect()->back();
     }
 
 
@@ -137,6 +151,7 @@ class PartnerController extends Controller
      */
     public function dashboard()
     {
+        $local = Local::where('parent_id',0)->get();
         $partner_id = Session::get('session_partner_id');
         if(!$partner_id){
             return redirect(route('partner.login'));
@@ -148,7 +163,7 @@ class PartnerController extends Controller
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
 
-        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data_partner'));
+        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data_partner','local'));
 
     }
 
@@ -307,49 +322,7 @@ class PartnerController extends Controller
     /**jvxvbrkvbmxcvbkrsdfdskfnvnxvuxv,vabva;;vzxxxxxcnvhfbdjeksdnd
      * Trang sửa level hợp đồng
      */
-    public function list()
-    {
-        $page_title = 'Danh sách hợp đồng';
-        $page_description = 'Phân cấp hợp đồng';
-        $logo = "images/logo.png";
-        $logoText = "images/logo-text.png";
-        $action = __FUNCTION__;
-        $member_id = null;
-        if (Session::has('member_id')) {
-            $member_id = Session::get('member_id');
-        }
-        $info_data = [];
-        // member code role là Admin và Super Admin
-        $memberAdmin = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id', 1 || 2);
-        })->find($member_id);
-        $memberManager = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id', 3);
-        })->find($member_id);
-        $member = Member::with('parent', 'children', 'roles', 'partner')->whereHas('roles', function ($query) {
-            return $query->where('role_id', 4);
-        })->find($member_id);
-        if ($memberAdmin) {
-            $info_data = Partner::latest()->get();
-        }
-        if ($memberManager) {
-            foreach ($memberManager->partner as $partner) {
 
-                $info_data[] = $partner;
-
-            }
-            foreach ($memberManager->children as $child) {
-                foreach ($child->partner as $partner) {
-
-                    $info_data[] = $partner;
-
-                }
-            }
-        } else {
-            $info_data = $member->partner;
-        }
-        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
-    }
 
     public function list_type10()
     {

@@ -49,6 +49,13 @@ class AuthController extends Controller
         $page_title = 'Page Login';
         $page_description = 'Some description for the page';
         $action = __FUNCTION__;
+        return view('back-end.index', compact('page_title', 'page_description', 'action'));
+    }
+
+    public function login_form(){
+        $page_title = 'Page Login';
+        $page_description = 'Some description for the page';
+        $action = __FUNCTION__;
         return view('back-end.auth.login_form', compact('page_title', 'page_description', 'action'));
     }
 
