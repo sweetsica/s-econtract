@@ -51,11 +51,12 @@ class AuthController extends Controller
         $action = __FUNCTION__;
         return view('back-end.auth.login_form', compact('page_title', 'page_description', 'action'));
     }
+
     #2
     public function login(Request $request)
     {
-        $checkuser = User::where('email',$request->username)->first();
-        if($checkuser){
+        $checkuser = User::where('email', $request->username)->first();
+        if ($checkuser) {
             Session::put('session_role', 'admin');
             Session::put('session_id', $checkuser->id);
             Session::put('session_name', $checkuser->name);
@@ -66,18 +67,18 @@ class AuthController extends Controller
             $action = __FUNCTION__;
 //            return redirect()->route('dashboard')->with(compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
             return view('back-end.dashboard.index', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
-        }else{
-            $checkmember = Member::where('member_code',$request->username)->first();
-            if($checkmember){
+        } else {
+            $checkmember = Member::where('member_code', $request->username)->first();
+            if ($checkmember) {
                 Session::put('session_role', 'member');
                 Session::put('session_id', $checkmember->id);
                 Session::put('session_name', $checkmember->member_name);
-               $checkCap = Member::with('roles')->where('member_code',$request->username)->whereHas('roles', function ($query) {
-                    return $query->where('role_id',1)->orWhere('role_id', 3);
+                $checkCap = Member::with('roles')->where('member_code', $request->username)->whereHas('roles', function ($query) {
+                    return $query->where('role_id', 1)->orWhere('role_id', 3);
                 })->first();
-               if($checkCap) {
-                   Session::put('session_role', 'captain');
-               }
+                if ($checkCap) {
+                    Session::put('session_role', 'captain');
+                }
                 Auth::loginUsingId($checkmember->id);
                 $page_title = 'Danh sách hợp đồng';
                 $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
@@ -85,7 +86,7 @@ class AuthController extends Controller
                 $logoText = "images/logo-text.png";
                 $action = __FUNCTION__;
                 return view('back-end.dashboard.index', compact('page_title', 'page_description', 'action', 'logo', 'logoText'));
-            }else{
+            } else {
                 Session::flash('error', 'Vui lòng kiểm tra lại thông tin đăng nhập');
                 return redirect()->back();
             }
@@ -96,7 +97,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $checkRole = Session::get('session_role');
-        if($checkRole !== 'partner'){
+        if ($checkRole !== 'partner') {
             return redirect('/');
         }
         return redirect()->route('partner.login');
@@ -224,9 +225,9 @@ class AuthController extends Controller
         $admin = User::where('email', $request->get('username'))->first();
         if ($admin) {
             if (Hash::check($request->password, $admin->password)) {
-                Session::put("user_check",[
-                    'role'=>"ADMIN",
-                    'user_id'=>$admin->id
+                Session::put("user_check", [
+                    'role' => "ADMIN",
+                    'user_id' => $admin->id
                 ]);
                 dd("Hello ADMIN");
                 Session::forget('error');
@@ -238,9 +239,9 @@ class AuthController extends Controller
             $member = Member::where('member_code', $request->get('username'))->first();
             if ($member) {
                 if (Hash::check($request->password, $member->password)) {
-                    Session::put("user_check",[
-                        'role'=>"MEMBER",
-                        'user_id'=>$admin->id
+                    Session::put("user_check", [
+                        'role' => "MEMBER",
+                        'user_id' => $admin->id
                     ]);
                     Session::forget('error');
                     dd("Hello Member");
@@ -251,7 +252,9 @@ class AuthController extends Controller
             }
         }
     }
-    public function logoutMember(){
+
+    public function logoutMember()
+    {
         Session::forget('user_check');
         return redirect()->to('/');
     }
