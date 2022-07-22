@@ -134,7 +134,7 @@
                                     </div>
                                     <div class="ml-md-4 text-md-right">
                                         <p class="fs-14 text-black mb-1 mr-1">Ngày tạo</p>
-                                        <h4 class="fs-24 text-primary">{{$info_data_partner['created_at']->format('d-m-Y')}}</h4>
+                                        <h4 class="fs-24 text-primary">{{ format_date($info_data_partner['created_at'])}}</h4>
                                     </div>
                             </div>
                             <div class="card-body">
@@ -606,7 +606,7 @@
                                                             <div>
                                                                 <p class="fs-14 text-black mb-1 mr-1">Ngày
                                                                     tạo</p>
-                                                                <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
+                                                                <h4 class="fs-24 text-primary">{{format_date($data['created_at'])}}</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -657,7 +657,7 @@
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{$data['store_GPDKKD']}}
+                                                                        class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{format_date($data['store_GPDKKD'])}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
@@ -687,11 +687,11 @@
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày bắt đầu:</span> {{$data['store_started']}}
+                                                                        class="font-w600 text-black">Ngày bắt đầu:</span> {{format_date($data['store_started'])}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày kết thúc:</span> {{$data['store_end']}}
+                                                                        class="font-w600 text-black">Ngày kết thúc:</span> {{format_date($data['store_end'])}}
                                                             </div>
                                                         </div>
                                                     </div>

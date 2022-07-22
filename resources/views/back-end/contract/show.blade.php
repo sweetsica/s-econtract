@@ -37,7 +37,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <div
-                                    class="col-md-12     d-flex justify-content-between">
+                                    class="col-md-12 d-flex justify-content-between">
                                     <div>
                                         <a href="{{route('contract.show.pdf',$info_data['id']).'?type=only_show'}}"
                                            class="btn light  btn-md rounded-lg btn-primary mr-2">
@@ -55,7 +55,7 @@
                                     <div>
                                         <p class="fs-14 text-black mb-1 mr-1">Ngày
                                             tạo</p>
-                                        <h4 class="fs-24 text-primary">{{$info_data['created_at']->format('d-m-Y')}}</h4>
+                                        <h4 class="fs-24 text-primary">{{format_date($info_data['created_at'])}}</h4>
                                     </div>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                                         </div>
                                         <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{$info_data['store_GPDKKD']}}
+                                                                        class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{format_date($info_data['store_GPDKKD'])}}
                                         </div>
                                         <div class="col-md-12 fs-20 mt-3">
                                                                     <span
@@ -141,11 +141,11 @@
                                         </div>
                                         <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày bắt đầu:</span> {{$info_data['store_started']}}
+                                                                        class="font-w600 text-black">Ngày bắt đầu:</span> {{format_date($info_data['store_started'])}}
                                         </div>
                                         <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày kết thúc:</span> {{$info_data['store_end']}}
+                                                                        class="font-w600 text-black">Ngày kết thúc:</span> {{format_date($info_data['store_end'])}}
                                         </div>
                                         {{--                                                            <div class="col-md-12 fs-20 mt-3">--}}
                                         {{--                                                                @if($data['store_signed'] !== 0 && $data['store_sign_img'])--}}

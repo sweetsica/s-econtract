@@ -42,12 +42,12 @@
                                         {{--                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>--}}
                                         <td>{{$data['owner_name']}}</td>
                                         <td>{{$data['owner_sex']}}</td>
-                                        <td>{{$data['owner_dob']}}</td>
+                                        <td>{{format_date($data['owner_dob'])}}</td>
                                         <td>{{$data['owner_age']}}</td>
                                         <td>{{$data['owner_phone']}}</td>
                                         <td>{{$data['owner_email']}}</td>
                                         <td>{{count($data->contract)}}</td>
-                                        <td>{{$data['created_at']->format('d-m-Y')}}</td>
+                                        <td>{{format_date($data['created_at'])}}</td>
                                         <td>
                                             <div class="d-flex">
                                                 @if(Session::get('session_role') == 'admin' || Session::class == 'sale_admin')
@@ -112,7 +112,7 @@
                                                                                   class="form-control" rows="2"
                                                                                   spellcheck="false">{{$data['owner_id_numb_created_locate']}}</textarea>
                                                                     </div>
-                                                                    <div class="form-group col-md-4">
+                                                                    <div class="form-group col-md-5">
                                                                         <label>Số điện thoại</label>
                                                                         <input
                                                                             value="{{$data['owner_phone']}}"

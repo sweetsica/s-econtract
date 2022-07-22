@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="ml-md-4 text-md-right">
                                     <p class="fs-14 text-black mb-1 mr-1">Ngày tạo</p>
-                                    <h4 class="fs-24 text-primary">{{$info_data['created_at']->format('d-m-Y')}}</h4>
+                                    <h4 class="fs-24 text-primary">{{format_date($info_data['created_at'])}}</h4>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -56,7 +56,7 @@
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data->owner_dob}}
+                                                class="font-w600 text-black">Ngày sinh:</span> {{format_date($info_data->owner_dob)}}
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data->owner_id_numb_created_at}}
+                                                class="font-w600 text-black">Ngày cấp:</span> {{format_date($info_data->owner_id_numb_created_at)}}
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span

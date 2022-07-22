@@ -44,7 +44,7 @@
                                         <td>{{$data['contract_code']}}</td>
                                         <td>{{$data['store_phone']}}</td>
                                         <td>{{$data['store_contract_type']}}</td>
-                                        <td>{{$data['created_at']}}</td>
+                                        <td> {{format_date($data['created_at'])}}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 @if($data['contract_level']==10)

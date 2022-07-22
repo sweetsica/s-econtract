@@ -52,7 +52,7 @@ class ContractController extends Controller
     {
         $contract = Contract::find($id);
         $contract->update($request->only(['store_contract_type', 'contract_code', 'store_name', 'store_add_DKKD', 'store_local_DKKD', 'store_add_GH', 'store_local_GH', 'store_headman', 'store_mst', 'member_id', 'store_phone', 'store_website', 'store_GPDKKD', 'store_id_Numb_GPDKKD', 'store_bank', 'store_bank_holder', 'store_bank_numb', 'store_contact_name', 'store_contact_phone', 'store_contact_position', 'store_effect', 'store_started', 'store_end', 'contract_level', 'store_signed', 'store_sign_img', 'store_sign_img_doppelherz', 'store_token']));
-        return redirect(route('contract.edit', $id));
+        return redirect()->back();
     }
 
     public function store(Request $request, $id){
@@ -62,6 +62,8 @@ class ContractController extends Controller
             $contract->contract_level = 10;
             $contract->partnerId = $partner->id;
             $contract->contract_code = 'HD-2022/'.$contract->id.$contract->created_at->format('-His');
+            $partner->contract_mode = 1;
+            $partner->save();
             $contract->save();
         }
         return redirect()->back();
