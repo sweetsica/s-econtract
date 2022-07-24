@@ -63,7 +63,7 @@ class PartnerController extends Controller
             }
 
             return response()->json([
-                'notice' => 'Tạo thành công, chúng tôi sẽ liên hệ bạn sớm nhất!',
+                'notice' => 'Đăng ký thành công, chúng tôi sẽ liên hệ bạn để hoàn tất thủ tục đổi tác trong thời gian sớm nhất. Xin cảm ơn!',
                 'redirect_url'=>url('/doi-tac/dang-nhap')
             ],200);
         }catch (\Exception $e){
