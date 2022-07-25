@@ -112,6 +112,7 @@ class ContractController extends Controller
         try {
             $id_contract = Session::get('id_contract');
             $data = Contract::with('partner', 'doppelherz', 'local_dkkd', 'local_gh')->Where('id', '=', $id_contract)->get()->last();
+//            dd($data);
             $pdf = $this->show_contract($data);
             $time = Carbon::now()->format('d-m-Y');
             $name = 'hop-dong-dien-tu-' . $time;
