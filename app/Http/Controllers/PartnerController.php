@@ -84,28 +84,28 @@ class PartnerController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'account_name' => 'required|string|max:255',
-            'account_email' => 'required|string|email|max:255',
-            'account_phone' => 'required|string|max:255',
-            'id_number' => 'required',
-        ], [
-            'account_name.required' => 'Tên không được để trống',
-            'account_email.required' => 'Email không được để trống',
-            'account_phone.required' => 'Số điện thoại không được để trống',
-            'id_number.required' => 'Số chứng minh thư không được để trống',
-        ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors());
-        }
-        Partner::create([
-            $request->all()
-        ]);
-
-        return redirect(route('dashboard'));
-    }
+//    public function store(Request $request)
+//    {
+//        $validator = Validator::make($request->all(), [
+//            'account_name' => 'required|string|max:255',
+//            'account_email' => 'required|string|email|max:255',
+//            'account_phone' => 'required|string|max:255',
+//            'id_number' => 'required',
+//        ], [
+//            'account_name.required' => 'Tên không được để trống',
+//            'account_email.required' => 'Email không được để trống',
+//            'account_phone.required' => 'Số điện thoại không được để trống',
+//            'id_number.required' => 'Số chứng minh thư không được để trống',
+//        ]);
+//        if ($validator->fails()) {
+//            return response()->json($validator->errors());
+//        }
+//        Partner::create([
+//            $request->all()
+//        ]);
+//
+//        return redirect(route('dashboard'));
+//    }
 
     /**
      * Chi tiết đối tác
@@ -470,5 +470,10 @@ class PartnerController extends Controller
         } catch (\Exception $e) {
             abort(404);
         }
+    }
+
+    public function store(Request $request)
+    {
+
     }
 }
