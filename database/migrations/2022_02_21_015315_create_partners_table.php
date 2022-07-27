@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('owner_name', 100)->nullable();//Họ và tên
             $table->string('owner_id_numb')->nullable();//CCCD/CMND
-            $table->string('owner_id_numb_created_at')->nullable();//Ngày cấp
+            $table->dateTime('owner_id_numb_created_at')->nullable();//Ngày cấp
             $table->string('owner_id_numb_created_locate')->nullable();//Nơi cấp
             $table->string('owner_sex')->nullable();//Giới tính
-            $table->string('owner_dob')->nullable();//Ngày sinh
+            $table->dateTime('owner_dob')->nullable();//Ngày sinh
             $table->string('owner_age')->nullable();//Tuổi
             $table->string('owner_token')->nullable();//pass chủ nhà thuốc (opt)
             $table->string('owner_phone')->nullable();//SDT chủ nhà thuốc (opt)
