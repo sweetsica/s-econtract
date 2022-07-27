@@ -66,7 +66,8 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return Member::all();
+        $data = Member::all();
+        return response()->json($data,200);
     }
 
     /**
