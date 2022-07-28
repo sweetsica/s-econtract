@@ -29,25 +29,9 @@ use App\Http\Controllers\Api\DepartmentController;
     Route::post('/signup_partner', [PartnerController::class, 'store']);
 //End module đối tác
 
-//Module Admin
-    //Đăng ký admin
-    Route::post('/signup',[AuthController::class,'register']);
-    //Đăng nhập admin
-    Route::post('/user-login', [AuthController::class, 'login']);
-    //Lấy list admin
-    Route::get('/getuser',[AuthController::class,'getuser']);
-    //After signed in
-    Route::group(['middleware' => ['auth:api']], function(){
-        Route::get('/user-info',[AuthController::class,'getUserInfo']);
-        Route::post('/save-members',[MemberController::class,'store']);
-        Route::put('/members/{id}',[MemberController::class,'update']);
-        Route::delete('/members/{id}',[MemberController::class,'destroy']);
-        Route::post('/logout',[AuthController::class,'logout']);
-    });
-//End module Admnin
-
 //Module member
     //Lấy list user
+    Route::post('members/create',[MemberController::class,'store']);
     Route::get('/members',[MemberController::class,'index']);
     Route::get('/members/search/{name}',[MemberController::class,'search']);
     Route::get('/thanh-vien/tim-kiem',[MemberController::class,'member_check']);
@@ -59,10 +43,26 @@ use App\Http\Controllers\Api\DepartmentController;
     Route::get('/get-roles',[RoleController::class,'index']);
     //Module Department
     Route::get('/get-department',[DepartmentController::class,'index']);
-    Route::post('/department',[DepartmentController::class,'create']);
+    Route::post('/department/create',[DepartmentController::class,'store']);
     Route::get('/department-system',[DepartmentController::class,'department_system']);
     //Module Local
     Route::get('/local',[LocalController::class,'getLocal']);
     //Module Partner
     Route::get('/partner/check',[PartnerController::class,'partner_check']);
 //End other Module
+
+//Module Admin
+//Đăng ký admin
+Route::post('/signup',[AuthController::class,'register']);
+//Đăng nhập admin
+Route::post('/user-login', [AuthController::class, 'login']);
+//Lấy list admin
+Route::get('/getuser',[AuthController::class,'getuser']);
+//After signed in
+Route::group(['middleware' => ['auth:api']], function(){
+    Route::get('/user-info',[AuthController::class,'show']);
+    Route::put('/members/{id}',[MemberController::class,'update']);
+    Route::delete('/members/{id}',[MemberController::class,'destroy']);
+    Route::post('/logout',[AuthController::class,'logout']);
+});
+//End module Admnin

@@ -76,60 +76,64 @@ class MemberController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\JsonResponse
      */
+//    public function store(Request $request)
+//    {
+//        DB::beginTransaction();
+//        $validator = Validator::make($request->all(), [
+//            'member_name' => 'required|max:255',
+//            'member_code' => 'required|max:255|unique:members',
+//            'email' => 'required|email|max:255|unique:members',
+//            'phone' => 'required|max:255|unique:members',
+//            'password' => 'required|min:6',
+//            'location_id' => 'required',
+//            'address' => 'required',
+//        ],[
+//            'member_name.required' => 'Tên nhân viên không được để trống',
+//            'member_code.required' => 'Mã nhân viên không được để trống',
+//            'member_code.unique' => 'Mã nhân viên đã tồn tại',
+//            'email.required' => 'Email không được để trống',
+//            'email.email' => 'Email không đúng định dạng',
+//            'email.unique' => 'Email đã tồn tại',
+//            'phone.required' => 'Số điện thoại không được để trống',
+//            'phone.unique' => 'Số điện thoại đã tồn tại',
+//            'password.required' => 'Mật khẩu không được để trống',
+//            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',
+//            'location_id.required' => 'Vui lòng chọn địa điểm',
+//            'roles.required' => 'Vui lòng chọn quyền',
+//            'departments.required' => 'Vui lòng chọn phòng ban',
+//            'address.required' => 'Vui lòng nhập địa chỉ',
+//        ]);
+//        if ($validator->fails()) {
+//            return response()->json([
+//                "status_code" => 400,
+//                "error" => $validator->errors()
+//            ], 400);
+//        }
+//        try {
+//            $member = Member::create([
+//                'member_name' => $request->get('member_name'),
+//                'member_code' => $request->get('member_code'),
+//                'email' => $request->get('email'),
+//                'phone' => $request->get('phone'),
+//                'password' => bcrypt($request->get('password')),
+//                'location_id' => $request->get('location_id'),
+//                'address' => $request->get('address'),
+//                'parent_id' => $request->get('parent_id'),
+//            ]);
+//            $member->roles()->attach($request->get('roles'));
+//            $member->department()->attach($request->get('departments'));
+//            DB::commit();
+//            return response()->json('Thêm mới thành công!',200);
+//        } catch (\Exception $e) {
+//            DB::rollBack();
+//            return response()->json($e,400);
+//        }
+//    }
     public function store(Request $request)
     {
-        DB::beginTransaction();
-        $validator = Validator::make($request->all(), [
-            'member_name' => 'required|max:255',
-            'member_code' => 'required|max:255|unique:members',
-            'email' => 'required|email|max:255|unique:members',
-            'phone' => 'required|max:255|unique:members',
-            'password' => 'required|min:6',
-            'location_id' => 'required',
-            'address' => 'required',
-        ],[
-            'member_name.required' => 'Tên nhân viên không được để trống',
-            'member_code.required' => 'Mã nhân viên không được để trống',
-            'member_code.unique' => 'Mã nhân viên đã tồn tại',
-            'email.required' => 'Email không được để trống',
-            'email.email' => 'Email không đúng định dạng',
-            'email.unique' => 'Email đã tồn tại',
-            'phone.required' => 'Số điện thoại không được để trống',
-            'phone.unique' => 'Số điện thoại đã tồn tại',
-            'password.required' => 'Mật khẩu không được để trống',
-            'password.min' => 'Mật khẩu phải có ít nhất 6 ký tự',
-            'location_id.required' => 'Vui lòng chọn địa điểm',
-            'roles.required' => 'Vui lòng chọn quyền',
-            'departments.required' => 'Vui lòng chọn phòng ban',
-            'address.required' => 'Vui lòng nhập địa chỉ',
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                "status_code" => 400,
-                "error" => $validator->errors()
-            ], 400);
-        }
-        try {
-            $member = Member::create([
-                'member_name' => $request->get('member_name'),
-                'member_code' => $request->get('member_code'),
-                'email' => $request->get('email'),
-                'phone' => $request->get('phone'),
-                'password' => bcrypt($request->get('password')),
-                'location_id' => $request->get('location_id'),
-                'address' => $request->get('address'),
-                'parent_id' => $request->get('parent_id'),
-            ]);
-            $member->roles()->attach($request->get('roles'));
-            $member->department()->attach($request->get('departments'));
-            DB::commit();
-            return response()->json($member,200);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return response()->json($e,400);
-        }
+        $member = Member::create($request->except('roles','departments'));
+        return response()->json('Thêm mới thành viên thành công!',200);
     }
-
     /**
      * Display the specified resource.
      *

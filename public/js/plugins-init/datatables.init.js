@@ -103,8 +103,8 @@ let dataSet = [
             "infoEmpty": "Không có dữ liệu nào",
             "infoFiltered": "Được Lọc Từ _MAX_ Mục",
             "paginate": {
-                "next":       "Trang sau",
-                "previous":   "Trang trước"
+                "next":       ">>",
+                "previous":   "<<"
             },
         }
     });

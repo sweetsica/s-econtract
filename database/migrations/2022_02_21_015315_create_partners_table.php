@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('owner_email')->nullable();//Email chủ nhà thuốc (opt)
             $table->string('owner_mst')->nullable();//MST chủ nhà thuốc (opt)
             $table->string('contract_mode')->default('1'); //Loại đăng ký đối tác (0) - hợp đồng (1)
+            $table->boolean('status')->default('0');
             $table->timestamps();
         });
     }

@@ -52,6 +52,17 @@ class AuthController extends Controller
         return view('back-end.index', compact('page_title', 'page_description', 'action'));
     }
 
+    public function show(Request $request)
+    {
+        $user = $request->user();
+        return response()->json([
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email
+            ]
+        ]);
+    }
     public function login_form(){
         $page_title = 'Page Login';
         $page_description = 'Some description for the page';
@@ -118,18 +129,6 @@ class AuthController extends Controller
 //        return [
 //            'message' => 'Đã thoát, token vô hiệu!'
 //        ];
-    }
-
-    public function getUserInfo(Request $request)
-    {
-        $user = $request->user();
-        return response()->json([
-            'user' => [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email
-            ]
-        ]);
     }
 
     #4
