@@ -43,8 +43,14 @@
                                         <td>{{$data['store_add_DKKD']}}</td>
                                         <td>{{$data['contract_code']}}</td>
                                         <td>{{$data['store_phone']}}</td>
-                                        <td>{{$data['store_contract_type']}}</td>
-                                        <td>{{$data['created_at']}}</td>
+                                        <td>
+                                            @if($data['store_contract_type']=1)
+                                                {{('Đầy đủ')}}
+                                            @else
+                                                {{('Nhanh')}}
+                                            @endif
+                                        </td>
+                                        <td>{{$data['created_at']->format('d-m-Y')}}</td>
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 @if($data['contract_level']==10)
