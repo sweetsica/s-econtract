@@ -34,7 +34,31 @@ class ContractController extends Controller
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data','check_role'));
     }
 
-    public function edit($contract_id)
+    public function contract_0()
+    {
+        $page_title = 'Đăng ký nhanh';
+        $page_description = 'Danh sách hợp đồng đăng ký nhanh';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        $info_data = Contract::where('contract_mode','=',0);
+
+        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
+    }
+
+    public function contract_1()
+    {
+        $page_title = 'Đăng ký chi tiết';
+        $page_description = 'Danh sách hợp đồng đăng ký chi tiết';
+        $logo = "images/logo.png";
+        $logoText = "images/logo-text.png";
+        $action = __FUNCTION__;
+        $info_data = Contract::where('contract_mode','=',0);
+
+        return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
+    }
+
+    public function contract_edit($contract_id)
     {
         $info_data = Contract::where('id', '=', $contract_id)->first();
         $contract_count = Contract::where('id','!=',$contract_id)->count();

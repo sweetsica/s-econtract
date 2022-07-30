@@ -282,6 +282,18 @@ return [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                     'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
+                'contract_0' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'contract_edit' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'contract_1' => [
+                    'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
                 'list_type10' => [
                     'vendor/bootstrap-select/dist/css/bootstrap-select.min.css',
                 ],
@@ -424,6 +436,27 @@ return [
                     'js/jquery-3.2.1.min.js',
                 ],
                 'contract_list'=>[
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'contract_edit'=>[
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'contract_0'=>[
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'contract_1'=>[
                     'vendor/datatables/js/jquery.dataTables.min.js',
                     'js/plugins-init/datatables.init.js',
                     'js/custom.min.js',

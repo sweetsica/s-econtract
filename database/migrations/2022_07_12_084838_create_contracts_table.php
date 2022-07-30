@@ -39,13 +39,14 @@ return new class extends Migration
             $table->string('store_started')->nullable(); // Ngày bắt đầu hợp đồng
             $table->string('store_end')->nullable(); // Ngày kết thúc
             $table->string('member_id')->nullable(); // id TDV
-            $table->integer('contract_level')->nullable(); // Cấp độ hợp đồng - mặc định 10
+            $table->integer('contract_level')->default(10); // Cấp độ hợp đồng - mặc định 10
             $table->string('store_signed')->nullable(); // Tình trạng chữ ký
             $table->string('store_sign_img')->nullable(); // Link ảnh chữ ký
             $table->string('store_bank_name_doppelherz')->nullable(); // Tên ngân hàng Doppelherz
             $table->string('store_bank_number_doppelherz')->nullable(); // Số ngân hàng Doppelherz
             $table->string('store_sign_img_doppelherz')->nullable(); // Link ảnh giám đốc vùng
             $table->string('store_token')->nullable(); // Mật khẩu hợp đồng
+            $table->boolean('contract_mode')->default('0');//Đăng ký nhanh
             $table->timestamps();
         });
     }

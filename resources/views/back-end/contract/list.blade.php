@@ -38,13 +38,12 @@
                                 @foreach($info_data as $data)
                                     <tr>
                                         <td><strong>{{$data['id']}}</strong></td>
-{{--                                        <td><div class="d-flex align-items-center"><img  src="{{ asset('images/avatar/1.jpg') }}" class="rounded-lg mr-2" width="24" alt=""/> <span class="w-space-no">{{$data['name']}}</span></div></td>--}}
                                         <td>{{$data['store_name']}}</td>
                                         <td>{{$data['store_add_DKKD']}}</td>
                                         <td>{{$data['contract_code']}}</td>
                                         <td>{{$data['store_phone']}}</td>
                                         <td>
-                                            @if($data['store_contract_type']=1)
+                                            @if($data['contract_mode']==1)
                                                 {{('Đầy đủ')}}
                                             @else
                                                 {{('Nhanh')}}

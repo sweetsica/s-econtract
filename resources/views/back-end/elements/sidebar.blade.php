@@ -26,11 +26,17 @@
                         </li>
 {{--                        <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false">Phân loại</a>--}}
 {{--                            <ul aria-expanded="false">--}}
-{{--                                --}}{{--                            <li><a href="{{route('contract.list')}}">Tổng hợp phân loại</a>--}}
-{{--                                --}}{{--                            <li><a href="{{route('contract.list.done')}}">Hợp đồng chưa được duyệt</a></li>--}}
-{{--                                --}}{{--                            <li><a href="{{route('contract.list.pending')}}">Hợp đồng đã được duyệt</a></li>--}}
+{{--                                                            <li><a href="{{route('contract.list')}}">Tổng hợp phân loại</a>--}}
+{{--                                                            <li><a href="{{route('contract.list.done')}}">Hợp đồng chưa được duyệt</a></li>--}}
+{{--                                                            <li><a href="{{route('contract.list.pending')}}">Hợp đồng đã được duyệt</a></li>--}}
 {{--                            </ul>--}}
 {{--                        </li>--}}
+                        <li><a class="has-arrow" href="javascript:void(0)" aria-expanded="false">Phân loại</a>
+                            <ul aria-expanded="false">
+                                <li><a href="{{route('contract_0')}}">Hợp đồng nhanh</a>
+                                <li><a href="{{route('contract_1')}}">Hợp đồng đầy đủ</a></li>
+                            </ul>
+                        </li>
                         <li><a href="{{route('contract.seach')}}">Tìm xuất hợp đồng</a></li>
                         {{--                    <li><a href="{{route('contract.show',1)}}">Chi tiết hợp đồng</a></li>--}}
                         {{--                    <li><a href="{{route('upload_pdf')}}">Tải lên hợp đồng</a></li>--}}

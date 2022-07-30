@@ -8,7 +8,12 @@
         <div class="page-titles">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Danh sách</a></li>
-                <li class="breadcrumb-item active"><a href="javascript:void(0)">Phân loại hợp đồng</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Phân loại hợp đồng</a>
+{{--                    <ul aria-expanded="false">--}}
+{{--                        <li><a href="{{route('contract.0')}}">Hợp đồng nhanh</a>--}}
+{{--                        <li><a href="{{route('contract.1')}}">Hợp đồng đầy đủ</a></li>--}}
+{{--                    </ul>--}}
+                </li>
             </ol>
         </div>
         <!-- row -->
