@@ -58,7 +58,7 @@ class ContractController extends Controller
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
 
-    public function contract_edit($contract_id)
+    public function edit($contract_id)
     {
         $info_data = Contract::where('id', '=', $contract_id)->first();
         $contract_count = Contract::where('id','!=',$contract_id)->count();

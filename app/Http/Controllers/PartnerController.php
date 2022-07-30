@@ -114,13 +114,15 @@ class PartnerController extends Controller
      */
     public function edit($id)
     {
+        $info_datas = Contract::where('partnerId','=',$id)->get();
+        $info_data_parent = Partner::where('id','=',$id)->first();
         $page_title = 'Contract Dashboard';
         $page_description = 'Chi tiết hợp đồng';
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
         $info_data = Partner::with('contract')->where('id', '=', $id)->get();
-        return view('back-end.contract.edit', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
+        return view('back-end.contract.edit', compact('page_title', 'page_description','info_datas','info_data_parent','action', 'logo', 'logoText'));
     }
 
     public function update(Request $request, $id)

@@ -135,37 +135,37 @@
                                     <div class="col-md-6">
                                         <div class="col-md-12 fs-20 mb-3">
                                                 <span
-                                                    class="font-w600 text-black">Email:</span> {{$info_data->partner->owner_email}}
+                                                    class="font-w600 text-black">Email:</span> {{$info_data_parent->owner_email}}
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Giới tính:</span> {{$info_data->partner->owner_sex}}
+                                                class="font-w600 text-black">Giới tính:</span> {{$info_data_parent->owner_sex}}
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data->partner->owner_dob}}
+                                                class="font-w600 text-black">Ngày sinh:</span> {{$info_data_parent->owner_dob}}
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Tuổi:</span> {{$info_data->partner->owner_age}}
+                                                class="font-w600 text-black">Tuổi:</span> {{$info_data_parent->owner_age}}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">MST Cá nhân:</span> {{$info_data->partner->owner_mst}}
+                                                class="font-w600 text-black">MST Cá nhân:</span> {{$info_data_parent->owner_mst}}
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">CCCD/CMND:</span> {{$info_data->partner->owner_id_numb}}
+                                                class="font-w600 text-black">CCCD/CMND:</span> {{$info_data_parent->owner_id_numb}}
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data->partner->owner_id_numb_created_at}}
+                                                class="font-w600 text-black">Ngày cấp:</span> {{$info_data_parent->owner_id_numb_created_at}}
                                         </div>
                                         <div class="col-md-12 fs-20 mb-3">
                                             <span
-                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data->owner_id_numb_created_locate}}
+                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_parent->owner_id_numb_created_locate}}
                                         </div>
                                     </div>
 
@@ -204,34 +204,38 @@
                         <div class="card">
                             <div class="card-body">
                                 <div id="accordion-nine" class="accordion accordion-active-header">
-                                    @foreach($info_data_parent->contract as $data)
+{{--                                    @foreach($info_data_parent->contract as $data)--}}
+                                    @foreach($info_datas as $info_data)
                                         <div class="accordion__item">
                                             <div
-                                                class="accordion__header rounded-lg {{$info_data->id == $data->id ? '' :'collapsed'}}"
+                                                class="accordion__header rounded-lg {{$info_data->id == $info_data->id ? '' :'collapsed'}}"
                                                 data-toggle="collapse"
-                                                data-target="#contract_{{$data['id']}}">
+                                                data-target="#contract_{{$info_data['id']}}">
                                                 <span class="accordion__header--icon"></span>
                                                 <span
-                                                    class="accordion__header--text">{{$data['store_name']}}</span>
+                                                    class="accordion__header--text">{{$info_data['store_name']}}</span>
                                                 <span class="accordion__header--indicator"></span>
                                             </div>
-                                            <div id="contract_{{$data['id']}}"
-                                                 class="collapse accordion__body {{$info_data->id == $data->id  ? 'show' :''}}"
+                                            <div id="contract_{{$info_data['id']}}"
+                                                 class="collapse accordion__body {{$info_data->id == $info_data->id  ? 'show' :''}}"
                                                  data-parent="#accordion-nine">
                                                 <div class="py-4">
                                                     <div class="row">
                                                         <div
                                                             class="col-md-12  mb-5 d-flex justify-content-between">
                                                             <div>
-                                                                <a href="{{route('contract.show.pdf',$data['id']).'?type=only_show'}}"
-                                                                   class="btn light  btn-md rounded-lg btn-primary mr-2">
-                                                                    Xuất hợp đồng
-                                                                </a>
+{{--                                                                {{dd($info_data->contract_mode)}}--}}
+                                                                @if ($info_data->contract_mode == 1)
+                                                                    <a href="{{route('contract.show.pdf',$info_data['id']).'?type=only_show'}}"
+                                                                       class="btn light  btn-md rounded-lg btn-primary mr-2">
+                                                                        Xuất hợp đồng
+                                                                    </a>
+                                                                @endif
                                                                 @if(Session::get('session_role') == 'admin')
                                                                     <button type="button"
                                                                             class="btn light  btn-md rounded-lg btn-primary"
                                                                             data-toggle="modal"
-                                                                            data-target="#edit-contract-{{$data['id']}}">
+                                                                            data-target="#edit-contract-{{$info_data['id']}}">
                                                                         Chỉnh sửa hợp đồng
                                                                     </button>
                                                                 @endif
@@ -239,113 +243,113 @@
                                                             <div>
                                                                 <p class="fs-14 text-black mb-1 mr-1">Ngày
                                                                     tạo</p>
-                                                                <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
+                                                                <h4 class="fs-24 text-primary">{{$info_data['created_at']->format('d-m-Y')}}</h4>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <h3 class="font-w600 text-black">Đại
-                                                                lý: {{$data['store_name']}}</h3>
+                                                                lý: {{$info_data['store_name']}}</h3>
                                                         </div>
                                                         <div class="col-md-6 p-0">
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Mã hợp đồng:</span> {{$data['contract_code']}}
+                                                                        class="font-w600 text-black">Mã hợp đồng:</span> {{$info_data['contract_code']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Phạm vi bán hàng:</span> {{$data['store_effect']}}
+                                                                        class="font-w600 text-black">Phạm vi bán hàng:</span> {{$info_data['store_effect']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
                                                                         class="font-w600 text-black">Cấp độ hợp đồng:</span>
-                                                                Hợp đồng cấp {{$data['contract_level']}}
+                                                                Hợp đồng cấp {{$info_data['contract_level']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Mẫu hợp đồng:</span> {{$data['store_contract_type']}}
+                                                                        class="font-w600 text-black">Mẫu hợp đồng:</span> {{$info_data['store_contract_type']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Mã trình dược viên:</span> {{$data->member?->member_code}}
+                                                                        class="font-w600 text-black">Mã trình dược viên:</span> {{$info_data->member?->member_code}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Tên trình dược viên:</span> {{$data->member?->member_name}}
+                                                                        class="font-w600 text-black">Tên trình dược viên:</span> {{$info_data->member?->member_name}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">SĐT Đại lý:</span> {{$data['store_phone']}}
+                                                                        class="font-w600 text-black">SĐT Đại lý:</span> {{$info_data['store_phone']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Địa chỉ:</span> {{$data['store_add_DKKD']}}
+                                                                        class="font-w600 text-black">Địa chỉ:</span> {{$info_data['store_add_DKKD']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                 <span
-                                                                    class="font-w600 text-black">Địa chỉ giao hàng:</span> {{$data['store_add_GH']}}
+                                                                    class="font-w600 text-black">Địa chỉ giao hàng:</span> {{$info_data['store_add_GH']}}
                                                             </div>
 
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                 <span
-                                                                    class="font-w600 text-black">Số giấy phép ĐKKDD:</span> {{$data['store_id_Numb_GPDKKD']}}
+                                                                    class="font-w600 text-black">Số giấy phép ĐKKDD:</span> {{$info_data['store_id_Numb_GPDKKD']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{$data['store_GPDKKD']}}
+                                                                        class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{$info_data['store_GPDKKD']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Người liên hệ:</span> {{$data['store_contact_name']}}
+                                                                        class="font-w600 text-black">Người liên hệ:</span> {{$info_data['store_contact_name']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Chức danh :</span> {{$data['store_contact_position']}}
+                                                                        class="font-w600 text-black">Chức danh :</span> {{$info_data['store_contact_position']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                 <span
-                                                                    class="font-w600 text-black">SĐT Người liên hệ:</span> {{$data['store_contact_phone']}}
+                                                                    class="font-w600 text-black">SĐT Người liên hệ:</span> {{$info_data['store_contact_phone']}}
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6 p-0">
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Chủ ngân hàng:</span> {{$data['store_bank_holder']}}
+                                                                        class="font-w600 text-black">Chủ ngân hàng:</span> {{$info_data['store_bank_holder']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Tên ngân hàng :</span> {{$data['store_bank']}}
+                                                                        class="font-w600 text-black">Tên ngân hàng :</span> {{$info_data['store_bank']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Số tài khoản:</span> {{$data['store_bank_numb']}}
+                                                                        class="font-w600 text-black">Số tài khoản:</span> {{$info_data['store_bank_numb']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày bắt đầu:</span> {{$data['store_started']}}
+                                                                        class="font-w600 text-black">Ngày bắt đầu:</span> {{$info_data['store_started']}}
                                                             </div>
                                                             <div class="col-md-12 fs-20 mt-3">
                                                                     <span
-                                                                        class="font-w600 text-black">Ngày kết thúc:</span> {{$data['store_end']}}
+                                                                        class="font-w600 text-black">Ngày kết thúc:</span> {{$info_data['store_end']}}
                                                             </div>
                                                             {{--                                                            <div class="col-md-12 fs-20 mt-3">--}}
-                                                            {{--                                                                @if($data['store_signed'] !== 0 && $data['store_sign_img'])--}}
+                                                            {{--                                                                @if($info_data['store_signed'] !== 0 && $info_data['store_sign_img'])--}}
                                                             {{--                                                                    <img--}}
                                                             {{--                                                                        style="width: 100%;height: 200px; object-fit: contain"--}}
-                                                            {{--                                                                        src="{{public_path($data['store_sign_img'])}}"--}}
+                                                            {{--                                                                        src="{{public_path($info_data['store_sign_img'])}}"--}}
                                                             {{--                                                                        alt="/">--}}
                                                             {{--                                                                @endif--}}
                                                             {{--                                                            </div>--}}
                                                         </div>
                                                         <div class="col-md-12 mt-5">
                                                             <div class="modal fade bd-example-modal-lg"
-                                                                 id="edit-contract-{{$data['id']}}"
+                                                                 id="edit-contract-{{$info_data['id']}}"
                                                                  tabindex="-1" role="dialog"
                                                                  aria-labelledby="myLargeModalLabel"
                                                                  aria-hidden="true">
                                                                 <div
                                                                     class="modal-dialog modal-xl modal-dialog modal-dialog-centered">
                                                                     <form
-                                                                        action="{{route('contract.update',[$data['id']])}}"
+                                                                        action="{{route('contract.update',[$info_data['id']])}}"
                                                                         method="post" class="modal-content">
                                                                         @csrf
                                                                         <div class="modal-header">
@@ -367,7 +371,7 @@
                                                                                             for="exampleInputEmail1">Tên
                                                                                             đại lý</label>
                                                                                         <input name="store_name"
-                                                                                               value="{{$data['store_name']}}"
+                                                                                               value="{{$info_data['store_name']}}"
                                                                                                type="text"
                                                                                                class="form-control"
                                                                                                id="exampleInputEmail1"
@@ -383,7 +387,7 @@
                                                                                             điện thoại</label>
                                                                                         <input
                                                                                             name="store_phone"
-                                                                                            value="{{$data['store_phone']}}"
+                                                                                            value="{{$info_data['store_phone']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -398,7 +402,7 @@
                                                                                             for="exampleInputEmail1">Website</label>
                                                                                         <input
                                                                                             name="store_website"
-                                                                                            value="{{$data['store_website']}}"
+                                                                                            value="{{$info_data['store_website']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -415,7 +419,7 @@
                                                                                             name="store_add_DKKD"
                                                                                             class="form-control"
                                                                                             id="address"
-                                                                                            placeholder="Địa chỉ chi tiết">{{$data['store_add_GH']}}</textarea>
+                                                                                            placeholder="Địa chỉ chi tiết">{{$info_data['store_add_GH']}}</textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -426,7 +430,7 @@
                                                                                             hàng</label>
                                                                                         <input
                                                                                             name="store_bank_holder"
-                                                                                            value="{{$data['store_bank_holder']}}"
+                                                                                            value="{{$info_data['store_bank_holder']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -441,7 +445,7 @@
                                                                                             for="exampleInputEmail1">Tên
                                                                                             ngân hàng</label>
                                                                                         <input name="store_bank"
-                                                                                               value="{{$data['store_bank']}}"
+                                                                                               value="{{$info_data['store_bank']}}"
                                                                                                type="text"
                                                                                                class="form-control"
                                                                                                id="exampleInputEmail1"
@@ -458,7 +462,7 @@
                                                                                             hàng</label>
                                                                                         <input
                                                                                             name="store_bank_numb"
-                                                                                            value="{{$data['store_bank_numb']}}"
+                                                                                            value="{{$info_data['store_bank_numb']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -474,7 +478,7 @@
                                                                                             lên hệ</label>
                                                                                         <input
                                                                                             name="store_contact_name"
-                                                                                            value="{{$data['store_contact_name']}}"
+                                                                                            value="{{$info_data['store_contact_name']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -490,7 +494,7 @@
                                                                                             danh</label>
                                                                                         <input
                                                                                             name="store_contact_position"
-                                                                                            value="{{$data['store_contact_position']}}"
+                                                                                            value="{{$info_data['store_contact_position']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -506,7 +510,7 @@
                                                                                             Người lên hệ</label>
                                                                                         <input
                                                                                             name="store_contact_phone"
-                                                                                            value="{{$data['store_contact_phone']}}"
+                                                                                            value="{{$info_data['store_contact_phone']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -523,7 +527,7 @@
                                                                                             ĐKKD</label>
                                                                                         <input
                                                                                             name="store_id_Numb_GPDKKD"
-                                                                                            value="{{$data['store_id_Numb_GPDKKD']}}"
+                                                                                            value="{{$info_data['store_id_Numb_GPDKKD']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -538,7 +542,7 @@
                                                                                             Ngày cấp GPĐKKD</label>
                                                                                         <input
                                                                                             name="store_GPDKKD"
-                                                                                            value="{{$data['store_GPDKKD']}}"
+                                                                                            value="{{$info_data['store_GPDKKD']}}"
                                                                                             type="text"
                                                                                             class="form-control"
                                                                                             id="exampleInputEmail1"
@@ -555,7 +559,7 @@
                                                                                             name="store_add_GH"
                                                                                             class="form-control"
                                                                                             id="address"
-                                                                                            placeholder="Nhập địa chỉ chi tiết...">{{$data['store_add_DKKD']}}</textarea>
+                                                                                            placeholder="Nhập địa chỉ chi tiết...">{{$info_data['store_add_DKKD']}}</textarea>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
@@ -567,19 +571,19 @@
                                                                                             name="contract_level"
                                                                                             class="form-control">
                                                                                             <option
-                                                                                                {{$data['contract_level']== 1 ? 'selected':''}} value="1">
+                                                                                                {{$info_data['contract_level']== 1 ? 'selected':''}} value="1">
                                                                                                 Hợp đồng cấp 1
                                                                                             </option>
                                                                                             <option
-                                                                                                {{$data['contract_level']== 2 ? 'selected':''}} value="2">
+                                                                                                {{$info_data['contract_level']== 2 ? 'selected':''}} value="2">
                                                                                                 Hợp đồng cấp 2
                                                                                             </option>
                                                                                             <option
-                                                                                                {{$data['contract_level']== 3 ? 'selected':''}} value="3">
+                                                                                                {{$info_data['contract_level']== 3 ? 'selected':''}} value="3">
                                                                                                 Hợp đồng cấp 3
                                                                                             </option>
                                                                                             <option
-                                                                                                {{$data['contract_level']== 4 ? 'selected':''}} value="4">
+                                                                                                {{$info_data['contract_level']== 4 ? 'selected':''}} value="4">
                                                                                                 Hợp đồng cấp 4
                                                                                             </option>
                                                                                         </select>
@@ -595,16 +599,16 @@
                                                                                             name="store_contract_type"
                                                                                             class="form-control">
                                                                                             <option
-                                                                                                {{$data['store_contract_type']== \App\Enum\CommonEnum::CONTRACT_OTC_NEW_POLICY ? 'selected':''}} value="1">
+                                                                                                {{$info_data['store_contract_type']== \App\Enum\CommonEnum::CONTRACT_OTC_NEW_POLICY ? 'selected':''}} value="1">
                                                                                                 Hợp đồng chính sách mới
                                                                                             </option>
                                                                                             <option
-                                                                                                {{$data['store_contract_type']== \App\Enum\CommonEnum::CONTRACT_OTC_JAPAN ? 'selected':''}} value="2">
+                                                                                                {{$info_data['store_contract_type']== \App\Enum\CommonEnum::CONTRACT_OTC_JAPAN ? 'selected':''}} value="2">
                                                                                                 Hợp đồng du lịch Nhật
                                                                                                 Bản
                                                                                             </option>
                                                                                             <option
-                                                                                                {{$data['store_contract_type']== \App\Enum\CommonEnum::CONTRACT_OTC_GERMANY ? 'selected':''}} value="2">
+                                                                                                {{$info_data['store_contract_type']== \App\Enum\CommonEnum::CONTRACT_OTC_GERMANY ? 'selected':''}} value="2">
                                                                                                 Hợp đồng du lịch Đức
                                                                                             </option>
                                                                                         </select>
@@ -632,6 +636,7 @@
                                             </div>
                                         </div>
                                     @endforeach
+{{--                                    @endforeach--}}
                                 </div>
                             </div>
                         </div>
