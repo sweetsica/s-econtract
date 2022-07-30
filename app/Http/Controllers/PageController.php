@@ -19,11 +19,11 @@ class PageController extends Controller
             return redirect()->to('/contract/dashboard');
         }else{
             $page_title = 'S-Contract Hợp đồng điện tử';
-            $page_description = 'Đăng ký đại lý Doppelherz Việt Nam';
+            $page_description = 'Thông tin đối tác Doppelherz Việt Nam';
             $logo = "images/logo.png";
             $logoText = "images/logo-text.png";
             $action = __FUNCTION__;
-            return view('back-end.index', compact('page_title', 'page_description','action','logo','logoText'));
+            return view('back-end.partner.partner_login', compact('page_title', 'page_description','action','logo','logoText'));
         }
     }
 //    public function lockpage(Request $request)

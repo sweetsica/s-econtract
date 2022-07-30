@@ -8,7 +8,7 @@
     <title>{{ config('dz.name') }} | @yield('title', $page_title ?? '')</title>
     <meta name="description" content="@yield('page_description', $page_description ?? '')"/>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('icons/favicon.ico') }}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 </head>

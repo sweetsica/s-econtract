@@ -23,7 +23,7 @@
                         <form action="{{route('login.check')}}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label><strong>Tên đăng nhập</strong></label>
+                                <label><strong>Tài khoản nhân viên</strong></label>
                                 <input type="text" class="form-control" name="username"/>
                             </div>
                             <div class="form-group">
