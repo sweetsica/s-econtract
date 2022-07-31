@@ -149,7 +149,6 @@ class PartnerController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-
         return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data_partner'));
 
     }

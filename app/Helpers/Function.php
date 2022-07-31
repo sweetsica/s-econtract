@@ -66,3 +66,11 @@ if (!function_exists('memberSelect')) {
     }
 }
 
+if(!function_exists('format_date')){
+    function format_date($date, $format = 'd/m/Y'){
+        if(!empty($date)){
+            return date($format, strtotime($date));
+        }
+        return '';
+    }
+}
