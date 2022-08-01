@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\LocalController;
+use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MemberController;
@@ -49,6 +50,10 @@ Route::get('/local',[LocalController::class,'getLocal']);
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
 Route::get('/partner/check',[PartnerController::class,'partner_check']);
 Route::post('/members/save-members',[MemberController::class,'store']);
+
+//test api
+
+Route::post('/test',[TestController::class,'testContractRegister']);
 
 //protected routes sanctum
 //Route::get('/getuser',[AuthController::class,'getuser']);
