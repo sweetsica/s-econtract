@@ -29,9 +29,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Đăng ký đối tác
 Route::get('/data_partner', [\App\Http\Controllers\Api\PartnerController::class, 'index']);
 
-Route::group(['middleware' => ['cors', 'validate_api_token']], function () {
-    Route::post('/signup_partner', [\App\Http\Controllers\Api\PartnerController::class, 'store']);
-});
+    Route::post('/signup_partner', [PartnerController::class, 'store'])->middleware('cors');
 
 //Đăng ký admin
 Route::post('/signup',[AuthController::class,'register']);
