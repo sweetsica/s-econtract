@@ -42,7 +42,7 @@ class PartnerController extends Controller
 
             if ($request['contract_mode'] == 0) {
                 //Đăng ký nhanh
-                echo 'Tạo nhanh';
+               // echo 'Tạo nhanh';
                 $checkPartner = Partner::where('owner_phone', $request->owner_phone)->orWhere('owner_id_numb', $request->owner_id_numb)->first();
                 if ($checkPartner) {
                     $data = $checkPartner;
