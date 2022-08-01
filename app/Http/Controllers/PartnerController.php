@@ -25,7 +25,7 @@ class PartnerController extends Controller
      * Danh sách partner mới
      */
     public function new_partner(){
-        $info_data = Partner::where('contract_mode',0)->get();
+        $info_data = Partner::where('contract_child',0)->get();
         $page_title = 'Contract Dashboard';
         $page_description = 'Đối tác mới';
         $logo = "images/logo.png";
