@@ -31,11 +31,11 @@ use App\Http\Controllers\MemberController;
 Route::get('/', [PageController::class, 'index'])->name('index');
 //Auth module
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-Route::prefix('dangky')->group(function (){
+Route::prefix('dang-ky')->group(function (){
     Route::get('/', [AuthController::class, 'registerIndex'])->name('signup');
     Route::post('/check', [AuthController::class, 'registerProcess']);
 });
-Route::prefix('dangnhap')->group(function () {
+Route::prefix('dang-nhap')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('login.index');
     Route::post('/check', [AuthController::class, 'login'])->name('login.check');
 });
@@ -78,7 +78,7 @@ Route::prefix('hop-dong')->group(function (){
 });
 //PDF module
 Route::prefix('pdf')->group(function (){
-    Route::get('/dynamic_pdf', [PDFController::class, 'index'])->name('demo.pdf');
+    Route::get('/dynamic-pdf', [PDFController::class, 'index'])->name('demo.pdf');
     Route::get('/pre_dynamic_pdf', [PDFController::class, 'pre_pdf'])->name('pre.pdf');
     Route::get('/hop-dong-pdf/{id}', [ContractController::class, 'show_partner_pdf']);
 
@@ -115,7 +115,7 @@ Route::prefix('thanh-vien')->group(function(){
     Route::get('/vai-tro-quan-ly', [MemberController::class,'get_manager'])->name('member.manage.get');
     Route::prefix('hop-dong')->group(function(){
         Route::get('/danh-sach',[MemberController::class,'member_contract_list'])->name('member.contract.list');
-        Route::get('/thanh-vien',[MemberController::class,'team_contract_list'])->name('member.team.contract.list');
+        Route::get('/doi-cua-ban',[MemberController::class,'team_contract_list'])->name('member.team.contract.list');
     });
     Route::get('/dang-nhap',[AuthController::class,'member_login_form'])->name('member.login');
     Route::post('/dang-nhap/check',[AuthController::class,'member_login'])->name('member.login.post');

@@ -3,7 +3,7 @@
 
 
 {{-- Content --}}
-{{dd($info_data_partner)}}
+{{--{{dd($info_data_partner)}}--}}
 @section('content')
     <div class="container-fluid">
         <div class="form-head page-titles d-flex  align-items-center">
