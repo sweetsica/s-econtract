@@ -20,12 +20,7 @@ class PartnerController extends Controller
         return response()->json($partners, 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function store(Request $request)
     {
         try {
@@ -52,7 +47,7 @@ class PartnerController extends Controller
                 if ($checkPartner) {
                     $data = $checkPartner;
                     $data['notice'] = 'Bạn đã là đối tác!';
-                    return response($data, 200);
+                    return response()->json($data, 200);
                 } else {
                     //Nếu thông tin partner chưa có
                     $partner = Partner::create($request->only(['owner_name', 'owner_id_numb', 'owner_id_numb_created_at', 'owner_id_numb_created_locate', 'owner_sex', 'owner_dob', 'owner_age', 'owner_token', 'owner_phone', 'owner_email', 'owner_mst']));
@@ -112,10 +107,6 @@ class PartnerController extends Controller
 //                }
 //            }
 
-            return response()->json([
-                'notice' => 'Tạo thành công, chúng tôi sẽ liên hệ bạn sớm nhất!',
-                'redirect_url' => url('/doi-tac/dang-nhap')
-            ], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
