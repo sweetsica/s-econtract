@@ -61,10 +61,10 @@ class PartnerController extends Controller
 
             } else {
                 //Đăng ký đầy đủ
-                echo 'Tạo chậm';
+               // echo 'Tạo chậm';
                 $checkPartner = Partner::where('owner_phone', $request->owner_phone)->orWhere('owner_id_numb', $request->owner_id_numb)->first();
                 if ($checkPartner) {
-                    echo 'Bạn đã là đối tác!';
+                   // echo 'Bạn đã là đối tác!';
                     $partner = Partner::find($checkPartner->id)->update($request->only(['owner_sex','owner_dob','owner_age','owner_id_numb_created_at','owner_id_numb_created_locate','owner_mst']));
 //                    $checkPartner = Partner::update($request->only(['owner_sex','owner_dob','owner_age','owner_id_numb_created_at','owner_id_numb_created_locate','owner_mst']));
 //                    $partner->save();
@@ -73,7 +73,7 @@ class PartnerController extends Controller
                     $contract->contract_code = 'HD-2022/' . $contract->id . $contract->created_at->format('-His');
                     $contract->partnerId = $checkPartner->id;
                     $contract->save();
-                    echo 'Thêm hợp đồng và cập nhật đối tác thành công';
+                   // echo 'Thêm hợp đồng và cập nhật đối tác thành công';
                     return response()->json($contract, 200);
                 } else {
                     //Nếu thông tin partner chưa có
