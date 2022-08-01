@@ -1,4 +1,9 @@
 <?php
+header("Cache-Control: no-cache, must-revalidate");
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+header('Access-Control-Allow-Origin:  *');
+header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
+header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\LocalController;
@@ -6,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
