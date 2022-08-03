@@ -18,7 +18,7 @@ class LocalController extends Controller
         $local = Local::with('parent', 'children')->search($request)->get();
         return response()->json([
             "local"=> $local
-        ]);
+        ],200)->header("Access-Control-Allow-Origin",  "*");
     }
 
     /**
