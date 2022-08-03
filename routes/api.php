@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Api\PartnerController;
 use App\Http\Controllers\LocalController;
-use App\Http\Controllers\TestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MemberController;
@@ -22,10 +21,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 //Đăng ký đối tác
-Route::get('/data_partner', [PartnerController::class, 'index']);
-Route::middleware(['cors'])->group(function () {
-    Route::post('/signup_partner', [PartnerController::class, 'store']);
-});
+Route::get('/data_partner', [\App\Http\Controllers\Api\PartnerController::class, 'index']);
+Route::post('/signup_partner', [\App\Http\Controllers\Api\PartnerController::class, 'store']);
+
 //Đăng ký admin
 Route::post('/signup',[AuthController::class,'register']);
 //Lấy list admin
@@ -50,10 +48,6 @@ Route::get('/local',[LocalController::class,'getLocal']);
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
 Route::get('/partner/check',[PartnerController::class,'partner_check']);
 Route::post('/members/save-members',[MemberController::class,'store']);
-
-//test api
-
-Route::post('/test',[TestController::class,'testContractRegister']);
 
 //protected routes sanctum
 //Route::get('/getuser',[AuthController::class,'getuser']);
