@@ -82,7 +82,7 @@ class PartnerController extends Controller
                         'data' => $contract,
                         'notice' => 'Tạo thành công, chúng tôi sẽ liên hệ bạn sớm nhất!',
                         'redirect_url' => url('/doi-tac/dang-nhap')
-                    ], 200);
+                    ], 200)->header("Access-Control-Allow-Origin",  "*");
                 } else {
                     //Nếu thông tin partner chưa có
                     $partner = Partner::create($request->only(['owner_name', 'owner_id_numb', 'owner_id_numb_created_at', 'owner_id_numb_created_locate', 'owner_sex', 'owner_dob', 'owner_age', 'owner_token', 'owner_phone', 'owner_email', 'owner_mst']));
@@ -95,14 +95,14 @@ class PartnerController extends Controller
                         'data' => $contract,
                         'notice' => 'Tạo thành công, chúng tôi sẽ liên hệ bạn sớm nhất!',
                         'redirect_url' => url('/doi-tac/dang-nhap')
-                    ], 200);
+                    ], 200)->header("Access-Control-Allow-Origin",  "*");
                 }
             }
             return response()->json([
                 'data' => $checkPartne,
                 'notice' => 'Tạo thành công, chúng tôi sẽ liên hệ bạn sớm nhất!',
                 'redirect_url' => url('/doi-tac/dang-nhap')
-            ], 200);
+            ], 200)->header("Access-Control-Allow-Origin",  "*");
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
