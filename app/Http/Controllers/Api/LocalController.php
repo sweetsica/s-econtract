@@ -13,12 +13,9 @@ class LocalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $local = Local::with('parent', 'children')->search($request)->get();
-        return response()->json([
-            "local"=> $local
-        ],200)->header("Access-Control-Allow-Origin",  "*");
+        return response()->json(Local::all(),200);
     }
 
     /**
@@ -48,9 +45,12 @@ class LocalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($request)
     {
-        //
+        $local = Local::with('parent', 'children')->search($request)->get();
+        return response()->json([
+            "local"=> $local
+        ],200)->header("Access-Control-Allow-Origin",  "*");
     }
 
     /**
