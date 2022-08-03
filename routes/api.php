@@ -44,8 +44,8 @@ Route::group(['middleware' => ['auth:api']], function(){
 Route::get('/members/search/{name}',[MemberController::class,'search']);
 Route::get('/thanh-vien/tim-kiem',[MemberController::class,'member_check']);
 
-Route::get('/local',[LocalController::class,'show'])->middleware('cors','validate_api_token');
-Route::post('/local-show',[LocalController::class,'index'])->middleware('cors','validate_api_token');
+Route::get('/local',[LocalController::class,'show']);
+Route::post('/local-show',[LocalController::class,'index']);
 
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
 Route::get('/partner/check',[PartnerController::class,'partner_check']);
