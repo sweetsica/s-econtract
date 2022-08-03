@@ -45,7 +45,7 @@ class LocalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($request)
+    public function show(Request $request)
     {
         $local = Local::with('parent', 'children')->search($request)->get();
         return response()->json([

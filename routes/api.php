@@ -45,7 +45,7 @@ Route::get('/members/search/{name}',[MemberController::class,'search']);
 Route::get('/thanh-vien/tim-kiem',[MemberController::class,'member_check']);
 
 Route::get('/local',[LocalController::class,'show']);
-Route::post('/local-show',[LocalController::class,'index']);
+Route::get('/local-show',[LocalController::class,'index']);
 
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
 Route::get('/partner/check',[PartnerController::class,'partner_check']);
