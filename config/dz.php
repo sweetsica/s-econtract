@@ -38,6 +38,12 @@ return [
                 'list'=>[
                     'vendor/datatables/css/jquery.dataTables.min.css',
                 ],
+                'contract_0'=>[
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
+                'contract_1'=>[
+                    'vendor/datatables/css/jquery.dataTables.min.css',
+                ],
                 //page custom
                 'member_contract_list'=>[
                     'vendor/datatables/css/jquery.dataTables.min.css',
@@ -391,6 +397,22 @@ return [
             ],
             'js' => [
                 'list'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'contract_0'=>[
+                    'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
+                    'vendor/datatables/js/jquery.dataTables.min.js',
+                    'js/plugins-init/datatables.init.js',
+                    'js/custom.min.js',
+                    'js/deznav-init.js',
+                    'js/jquery-3.2.1.min.js',
+                ],
+                'contract_1'=>[
                     'vendor/bootstrap-select/dist/js/bootstrap-select.min.js',
                     'vendor/datatables/js/jquery.dataTables.min.js',
                     'js/plugins-init/datatables.init.js',

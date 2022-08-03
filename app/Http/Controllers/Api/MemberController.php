@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Local;
 use App\Models\Member;
 use App\Models\Partner;
 use App\Models\PersonalAccessToken;

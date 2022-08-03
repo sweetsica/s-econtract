@@ -19,7 +19,7 @@
                         <form action="{{route('partner.login.submit')}}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label for="account_phone"><strong>Số điện thoại người đại diện</strong></label>
+                                <label for="account_phone"><strong>Email/Số điện thoại người đại diện</strong></label>
                                 <input type="text" class="form-control" id="account_phone" name="partner_info">
                             </div>
                             <div class="form-group">
