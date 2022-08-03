@@ -1,12 +1,6 @@
 <?php
-header("Cache-Control: no-cache, must-revalidate");
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
-header('Access-Control-Allow-Origin:  *');
-header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
-
 use App\Http\Controllers\Api\PartnerController;
-use App\Http\Controllers\LocalController;
+use App\Http\Controllers\Api\LocalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MemberController;
@@ -50,7 +44,7 @@ Route::group(['middleware' => ['auth:api']], function(){
 Route::get('/members/search/{name}',[MemberController::class,'search']);
 Route::get('/thanh-vien/tim-kiem',[MemberController::class,'member_check']);
 
-Route::get('/local',[LocalController::class,'getLocal']);
+Route::get('/local',[LocalController::class,'index']);
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
 Route::get('/partner/check',[PartnerController::class,'partner_check']);
 Route::post('/members/save-members',[MemberController::class,'store']);
