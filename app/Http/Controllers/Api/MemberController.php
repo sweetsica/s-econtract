@@ -67,8 +67,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        return Local::all();
-//        return Member::all();
+        return Member::all();
     }
 
     /**
