@@ -45,9 +45,7 @@ Route::get('/members/search/{name}',[MemberController::class,'search']);
 Route::get('/thanh-vien/tim-kiem',[MemberController::class,'member_check']);
 
 
-Route::group(['middleware' => ['cors', 'validate_api_token']], function () {
-    Route::get('/local',[LocalController::class,'index']);
-});
+Route::get('/local',[LocalController::class,'index'])->middleware('cors','validate_api_token');
 Route::post('/local-show',[LocalController::class,'index']);
 
 Route::get('/members/check',[MemberController::class,'checkMemberExist']);
