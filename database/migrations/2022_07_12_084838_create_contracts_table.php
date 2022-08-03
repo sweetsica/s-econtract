@@ -32,9 +32,9 @@ return new class extends Migration
             $table->string('store_bank')->nullable(); // Loại tài khoản ngân hàng cửa hàng
             $table->string('store_bank_holder')->nullable(); // Tên chủ sở hữu ngân hàng cửa hàng
             $table->string('store_bank_numb')->nullable(); // Số tài khoản ngân hàng cửa hàng
-            $table->string('store_contact_name')->nullable(); // Tên người liên hệ tại cửa hàng
-            $table->string('store_contact_phone')->nullable(); // Số liên hệ tại cửa hàng
-            $table->string('store_contact_position')->nullable(); // Chức vụ người liên hệ tại cửa hàng
+            $table->string('store_contract_name')->nullable(); // Tên người liên hệ tại cửa hàng
+            $table->string('store_contract_phone')->nullable(); // Số liên hệ tại cửa hàng
+            $table->string('store_contract_position')->nullable(); // Chức vụ người liên hệ tại cửa hàng
             $table->string('store_effect')->nullable(); // Phạm vi bán hàng tại cửa hàng
             $table->string('store_started')->nullable(); // Ngày bắt đầu hợp đồng
             $table->string('store_end')->nullable(); // Ngày kết thúc
