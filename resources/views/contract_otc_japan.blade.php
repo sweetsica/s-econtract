@@ -1,4 +1,6 @@
-<!doctype html>
+
+{{--{{dd(public_path('/images/pdf-image/logo.img'))}}--}}
+    <!doctype html>
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width"/>
@@ -14,7 +16,7 @@
     <tr>
         <td width="30%" style="text-align: center">
             <img width="100" height="101" style="margin-bottom:5px"
-                 src="https://doppelherz.vn/wp-content/uploads/2022/01/LOGO-DOPPELHERZ-Logo-tren-an-pham-792x800.png"/>
+                 src="{{public_path('images\pdf-image\logo.img')}}"/>
             <h4 style="font-size: 15px"><b>MARTERTRAN</b></h4>
             <h6 style="margin-top: 10px">Số: 12072022/HĐĐK</h6>
         </td>
@@ -91,56 +93,50 @@
                         Theo giấy ủy quyền số: ................................................
                     </td>
                 </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="padding-top: 20px">
-            <table width="100%">
-                <tbody>
-                <tr>
-                    <td width="15%">
+                <tr size="">
+                    <td width="20%">
+                        &nbsp;
                         <h4>BÊN B</h4>
                     </td>
-                    <td width="80%" colspan="3"><h4>: {{$info['store_name']}}</h4></td>
+                    <td width="80%" colspan="3">
+                        &nbsp;
+                        <h4>: {{$info['store_name']}}</h4>
+                    </td>
                 </tr>
                 <tr>
-                    <td width="15%">
+                    <td width="20%">
                         Địa chỉ
                     </td>
-                    <td colspan="3" width="80%">:
-                        {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}
+                    <td colspan="3" width="80%">:   {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}
                         , {{$info->local_dkkd?->parent?->parent?->name}}
                     </td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Điện thoại
                     </td>
                     <td width="20%">: {{$info['store_phone']}}</td>
                     <td width="30%">Mã số thuế : {{$info['store_id_Numb_GPDKKD']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Tài khoản
                     </td>
                     <td colspan="3" width="80%">: {{$info['store_bank_numb']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Ngân hàng
                     </td>
                     <td colspan="3" width="80%">: {{$info['store_bank']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Đại diện
                     </td>
                     <td width="30%">: Ông {{$info->partner?->owner_name}}</td>
                     <td width="50%">Chức danh: Chủ đại lý</td>
                 </tr>
-
                 </tbody>
             </table>
         </td>
@@ -338,7 +334,7 @@
                          src="{{public_path($info->doppelherz?->image)}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path("/images/white.png")}}">
+                         src="{{public_path("images/white.png")}}">
                 @endif
             </div>
             {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
@@ -354,7 +350,7 @@
                     <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path("/images/white.png")}}">
+                         src="{{public_path("images/white.png")}}">
                 @endif
             </div>
             @if($info->store_sign_img)
@@ -806,7 +802,7 @@
     <tr>
         <td colspan="2" style="text-align: center">
             <h2>PHỤ LỤC II: CHÍNH SÁCH BÁN HÀNG</h2>
-            <p>(Đính kèm Hợp đồng số ……………….…/2022/HĐĐL ký ngày …………………… )</p>
+            <p>(Đính kèm Hợp đồng số …………………………/2022/HĐĐL ký ngày ……………………………… )</p>
         </td>
     </tr>
     <tr>
@@ -861,7 +857,7 @@
                          src="{{public_path($info->doppelherz?->image)}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path("/images/white.png")}}">
+                         src="{{public_path("images/white.png")}}">
                 @endif
             </div>
             {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
@@ -877,7 +873,7 @@
                     <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path("/images/white.png")}}">
+                         src="{{public_path("images/white.png")}}">
                 @endif
             </div>
             @if($info->store_sign_img)

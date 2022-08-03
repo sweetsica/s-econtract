@@ -338,7 +338,7 @@
                          src="{{public_path($info->doppelherz?->image)}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path("/images/white.png")}}">
+                         src="{{public_path("images/white.png")}}">
                 @endif
             </div>
             {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
@@ -354,7 +354,7 @@
                     <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path("/images/white.png")}}">
+                         src="{{public_path("images/white.png")}}">
                 @endif
             </div>
             @if($info->store_sign_img)
@@ -861,7 +861,7 @@
                          src="{{public_path($info->doppelherz?->image)}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path("/images/white.png")}}">
+                         src="{{public_path("images/white.png")}}">
                 @endif
             </div>
             {{--                        <span style="font-weight: bold;font-size: 16px">{{$info['name_doppelherz']}}</span>--}}
@@ -877,7 +877,7 @@
                     <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path("/images/white.png")}}">
+                         src="{{public_path("images/white.png")}}">
                 @endif
             </div>
             @if($info->store_sign_img)
