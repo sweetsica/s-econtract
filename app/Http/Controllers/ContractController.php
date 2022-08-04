@@ -134,9 +134,9 @@ class ContractController extends Controller
 
     // Dành cho người quản lý muốn xem chi tiết hợp đồng trên pdf
     public function show_contract_pdf(Request $request,$id){
-        $contract = Contract::find($id);
-        $type = $request->get('type');
         try{
+            $contract = Contract::find($id);
+            $type = $request->get('type');
             if($type == 'only_show'){
                 $pdf = $this->show_contract($contract);
                 $time = Carbon::now()->format('d-m-Y');
