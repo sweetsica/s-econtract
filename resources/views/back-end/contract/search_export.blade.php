@@ -25,7 +25,7 @@
                         <form action="{{route('contract.return.export')}}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label><strong>Mã hợp đồng</strong></label>
+                                <label><strong>Mã hợp đồng / SĐT Đại lý</strong></label>
                                 <input type="text" class="form-control" name="contract_title">
                             </div>
                             <div class="form-group">

@@ -38,7 +38,7 @@
             <br/>
             <p>- Căn cứ vào nhu cầu và thỏa thuận của hai bên.</p>
             <br/>
-            <p>Hôm nay, ngày {{time('d/m/Y')}}, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</p>
+            <p>Hôm nay, ngày……../….…./2022, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</p>
         </td>
 
     </tr>
@@ -83,7 +83,7 @@
                     <td width="20%">
                         Đại diện
                     </td>
-{{--                    <td width="30%">: Ông {{$info?->doppelherz?->name}}</td>--}}
+                    <td width="30%">: Ông {{$info?->doppelherz?->name}}</td>
                     <td width="50%">Chức danh: Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
                 </tr>
                 <tr>
@@ -91,62 +91,54 @@
                         Theo giấy ủy quyền số: ................................................
                     </td>
                 </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="padding-top: 20px">
-            <table width="100%">
-                <tbody>
-                <tr>
-                    <td width="15%">
+                <tr size="">
+                    <td width="20%">
+                        &nbsp;
                         <h4>BÊN B</h4>
                     </td>
-                    <td width="80%" colspan="3"><h4>: {{$info['store_name']}}</h4></td>
+                    <td width="80%" colspan="3">
+                        &nbsp;
+                        <h4>: {{$info['store_name']}}</h4>
+                    </td>
                 </tr>
                 <tr>
-                    <td width="15%">
+                    <td width="20%">
                         Địa chỉ
                     </td>
-                    <td colspan="3" width="80%">:
-{{--                        {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}--}}
-{{--                        , {{$info->local_dkkd?->parent?->parent?->name}}--}}
-                        {{$info['store_add_DKKD'].', '.$info['store_local_DKKD']}}
+                    <td colspan="3" width="80%">:   {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}
+                        , {{$info->local_dkkd?->parent?->parent?->name}}
                     </td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Điện thoại
                     </td>
                     <td width="20%">: {{$info['store_phone']}}</td>
                     <td width="30%">Mã số thuế : {{$info['store_id_Numb_GPDKKD']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Tài khoản
                     </td>
                     <td colspan="3" width="80%">: {{$info['store_bank_numb']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Ngân hàng
                     </td>
                     <td colspan="3" width="80%">: {{$info['store_bank']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Đại diện
                     </td>
                     <td width="30%">: Ông {{$info->partner?->owner_name}}</td>
                     <td width="50%">Chức danh: Chủ đại lý</td>
                 </tr>
-
                 </tbody>
             </table>
         </td>
     </tr>
-
     {{--    dieu khoan 1--}}
     <tr>
         <td style="padding-top: 10px" colspan="2"><h4>Điều 1: PHẠM VI, ĐỐI TƯỢNG CỦA HỢP ĐỒNG.</h4></td>
@@ -827,11 +819,11 @@
                     <td><strong>≥ 10 hộp</strong></td>
                     <td><strong>≥ 20 hộp</strong></td>
                     <td><strong>≥ 35 hộp</strong></td>
-                    <td><strong>≥ 50 hộp</strong></td>
+                    <td><strong>≥ 60 hộp</strong></td>
                 </tr>
                 <tr>
                     <td><strong>Chiết khấu thương mại</strong></td>
-                    <td>3%</td>
+                    <td>4%</td>
                     <td>5%</td>
                     <td>6%</td>
                     <td>7%</td>

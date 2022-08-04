@@ -50,8 +50,6 @@ class PartnerController extends Controller
     public function partner_login_submit(Request $request)
     {
         $info_data_partner = Partner::with('contract')->where('owner_phone', $request->partner_info)->orWhere('owner_email', $request->partner_info)->first();
-        dd($info_data_partner);
-
         if ($info_data_partner) {
             Session::put('session_role', 'partner');
             Session::put('session_partner_id', $info_data_partner->id);
@@ -116,7 +114,8 @@ class PartnerController extends Controller
      */
     public function edit($id)
     {
-        $info_datas = Contract::where('partnerId','=',$id)->get();
+        $info_data = Contract::where('id','=',$id)->get();
+        dd($info_data);
         $info_data_parent = Partner::where('id','=',$id)->first();
         $page_title = 'Contract Dashboard';
         $page_description = 'Chi tiết hợp đồng';

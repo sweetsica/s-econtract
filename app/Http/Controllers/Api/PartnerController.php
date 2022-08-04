@@ -73,7 +73,37 @@ class PartnerController extends Controller
                 //Đăng ký đầy đủ
                 $checkPartner = Partner::where('owner_phone', $request->owner_phone)->orWhere('owner_id_numb', $request->owner_id_numb)->first();
                 if ($checkPartner) {
-                    $contract = Contract::create($request->only(['store_contract_type', 'store_name', 'store_add_DKKD', 'store_local_DKKD', 'store_add_GH', 'store_local_GH', 'store_headman', 'store_mst', 'member_id', 'store_phone', 'store_website', 'store_GPDKKD', 'store_id_Numb_GPDKKD', 'store_bank', 'store_bank_holder', 'store_bank_numb', 'store_contact_name', 'store_contact_phone', 'store_contact_position', 'store_effect', 'store_started', 'store_end', 'contract_level','contract_mode', 'store_signed', 'store_sign_img', 'store_sign_img_doppelherz', 'store_token']));
+                    $contract = Contract::create($request->only(
+                        [
+                            'store_contract_type',
+                            'store_name',
+                            'store_add_DKKD',
+                            'store_local_DKKD',
+                            'store_add_GH',
+                            'store_local_GH',
+                            'store_headman',
+                            'store_mst',
+                            'member_id',
+                            'store_phone',
+                            'store_website',
+                            'store_GPDKKD',
+                            'store_id_Numb_GPDKKD',
+                            'store_bank',
+                            'store_bank_holder',
+                            'store_bank_numb',
+                            'store_contact_name',
+                            'store_contact_phone',
+                            'store_contact_position',
+                            'store_effect',
+                            'store_started',
+                            'store_end',
+                            'contract_level',
+                            'contract_mode',
+                            'store_signed',
+                            'store_sign_img',
+                            'store_sign_img_doppelherz',
+                            'store_token'
+                        ]));
                     $contract->contract_mode = $request->contract_mode;
                     $contract->contract_code = 'HD-2022/' . $contract->id . $contract->created_at->format('-His');
                     $contract->partnerId = $checkPartner->id;
@@ -86,7 +116,37 @@ class PartnerController extends Controller
                 } else {
                     //Nếu thông tin partner chưa có
                     $partner = Partner::create($request->only(['owner_name', 'owner_id_numb', 'owner_id_numb_created_at', 'owner_id_numb_created_locate', 'owner_sex', 'owner_dob', 'owner_age', 'owner_token', 'owner_phone', 'owner_email', 'owner_mst']));
-                    $contract = Contract::create($request->only(['store_contract_type', 'store_name', 'store_add_DKKD', 'store_local_DKKD', 'store_add_GH', 'store_local_GH', 'store_headman', 'store_mst', 'member_id', 'store_phone', 'store_website', 'store_GPDKKD', 'store_id_Numb_GPDKKD', 'store_bank', 'store_bank_holder', 'store_bank_numb', 'store_contact_name', 'store_contact_phone', 'store_contact_position', 'store_effect', 'store_started', 'store_end', 'contract_level','contract_mode', 'store_signed', 'store_sign_img', 'store_sign_img_doppelherz', 'store_token']));
+                    $contract = Contract::create($request->only(
+                        [
+                        'store_contract_type',
+                        'store_name',
+                        'store_add_DKKD',
+                        'store_local_DKKD',
+                        'store_add_GH',
+                        'store_local_GH',
+                        'store_headman',
+                        'store_mst',
+                        'member_id',
+                        'store_phone',
+                        'store_website',
+                        'store_GPDKKD',
+                        'store_id_Numb_GPDKKD',
+                        'store_bank',
+                        'store_bank_holder',
+                        'store_bank_numb',
+                        'store_contact_name',
+                        'store_contact_phone',
+                        'store_contact_position',
+                        'store_effect',
+                        'store_started',
+                        'store_end',
+                        'contract_level',
+                        'contract_mode',
+                        'store_signed',
+                        'store_sign_img',
+                        'store_sign_img_doppelherz',
+                        'store_token'
+                    ]));
                     $contract->contract_mode = $request->contract_mode;
                     $contract->contract_code = 'HD-2022/' . $contract->id . $contract->created_at->format('-His');
                     $contract->partnerId = $partner->id;
@@ -98,15 +158,18 @@ class PartnerController extends Controller
                     ], 200);
                 }
             }
-            return response()->json([
-                'data' => $checkPartne,
-                'notice' => 'Tạo thành công, chúng tôi sẽ liên hệ bạn sớm nhất!',
-                'redirect_url' => url('/doi-tac/dang-nhap')
-            ], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => $e->getMessage()], 500);
         }
 
+    }
+
+    public function show(Request $request){
+        $partner = Partner::with('contract')->where('owner_phone', $request->partner_check)->orWhere('owner_id_numb', $request->partner_check)->first();
+        return response()->json([
+            "contract_count"=>count($partner->contract),
+            "partner"=>$partner
+        ],200);
     }
 
     public function partner_check(Request $request)

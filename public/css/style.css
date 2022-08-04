@@ -268,7 +268,8 @@ body {
   line-height: 1.5;
   color: #7e7e7e;
   text-align: left;
-  background-color: #EEEEEE; }
+  background-color: #EEEEEE;
+}
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -30937,3 +30938,17 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+.line-for-login {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #cacaca;
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+}
+
+.line-for-login span {
+    font-size: 13px;
+    background:#EEEEEE;
+    color: #868686;
+    padding:0 10px;
+}

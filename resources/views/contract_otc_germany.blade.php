@@ -91,56 +91,50 @@
                         Theo giấy ủy quyền số: ................................................
                     </td>
                 </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" style="padding-top: 20px">
-            <table width="100%">
-                <tbody>
-                <tr>
-                    <td width="15%">
+                <tr size="">
+                    <td width="20%">
+                        &nbsp;
                         <h4>BÊN B</h4>
                     </td>
-                    <td width="80%" colspan="3"><h4>: {{$info['store_name']}}</h4></td>
+                    <td width="80%" colspan="3">
+                        &nbsp;
+                        <h4>: {{$info['store_name']}}</h4>
+                    </td>
                 </tr>
                 <tr>
-                    <td width="15%">
+                    <td width="20%">
                         Địa chỉ
                     </td>
-                    <td colspan="3" width="80%">:
-                        {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}
+                    <td colspan="3" width="80%">:   {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}
                         , {{$info->local_dkkd?->parent?->parent?->name}}
                     </td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Điện thoại
                     </td>
                     <td width="20%">: {{$info['store_phone']}}</td>
                     <td width="30%">Mã số thuế : {{$info['store_id_Numb_GPDKKD']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Tài khoản
                     </td>
                     <td colspan="3" width="80%">: {{$info['store_bank_numb']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Ngân hàng
                     </td>
                     <td colspan="3" width="80%">: {{$info['store_bank']}}</td>
                 </tr>
                 <tr>
-                    <td style="max-width: 50px">
+                    <td width="20%">
                         Đại diện
                     </td>
                     <td width="30%">: Ông {{$info->partner?->owner_name}}</td>
                     <td width="50%">Chức danh: Chủ đại lý</td>
                 </tr>
-
                 </tbody>
             </table>
         </td>
@@ -858,7 +852,7 @@
             <div style="width: 200px;height: 200px">
                 @if($info->store_sign_img_doppelherz)
                     <img style="width: 250px;height: 250px;object-fit: contain"
-                         src="{{public_path($info->doppelherz?->image)}}">
+                         src="{{public_path($info?->doppelherz?->image)}}" alt="{{$info->doppelherz?->name}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
                          src="{{public_path("/images/white.png")}}">
@@ -874,7 +868,7 @@
             <p><strong> </strong></p>
             <div style="object-fit: contain">
                 @if($info->store_sign_img)
-                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}">
+                    <img style="width: 250px;height: 250px;object-fit: contain" src="{{$info->store_sign_img}}" alt="{{$info?->partner?->owner_name}}">
                 @else
                     <img style="width: 250px;height: 250px;object-fit: contain"
                          src="{{public_path("/images/white.png")}}">

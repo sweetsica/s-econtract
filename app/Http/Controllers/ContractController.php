@@ -41,8 +41,7 @@ class ContractController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Contract::where('contract_mode','=',0);
-
+        $info_data = Contract::where('contract_mode','=',0)->get();
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
 
@@ -53,7 +52,7 @@ class ContractController extends Controller
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
-        $info_data = Contract::where('contract_mode','=',0);
+        $info_data = Contract::where('contract_mode','=',1)->get();
 
         return view('back-end.contract.list', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data'));
     }
@@ -98,7 +97,7 @@ class ContractController extends Controller
     public function search_export_data(Request $request)
     {
         try {
-            $data = Contract::with('partner','doppelherz','local_dkkd','local_gh')->where('contract_code', $request['contract_title'])->orWhere('store_phone', $request['contract_title'])->first();
+            $data = Contract::with('partner','doppelherz','local_dkkd','local_gh')->where('contract_code', $request['contract_title'])->orWhere('store_phone', $request['contract_title'])->orWhere('store_email', $request['contract_title'])->first();
             if($data['store_signed']==0){
                 Session::put('id_contract', $data['id']);
                 return view('back-end.signature.signature');
@@ -137,21 +136,26 @@ class ContractController extends Controller
     public function show_contract_pdf(Request $request,$id){
         $contract = Contract::find($id);
         $type = $request->get('type');
-        if($type == 'only_show'){
-            $pdf = $this->show_contract($contract);
-            $time = Carbon::now()->format('d-m-Y');
-            $name = 'hop-dong-dien-tu-' . $time;
-            return $pdf->stream($name . '.pdf');
-        }else{
-            if($contract['store_signed']==0){
-                Session::put('id_contract', $contract['id']);
-                return view('back-end.signature.signature');
-            }else{
+        try{
+            if($type == 'only_show'){
                 $pdf = $this->show_contract($contract);
                 $time = Carbon::now()->format('d-m-Y');
                 $name = 'hop-dong-dien-tu-' . $time;
                 return $pdf->stream($name . '.pdf');
+            }else{
+                if($contract['store_signed']==0){
+                    Session::put('id_contract', $contract['id']);
+                    return view('back-end.signature.signature');
+                }else{
+                    $pdf = $this->show_contract($contract);
+                    $time = Carbon::now()->format('d-m-Y');
+                    $name = 'hop-dong-dien-tu-' . $time;
+                    return $pdf->stream($name . '.pdf');
+                }
             }
+        }catch (\Exception $e){
+            dd($e);
         }
+
     }
 }

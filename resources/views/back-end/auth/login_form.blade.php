@@ -23,7 +23,7 @@
                         <form action="{{route('login.check')}}" method="POST">
                             @csrf
                             <div class="form-group mb-3">
-                                <label><strong>Tài khoản nhân viên</strong></label>
+                                <label><strong>Email /  Mã nhân viên</strong></label>
                                 <input type="text" class="form-control" name="username"/>
                             </div>
                             <div class="form-group">
@@ -39,6 +39,12 @@
                         {{--                        </div>--}}
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="px-5 w-100 text-center">
+            <div class="d-flex align-items-center justify-content-center mt-3 fs-13">
+                <a href="{{route("partner.login")}}" class="mr-2">Đăng Nhập Dành Đối Tác</a>
+                <a href="{{route("contract.seach")}}" class="ml-2">Tìm Xuất Hợp Đồng</a>
             </div>
         </div>
     </div>
