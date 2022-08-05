@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Traits\SignTrait;
 use App\Http\Traits\STrait;
 use App\Models\Contract;
+use App\Models\Local;
 use App\Models\Member;
 use App\Models\Partner;
 use App\Models\User;
@@ -114,23 +115,23 @@ class PartnerController extends Controller
      */
     public function edit($id)
     {
+        $local = Local::where('parent_id',0)->get();
         $info_datas = Contract::where('id','=',$id)->get();
-        $info_data_parent = Partner::where('id','=',$id)->first();
+        $info_data_partner = Partner::where('id','=',$id)->first();
         $page_title = 'Contract Dashboard';
         $page_description = 'Chi tiết hợp đồng';
         $logo = "images/logo.png";
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
 //        $info_data = Partner::with('contract')->where('id', '=', $id)->get();
-        return view('back-end.contract.edit', compact('page_title', 'page_description','info_datas','info_data_parent','action', 'logo', 'logoText'));
+        return view('back-end.contract.edit', compact('page_title', 'page_description','info_datas','info_data_partner','action', 'logo', 'logoText','local'));
     }
 
     public function update(Request $request, $id)
     {
         $partner = Partner::find($id);
-        $contract = $partner->contract->first();
         $partner->update($request->only(['owner_name', 'owner_id_numb', 'owner_id_numb_created_at', 'owner_id_numb_created_locate', 'owner_sex', 'owner_dob', 'owner_age', 'owner_token', 'owner_phone', 'owner_email', 'owner_mst']));
-        return redirect(route('contract.edit', $contract->id));
+        return redirect()->back();
     }
 
 
@@ -139,6 +140,7 @@ class PartnerController extends Controller
      */
     public function dashboard()
     {
+        $local = Local::where('parent_id',0)->get();
         $partner_id = Session::get('session_partner_id');
         if(!$partner_id){
             return redirect(route('partner.login'));
@@ -150,7 +152,7 @@ class PartnerController extends Controller
         $logoText = "images/logo-text.png";
         $action = __FUNCTION__;
 
-        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data_partner'));
+        return view('back-end.partner.partner_dashboard', compact('page_title', 'page_description', 'action', 'logo', 'logoText', 'info_data_partner','local'));
 
     }
 

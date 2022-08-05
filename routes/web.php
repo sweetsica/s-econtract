@@ -52,6 +52,7 @@ Route::prefix('doi-tac')->group(function (){
     Route::get('/dang-nhap', [PartnerController::class, 'partner_login'])->name('partner.login');
     Route::post('/dang-nhap/gui-du-lieu', [PartnerController::class, 'partner_login_submit'])->name('partner.login.submit');
     Route::get('/danh-sach-hop-dong',[PartnerController::class,'dashboard'])->name('partner.dashboard');
+    Route::post('/sua-thong-tin/{id}',[PartnerController::class,'update'])->name('partner.update');
 });
 
 
@@ -70,7 +71,7 @@ Route::prefix('hop-dong')->group(function (){
     Route::get('/xem-chi-tiet/{contract_id}', [PartnerController::class, 'edit'])->name('contract.show');
 //    Route::get('/xem-chi-tiet/{contract_id}', [ContractController::class, 'edit'])->name('contract.show');
     Route::post('/chinh-sua/cap-nhat/{id}',[ContractController::class, 'update'])->name('contract.update');
-
+    Route::post('/tao-hop-dong/{id}', [ContractController::class, 'store'])->name('contract.create');
     Route::get('/pdf/{id}',[ContractController::class, 'show_contract_pdf'])->name('contract.show.pdf');
 
 //    Route::get('/xuat-hop-dong-da-ky', [PartnerController::class, 'return_export_after_sign'])->name('contract.return.export-sign');
