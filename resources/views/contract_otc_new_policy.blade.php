@@ -38,7 +38,7 @@
             <br/>
             <p>- Căn cứ vào nhu cầu và thỏa thuận của hai bên.</p>
             <br/>
-            <p>Hôm nay, ngày……../….…./2022, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</p>
+            <p>Hôm nay, ngày {{date("d/m/Y")}}, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</p>
         </td>
 
     </tr>
@@ -309,7 +309,7 @@
     <tr>
         <td colspan="2">
             <strong>6.2</strong>
-            Hợp Đồng này có hiệu lực kể từ ngày ký đến hết ngày ........../........./2022. <strong><i> Khi kết thức hợp
+            Hợp Đồng này có hiệu lực kể từ ngày ký đến hết ngày {{date("d/m/Y", strtotime('+1 year'))}}. <strong><i> Khi kết thức hợp
                     đồng nếu hai bên không thông báo thay đổi hiệu lực hợp đồng thì Hợp đồng sẽ tự động được gia
                     hạn.</i></strong>
         </td>

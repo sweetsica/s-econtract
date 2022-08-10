@@ -419,7 +419,7 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Thông tin dối tác</h3>
+                        <h3 class="card-title">Thông tin đối tác</h3>
                         <div class="d-flex align-items-center">
                             <div>
                                 <button
@@ -649,7 +649,7 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Danh sách hợp đồng</h3>
+                        <h3 class="card-title">Thông tin liên quan</h3>
                     </div>
                     <div class="card-body">
                         <div id="accordion-nine" class="accordion accordion-active-header">
@@ -661,7 +661,8 @@
                                         data-target="#contract_{{$data['id']}}">
                                         <span class="accordion__header--icon"></span>
                                         <span
-                                            class="accordion__header--text">{{$data['store_name']}}</span>
+                                            class="accordion__header--text">{{$data['store_name']}}</span> -
+                                        {{$data['created_at']->format('d/m/Y')}}
                                         <span class="accordion__header--indicator"></span>
                                     </div>
                                     <div id="contract_{{$data['id']}}"
@@ -669,29 +670,34 @@
                                          data-parent="#accordion-nine">
                                         <div class="py-4">
                                             <div class="row">
-                                                <div
-                                                    class="col-md-12  mb-5 d-flex justify-content-between">
+                                                <div class="col-md-12  mb-5 d-flex justify-content-between">
                                                     @if($data['contract_mode'] === 1)
                                                         <div>
-
-                                                            <a href="{{route('contract.show.pdf',$data['id']).'?type=only_show'}}"
-                                                               class="btn light  btn-md rounded-lg btn-primary mr-2">
-                                                                Xuất hợp đồng
-                                                            </a>
-                                                            @if($data['store_signed'] == 0)
+                                                            @if($data['contract_signed'])
+                                                                <a href="{{route('contract.show.pdf',$data['id']).'?type=only_show'}}"
+                                                                   class="btn light  btn-md rounded-lg btn-primary mr-2">
+                                                                    Xuất hợp đồng
+                                                                </a>
+                                                            @else
                                                                 <a href="{{route('contract.show.pdf',$data['id']).'?type=sign'}}"
                                                                    class="btn light  btn-md rounded-lg btn-primary mr-2">
                                                                     Ký hợp đồng
                                                                 </a>
                                                             @endif
+                                                        </div>
+                                                    @else
+                                                        <div>
+                                                                <a href="{{route('contract.show.pdf',$data['id']).'?type=sign'}}"
+                                                                   class="btn light  btn-md rounded-lg btn-primary mr-2">
+                                                                    Đăng ký hợp đồng
+                                                                </a>
+{{--                                                            @if($data['store_signed'] == 0)--}}
+{{--                                                                --}}
+{{--                                                            @endif--}}
 
                                                         </div>
                                                     @endif
-                                                    <div>
-                                                        <p class="fs-14 text-black mb-1 mr-1">Ngày
-                                                            tạo</p>
-                                                        <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
-                                                    </div>
+
                                                 </div>
                                                 <div class="col-md-12">
                                                     <h3 class="font-w600 text-black">Đại
