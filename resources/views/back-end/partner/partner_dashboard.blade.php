@@ -407,7 +407,7 @@
                                 <h4 class="text-black fs-20 font-w600">{{$info_data_partner['owner_name']}}</h4>
                                 <span class="mb-3 text-black d-block">Người đại diện / Đối tác</span>
                             </div>
-                            <div class="card-footer border-0 pt-0">
+                            <div class="card-footer border-0 pt-0" style="padding-top: 10%!important;">
                                 <a href="javascript:void(0);" class="btn btn-outline-primary d-block rounded">
                                     <i class="las la-phone scale5 mr-2"></i>
                                     {{$info_data_partner['owner_phone']}}</a>
@@ -597,7 +597,7 @@
 
 
                             <div class="ml-md-4 text-md-right">
-                                <p class="fs-14 text-black  mr-1">Ngày đăng ký</p>
+                                <p class="fs-14 text-black  mr-1" style="margin-bottom: 0px;">Ngày đăng ký</p>
                                 <h4 class="fs-24 text-primary">{{$info_data_partner['created_at']->format('d-m-Y')}}</h4>
                             </div>
                         </div>
@@ -673,7 +673,7 @@
                                                 <div class="col-md-12  mb-5 d-flex justify-content-between">
                                                     @if($data['contract_mode'] === 1)
                                                         <div>
-                                                            @if($data['contract_signed'])
+                                                            @if($data['store_signed'] == 1)
                                                                 <a href="{{route('contract.show.pdf',$data['id']).'?type=only_show'}}"
                                                                    class="btn light  btn-md rounded-lg btn-primary mr-2">
                                                                     Xuất hợp đồng
@@ -687,14 +687,10 @@
                                                         </div>
                                                     @else
                                                         <div>
-                                                                <a href="{{route('contract.show.pdf',$data['id']).'?type=sign'}}"
-                                                                   class="btn light  btn-md rounded-lg btn-primary mr-2">
-                                                                    Đăng ký hợp đồng
-                                                                </a>
-{{--                                                            @if($data['store_signed'] == 0)--}}
-{{--                                                                --}}
-{{--                                                            @endif--}}
-
+                                                            <a href="{{route('contract.show.pdf',$data['id']).'?type=sign'}}"
+                                                               class="btn light  btn-md rounded-lg btn-primary mr-2">
+                                                                Đăng ký hợp đồng
+                                                            </a>
                                                         </div>
                                                     @endif
 

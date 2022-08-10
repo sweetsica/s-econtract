@@ -33,6 +33,8 @@ trait STrait
     public function show_contract($contract_info)
     {
         switch ($contract_info->store_contract_type){
+            case 'Thông tin đối tác':
+                return 'Đây là thông tin đối tác, không thể xuất';
             case CommonEnum::CONTRACT_OTC_NEW_POLICY:
                 $pdf = PDF::loadView('/contract_otc_new_policy', ["info" => $contract_info]);
                 return $pdf;

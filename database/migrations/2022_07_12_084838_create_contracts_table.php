@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
             $table->string('partnerId')->nullable();
-            $table->string('store_contract_type')->default('1'); // Chọn mẫu hợp đồng
+            $table->string('store_contract_type')->default('Thông tin đối tác'); // Chọn mẫu hợp đồng
             $table->string('contract_code')->nullable(); //Mã hợp đồng - tự động tạo
             $table->string('store_name')->nullable(); //Tên cửa hàng
             $table->string('store_add_DKKD')->nullable(); // Địa chỉ cửa hàng
