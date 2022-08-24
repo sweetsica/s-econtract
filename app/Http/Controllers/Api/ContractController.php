@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ContractController extends Controller
 {
     //
-    public function create(Request $request){
+    public function store(Request $request){
         $partner = Partner::where('owner_phone',$request->owner_phone)->orWhere('owner_id_numb',$request->owner_phone)->first();
         if($partner){
             $contract = Contract::create($request->only(
@@ -28,9 +28,9 @@ class ContractController extends Controller
                 'store_bank',
                 'store_bank_holder',
                 'store_bank_numb',
-                'store_contact_name',
-                'store_contact_phone',
-                'store_contact_position',
+                'store_contract_name',
+                'store_contract_phone',
+                'store_contract_position',
                 'store_effect',
                 'store_started',
                 'store_end',
@@ -39,6 +39,7 @@ class ContractController extends Controller
             ));
             $contract->partnerId = $partner->id;
             $contract->contract_code = 'HD-2022/' . $contract->id . $contract->created_at->format('-His');
+            dd($contract);
             $contract->save();
             return response()->json([
                 "message"=>"Tạo hợp đồng cho đối tác thành công",

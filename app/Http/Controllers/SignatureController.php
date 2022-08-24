@@ -29,6 +29,7 @@ class SignatureController extends Controller
             $id_contract = Session::get('id_contract');
             $contract = Contract::where('id', '=', $id_contract)->first();
             $url_image = $this->save_sign($request, sprintf("%s-%s", $contract['id'], $contract["store_phone"]));
+            $contract['store_signed_date_time'] = now();
             $contract['store_sign_img'] = $url_image;
             $contract['name_doppelherz'] = $request['name_doppelherz'];
             $contract['bank_doppelherz'] = $request['bank_doppelherz'];

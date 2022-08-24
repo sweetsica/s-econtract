@@ -23,88 +23,48 @@
                         </div>
                         <div style="max-height: 70vh; overflow-y:auto" class="modal-body">
                             <div class="row text-left">
-                                <div class="col-md-12">
+                                <!-- Tên đại lý -->
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Tên
-                                            đại lý</label>
+                                        <label for="storeName">Tên đại lý</label>
                                         <input required name="store_name"
                                                value="{{old('store_name')}}"
                                                type="text"
                                                class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Nhập tên đại lý">
+                                               id="storeName"
+                                               aria-describedby="emailHelp">
                                     </div>
                                 </div>
+                                <!-- Số điện thoại -->
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Số điện thoại đại
-                                            lý</label>
+                                        <label for="exampleInputEmail1">Số điện thoại cửa hàng</label>
                                         <input required name="store_phone"
                                                value="{{old('store_phone')}}"
                                                type="text"
                                                class="form-control"
                                                id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Nhập số điện thoại đại lý">
+                                               aria-describedby="emailHelp">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Mã số thuế</label>
-                                        <input required name="store_mst"
-                                               value="{{old('store_mst')}}"
-                                               type="text"
-                                               class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Nhập mã số thuế">
-                                    </div>
+                                <!-- Địa chỉ DKKD -->
+                                <div class="col-md-4 mb-3">
+                                    <label for="exampleInputEmail1">Địa chỉ ĐKKD</label>
+                                    <textarea
+                                        required
+                                        name="store_add_DKKD"
+                                        type="text"
+                                        class="form-control"
+                                        id="exampleInputEmail1"
+                                        aria-describedby="emailHelp"
+                                        placeholder="Nhập chi tiết địa chỉ ĐKKD">{{old('store_add_GH')}}</textarea>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Website đại lý</label>
-                                        <input required name="store_website"
-                                               value="{{old('store_website')}}"
-                                               type="text"
-                                               class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Nhập website đại lý">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Mã số ĐKKD</label>
-                                        <input name="store_id_Numb_GPDKKD"
-                                               value="{{old('store_id_Numb_GPDKKD')}}"
-                                               type="text"
-                                               class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Nhập mã số ĐKKD">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Ngày ĐKKD</label>
-                                        <input name="store_GPDKKD"
-                                               value="{{old('store_GPDKKD')}}"
-                                               type="date"
-                                               class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Chọn ngày ĐKKD">
-                                    </div>
-                                </div>
+                            </div>
+                            <div class="row text-left">
+                                <!-- Form địa chỉ đại lý -->
                                 <div class="col-md-12 mb-3">
                                     <div class="form-row ">
+                                        <!-- Tỉnh thành phố -->
                                         <div class="form-group col-md-4">
                                             <label>Tỉnh / Thành phố ĐKKD</label>
                                             <select required onchange="getDistrict(event)"
@@ -120,6 +80,7 @@
                                             <p class="text-danger">{{$message}}</p>
                                             @enderror
                                         </div>
+                                        <!-- Huyện quận -->
                                         <div class="form-group col-md-4">
                                             <label>Huyện / Quận ĐKKD</label>
                                             <select required onchange="getWard(event)" required
@@ -131,6 +92,7 @@
                                             <p class="text-danger">{{$message}}</p>
                                             @enderror
                                         </div>
+                                        <!-- Xã phường -->
                                         <div class="form-group col-md-4">
                                             <label>Xã / Phường ĐKKD</label>
                                             <select required id="wards_select" required
@@ -144,62 +106,37 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label
-                                        for="exampleInputEmail1">Địa chỉ ĐKKD</label>
-                                    <textarea
-                                        required
-                                        name="store_add_DKKD"
-                                        type="text"
-                                        class="form-control"
-                                        id="exampleInputEmail1"
-                                        aria-describedby="emailHelp"
-                                        placeholder="Nhập chi tiết địa chỉ ĐKKD">{{old('store_add_GH')}}</textarea>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label>Tỉnh / Thành phố giao hàng</label>
-                                            <select onchange="getDistrictGH(event)" required
-                                                    id="provinces_select_gh"
-                                                    class="form-control">
-                                                <option selected>Chọn tỉnh/thành phố...</option>
-                                                @foreach($local as $local_item)
-                                                    <option
-                                                        value="{{$local_item->code}}">{{$local_item->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            @error("location_id")
-                                            <p class="text-danger">{{$message}}</p>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Huyện / Quận giao hàng</label>
-                                            <select onchange="getWardGH(event)" required
-                                                    id="districts_select_gh" disabled
-                                                    class="form-control">
-                                                <option selected>Chọn huyện/quận...</option>
-                                            </select>
-                                            @error("location_id")
-                                            <p class="text-danger">{{$message}}</p>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Xã / Phường giao hàng</label>
-                                            <select id="wards_select_gh" required
-                                                    name="store_local_GH" disabled
-                                                    class="form-control">
-                                                <option selected>Chọn xã/phường...</option>
-                                            </select>
-                                            @error("location_id")
-                                            <p class="text-danger">{{$message}}</p>
-                                            @enderror
-                                        </div>
+                            </div>
+                            <div class="row text-left">
+                                <!-- Mã số DKKD -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mã số ĐKKD</label>
+                                        <input name="store_id_Numb_GPDKKD"
+                                               value="{{old('store_id_Numb_GPDKKD')}}"
+                                               type="text"
+                                               class="form-control"
+                                               id="exampleInputEmail1"
+                                               aria-describedby="emailHelp"
+                                               placeholder="Nhập mã số ĐKKD">
                                     </div>
                                 </div>
-                                <div class="col-md-12 mb-3">
-                                    <label
-                                        for="exampleInputEmail1">Địa chỉ giao hàng</label>
+                                <!-- Ngày DKKD -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Ngày ĐKKD</label>
+                                        <input name="store_GPDKKD"
+                                               value="{{old('store_GPDKKD')}}"
+                                               type="date"
+                                               class="form-control"
+                                               id="exampleInputEmail1"
+                                               aria-describedby="emailHelp"
+                                               placeholder="Chọn ngày ĐKKD">
+                                    </div>
+                                </div>
+                                <!-- Địa chỉ giao hàng -->
+                                <div class="col-md-4 mb-3">
+                                    <label for="exampleInputEmail1">Địa chỉ giao hàng</label>
                                     <textarea
                                         required
                                         name="store_add_GH"
@@ -209,36 +146,168 @@
                                         aria-describedby="emailHelp"
                                         placeholder="Nhập chi tiết địa chỉ giao hàng">{{old('store_add_GH')}}</textarea>
                                 </div>
+                            </div>
+                            <div class="row text-left">
+                                <!-- Tên ngân hàng -->
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Tên chủ ngân hàng</label>
+                                        <label for="exampleInputEmail1">Tên ngân hàng</label>
+                                        <select name="store_bank">
+                                            <option selected disabled> = Chọn một ngân hàng =</option>
+                                            <option value='Ngân hàng Công Thương Việt Nam - Vietinbank'>
+                                                Ngân hàng Công Thương Việt Nam - Vietinbank
+                                            </option>
+                                            <option value='Ngân hàng Ngoại thương Việt Nam - Vietcombank'>
+                                                Ngân hàng Ngoại thương Việt Nam - Vietcombank
+                                            </option>
+                                            <option value='Ngân hàng Đầu tư và Phát triển - BIDV'>
+                                                Ngân hàng Đầu tư và Phát triển - BIDV
+                                            </option>
+                                            <option value='Ngân hàng nông nghiệp và phát triền nông thôn - Agribank'>
+                                                Ngân hàng nông nghiệp và phát triền nông thôn - Agribank
+                                            </option>
+                                            <option value='Ngân hàng Sài Gòn Thường Tín - Sacombank'>
+                                                Ngân hàng Sài Gòn Thường Tín - Sacombank
+                                            </option>
+                                            <option value='Ngân hàng Kỹ Thương Việt Nam - Techcombank/ TCB'>
+                                                Ngân hàng Kỹ Thương Việt Nam - Techcombank/ TCB
+                                            </option>
+                                            <option value='Ngân hàng Á Châu - ACB'>
+                                                Ngân hàng Á Châu - ACB
+                                            </option>
+                                            <option value='Ngân hàng Tiên Phong - TPBank'>
+                                                Ngân hàng Tiên Phong - TPBank
+                                            </option>
+                                            <option value='Ngân hàng Đông Á - Đông A Bank'>
+                                                Ngân hàng Đông Á - Đông A Bank
+                                            </option>
+                                            <option value='Ngân hàng Bắc Á - BacABank'>
+                                                Ngân hàng Bắc Á - BacABank
+                                            </option>
+                                            <option value='Ngân hàng Đông Nam Á - SeABank'>
+                                                Ngân hàng Đông Nam Á - SeABank
+                                            </option>
+                                            <option value='Ngân hàng An Bình - ABBANK'>
+                                                Ngân hàng An Bình - ABBANK
+                                            </option>
+                                            <option value='Ngân hàng Bản Việt - VietCapitalBank'>
+                                                Ngân hàng Bản Việt - VietCapitalBank
+                                            </option>
+                                            <option value='Ngân hàng Kiêng Long - KienLongBank'>
+                                                Ngân hàng Kiêng Long - KienLongBank
+                                            </option>
+                                            <option value='Ngân hàng Hàng Hải Việt Nam - MSB'>
+                                                Ngân hàng Hàng Hải Việt Nam - MSB
+                                            </option>
+                                            <option value='Ngân hàng Nam Á - Nam A Bank'>
+                                                Ngân hàng Nam Á - Nam A Bank
+                                            </option>
+                                            <option value='Ngân hàng Việt Nam Thịnh Vượng - Vpbank'>
+                                                Ngân hàng Việt Nam Thịnh Vượng - Vpbank
+                                            </option>
+                                            <option value='Ngân hàng Quốc dân - NCB'>
+                                                Ngân hàng Quốc dân - NCB
+                                            </option>
+                                            <option value='Phát triển nhà Thành phố Hồ Chí Minh - HDBank'>
+                                                Phát triển nhà Thành phố Hồ Chí Minh - HDBank
+                                            </option>
+                                            <option value='Ngân hàng Quân đội - MB bank'>
+                                                Ngân hàng Quân đội - MB bank
+                                            </option>
+                                            <option value='Ngân hàng Phương Đông - OCB'>
+                                                Ngân hàng Phương Đông - OCB
+                                            </option>
+                                            <option value='Ngân hàng Quốc tế Việt Nam - VIB'>
+                                                Ngân hàng Quốc tế Việt Nam - VIB
+                                            </option>
+                                            <option value='Ngân hàng Đại chúng Việt Nam - PVcombank'>
+                                                Ngân hàng Đại chúng Việt Nam - PVcombank
+                                            </option>
+                                            <option value='Ngân hàng Sài Gòn - Sài Gòn, SCB'>
+                                                Ngân hàng Sài Gòn - Sài Gòn, SCB
+                                            </option>
+                                            <option value='Ngân hàng Sài Gòn Hà Nội - SHB Bank/SHB'>
+                                                Ngân hàng Sài Gòn Hà Nội - SHB Bank/SHB
+                                            </option>
+                                            <option value='Ngân hàng Việt Á - Viet A Bank/ VAB'>
+                                                Ngân hàng Việt Á - Viet A Bank/ VAB
+                                            </option>
+                                            <option value='Ngân hàng Bảo Việt - Bao Viet Bank/BVB'>
+                                                Ngân hàng Bảo Việt - Bao Viet Bank/BVB
+                                            </option>
+                                            <option value='Ngân hàng Chính sách xã hội - NHCSXH/VBSP'>
+                                                Ngân hàng Chính sách xã hội - NHCSXH/VBSP
+                                            </option>
+                                            <option value='Ngân hàng Phát triển Việt Nam - VDB'>
+                                                Ngân hàng Phát triển Việt Nam - VDB
+                                            </option>
+                                            <option value='Ngân hàng Dầu Khí Toàn Cầu - GPBank'>
+                                                Ngân hàng Dầu Khí Toàn Cầu - GPBank
+                                            </option>
+                                            <option value='Ngân hàng Đại Dương - Ocean Bank'>
+                                                Ngân hàng Đại Dương - Ocean Bank
+                                            </option>
+                                            <option value='Ngân hàng Xây dựng - CB'>
+                                                Ngân hàng Xây dựng - CB
+                                            </option>
+                                            <option value='Ngân hàng Xăng dầu Petrolimex - PG Bank'>
+                                                Ngân hàng Xăng dầu Petrolimex - PG Bank
+                                            </option>
+                                            <option value='Ngân hàng Bưu điện Liên Việt - LienVietPostBank/LPB'>
+                                                Ngân hàng Bưu điện Liên Việt - LienVietPostBank/LPB
+                                            </option>
+                                            <option value='Xuất Nhập khẩu Việt Nam - Eximbank, EIB'>
+                                                Xuất Nhập khẩu Việt Nam - Eximbank, EIB
+                                            </option>
+                                            <option value='Ngân hàng TNHH Indovina - IVB'>
+                                                Ngân hàng TNHH Indovina - IVB
+                                            </option>
+                                            <option value='Ngân hàng Việt – Nga - VRB'>
+                                                Ngân hàng Việt – Nga - VRB
+                                            </option>
+                                            <option value='Ngân Hàng TNHH MTV HSBC Việt Nam - HSBC'>
+                                                Ngân Hàng TNHH MTV HSBC Việt Nam - HSBC
+                                            </option>
+                                            <option value='Ngân hàng quốc tế CitiBank - Citibank'>
+                                                Ngân hàng quốc tế CitiBank - Citibank
+                                            </option>
+                                            <option value='Ngân hàng Shinhan Bank - Shinhan bank'>
+                                                Ngân hàng Shinhan Bank - Shinhan bank
+                                            </option>
+                                            <option value='Ngân hàng Hong Leong Bank - Hong Leong Bank/HLBVN'>
+                                                Ngân hàng Hong Leong Bank - Hong Leong Bank/HLBVN
+                                            </option>
+                                            <option
+                                                value='Ngân hàng TNHH MTV Standard Chartered Việt Nam - Standard Chartered bank/ SC'>
+                                                Ngân hàng TNHH MTV Standard Chartered Việt Nam - Standard Chartered
+                                                bank/ SC
+                                            </option>
+                                            <option value='Ngân hàng TNHH MTV Public Việt Nam - Public bank/PBVN'>
+                                                Ngân hàng TNHH MTV Public Việt Nam - Public bank/PBVN
+                                            </option>
+                                            <option value='Ngân hàng TNHH MTV Woori Việt Nam - Woori Bank'>
+                                                Ngân hàng TNHH MTV Woori Việt Nam - Woori Bank
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Tên trên thẻ ngân hàng -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Tên trên thẻ ngân hàng</label>
                                         <input required name="store_bank_holder"
                                                value="{{old('store_bank_holder')}}"
                                                type="text"
                                                class="form-control"
                                                id="exampleInputEmail1"
                                                aria-describedby="emailHelp"
-                                               placeholder="Nhập tên chủ ngân hàng">
+                                               placeholder="Nhập tên trên thẻ ngân hàng">
                                     </div>
                                 </div>
+                                <!-- Số tài khoản -->
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Tên ngân hàng</label>
-                                        <input required name="store_bank"
-                                               value="{{old('store_bank')}}"
-                                               type="text"
-                                               class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Nhập tên ngân hàng">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Số tài khoản</label>
+                                        <label for="exampleInputEmail1">Số tài khoản</label>
                                         <input required name="store_bank_numb"
                                                value="{{old('store_bank_numb')}}"
                                                type="tel"
@@ -248,10 +317,12 @@
                                                placeholder="Nhập số tài khoản">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row text-left">
+                                <!-- Tên người liên hệ -->
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Tên người liên hệ</label>
+                                        <label for="exampleInputEmail1">Tên người liên hệ</label>
                                         <input required name="store_contract_name"
                                                value="{{old('store_contract_name')}}"
                                                type="tel"
@@ -261,11 +332,23 @@
                                                placeholder="Nhập tên người liên hệ">
                                     </div>
                                 </div>
+                                <!-- Vai trò người liên hệ -->
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Số điện thoại người liên
-                                            hệ</label>
+                                        <label for="storeContractPosition">Vai trò người liên hệ</label>
+                                        <select id='storeContractPosition' name="store_contract_position">
+                                            <option selected disabled> = Chọn một vai trò =</option>
+                                            <option value="Chủ cửa hàng">Chủ cửa hàng</option>
+                                            <option value="Quản lý">Quản lý</option>
+                                            <option value="Nhân viên">Nhân viên</option>
+                                            <option value="Khác">Khác</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Số điện thoại liên hệ -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Số điện thoại người liên hệ</label>
                                         <input required name="store_contract_phone"
                                                value="{{old('store_contract_phone')}}"
                                                type="tel"
@@ -275,24 +358,12 @@
                                                placeholder="Nhập số điện thoại người liên hệ">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row text-left">
+                                <!-- Mã TDV -->
                                 <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Vị trí người liên
-                                            hệ</label>
-                                        <input required name="store_contract_position"
-                                               value="{{old('store_contract_position')}}"
-                                               type="text"
-                                               class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Nhập số điện thoại người liên hệ">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Mã trình dược viên</label>
+                                        <label for="exampleInputEmail1">Mã trình dược viên</label>
                                         <input required name="member_id"
                                                value="{{old('member_id')}}"
                                                type="text"
@@ -302,52 +373,39 @@
                                                placeholder="Nhập số điện thoại người liên hệ">
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <!-- Phạm vi bán hàng -->
+                                <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Phạm vi bán hàng</label>
-                                        <input required name="store_effect"
-                                               value="{{old('store_effect')}}"
+                                        <label for="storeEffect">Phạm vi bán hàng</label>
+                                        <select id="storeEffect" name="store_effect">
+                                            <option selected disabled> = Chọn một phạm vi =</option>
+                                            <option>Vùng 1: Hà Nội và Tây Bắc</option>
+                                            <option>Vùng 2: Duyên Hải và Đông Bắc</option>
+                                            <option>Vùng 3: Miền Trung</option>
+                                            <option>Vùng 4: Tây Nguyên</option>
+                                            <option>Vùng 5: Hồ Chí Minh và miền Đông</option>
+                                            <option>Vùng 6: Miền Tây</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Mã số thuế -->
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Mã số thuế</label>
+                                        <input required name="store_mst"
+                                               value="{{old('store_mst')}}"
                                                type="text"
                                                class="form-control"
                                                id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                               placeholder="Nhập phạm vi bán hàng (vd: Online)">
+                                               aria-describedby="emailHelp">
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                            </div>
+                            <div class="row text-left">
+                                <!-- Loại hợp đồng -->
+                                <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Ngày bắt đầu hợp
-                                            đồng</label>
-                                        <input required name="store_started"
-                                               value="{{old('store_started')}}"
-                                               type="date"
-                                               class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Ngày kết thúc hợp
-                                            đồng</label>
-                                        <input required name="store_end"
-                                               value="{{old('store_end')}}"
-                                               type="date"
-                                               class="form-control"
-                                               id="exampleInputEmail1"
-                                               aria-describedby="emailHelp"
-                                        >
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Chọn
-                                            loại hợp đồng</label>
+                                        <label for="exampleInputEmail1">Chọn loại hợp đồng</label>
                                         <select
                                             required
                                             name="store_contract_type"
@@ -369,32 +427,82 @@
                                         {{--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
+                                <!-- Ngày bắt đầu hợp đồng -->
+                                <div class="col-md-4 mb-3">
                                     <div class="form-group">
-                                        <label
-                                            for="exampleInputEmail1">Mật khẩu hợp đồng</label>
-                                        <input name="store_token"
-                                               value="{{old('store_token')}}"
-                                               type="password"
+                                        <label for="exampleInputEmail1">Ngày bắt đầu hợp
+                                            đồng</label>
+                                        <input required name="store_started"
+                                               value="{{old('store_started')}}"
+                                               type="date"
                                                class="form-control"
                                                id="exampleInputEmail1"
                                                aria-describedby="emailHelp"
-                                               placeholder="Nhập mật khẩu hợp đồng">
-                                        {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
+                                        >
+                                    </div>
+                                </div>
+                                <!-- Ngày kết thúc hợp đồng -->
+                                <div class="col-md-4 mb-3">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Ngày kết thúc hợp
+                                            đồng</label>
+                                        <input required name="store_end"
+                                               value="{{old('store_end')}}"
+                                               type="date"
+                                               class="form-control"
+                                               id="exampleInputEmail1"
+                                               aria-describedby="emailHelp"
+                                        >
                                     </div>
                                 </div>
                             </div>
+                            <div class="row text-left">
+                                <!-- Website đại lý -->
+                                <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Website đại lý</label>
+                                            <input required name="store_website"
+                                                   value="{{old('store_website')}}"
+                                                   type="text"
+                                                   class="form-control"
+                                                   id="exampleInputEmail1"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Nhập website đại lý">
+                                        </div>
+                                    </div>
+                                <!-- Mật khẩu hợp đồng -->
+                                <div class="col-md-4 mb-3">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Mật khẩu hợp đồng</label>
+                                            <input name="store_token"
+                                                   value="{{old('store_token')}}"
+                                                   type="password"
+                                                   class="form-control"
+                                                   id="exampleInputEmail1"
+                                                   aria-describedby="emailHelp"
+                                                   placeholder="Nhập mật khẩu hợp đồng">
+                                            {{--                                                                                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>--}}
+                                        </div>
+                                    </div>
+                                <!-- Nút bấm -->
+                                <div class="col-md-4">
+                                    <label for="exampleInputEmail1">Vui lòng kiểm tra lại thông tin</label>
+                                    <button type="submit" class="btn btn-primary">Lưu hợp đồng</button>
+                                    <button type="button" class="btn btn-light"
+                                            data-dismiss="modal">Hủy bỏ</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-light"
-                                    data-dismiss="modal">Hủy bỏ
-                            </button>
-                            <button type="submit" class="btn btn-primary">Lưu hợp đồng</button>
-                        </div>
+                    </div>
+{{--                        <div class="modal-footer">--}}
+{{--                            <button type="button" class="btn btn-light"--}}
+{{--                                    data-dismiss="modal">Hủy bỏ--}}
+{{--                            </button>--}}
+{{--                            <button type="submit" class="btn btn-primary">Lưu hợp đồng</button>--}}
+{{--                        </div>--}}
                     </form>
                 </div>
             </div>
-        </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="row">
@@ -404,6 +512,11 @@
                                 <div class="position-relative mb-3 d-inline-block">
                                     <img src="{{ asset('images/avatar/1.jpg') }}" alt="" class="rounded" width="140">
                                 </div>
+                                @if($info_data_partner['owner_sex']='Nam')
+                                    <span class="mb-3 text-black d-block">Ông</span>
+                                @else
+                                    <span class="mb-3 text-black d-block">Bà</span>
+                                @endif
                                 <h4 class="text-black fs-20 font-w600">{{$info_data_partner['owner_name']}}</h4>
                                 <span class="mb-3 text-black d-block">Người đại diện / Đối tác</span>
                             </div>
@@ -419,7 +532,7 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Thông tin dối tác</h3>
+                        <h3 class="card-title">Thông tin đối tác</h3>
                         <div class="d-flex align-items-center">
                             <div>
                                 <button
@@ -450,8 +563,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">Họ và Tên</label>
+                                                            <label for="exampleInputEmail1">Họ và Tên</label>
                                                             <input required name="owner_name"
                                                                    value="{{$info_data_partner['owner_name']}}"
                                                                    type="text"
@@ -463,8 +575,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">SĐT Đối tác</label>
+                                                            <label for="exampleInputEmail1">SĐT Đối tác</label>
                                                             <input required name="owner_phone"
                                                                    value="{{$info_data_partner['owner_phone']}}"
                                                                    type="text"
@@ -476,8 +587,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">Email Đối tác</label>
+                                                            <label for="exampleInputEmail1">Email Đối tác</label>
                                                             <input required name="owner_email"
                                                                    value="{{$info_data_partner['owner_email']}}"
                                                                    type="text"
@@ -489,8 +599,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">MST Cá nhân</label>
+                                                            <label for="exampleInputEmail1">MST Cá nhân</label>
                                                             <input required name="owner_mst"
                                                                    value="{{$info_data_partner['owner_mst']}}"
                                                                    type="text"
@@ -502,8 +611,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">Số CMT/CCCD</label>
+                                                            <label for="exampleInputEmail1">Số CMT/CCCD</label>
                                                             <input required name="owner_id_numb"
                                                                    value="{{$info_data_partner['owner_id_numb']}}"
                                                                    type="text"
@@ -515,8 +623,7 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">Ngày cấp</label>
+                                                            <label for="exampleInputEmail1">Ngày cấp</label>
                                                             <input required name="owner_id_numb_created_at"
                                                                    value="{{$info_data_partner['owner_id_numb_created_at']}}"
                                                                    type="date"
@@ -528,8 +635,7 @@
                                                     </div>
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">Nơi cấp</label>
+                                                            <label for="exampleInputEmail1">Nơi cấp</label>
                                                             <textarea required name="owner_id_numb_created_locate"
                                                                       type="date"
                                                                       class="form-control"
@@ -541,8 +647,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">Ngày sinh</label>
+                                                            <label for="exampleInputEmail1">Ngày sinh</label>
                                                             <input required name="owner_dob"
                                                                    value="{{$info_data_partner['owner_dob']}}"
                                                                    type="date"
@@ -554,8 +659,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">Tuổi</label>
+                                                            <label for="exampleInputEmail1">Tuổi</label>
                                                             <input required name="owner_age"
                                                                    value="{{$info_data_partner['owner_age']}}"
                                                                    type="tel"
@@ -568,8 +672,7 @@
                                                     </div>
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label
-                                                                for="exampleInputEmail1">Giới tính</label>
+                                                            <label for="exampleInputEmail1">Giới tính</label>
                                                             <select id="exampleInputEmail1" class="form-control"
                                                                     name="owner_sex">
                                                                 <option
@@ -594,8 +697,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="ml-md-4 text-md-right">
                                 <p class="fs-14 text-black  mr-1">Ngày đăng ký</p>
                                 <h4 class="fs-24 text-primary">{{$info_data_partner['created_at']->format('d-m-Y')}}</h4>
@@ -607,38 +708,28 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="col-md-12 fs-20 mb-3">
-                                      <span
-                                          class="font-w600 text-black">Email:</span> {{$info_data_partner->owner_email}}
+                                        <span class="font-w600 text-black">Mã khách hàng:</span> <b>{{$info_data_partner->owner_code}}</b>
                                     </div>
                                     <div class="col-md-12 fs-20 mb-3">
-                                       <span
-                                           class="font-w600 text-black">Giới tính:</span> {{$info_data_partner->owner_sex}}
+                                        <span class="font-w600 text-black">Email:</span> {{$info_data_partner->owner_email}}
                                     </div>
                                     <div class="col-md-12 fs-20 mb-3">
-                                       <span
-                                           class="font-w600 text-black">Ngày sinh:</span> {{$info_data_partner->owner_dob}}
+                                       <span class="font-w600 text-black">Ngày sinh:</span> {{date('d-m-Y', strtotime($info_data_partner['owner_dob']))}}
                                     </div>
                                     <div class="col-md-12 fs-20 mb-3">
-                                        <span
-                                            class="font-w600 text-black">Tuổi:</span> {{$info_data_partner->owner_age}}
+                                        <span class="font-w600 text-black">MST Cá nhân:</span> {{$info_data_partner->owner_mst}}
                                     </div>
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="col-md-12 fs-20 mb-3">
-                                       <span
-                                           class="font-w600 text-black">MST Cá nhân:</span> {{$info_data_partner->owner_mst}}
+                                        <span class="font-w600 text-black">CCCD/CMND:</span> {{$info_data_partner->owner_id_numb}}
                                     </div>
                                     <div class="col-md-12 fs-20 mb-3">
-                                        <span
-                                            class="font-w600 text-black">CCCD/CMND:</span> {{$info_data_partner->owner_id_numb}}
+                                         <span class="font-w600 text-black">Ngày cấp:</span> {{$info_data_partner->owner_id_numb_created_at}}
                                     </div>
                                     <div class="col-md-12 fs-20 mb-3">
-                                         <span
-                                             class="font-w600 text-black">Ngày cấp:</span> {{$info_data_partner->owner_id_numb_created_at}}
-                                    </div>
-                                    <div class="col-md-12 fs-20 mb-3">
-                                            <span
-                                                class="font-w600 text-black">Nơi cấp:</span> {{$info_data_partner->owner_id_numb_created_locate}}
+                                        <span class="font-w600 text-black">Nơi cấp:</span> {{$info_data_partner->owner_id_numb_created_locate}}
                                     </div>
                                 </div>
                             </div>
@@ -660,8 +751,11 @@
                                         data-toggle="collapse"
                                         data-target="#contract_{{$data['id']}}">
                                         <span class="accordion__header--icon"></span>
-                                        <span
-                                            class="accordion__header--text">{{$data['store_name']}}</span>
+                                        @if($data['contract_mode'] === 1)
+                                            Hợp đồng - <span class="accordion__header--text">{{$data['store_name']}}</span>
+                                        @else
+                                            Thông tin đối tác - <span disabled class="accordion__header--text">{{$data['store_name']}}</span>
+                                        @endif
                                         <span class="accordion__header--indicator"></span>
                                     </div>
                                     <div id="contract_{{$data['id']}}"
@@ -669,134 +763,108 @@
                                          data-parent="#accordion-nine">
                                         <div class="py-4">
                                             <div class="row">
-                                                <div
-                                                    class="col-md-12  mb-5 d-flex justify-content-between">
-                                                    @if($data['contract_mode'] === 1)
-                                                        <div>
-
-                                                            <a href="{{route('contract.show.pdf',$data['id']).'?type=only_show'}}"
-                                                               class="btn light  btn-md rounded-lg btn-primary mr-2">
-                                                                Xuất hợp đồng
-                                                            </a>
-                                                            @if($data['store_signed'] == 0)
-                                                                <a href="{{route('contract.show.pdf',$data['id']).'?type=sign'}}"
-                                                                   class="btn light  btn-md rounded-lg btn-primary mr-2">
-                                                                    Ký hợp đồng
-                                                                </a>
-                                                            @endif
-
-                                                        </div>
-                                                    @endif
-                                                    <div>
-                                                        <p class="fs-14 text-black mb-1 mr-1">Ngày
-                                                            tạo</p>
-                                                        <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <h3 class="font-w600 text-black">Đại
-                                                        lý: {{$data['store_name']}}</h3>
-                                                </div>
                                                 @if($data['contract_mode'] === 1)
+                                                    <div class="col-md-12  mb-5 d-flex justify-content-between">
+                                                            <div>
+                                                                @if($data['store_signed'] == 1)
+                                                                    <a href="{{route('contract.show.pdf',$data['id']).'?type=only_show'}}"
+                                                                       class="btn light  btn-md rounded-lg btn-primary mr-2">
+                                                                        Xem mẫu hợp đồng
+                                                                    </a>
+                                                                @elseif($info_data_partner['owner_code'] != null)
+                                                                    <a href="{{route('contract.show.pdf',$data['id']).'?type=sign'}}"
+                                                                       class="btn light  btn-md rounded-lg btn-primary mr-2">
+                                                                        Thực hiện ký và xuất hợp đồng
+                                                                    </a>
+                                                                @else
+                                                                    <p>Thông tin đang được xử lý, sau đó bạn có thể thực hiện ký và xuất hợp đồng.</p>
+                                                                @endif
+                                                            </div>
+                                                            <div>
+                                                                <p class="fs-14 text-black mb-1 mr-1">Ngày tạo</p>
+                                                                <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <h3 class="font-w600 text-black">Chi tiết hợp đồng: {{$info_data_partner['owner_name']}}</h3>
+                                                    </div>
                                                     <div class="col-md-6 p-0">
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Mã hợp đồng:</span> {{$data['contract_code']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Phạm vi bán hàng:</span> {{$data['store_effect']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Cấp độ hợp đồng:</span>
-                                                            Hợp đồng cấp {{$data['contract_level']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Mẫu hợp đồng:</span> {{$data['store_contract_type']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Mã trình dược viên:</span> {{$data->member?->member_code}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Tên trình dược viên:</span> {{$data->member?->member_name}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">SĐT Đại lý:</span> {{$data['store_phone']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Địa chỉ:</span> {{$data['store_add_DKKD']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                <span
-                                                                    class="font-w600 text-black">Địa chỉ giao hàng:</span> {{$data['store_add_GH']}}
-                                                        </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Mã hợp đồng:</span> {{$data['contract_code']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Phạm vi bán hàng:</span> {{$data['store_effect']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Cấp độ hợp đồng:</span> Hợp đồng cấp {{$data['contract_level']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Mẫu hợp đồng:</span> {{$data['store_contract_type']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Mã trình dược viên:</span> {{$data['member_id']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Tên trình dược viên:</span> {{$data->member?->member_name}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">SĐT Đại lý:</span> {{$data['store_phone']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Địa chỉ:</span> {{$data['store_add_DKKD']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Địa chỉ giao hàng:</span> {{$data['store_add_GH']}}
+                                                                </div>
 
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                <span
-                                                                    class="font-w600 text-black">Số giấy phép ĐKKDD:</span> {{$data['store_id_Numb_GPDKKD']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{$data['store_GPDKKD']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Người liên hệ:</span> {{$data['store_contract_name']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Chức danh :</span> {{$data['store_contract_position']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                <span
-                                                                    class="font-w600 text-black">SĐT Người liên hệ:</span> {{$data['store_contract_phone']}}
-                                                        </div>
-                                                    </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Số giấy phép ĐKKDD:</span> {{$data['store_id_Numb_GPDKKD']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Ngày cấp GPĐKKD:</span> {{$data['store_GPDKKD']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Người liên hệ:</span> {{$data['store_contract_name']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Chức danh :</span> {{$data['store_contract_position']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">SĐT Người liên hệ:</span> {{$data['store_contract_phone']}}
+                                                                </div>
+                                                            </div>
                                                     <div class="col-md-6 p-0">
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Chủ ngân hàng:</span> {{$data['store_bank_holder']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Tên ngân hàng :</span> {{$data['store_bank']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Số tài khoản:</span> {{$data['store_bank_numb']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Ngày bắt đầu:</span> {{$data['store_started']}}
-                                                        </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Ngày kết thúc:</span> {{$data['store_end']}}
-                                                        </div>
-                                                    </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Chủ ngân hàng:</span> {{$data['store_bank_holder']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Tên ngân hàng :</span> {{$data['store_bank']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Số tài khoản:</span> {{$data['store_bank_numb']}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Ngày bắt đầu:</span> {{date('d-m-Y', strtotime($data['store_started']))}}
+                                                                </div>
+                                                                <div class="col-md-12 fs-20 mt-3">
+                                                                    <span class="font-w600 text-black">Ngày kết thúc:</span> {{date('d-m-Y', strtotime($data['store_end']))}}
+                                                                </div>
+                                                            </div>
                                                 @else
-                                                    <div class="col-md-6 p-0">
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Mã hợp đồng:</span> {{$data['contract_code']}}
+                                                    <div class="col-md-12  mb-5 d-flex justify-content-between">
+                                                        <div>
+                                                            Thông tin đối tác mới
                                                         </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Cấp độ hợp đồng:</span>
-                                                            Hợp đồng cấp {{$data['contract_level']}}
+                                                        <div>
+                                                            <p class="fs-14 text-black mb-1 mr-1">Ngày tạo</p>
+                                                            <h4 class="fs-24 text-primary">{{$data['created_at']->format('d-m-Y')}}</h4>
                                                         </div>
-                                                        <div class="col-md-12 fs-20 mt-3">
-                                                                    <span
-                                                                        class="font-w600 text-black">Địa chỉ:</span> {{$data['store_add_DKKD']}}
-                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <h3 class="font-w600 text-black">Danh sách hợp đồng: {{$info_data_partner['owner_name']}}</h3>
                                                     </div>
                                                 @endif
+
                                             </div>
                                         </div>
                                     </div>
@@ -822,8 +890,7 @@
                                     <svg width="25" height="27" viewBox="0 0 25 27" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
-                                            d="M19.7501 17.125C18.9899 17.1268 18.2409 17.3083 17.5643 17.6548C16.8877 18.0013 16.3026 18.503 15.8569 19.1188L9.79706 15.0793C10.1789 14.0611 10.1789 12.939 9.79706 11.9207L15.8569 7.88126C16.537 8.80338 17.5237 9.45273 18.6397 9.71264C19.7556 9.97256 20.9277 9.826 21.9453 9.29931C22.9629 8.77261 23.7594 7.9003 24.1915 6.8391C24.6237 5.77789 24.6633 4.59736 24.3032 3.50959C23.943 2.42182 23.2068 1.49812 22.2268 0.904453C21.2467 0.310781 20.0871 0.0860493 18.9562 0.270634C17.8254 0.455218 16.7974 1.03702 16.057 1.91151C15.3166 2.786 14.9123 3.89586 14.9168 5.04168C14.9246 5.21774 14.9424 5.39323 14.9699 5.5673L8.45581 9.91005C7.76161 9.28424 6.90085 8.87314 5.97778 8.72652C5.0547 8.5799 4.10892 8.70406 3.25497 9.08396C2.40102 9.46386 1.67554 10.0832 1.16638 10.867C0.657219 11.6508 0.38623 12.5654 0.38623 13.5C0.38623 14.4347 0.657219 15.3492 1.16638 16.133C1.67554 16.9168 2.40102 17.5362 3.25497 17.9161C4.10892 18.296 5.0547 18.4201 5.97778 18.2735C6.90085 18.1269 7.76161 17.7158 8.45581 17.09L14.9699 21.4327C14.9424 21.6068 14.9246 21.7823 14.9168 21.9583C14.9168 22.9143 15.2002 23.8488 15.7313 24.6436C16.2624 25.4384 17.0173 26.0579 17.9005 26.4238C18.7836 26.7896 19.7555 26.8853 20.693 26.6988C21.6306 26.5123 22.4918 26.052 23.1678 25.376C23.8437 24.7001 24.3041 23.8389 24.4906 22.9013C24.6771 21.9637 24.5813 20.9919 24.2155 20.1087C23.8497 19.2255 23.2302 18.4707 22.4354 17.9396C21.6405 17.4085 20.706 17.125 19.7501 17.125Z"
-                                            fill="white"/>
+                                            d="M19.7501 17.125C18.9899 17.1268 18.2409 17.3083 17.5643 17.6548C16.8877 18.0013 16.3026 18.503 15.8569 19.1188L9.79706 15.0793C10.1789 14.0611 10.1789 12.939 9.79706 11.9207L15.8569 7.88126C16.537 8.80338 17.5237 9.45273 18.6397 9.71264C19.7556 9.97256 20.9277 9.826 21.9453 9.29931C22.9629 8.77261 23.7594 7.9003 24.1915 6.8391C24.6237 5.77789 24.6633 4.59736 24.3032 3.50959C23.943 2.42182 23.2068 1.49812 22.2268 0.904453C21.2467 0.310781 20.0871 0.0860493 18.9562 0.270634C17.8254 0.455218 16.7974 1.03702 16.057 1.91151C15.3166 2.786 14.9123 3.89586 14.9168 5.04168C14.9246 5.21774 14.9424 5.39323 14.9699 5.5673L8.45581 9.91005C7.76161 9.28424 6.90085 8.87314 5.97778 8.72652C5.0547 8.5799 4.10892 8.70406 3.25497 9.08396C2.40102 9.46386 1.67554 10.0832 1.16638 10.867C0.657219 11.6508 0.38623 12.5654 0.38623 13.5C0.38623 14.4347 0.657219 15.3492 1.16638 16.133C1.67554 16.9168 2.40102 17.5362 3.25497 17.9161C4.10892 18.296 5.0547 18.4201 5.97778 18.2735C6.90085 18.1269 7.76161 17.7158 8.45581 17.09L14.9699 21.4327C14.9424 21.6068 14.9246 21.7823 14.9168 21.9583C14.9168 22.9143 15.2002 23.8488 15.7313 24.6436C16.2624 25.4384 17.0173 26.0579 17.9005 26.4238C18.7836 26.7896 19.7555 26.8853 20.693 26.6988C21.6306 26.5123 22.4918 26.052 23.1678 25.376C23.8437 24.7001 24.3041 23.8389 24.4906 22.9013C24.6771 21.9637 24.5813 20.9919 24.2155 20.1087C23.8497 19.2255 23.2302 18.4707 22.4354 17.9396C21.6405 17.4085 20.706 17.125 19.7501 17.125Z"ddill="white"/>
                                     </svg>
                                 </a>
                                 <a href="javascript:void(0);">
@@ -858,8 +925,7 @@
                                     <svg width="25" height="27" viewBox="0 0 25 27" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
-                                            d="M19.7501 17.125C18.9899 17.1268 18.2409 17.3083 17.5643 17.6548C16.8877 18.0013 16.3026 18.503 15.8569 19.1188L9.79706 15.0793C10.1789 14.0611 10.1789 12.939 9.79706 11.9207L15.8569 7.88126C16.537 8.80338 17.5237 9.45273 18.6397 9.71264C19.7556 9.97256 20.9277 9.826 21.9453 9.29931C22.9629 8.77261 23.7594 7.9003 24.1915 6.8391C24.6237 5.77789 24.6633 4.59736 24.3032 3.50959C23.943 2.42182 23.2068 1.49812 22.2268 0.904453C21.2467 0.310781 20.0871 0.0860493 18.9562 0.270634C17.8254 0.455218 16.7974 1.03702 16.057 1.91151C15.3166 2.786 14.9123 3.89586 14.9168 5.04168C14.9246 5.21774 14.9424 5.39323 14.9699 5.5673L8.45581 9.91005C7.76161 9.28424 6.90085 8.87314 5.97778 8.72652C5.0547 8.5799 4.10892 8.70406 3.25497 9.08396C2.40102 9.46386 1.67554 10.0832 1.16638 10.867C0.657219 11.6508 0.38623 12.5654 0.38623 13.5C0.38623 14.4347 0.657219 15.3492 1.16638 16.133C1.67554 16.9168 2.40102 17.5362 3.25497 17.9161C4.10892 18.296 5.0547 18.4201 5.97778 18.2735C6.90085 18.1269 7.76161 17.7158 8.45581 17.09L14.9699 21.4327C14.9424 21.6068 14.9246 21.7823 14.9168 21.9583C14.9168 22.9143 15.2002 23.8488 15.7313 24.6436C16.2624 25.4384 17.0173 26.0579 17.9005 26.4238C18.7836 26.7896 19.7555 26.8853 20.693 26.6988C21.6306 26.5123 22.4918 26.052 23.1678 25.376C23.8437 24.7001 24.3041 23.8389 24.4906 22.9013C24.6771 21.9637 24.5813 20.9919 24.2155 20.1087C23.8497 19.2255 23.2302 18.4707 22.4354 17.9396C21.6405 17.4085 20.706 17.125 19.7501 17.125Z"
-                                            fill="white"/>
+                                            d="M19.7501 17.125C18.9899 17.1268 18.2409 17.3083 17.5643 17.6548C16.8877 18.0013 16.3026 18.503 15.8569 19.1188L9.79706 15.0793C10.1789 14.0611 10.1789 12.939 9.79706 11.9207L15.8569 7.88126C16.537 8.80338 17.5237 9.45273 18.6397 9.71264C19.7556 9.97256 20.9277 9.826 21.9453 9.29931C22.9629 8.77261 23.7594 7.9003 24.1915 6.8391C24.6237 5.77789 24.6633 4.59736 24.3032 3.50959C23.943 2.42182 23.2068 1.49812 22.2268 0.904453C21.2467 0.310781 20.0871 0.0860493 18.9562 0.270634C17.8254 0.455218 16.7974 1.03702 16.057 1.91151C15.3166 2.786 14.9123 3.89586 14.9168 5.04168C14.9246 5.21774 14.9424 5.39323 14.9699 5.5673L8.45581 9.91005C7.76161 9.28424 6.90085 8.87314 5.97778 8.72652C5.0547 8.5799 4.10892 8.70406 3.25497 9.08396C2.40102 9.46386 1.67554 10.0832 1.16638 10.867C0.657219 11.6508 0.38623 12.5654 0.38623 13.5C0.38623 14.4347 0.657219 15.3492 1.16638 16.133C1.67554 16.9168 2.40102 17.5362 3.25497 17.9161C4.10892 18.296 5.0547 18.4201 5.97778 18.2735C6.90085 18.1269 7.76161 17.7158 8.45581 17.09L14.9699 21.4327C14.9424 21.6068 14.9246 21.7823 14.9168 21.9583C14.9168 22.9143 15.2002 23.8488 15.7313 24.6436C16.2624 25.4384 17.0173 26.0579 17.9005 26.4238C18.7836 26.7896 19.7555 26.8853 20.693 26.6988C21.6306 26.5123 22.4918 26.052 23.1678 25.376C23.8437 24.7001 24.3041 23.8389 24.4906 22.9013C24.6771 21.9637 24.5813 20.9919 24.2155 20.1087C23.8497 19.2255 23.2302 18.4707 22.4354 17.9396C21.6405 17.4085 20.706 17.125 19.7501 17.125Z"ddill="white"/>
                                     </svg>
                                 </a>
                                 <a href="javascript:void(0);">
@@ -894,8 +960,7 @@
                                     <svg width="25" height="27" viewBox="0 0 25 27" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
-                                            d="M19.7501 17.125C18.9899 17.1268 18.2409 17.3083 17.5643 17.6548C16.8877 18.0013 16.3026 18.503 15.8569 19.1188L9.79706 15.0793C10.1789 14.0611 10.1789 12.939 9.79706 11.9207L15.8569 7.88126C16.537 8.80338 17.5237 9.45273 18.6397 9.71264C19.7556 9.97256 20.9277 9.826 21.9453 9.29931C22.9629 8.77261 23.7594 7.9003 24.1915 6.8391C24.6237 5.77789 24.6633 4.59736 24.3032 3.50959C23.943 2.42182 23.2068 1.49812 22.2268 0.904453C21.2467 0.310781 20.0871 0.0860493 18.9562 0.270634C17.8254 0.455218 16.7974 1.03702 16.057 1.91151C15.3166 2.786 14.9123 3.89586 14.9168 5.04168C14.9246 5.21774 14.9424 5.39323 14.9699 5.5673L8.45581 9.91005C7.76161 9.28424 6.90085 8.87314 5.97778 8.72652C5.0547 8.5799 4.10892 8.70406 3.25497 9.08396C2.40102 9.46386 1.67554 10.0832 1.16638 10.867C0.657219 11.6508 0.38623 12.5654 0.38623 13.5C0.38623 14.4347 0.657219 15.3492 1.16638 16.133C1.67554 16.9168 2.40102 17.5362 3.25497 17.9161C4.10892 18.296 5.0547 18.4201 5.97778 18.2735C6.90085 18.1269 7.76161 17.7158 8.45581 17.09L14.9699 21.4327C14.9424 21.6068 14.9246 21.7823 14.9168 21.9583C14.9168 22.9143 15.2002 23.8488 15.7313 24.6436C16.2624 25.4384 17.0173 26.0579 17.9005 26.4238C18.7836 26.7896 19.7555 26.8853 20.693 26.6988C21.6306 26.5123 22.4918 26.052 23.1678 25.376C23.8437 24.7001 24.3041 23.8389 24.4906 22.9013C24.6771 21.9637 24.5813 20.9919 24.2155 20.1087C23.8497 19.2255 23.2302 18.4707 22.4354 17.9396C21.6405 17.4085 20.706 17.125 19.7501 17.125Z"
-                                            fill="white"/>
+                                            d="M19.7501 17.125C18.9899 17.1268 18.2409 17.3083 17.5643 17.6548C16.8877 18.0013 16.3026 18.503 15.8569 19.1188L9.79706 15.0793C10.1789 14.0611 10.1789 12.939 9.79706 11.9207L15.8569 7.88126C16.537 8.80338 17.5237 9.45273 18.6397 9.71264C19.7556 9.97256 20.9277 9.826 21.9453 9.29931C22.9629 8.77261 23.7594 7.9003 24.1915 6.8391C24.6237 5.77789 24.6633 4.59736 24.3032 3.50959C23.943 2.42182 23.2068 1.49812 22.2268 0.904453C21.2467 0.310781 20.0871 0.0860493 18.9562 0.270634C17.8254 0.455218 16.7974 1.03702 16.057 1.91151C15.3166 2.786 14.9123 3.89586 14.9168 5.04168C14.9246 5.21774 14.9424 5.39323 14.9699 5.5673L8.45581 9.91005C7.76161 9.28424 6.90085 8.87314 5.97778 8.72652C5.0547 8.5799 4.10892 8.70406 3.25497 9.08396C2.40102 9.46386 1.67554 10.0832 1.16638 10.867C0.657219 11.6508 0.38623 12.5654 0.38623 13.5C0.38623 14.4347 0.657219 15.3492 1.16638 16.133C1.67554 16.9168 2.40102 17.5362 3.25497 17.9161C4.10892 18.296 5.0547 18.4201 5.97778 18.2735C6.90085 18.1269 7.76161 17.7158 8.45581 17.09L14.9699 21.4327C14.9424 21.6068 14.9246 21.7823 14.9168 21.9583C14.9168 22.9143 15.2002 23.8488 15.7313 24.6436C16.2624 25.4384 17.0173 26.0579 17.9005 26.4238C18.7836 26.7896 19.7555 26.8853 20.693 26.6988C21.6306 26.5123 22.4918 26.052 23.1678 25.376C23.8437 24.7001 24.3041 23.8389 24.4906 22.9013C24.6771 21.9637 24.5813 20.9919 24.2155 20.1087C23.8497 19.2255 23.2302 18.4707 22.4354 17.9396C21.6405 17.4085 20.706 17.125 19.7501 17.125Z"ddill="white"/>
                                     </svg>
                                 </a>
                                 <a href="javascript:void(0);">
@@ -930,8 +995,7 @@
                                     <svg width="25" height="27" viewBox="0 0 25 27" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
-                                            d="M19.7501 17.125C18.9899 17.1268 18.2409 17.3083 17.5643 17.6548C16.8877 18.0013 16.3026 18.503 15.8569 19.1188L9.79706 15.0793C10.1789 14.0611 10.1789 12.939 9.79706 11.9207L15.8569 7.88126C16.537 8.80338 17.5237 9.45273 18.6397 9.71264C19.7556 9.97256 20.9277 9.826 21.9453 9.29931C22.9629 8.77261 23.7594 7.9003 24.1915 6.8391C24.6237 5.77789 24.6633 4.59736 24.3032 3.50959C23.943 2.42182 23.2068 1.49812 22.2268 0.904453C21.2467 0.310781 20.0871 0.0860493 18.9562 0.270634C17.8254 0.455218 16.7974 1.03702 16.057 1.91151C15.3166 2.786 14.9123 3.89586 14.9168 5.04168C14.9246 5.21774 14.9424 5.39323 14.9699 5.5673L8.45581 9.91005C7.76161 9.28424 6.90085 8.87314 5.97778 8.72652C5.0547 8.5799 4.10892 8.70406 3.25497 9.08396C2.40102 9.46386 1.67554 10.0832 1.16638 10.867C0.657219 11.6508 0.38623 12.5654 0.38623 13.5C0.38623 14.4347 0.657219 15.3492 1.16638 16.133C1.67554 16.9168 2.40102 17.5362 3.25497 17.9161C4.10892 18.296 5.0547 18.4201 5.97778 18.2735C6.90085 18.1269 7.76161 17.7158 8.45581 17.09L14.9699 21.4327C14.9424 21.6068 14.9246 21.7823 14.9168 21.9583C14.9168 22.9143 15.2002 23.8488 15.7313 24.6436C16.2624 25.4384 17.0173 26.0579 17.9005 26.4238C18.7836 26.7896 19.7555 26.8853 20.693 26.6988C21.6306 26.5123 22.4918 26.052 23.1678 25.376C23.8437 24.7001 24.3041 23.8389 24.4906 22.9013C24.6771 21.9637 24.5813 20.9919 24.2155 20.1087C23.8497 19.2255 23.2302 18.4707 22.4354 17.9396C21.6405 17.4085 20.706 17.125 19.7501 17.125Z"
-                                            fill="white"/>
+                                            d="M19.7501 17.125C18.9899 17.1268 18.2409 17.3083 17.5643 17.6548C16.8877 18.0013 16.3026 18.503 15.8569 19.1188L9.79706 15.0793C10.1789 14.0611 10.1789 12.939 9.79706 11.9207L15.8569 7.88126C16.537 8.80338 17.5237 9.45273 18.6397 9.71264C19.7556 9.97256 20.9277 9.826 21.9453 9.29931C22.9629 8.77261 23.7594 7.9003 24.1915 6.8391C24.6237 5.77789 24.6633 4.59736 24.3032 3.50959C23.943 2.42182 23.2068 1.49812 22.2268 0.904453C21.2467 0.310781 20.0871 0.0860493 18.9562 0.270634C17.8254 0.455218 16.7974 1.03702 16.057 1.91151C15.3166 2.786 14.9123 3.89586 14.9168 5.04168C14.9246 5.21774 14.9424 5.39323 14.9699 5.5673L8.45581 9.91005C7.76161 9.28424 6.90085 8.87314 5.97778 8.72652C5.0547 8.5799 4.10892 8.70406 3.25497 9.08396C2.40102 9.46386 1.67554 10.0832 1.16638 10.867C0.657219 11.6508 0.38623 12.5654 0.38623 13.5C0.38623 14.4347 0.657219 15.3492 1.16638 16.133C1.67554 16.9168 2.40102 17.5362 3.25497 17.9161C4.10892 18.296 5.0547 18.4201 5.97778 18.2735C6.90085 18.1269 7.76161 17.7158 8.45581 17.09L14.9699 21.4327C14.9424 21.6068 14.9246 21.7823 14.9168 21.9583C14.9168 22.9143 15.2002 23.8488 15.7313 24.6436C16.2624 25.4384 17.0173 26.0579 17.9005 26.4238C18.7836 26.7896 19.7555 26.8853 20.693 26.6988C21.6306 26.5123 22.4918 26.052 23.1678 25.376C23.8437 24.7001 24.3041 23.8389 24.4906 22.9013C24.6771 21.9637 24.5813 20.9919 24.2155 20.1087C23.8497 19.2255 23.2302 18.4707 22.4354 17.9396C21.6405 17.4085 20.706 17.125 19.7501 17.125Z"ddill="white"/>
                                     </svg>
                                 </a>
                                 <a href="javascript:void(0);">

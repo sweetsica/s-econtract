@@ -130,10 +130,17 @@ class PartnerController extends Controller
     public function update(Request $request, $id)
     {
         $partner = Partner::find($id);
-        $partner->update($request->only(['owner_name', 'owner_id_numb', 'owner_id_numb_created_at', 'owner_id_numb_created_locate', 'owner_sex', 'owner_dob', 'owner_age', 'owner_token', 'owner_phone', 'owner_email', 'owner_mst']));
+        $data = $request->all();
+        $partner->update($data);
         return redirect()->back();
     }
 
+    public function update_partner(Request $request, $id)
+    {
+        $partner = Partner::find($id);
+        $partner->update($request->only(['owner_name', 'owner_id_numb', 'owner_id_numb_created_at', 'owner_id_numb_created_locate', 'owner_sex', 'owner_dob', 'owner_age', 'owner_token', 'owner_phone', 'owner_email', 'owner_mst']));
+        return redirect()->back();
+    }
 
     /**
      * Trang dashboard hợp đồng

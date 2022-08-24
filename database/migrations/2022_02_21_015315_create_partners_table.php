@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('partners', function (Blueprint $table) {
             $table->id();
+            $table->string('owner_code')->nullable();//Mã khách hàng
             $table->string('owner_name', 100)->nullable();//Họ và tên
             $table->string('owner_id_numb')->nullable();//CCCD/CMND
             $table->string('owner_id_numb_created_at')->nullable();//Ngày cấp

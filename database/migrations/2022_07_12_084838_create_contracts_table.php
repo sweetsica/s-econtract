@@ -22,12 +22,12 @@ return new class extends Migration
             $table->string('store_add_DKKD')->nullable(); // Địa chỉ cửa hàng
             $table->string('store_local_DKKD')->nullable(); // Khu vực cửa hàng
             $table->string('store_add_GH')->nullable(); // Địa chỉ nhận hàng
-            $table->string('store_local_GH')->nullable(); // Khu vực nhận hàng
+//            $table->string('store_local_GH')->nullable(); // Khu vực nhận hàng
             $table->string('store_headman')->nullable(); // Tên người đại diện
-            $table->string('store_mst')->nullable(); // Mã số thuế
+//            $table->string('store_mst')->nullable(); // Mã số thuế
             $table->string('store_phone')->nullable(); // SĐT cửa hàng
             $table->string('store_website')->nullable(); // Website cửa hàng
-            $table->string('store_GPDKKD')->nullable(); // Ngày cấp GPĐKKD
+            $table->dateTime('store_GPDKKD')->nullable(); // Ngày cấp GPĐKKD
             $table->string('store_id_Numb_GPDKKD')->nullable(); // Số GPĐKKD
             $table->string('store_bank')->nullable(); // Loại tài khoản ngân hàng cửa hàng
             $table->string('store_bank_holder')->nullable(); // Tên chủ sở hữu ngân hàng cửa hàng
@@ -36,11 +36,12 @@ return new class extends Migration
             $table->string('store_contract_phone')->nullable(); // Số liên hệ tại cửa hàng
             $table->string('store_contract_position')->nullable(); // Chức vụ người liên hệ tại cửa hàng
             $table->string('store_effect')->nullable(); // Phạm vi bán hàng tại cửa hàng
-            $table->string('store_started')->nullable(); // Ngày bắt đầu hợp đồng
-            $table->string('store_end')->nullable(); // Ngày kết thúc
+            $table->dateTime('store_started')->nullable(); // Ngày bắt đầu hợp đồng
+            $table->dateTime('store_end')->nullable(); // Ngày kết thúc
             $table->string('member_id')->nullable(); // id TDV
             $table->integer('contract_level')->default(10); // Cấp độ hợp đồng - mặc định 10
             $table->string('store_signed')->nullable(); // Tình trạng chữ ký
+            $table->dateTime('store_signed_date_time')->nullable(); // Ngày ký
             $table->string('store_sign_img')->nullable(); // Link ảnh chữ ký
             $table->string('store_bank_name_doppelherz')->nullable(); // Tên ngân hàng Doppelherz
             $table->string('store_bank_number_doppelherz')->nullable(); // Số ngân hàng Doppelherz

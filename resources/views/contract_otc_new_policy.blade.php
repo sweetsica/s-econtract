@@ -38,7 +38,7 @@
             <br/>
             <p>- Căn cứ vào nhu cầu và thỏa thuận của hai bên.</p>
             <br/>
-            <p>Hôm nay, ngày……../….…./2022, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</p>
+            <p>Hôm nay, ngày {{date("d/m/Y")}}, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</p>
         </td>
 
     </tr>
@@ -83,11 +83,11 @@
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông {{$info?->doppelherz?->name}}</td>
-                    <td width="50%">Chức danh: Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
+                    <td width="20%">: Ông {{$info?->doppelherz?->name}}</td>
+                    <td width="60%" colspan="3"> -Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="5" width="100%">
                         Theo giấy ủy quyền số: ................................................
                     </td>
                 </tr>
@@ -132,12 +132,15 @@
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông {{$info->partner?->owner_name}}</td>
-                    <td width="50%">Chức danh: Chủ đại lý</td>
+                    <td width="40%">: Ông {{$info->partner?->owner_name}}</td>
+                    <td width="40%">Chức danh: Chủ đại lý</td>
                 </tr>
                 </tbody>
             </table>
         </td>
+    </tr>
+    <tr>
+        <td colspan="2">Bên A và Bên B đồng ý ký Hợp đồng đại lý về việc mua bán sản phẩm với các điều khoản sau:</td>
     </tr>
     {{--    dieu khoan 1--}}
     <tr>
@@ -148,7 +151,7 @@
             <strong>1.1</strong>
             Bên B đồng ý với Bên A ký hợp đồng làm Đại lý bán lẻ Sản phẩm “chỉ bán tới các khách hàng là Người tiêu dùng
             cuối cùng” theo các điều kiện nêu tại Hợp đồng này, Bên B cam kết chỉ bán tại địa
-            bàn:…………………………...…………………...…...………………………………............................................ và trên
+            bàn:{{$info['store_effect']}} và trên
             Website/Fanpage thuộc quản lý riêng của Bên B, không bao gồm các gian hàng trên các Trang thương mại điện tử
             trung gian hoặc địa bàn khác.
         </td>
@@ -309,7 +312,7 @@
     <tr>
         <td colspan="2">
             <strong>6.2</strong>
-            Hợp Đồng này có hiệu lực kể từ ngày ký đến hết ngày ........../........./2022. <strong><i> Khi kết thức hợp
+            Hợp Đồng này có hiệu lực kể từ ngày ký đến hết ngày {{ date('d-m-Y', strtotime($info['store_end'])) }}. <strong><i> Khi kết thức hợp
                     đồng nếu hai bên không thông báo thay đổi hiệu lực hợp đồng thì Hợp đồng sẽ tự động được gia
                     hạn.</i></strong>
         </td>
@@ -358,8 +361,7 @@
     <tr>
         <td colspan="2" style="text-align: center">
             <h2>PHỤ LỤC I: DANH MỤC SẢN PHẨM VÀ CHÍNH SÁCH BÁN HÀNG</h2>
-            <p>(Đính kèm hợp đồng số: .............................../2022/HĐĐL ký
-                ngày:.............................)</p>
+            <p>(Đính kèm hợp đồng số: {{$info['contract_code']}} ký ngày: {{date('d-m-Y', strtotime($info['store_signed_date_time']))}})</p>
             <table border="1" width="100%" cellspacing="0" cellpadding="5">
                 <tbody>
                 <tr style="height: 61px;">
@@ -461,7 +463,7 @@
                     <td style="width: 36px; text-align: center; height: 48px;">
                         <p>6</p>
                     </td>
-                    <td style="width: 52px; text-align: center; height: 943px;" rowspan="21">
+                    <td style="width: 52px; text-align: center; height: 943px;" rowspan="23">
                         <p><strong>Sản phẩm tư vấn</strong></p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
@@ -781,6 +783,20 @@
                         <p>335.000</p>
                     </td>
                 </tr>
+                <tr style="height: 48px;">
+                    <td style="width: 36px; text-align: center; height: 48px;">
+                        <p>27</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 48px;">
+                        <p><strong>Zincodin:</strong>Giúp bổ sung kẽm và L-histidine giúp cơ thể tăng hấp thu kẽm. (Hộp 30 viên)</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 48px;">
+                        <p>199.074</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 48px;">
+                        <p>215.000</p>
+                    </td>
+                </tr>
                 </tbody>
             </table>
             <br/>
@@ -801,7 +817,7 @@
     <tr>
         <td colspan="2" style="text-align: center;">
             <h2>PHỤ LỤC II: CHÍNH SÁCH BÁN HÀNG</h2>
-            <p>(Đính kèm Hợp đồng số ……………….…/2022/HĐĐL ký ngày …………………… )</p>
+            <p>(Đính kèm hợp đồng số: {{$info['contract_code']}} ký ngày: {{date('d-m-Y', strtotime($info['store_signed_date_time']))}})</p>
         </td>
     </tr>
     <tr>
@@ -935,7 +951,6 @@
             @if($info->store_sign_img)
                 <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
             @endif
-
         </td>
     </tr>
     </tbody>

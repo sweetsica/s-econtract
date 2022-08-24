@@ -65,6 +65,7 @@ class ContractController extends Controller
             $contract = Contract::create($request->all());
             $contract->contract_level = 10;
             $contract->partnerId = $partner->id;
+            $contract->store_headman = $partner->owner_name;
             $contract->contract_mode = 1;
             $contract->contract_code = 'HD-2022/' . $contract->id . $contract->created_at->format('-His');
             $contract->save();

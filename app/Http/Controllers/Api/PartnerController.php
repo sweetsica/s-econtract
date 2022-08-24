@@ -47,8 +47,10 @@ class PartnerController extends Controller
 
             if ($request['contract_mode'] == 0) {
                 //Đăng ký nhanh
+//                dd($request);
                 $checkPartner = Partner::where('owner_phone', $request->owner_phone)->orWhere('owner_id_numb', $request->owner_id_numb)->first();
                 if ($checkPartner) {
+//                    dd($checkPartner);
                     $data = $checkPartner;
                     return response()->json([
                         'data' => $data,
@@ -60,7 +62,7 @@ class PartnerController extends Controller
                     $partner = Partner::create($request->only(['owner_name', 'owner_id_numb', 'owner_token', 'owner_phone', 'owner_email']));
                     $contract = Contract::create($request->only(['store_contract_type', 'contract_code', 'store_name', 'store_add_DKKD', 'store_local_DKKD','store_contract_name','contract_mode','store_token']));
                     $contract->contract_mode = $request->contract_mode;
-                    $contract->contract_code = 'HD-2022/' . $contract->id . $contract->created_at->format('-His');
+//                    $contract->contract_code = 'HD-2022/' . $contract->id . $contract->created_at->format('-His');
                     $contract->partnerId = $partner->id;
                     $contract->save();
                     return response()->json([
@@ -91,9 +93,9 @@ class PartnerController extends Controller
                             'store_bank',
                             'store_bank_holder',
                             'store_bank_numb',
-                            'store_contact_name',
-                            'store_contact_phone',
-                            'store_contact_position',
+                            'store_contract_name',
+                            'store_contract_phone',
+                            'store_contract_position',
                             'store_effect',
                             'store_started',
                             'store_end',

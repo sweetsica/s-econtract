@@ -52,7 +52,8 @@ Route::prefix('doi-tac')->group(function (){
     Route::get('/dang-nhap', [PartnerController::class, 'partner_login'])->name('partner.login');
     Route::post('/dang-nhap/gui-du-lieu', [PartnerController::class, 'partner_login_submit'])->name('partner.login.submit');
     Route::get('/danh-sach-hop-dong',[PartnerController::class,'dashboard'])->name('partner.dashboard');
-    Route::post('/sua-thong-tin/{id}',[PartnerController::class,'update'])->name('partner.update');
+//    Route::post('/sua-thong-tin/{id}',[PartnerController::class,'update'])->name('partner.update');
+    Route::post('/sua-thong-tin/{id}',[PartnerController::class,'update_partner'])->name('partner.update');
 });
 
 

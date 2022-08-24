@@ -8,17 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
 </head>
-<body >
+<body>
 <table style="width: 100%">
     <tbody>
     <tr>
-        <td width="30%" style="text-align: center">
-            <img width="100" height="101" style="margin-bottom:5px"
+        <td width="10%" style="text-align: center;padding-right:270px">
+            <img width="150" style="margin-bottom:5px"
                  src="https://doppelherz.vn/wp-content/uploads/2022/01/LOGO-DOPPELHERZ-Logo-tren-an-pham-792x800.png"/>
-            <h4 style="font-size: 15px"><b>MARTERTRAN</b></h4>
-            <h6 style="margin-top: 10px">Số: 12072022/HĐĐK</h6>
+            <h4 style="font-size: 20px"><b>MARTERTRAN</b></h4>
+            <h6 style="margin-top: 18px">Số: {{$info['contract_code']}}</h6>
         </td>
-        <td width="70%" style="text-align: center">
+        <td width="90%" style="text-align: center;font-size: 20px">
             <h4>CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h4>
             <h5>Độc lập - Tự do - Hạnh phúc</h5>
             <h6>----------oOo----------</h6>
@@ -26,11 +26,11 @@
     </tr>
     <tr>
         <td colspan="2" style="text-align: center;padding: 80px 0 20px 0">
-            <h1 style="font-size:18px"><strong>HỢP ĐỒNG ĐẠI LÝ</strong></h1>
+            <h1 style="font-size:20px"><strong>HỢP ĐỒNG ĐẠI LÝ</strong></h1>
         </td>
     </tr>
     <tr>
-        <td colspan="2" style="font-size: 15px">
+        <td colspan="2" style="font-size: 18px">
             <p>- <span style="display: inline;">Căn cứ vào Bộ luật dân sự số: 91/2015/QH13, ngày 24/11/2015 Quốc hội Nước CHXHCN Việt Nam.</span>
             </p>
             <br/>
@@ -38,7 +38,7 @@
             <br/>
             <p>- Căn cứ vào nhu cầu và thỏa thuận của hai bên.</p>
             <br/>
-            <p>Hôm nay, ngày……../….…./2022, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</p>
+            <p>Hôm nay, ngày {{date("d/m/Y")}}, tại Văn phòng Công ty CP Mastertran chúng tôi gồm:</p>
         </td>
 
     </tr>
@@ -83,11 +83,11 @@
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông {{$info?->doppelherz?->name}}</td>
-                    <td width="50%">Chức danh: Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
+                    <td width="20%">: Ông {{$info?->doppelherz?->name}}</td>
+                    <td width="60%" colspan="3"> -Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="5" width="100%">
                         Theo giấy ủy quyền số: ................................................
                     </td>
                 </tr>
@@ -132,13 +132,14 @@
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông {{$info->partner?->owner_name}}</td>
-                    <td width="50%">Chức danh: Chủ đại lý</td>
+                    <td width="40%">:Ông {{$info->partner?->owner_name}}</td>
+                    <td width="40%">Chức danh: {{$info->store_contract_position}}</td>
                 </tr>
                 </tbody>
             </table>
         </td>
     </tr>
+
     <tr>
         <td colspan="2">Bên A và Bên B đồng ý ký Hợp đồng đại lý về việc mua bán sản phẩm với các điều khoản sau:</td>
     </tr>
@@ -151,7 +152,7 @@
             <strong>1.1</strong>
             Bên B đồng ý với Bên A ký hợp đồng làm Đại lý bán lẻ Sản phẩm “chỉ bán tới các khách hàng là Người tiêu dùng
             cuối cùng” theo các điều kiện nêu tại Hợp đồng này, Bên B cam kết chỉ bán tại địa
-            bàn:…………………………...…………………...…...………………………………............................................ và trên
+            bàn: {{$info['store_effect']}} và trên
             Website/Fanpage thuộc quản lý riêng của Bên B, không bao gồm các gian hàng trên các Trang thương mại điện tử
             trung gian hoặc địa bàn khác.
         </td>
@@ -311,7 +312,7 @@
     <tr>
         <td colspan="2">
             <strong>6.2</strong>
-            Hợp Đồng này có hiệu lực kể từ ngày ký đến hết ngày ........../........./2022. <strong><i> Khi kết thức hợp
+            Hợp Đồng này có hiệu lực kể từ ngày ký đến hết ngày {{ date('d-m-Y', strtotime($info['store_end'])) }}. <strong><i> Khi kết thức hợp
                     đồng nếu hai bên không thông báo thay đổi hiệu lực hợp đồng thì Hợp đồng sẽ tự động được gia
                     hạn.</i></strong>
         </td>
@@ -354,13 +355,12 @@
             @if($info->store_sign_img)
                 <span style="font-weight: bold;font-size: 16px">{{$info?->partner?->owner_name}}</span>
             @endif
-
         </td>
     </tr>
     <tr>
         <td colspan="2" style="text-align: center">
             <h2>PHỤ LỤC I: DANH MỤC SẢN PHẨM VÀ CHÍNH SÁCH BÁN HÀNG</h2>
-            <p>(Đính kèm hợp đồng số: .............................../2022/HĐĐL ký ngày:.............................)</p>
+            <p>(Đính kèm hợp đồng số: {{$info['contract_code']}} ký ngày: {{date('d-m-Y', strtotime($info['store_signed_date_time']))}})</p>
             <table border="1" width="100%" cellspacing="0" cellpadding="5">
                 <tbody>
                 <tr style="height: 61px;">
@@ -462,7 +462,7 @@
                     <td style="width: 36px; text-align: center; height: 48px;">
                         <p>6</p>
                     </td>
-                    <td style="width: 52px; text-align: center; height: 943px;" rowspan="21">
+                    <td style="width: 52px; text-align: center; height: 943px;" rowspan="23">
                         <p><strong>Sản phẩm tư vấn</strong></p>
                     </td>
                     <td style="width: 422.312px; text-align: left; height: 48px;">
@@ -781,6 +781,36 @@
                         <p>335.000</p>
                     </td>
                 </tr>
+                <tr style="height: 35px;">
+                    <td style="width: 36px; text-align: center; height: 35px;">
+                        <p>23</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 35px;">
+                        <p><strong>Belle Hairnakin:</strong> Làm đẹp da, tóc, móng (Hộp 30 viên )</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 35px;">
+                        <p>269.091</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 35px;">
+                        <p>290.618</p>
+                    </td>
+                </tr>
+
+                <tr style="height: 48px;">
+                    <td style="width: 36px; text-align: center; height: 48px;">
+                        <p>27</p>
+                    </td>
+                    <td style="width: 422.312px; text-align: left; height: 48px;">
+                        <p><strong>Zincodin:</strong>Giúp bổ sung kẽm và L-histidine giúp cơ thể tăng hấp thu kẽm. (Hộp 30 viên)</p>
+                    </td>
+                    <td style="width: 76.6875px; text-align: center; height: 48px;">
+                        <p>199.074</p>
+                    </td>
+                    <td style="width: 77px; text-align: center; height: 48px;">
+                        <p>215.000</p>
+                    </td>
+                </tr>
+
                 </tbody>
             </table>
             <br/>
@@ -800,7 +830,7 @@
     <tr>
         <td colspan="2" style="text-align: center">
             <h2>PHỤ LỤC II: CHÍNH SÁCH BÁN HÀNG</h2>
-            <p>(Đính kèm Hợp đồng số ……………….…/2022/HĐĐL ký ngày …………………… )</p>
+            <p>(Đính kèm Hợp đồng số {{$info['contract_code']}} ký ngày {{date('d-m-Y', strtotime($info['store_signed_date_time']))}} )</p>
         </td>
     </tr>
     <tr>
@@ -822,7 +852,7 @@
                     <td>270.000.000</td>
                     <td>01 suất du lịch Nhật Bản
                         (trị giá 40.000.000 VNĐ)</td>
-                    <td>Từ …./…./2022 đến 31/03/2023</td>
+                    <td>Từ {{date('d/m/Y', strtotime($info['store_started']))}} đến 31/03/2023</td>
                 </tr>
                 </tbody>
             </table>
