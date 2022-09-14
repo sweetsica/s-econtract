@@ -33,7 +33,7 @@ class SignatureController extends Controller
             $contract['name_doppelherz'] = $request['name_doppelherz'];
             $contract['bank_doppelherz'] = $request['bank_doppelherz'];
             $doppelherz_image = DoppelherzSign::where('name', '=', $contract['store_sign_img_doppelherz'])->get()->first();
-            $contract['store_sign_img_doppelherz'] = $doppelherz_image['id'];
+            $contract['store_sign_img_doppelherz'] = !empty(@$doppelherz_image['id']) ? $doppelherz_image : null ;
             $contract['store_signed'] = true;
             $contract->save();
             return redirect()->route('contract.return.export.signed');
