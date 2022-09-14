@@ -83,7 +83,7 @@
                     <td width="20%">
                         Đại diện
                     </td>
-                    <td width="30%">: Ông {{$info?->doppelherz?->name}}</td>
+                    <td width="30%">: Ông {{$info?->doppelherz?->name ? $info?->doppelherz?->name : $info['store_contact_name'] }}</td>
                     <td width="50%">Chức danh: Giám đốc bán hàng Vùng 1 - Hà Nội và Tây Bắc</td>
                 </tr>
                 <tr>
@@ -106,7 +106,7 @@
                         Địa chỉ
                     </td>
                     <td colspan="3" width="80%">:   {{$info->local_dkkd?->name}}, {{$info?->local_dkkd?->parent->name}}
-                        , {{$info->local_dkkd?->parent?->parent?->name}}
+                        , {{$info->local_dkkd?->parent?->parent?->name}}, {{ $info->store_add_GH }}
                     </td>
                 </tr>
                 <tr>

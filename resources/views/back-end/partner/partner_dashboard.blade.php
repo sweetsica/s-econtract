@@ -401,8 +401,8 @@
                                                             <div class="form-group">
                                                                 <label
                                                                     for="exampleInputEmail1">Tên ngân hàng</label>
-                                                                <input required name="store_contact_name"
-                                                                       value="{{old('store_contact_name')}}"
+                                                                <input required name="store_bank"
+                                                                       value="{{old('store_bank')}}"
                                                                        type="text"
                                                                        class="form-control"
                                                                        id="exampleInputEmail1"
